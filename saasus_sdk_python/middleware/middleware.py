@@ -3,10 +3,11 @@ from __future__ import annotations
 from typing import Tuple, Optional, Union, Any
 
 from openapi_client.exceptions import UnauthorizedException, ServiceException
-from saasus_sdk_python import UserInfoApi
+from saasus_sdk_python import UserInfoApi, UserInfo
 from saasus_sdk_python.client.client import AuthClient
+from saasus_sdk_python import ApiClient
 
-from fastapi import HTTPException,Request
+from fastapi import HTTPException, Request
 from flask import request, jsonify
 from django.http import JsonResponse
 from functools import wraps
@@ -52,9 +53,16 @@ class Authenticate:
         except Exception as e:
             return None, ErrorResponse("N/A", str(e), "UnexpectedError")
 
-    def user_info(self, id_token: str) -> dict[str, Any]:
+    def user_info(self, id_token: str) -> UserInfo:
+        # todo api_clientの生成をどこかで共通化する
+        api_client = ApiClient()
         endpoint = f"/auth/userinfo?token={id_token}"
-        return self.client.api_request(UserInfoApi, "get_user_info", "GET", endpoint, token=id_token)
+        headers = self.client.generate_signature(method="GET", url=f"{self.client.base_url}{endpoint}", body=None,
+                                                 headers={})
+        api_client.configuration.default_headers = headers
+        user_info = UserInfoApi(api_client=api_client).get_user_info(_headers=api_client.configuration.default_headers,
+                                                                     token=id_token)
+        return user_info
 
     # FastAPI middleware
     def fastapi_auth(self, request: Request) -> Union[dict, HTTPException]:

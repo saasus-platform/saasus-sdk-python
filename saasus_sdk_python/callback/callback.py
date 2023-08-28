@@ -5,19 +5,28 @@ from fastapi import HTTPException, Request
 
 from saasus_sdk_python.client.client import AuthClient
 from saasus_sdk_python.middleware.middleware import ErrorResponse
-from saasus_sdk_python.api.credential_api import CredentialApi
+from saasus_sdk_python import CredentialApi, Credentials, ApiClient
+from saasus_sdk_python.client.client import SignedApiClient
 from saasus_sdk_python.exceptions import BadRequestException, UnauthorizedException, ServiceException
 
 
 class Callback:
-
     def __init__(self):
         self.client = AuthClient()
 
-    def get_auth_credentials(self, code: str, auth_type: str = "tempCodeAuth") -> Any:
+    def get_auth_credentials(self, code: str, auth_type: str = "tempCodeAuth") -> Credentials:
+        # todo api_clientの生成をどこかで共通化する
+        api_client = ApiClient()
         endpoint = f"/auth/credentials?code={code}&auth-flow={auth_type}"
-        return self.client.api_request(CredentialApi, "get_auth_credentials", "GET", endpoint, code=code,
-                                       auth_flow=auth_type)
+        headers = self.client.generate_signature(method="GET", url=f"{self.client.base_url}{endpoint}", body=None,
+                                                 headers={})
+        api_client.configuration.default_headers = headers
+        credentials = CredentialApi(api_client=api_client).get_auth_credentials(
+            _headers=api_client.configuration.default_headers, code=code, auth_flow=auth_type)
+        # fixme オーバーライドしたcall_apiを呼べていない
+        # credentials = CredentialApi(api_client=api_client).get_auth_credentials(code=code, auth_flow=auth_type,
+        #                                                                         _headers=api_client.configuration.default_headers)
+        return credentials
 
     async def callback_route_function(self, request: Request):
         code = request.query_params.get("code")
