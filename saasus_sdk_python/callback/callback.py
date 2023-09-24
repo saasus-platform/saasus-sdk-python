@@ -1,60 +1,58 @@
 import json
-from typing import Any
-
-from fastapi import HTTPException, Request
+import os
+from typing import Union
 
 from saasus_sdk_python.client.client import AuthClient
 from saasus_sdk_python.middleware.middleware import ErrorResponse
 from saasus_sdk_python import CredentialApi, Credentials, ApiClient
-from saasus_sdk_python.client.client import SignedApiClient
 from saasus_sdk_python.exceptions import BadRequestException, UnauthorizedException, ServiceException
 
 
 class Callback:
     def __init__(self):
         self.client = AuthClient()
+        self.api_base_url = os.getenv("SAASUS_BASE_URL", "https://api.saasus.io/v1")
 
     def get_auth_credentials(self, code: str, auth_type: str = "tempCodeAuth") -> Credentials:
-        # todo api_clientの生成をどこかで共通化する
         api_client = ApiClient()
         endpoint = f"/auth/credentials?code={code}&auth-flow={auth_type}"
         headers = self.client.generate_signature(method="GET", url=f"{self.client.base_url}{endpoint}", body=None,
                                                  headers={})
         api_client.configuration.default_headers = headers
+        # 環境変数でAPIサーバーを切り替える
+        api_client.configuration.host = f"{self.api_base_url}/auth"
         credentials = CredentialApi(api_client=api_client).get_auth_credentials(
             _headers=api_client.configuration.default_headers, code=code, auth_flow=auth_type)
-        # fixme オーバーライドしたcall_apiを呼べていない
-        # credentials = CredentialApi(api_client=api_client).get_auth_credentials(code=code, auth_flow=auth_type,
-        #                                                                         _headers=api_client.configuration.default_headers)
         return credentials
 
-    async def callback_route_function(self, request: Request):
-        code = request.query_params.get("code")
-        if not code:
-            raise HTTPException(status_code=400, detail="code is not provided by query parameter")
+    # refresh_tokenを使って認証するメソッド
+    def get_refresh_token_auth_credentials(self, refresh_token: str, auth_type: str = "refreshTokenAuth") -> Credentials:
+        api_client = ApiClient()
+        # クエリパラメータの順番を入れ替えると署名生成でエラーになるので注意
+        endpoint = f"/auth/credentials?auth-flow={auth_type}&refresh-token={refresh_token}"
+        headers = self.client.generate_signature(method="GET", url=f"{self.client.base_url}{endpoint}", body=None,
+                                                 headers={})
+        api_client.configuration.default_headers = headers
+        # 環境変数でAPIサーバーを切り替える
+        api_client.configuration.host = f"{self.api_base_url}/auth"
+        credentials = CredentialApi(api_client=api_client).get_auth_credentials(
+            _headers=api_client.configuration.default_headers, refresh_token=refresh_token, auth_flow=auth_type)
+        return credentials
 
+    # fixme callback_route_functionという名前を変更する
+    def callback_route_function(self, code: str):
         try:
             response = self.get_auth_credentials(code)
             return response
+        except (BadRequestException, UnauthorizedException, ServiceException) as e:
+            return self.handle_exception(e)
 
-        # 400に対応するエラー処理
-        except BadRequestException as e:
+    @staticmethod
+    def handle_exception(e: Exception) -> Union[None, ErrorResponse]:
+        # 400, 401, 500のエラーをハンドリングする
+        if isinstance(e, (BadRequestException, UnauthorizedException, ServiceException)):
             error_body = json.loads(e.body)
-            return None, ErrorResponse(error_body["data"], error_body["message"], error_body["type"])
-
-        # 401に対応するエラー処理
-        except UnauthorizedException as e:
-            error_body = json.loads(e.body)
-            return None, ErrorResponse(data=None, message=error_body["message"], type=error_body["type"])
-
-        # 500に対応するエラー処理
-        except ServiceException as e:
-            error_body = json.loads(e.body)
-            return None, ErrorResponse(data=error_body["data"], message=error_body["message"], type=error_body["type"])
-
-        # 上記以外の200以外のエラー処理
-        except Exception as e:
-            return None, ErrorResponse(data="N/A", message=str(e), type="UnexpectedError")
-
-
-callback_instance = Callback()
+            return ErrorResponse(error_body["data"], error_body["message"], error_body["type"])
+        # それ以外の場合のエラー
+        else:
+            return ErrorResponse(data="N/A", message=str(e), type="UnexpectedError")

@@ -1,16 +1,10 @@
 from __future__ import annotations
-
-from typing import Tuple, Optional, Union, Any
+import os
 
 from openapi_client.exceptions import UnauthorizedException, ServiceException
 from saasus_sdk_python import UserInfoApi, UserInfo
 from saasus_sdk_python.client.client import AuthClient
 from saasus_sdk_python import ApiClient
-
-from fastapi import HTTPException, Request
-from flask import request, jsonify
-from django.http import JsonResponse
-from functools import wraps
 
 
 class AuthenticationError(Exception):
@@ -30,68 +24,34 @@ class ErrorResponse:
 class Authenticate:
     def __init__(self):
         self.client = AuthClient()
+        self.api_base_url = os.getenv("SAASUS_BASE_URL", "https://api.saasus.io/v1")
 
-    def authenticate(self, id_token: str) -> Tuple[Optional[dict], Optional[Union[AuthenticationError, ErrorResponse]]]:
+    def authenticate(self, id_token: str, referer: str | None) -> tuple[None, AuthenticationError] | tuple[UserInfo, None] | tuple[None, ErrorResponse]:  # noqa: E501
         if not id_token:
             return None, AuthenticationError("Invalid Authorization header")
 
+        self.client.referer = referer
         try:
             response = self.user_info(id_token)
             return response, None
 
-        # 401に対応するエラー処理
-        except UnauthorizedException as e:
-            error_body = e.body
-            return None, ErrorResponse(error_body["data"], error_body["message"], error_body["type"])
-
-        # 500に対応するエラー処理
-        except ServiceException as e:
-            error_body = e.body
-            return None, ErrorResponse(error_body["data"], error_body["message"], error_body["type"])
-
-        # 上記以外の200以外のエラー処理
+        except (UnauthorizedException, ServiceException) as e:
+            return None, self._create_error_response(e.body)
         except Exception as e:
             return None, ErrorResponse("N/A", str(e), "UnexpectedError")
 
     def user_info(self, id_token: str) -> UserInfo:
-        # todo api_clientの生成をどこかで共通化する
         api_client = ApiClient()
         endpoint = f"/auth/userinfo?token={id_token}"
-        headers = self.client.generate_signature(method="GET", url=f"{self.client.base_url}{endpoint}", body=None,
-                                                 headers={})
+        headers = self.client.generate_signature("GET", f"{self.client.base_url}{endpoint}")
+        headers = self.client.set_referer_header(headers)
         api_client.configuration.default_headers = headers
-        user_info = UserInfoApi(api_client=api_client).get_user_info(_headers=api_client.configuration.default_headers,
-                                                                     token=id_token)
+        # 環境変数でAPIサーバーを切り替える
+        api_client.configuration.host = f"{self.api_base_url}/auth"
+
+        user_info = UserInfoApi(api_client=api_client).get_user_info(_headers=headers, token=id_token)
         return user_info
 
-    # FastAPI middleware
-    def fastapi_auth(self, request: Request) -> Union[dict, HTTPException]:
-        auth_header = request.headers.get("Authorization", "")
-        token = auth_header.replace("Bearer ", "") if "Bearer " in auth_header else ""
-        user_info, error = self.authenticate(token)
-        if error:
-            raise HTTPException(status_code=401, detail=str(error))
-        return user_info
-
-    # Flask middleware
-    def flask_auth(self, f):
-        @wraps(f)
-        def decorated_function(*args, **kwargs):
-            token = request.headers.get('Authorization', '')
-            user_info, error = self.authenticate(token)
-            if error:
-                return jsonify(error=str(error)), 401
-            return f(user_info, *args, **kwargs)
-
-        return decorated_function
-
-    # Django middleware
-    def django_auth(self, view_func):
-        def _wrapped_view(request, *args, **kwargs):
-            token = request.headers.get('Authorization', '')
-            user_info, error = self.authenticate(token)
-            if error:
-                return JsonResponse({'error': str(error)}, status=401)
-            return view_func(request, user_info, *args, **kwargs)
-
-        return _wrapped_view
+    @staticmethod
+    def _create_error_response(body: dict) -> ErrorResponse:
+        return ErrorResponse(body.get("data"), body.get("message"), body.get("type"))
