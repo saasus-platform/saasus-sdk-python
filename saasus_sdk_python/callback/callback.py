@@ -2,16 +2,16 @@ import json
 import os
 from typing import Union
 
-from saasus_sdk_python.client.client import AuthClient
+from saasus_sdk_python.client.client import Client
 from saasus_sdk_python.middleware.middleware import ErrorResponse
-from saasus_sdk_python import CredentialApi, Credentials, ApiClient
-from saasus_sdk_python.exceptions import BadRequestException, UnauthorizedException, ServiceException
+from saasus_sdk_python.src.auth import CredentialApi, Credentials, ApiClient
+from saasus_sdk_python.src.auth.exceptions import BadRequestException, UnauthorizedException, ServiceException
 
 
 class Callback:
     def __init__(self):
-        self.client = AuthClient()
-        self.api_base_url = os.getenv("SAASUS_BASE_URL", "https://api.saasus.io/v1")
+        self.client = Client()
+        self.base_url = os.getenv("SAASUS_BASE_URL", "https://api.saasus.io/v1")
 
     def get_auth_credentials(self, code: str, auth_type: str = "tempCodeAuth") -> Credentials:
         api_client = ApiClient()
@@ -20,7 +20,7 @@ class Callback:
                                                  headers={})
         api_client.configuration.default_headers = headers
         # 環境変数でAPIサーバーを切り替える
-        api_client.configuration.host = f"{self.api_base_url}/auth"
+        api_client.configuration.host = f"{self.base_url}/auth"
         credentials = CredentialApi(api_client=api_client).get_auth_credentials(
             _headers=api_client.configuration.default_headers, code=code, auth_flow=auth_type)
         return credentials
