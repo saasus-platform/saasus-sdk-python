@@ -2,10 +2,11 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**display_name** | **str** | 表示名(display name) | 
-**description** | **str** | 説明(description) | 
+**display_name** | **str** | 表示名 | 
+**description** | **str** | 説明 | 
 
 ## Example
 

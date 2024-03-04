@@ -2,11 +2,12 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id_token** | **str** | IDトークン(ID token) | 
-**access_token** | **str** | アクセストークン(access token) | 
-**refresh_token** | **str** | リフレッシュトークン(refresh token) | [optional] 
+**id_token** | **str** | ID token | 
+**access_token** | **str** | Access token | 
+**refresh_token** | **str** | Refresh token | [optional] 
 
 ## Example
 

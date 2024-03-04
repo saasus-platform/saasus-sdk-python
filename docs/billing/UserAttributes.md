@@ -2,9 +2,10 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**user_attributes** | [**List[Attribute]**](Attribute.md) | ユーザー属性定義(User attribute definition) | 
+**user_attributes** | [**List[Attribute]**](Attribute.md) | User Attribute Definition | 
 
 ## Example
 

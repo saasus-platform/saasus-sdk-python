@@ -2,13 +2,14 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **units** | [**List[PricingUnit]**](PricingUnit.md) |  | 
-**name** | **str** | メニュー名(menu name) | 
-**display_name** | **str** | メニュー表示名(menu display name) | 
-**description** | **str** | メニュー説明(menu description) | 
-**used** | **bool** | メニューの使用済み設定(menu used settings) | 
+**name** | **str** | メニュー名 | 
+**display_name** | **str** | メニュー表示名 | 
+**description** | **str** | メニュー説明 | 
+**used** | **bool** | メニューの使用済み設定 | 
 
 ## Example
 

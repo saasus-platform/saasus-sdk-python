@@ -2,11 +2,12 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**metering_unit_name** | **str** | 計測ユニット名(metering unit name) | 
-**var_date** | **str** | 日(date) | 
-**count** | **int** | 件数(count) | 
+**metering_unit_name** | **str** | 計測ユニット名 | 
+**var_date** | **str** | 日 | 
+**count** | **int** | 件数 | 
 
 ## Example
 

@@ -2,9 +2,10 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**event_messages** | [**List[EventMessage]**](EventMessage.md) | イベントメッセージ(event message) | 
+**event_messages** | [**List[EventMessage]**](EventMessage.md) | event message | 
 
 ## Example
 

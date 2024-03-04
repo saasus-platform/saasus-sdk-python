@@ -18,65 +18,84 @@ import re  # noqa: F401
 import json
 
 
-from typing import Union
-from pydantic import BaseModel, Field, StrictBool, StrictFloat, StrictInt, StrictStr, constr, validator
+from typing import Any, ClassVar, Dict, List, Union
+from pydantic import BaseModel, StrictBool, StrictFloat, StrictInt, StrictStr, field_validator
+from pydantic import Field
+from typing_extensions import Annotated
+try:
+    from typing import Self
+except ImportError:
+    from typing_extensions import Self
 
 class TaxRate(BaseModel):
     """
     TaxRate
-    """
-    name: StrictStr = Field(..., description="税率の名前(name of tax rate)")
-    display_name: StrictStr = Field(..., description="表示名(display name)")
-    percentage: Union[StrictFloat, StrictInt] = Field(..., description="税率(percentage)")
-    inclusive: StrictBool = Field(..., description="内税かどうか(inclusive or not)")
-    country: constr(strict=True) = Field(..., description="ISO 3166-1 alpha-2 の国コード(Country code of ISO 3166-1 alpha-2)")
-    description: StrictStr = Field(..., description="説明(description)")
-    id: StrictStr = Field(...)
-    __properties = ["name", "display_name", "percentage", "inclusive", "country", "description", "id"]
+    """ # noqa: E501
+    name: StrictStr = Field(description="税率の名前")
+    display_name: StrictStr = Field(description="表示名")
+    percentage: Union[StrictFloat, StrictInt] = Field(description="税率")
+    inclusive: StrictBool = Field(description="内税かどうか")
+    country: Annotated[str, Field(strict=True)] = Field(description="ISO 3166-1 alpha-2 の国コード")
+    description: StrictStr = Field(description="説明")
+    id: StrictStr = Field(description="ユニバーサル一意識別子")
+    __properties: ClassVar[List[str]] = ["name", "display_name", "percentage", "inclusive", "country", "description", "id"]
 
-    @validator('country')
+    @field_validator('country')
     def country_validate_regular_expression(cls, value):
         """Validates the regular expression"""
         if not re.match(r"^[A-Z]{2}$", value):
             raise ValueError(r"must validate the regular expression /^[A-Z]{2}$/")
         return value
 
-    class Config:
-        """Pydantic configuration"""
-        allow_population_by_field_name = True
-        validate_assignment = True
+    model_config = {
+        "populate_by_name": True,
+        "validate_assignment": True,
+        "protected_namespaces": (),
+    }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
-        return pprint.pformat(self.dict(by_alias=True))
+        return pprint.pformat(self.model_dump(by_alias=True))
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> TaxRate:
+    def from_json(cls, json_str: str) -> Self:
         """Create an instance of TaxRate from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
-    def to_dict(self):
-        """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
-                          exclude={
-                          },
-                          exclude_none=True)
+    def to_dict(self) -> Dict[str, Any]:
+        """Return the dictionary representation of the model using alias.
+
+        This has the following differences from calling pydantic's
+        `self.model_dump(by_alias=True)`:
+
+        * `None` is only added to the output dict for nullable fields that
+          were set at model initialization. Other fields with value `None`
+          are ignored.
+        """
+        _dict = self.model_dump(
+            by_alias=True,
+            exclude={
+            },
+            exclude_none=True,
+        )
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: dict) -> TaxRate:
+    def from_dict(cls, obj: Dict) -> Self:
         """Create an instance of TaxRate from a dict"""
         if obj is None:
             return None
 
         if not isinstance(obj, dict):
-            return TaxRate.parse_obj(obj)
+            return cls.model_validate(obj)
 
-        _obj = TaxRate.parse_obj({
+        _obj = cls.model_validate({
             "name": obj.get("name"),
             "display_name": obj.get("display_name"),
             "percentage": obj.get("percentage"),

@@ -4,21 +4,22 @@ All URIs are relative to *https://api.saasus.io/v1/auth*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**create_tenant_attribute**](TenantAttributeApi.md#create_tenant_attribute) | **POST** /tenant-attributes | テナント属性の作成(Create Tenant Attribute)
-[**delete_tenant_attribute**](TenantAttributeApi.md#delete_tenant_attribute) | **DELETE** /tenant-attributes/{attribute_name} | テナント属性の削除(Delete Tenant Attribute)
-[**get_tenant_attributes**](TenantAttributeApi.md#get_tenant_attributes) | **GET** /tenant-attributes | テナント属性の一覧を取得(Get Tenant Attributes)
+[**create_tenant_attribute**](TenantAttributeApi.md#create_tenant_attribute) | **POST** /tenant-attributes | Create Tenant Attribute
+[**delete_tenant_attribute**](TenantAttributeApi.md#delete_tenant_attribute) | **DELETE** /tenant-attributes/{attribute_name} | Delete Tenant Attribute
+[**get_tenant_attributes**](TenantAttributeApi.md#get_tenant_attributes) | **GET** /tenant-attributes | Get Tenant Attributes
 
 
 # **create_tenant_attribute**
 > Attribute create_tenant_attribute(body=body)
 
-テナント属性の作成(Create Tenant Attribute)
+Create Tenant Attribute
 
-SaaSus Platform で管理する、テナントの追加属性の登録を行います。 例えばテナントの呼び名やメモなどをを持たせることができ、SaaSからSaaSus SDK/APIを利用して取得することができます。  Register additional tenant attributes to be managed by SaaSus Platform. For example, tenant name, memo, etc., then get the attributes from SaaS using the SaaSus SDK/API. 
+Register additional tenant attributes to be managed by SaaSus Platform. For example, tenant name, memo, etc., then get the attributes from SaaS using the SaaSus SDK/API. 
 
 ### Example
 
 * Bearer Authentication (Bearer):
+
 ```python
 import time
 import os
@@ -50,7 +51,7 @@ with saasus_sdk_python.src.auth.ApiClient(configuration) as api_client:
     body = saasus_sdk_python.src.auth.Attribute() # Attribute |  (optional)
 
     try:
-        # テナント属性の作成(Create Tenant Attribute)
+        # Create Tenant Attribute
         api_response = api_instance.create_tenant_attribute(body=body)
         print("The response of TenantAttributeApi->create_tenant_attribute:\n")
         pprint(api_response)
@@ -61,6 +62,7 @@ with saasus_sdk_python.src.auth.ApiClient(configuration) as api_client:
 
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -80,6 +82,7 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **201** | Created |  -  |
@@ -90,13 +93,14 @@ Name | Type | Description  | Notes
 # **delete_tenant_attribute**
 > delete_tenant_attribute(attribute_name)
 
-テナント属性の削除(Delete Tenant Attribute)
+Delete Tenant Attribute
 
-SaaSus Platform で管理する、テナントの追加属性の削除を行います。  Deletes tenant attributes managed by SaaSus Platform. 
+Deletes tenant attributes managed by SaaSus Platform. 
 
 ### Example
 
 * Bearer Authentication (Bearer):
+
 ```python
 import time
 import os
@@ -124,10 +128,10 @@ configuration = saasus_sdk_python.src.auth.Configuration(
 with saasus_sdk_python.src.auth.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = saasus_sdk_python.src.auth.TenantAttributeApi(api_client)
-    attribute_name = 'birthday' # str | 属性名(Attribute Name)
+    attribute_name = 'birthday' # str | Attribute Name
 
     try:
-        # テナント属性の削除(Delete Tenant Attribute)
+        # Delete Tenant Attribute
         api_instance.delete_tenant_attribute(attribute_name)
     except Exception as e:
         print("Exception when calling TenantAttributeApi->delete_tenant_attribute: %s\n" % e)
@@ -137,9 +141,10 @@ with saasus_sdk_python.src.auth.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **attribute_name** | **str**| 属性名(Attribute Name) | 
+ **attribute_name** | **str**| Attribute Name | 
 
 ### Return type
 
@@ -155,6 +160,7 @@ void (empty response body)
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
@@ -166,13 +172,14 @@ void (empty response body)
 # **get_tenant_attributes**
 > TenantAttributes get_tenant_attributes()
 
-テナント属性の一覧を取得(Get Tenant Attributes)
+Get Tenant Attributes
 
-SaaSus Platform で管理する、テナントの追加属性の定義を取得します。 例えばテナントの呼び名やメモなどをを持たせることができ、SaaSからSaaSus SDK/APIを利用して取得することができます。  Get definitions for additional tenant attributes managed by the SaaSus Platform. For example, tenant name, memo, etc., then get the attributes from SaaS using the SaaSus SDK/API. 
+Get definitions for additional tenant attributes managed by the SaaSus Platform. For example, tenant name, memo, etc., then get the attributes from SaaS using the SaaSus SDK/API. 
 
 ### Example
 
 * Bearer Authentication (Bearer):
+
 ```python
 import time
 import os
@@ -203,7 +210,7 @@ with saasus_sdk_python.src.auth.ApiClient(configuration) as api_client:
     api_instance = saasus_sdk_python.src.auth.TenantAttributeApi(api_client)
 
     try:
-        # テナント属性の一覧を取得(Get Tenant Attributes)
+        # Get Tenant Attributes
         api_response = api_instance.get_tenant_attributes()
         print("The response of TenantAttributeApi->get_tenant_attributes:\n")
         pprint(api_response)
@@ -214,6 +221,7 @@ with saasus_sdk_python.src.auth.ApiClient(configuration) as api_client:
 
 
 ### Parameters
+
 This endpoint does not need any parameter.
 
 ### Return type
@@ -230,6 +238,7 @@ This endpoint does not need any parameter.
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |

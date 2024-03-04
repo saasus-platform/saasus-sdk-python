@@ -4,21 +4,22 @@ All URIs are relative to *https://api.saasus.io/v1/pricing*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**create_tax_rate**](TaxRateApi.md#create_tax_rate) | **POST** /tax-rates | 税率の作成(Create Tax Rate)
-[**get_tax_rates**](TaxRateApi.md#get_tax_rates) | **GET** /tax-rates | 税率を取得します(Get Tax Rates)
-[**update_tax_rate**](TaxRateApi.md#update_tax_rate) | **PATCH** /tax-rates/{tax_rate_id} | 税率を更新(Update Tax Rate)
+[**create_tax_rate**](TaxRateApi.md#create_tax_rate) | **POST** /tax-rates | 税率の作成
+[**get_tax_rates**](TaxRateApi.md#get_tax_rates) | **GET** /tax-rates | 税率を取得します
+[**update_tax_rate**](TaxRateApi.md#update_tax_rate) | **PATCH** /tax-rates/{tax_rate_id} | 税率を更新
 
 
 # **create_tax_rate**
 > TaxRate create_tax_rate(body=body)
 
-税率の作成(Create Tax Rate)
+税率の作成
 
-税率を作成します。  Creates a tax rate. 
+税率を作成します。 
 
 ### Example
 
 * Bearer Authentication (Bearer):
+
 ```python
 import time
 import os
@@ -51,7 +52,7 @@ with saasus_sdk_python.src.pricing.ApiClient(configuration) as api_client:
     body = saasus_sdk_python.src.pricing.TaxRateProps() # TaxRateProps |  (optional)
 
     try:
-        # 税率の作成(Create Tax Rate)
+        # 税率の作成
         api_response = api_instance.create_tax_rate(body=body)
         print("The response of TaxRateApi->create_tax_rate:\n")
         pprint(api_response)
@@ -62,6 +63,7 @@ with saasus_sdk_python.src.pricing.ApiClient(configuration) as api_client:
 
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -81,6 +83,7 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **201** | Created |  -  |
@@ -92,13 +95,14 @@ Name | Type | Description  | Notes
 # **get_tax_rates**
 > TaxRates get_tax_rates()
 
-税率を取得します(Get Tax Rates)
+税率を取得します
 
-税率を取得します。  Get all Tax Rates 
+税率を取得します。 
 
 ### Example
 
 * Bearer Authentication (Bearer):
+
 ```python
 import time
 import os
@@ -129,7 +133,7 @@ with saasus_sdk_python.src.pricing.ApiClient(configuration) as api_client:
     api_instance = saasus_sdk_python.src.pricing.TaxRateApi(api_client)
 
     try:
-        # 税率を取得します(Get Tax Rates)
+        # 税率を取得します
         api_response = api_instance.get_tax_rates()
         print("The response of TaxRateApi->get_tax_rates:\n")
         pprint(api_response)
@@ -140,6 +144,7 @@ with saasus_sdk_python.src.pricing.ApiClient(configuration) as api_client:
 
 
 ### Parameters
+
 This endpoint does not need any parameter.
 
 ### Return type
@@ -156,6 +161,7 @@ This endpoint does not need any parameter.
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
@@ -166,13 +172,14 @@ This endpoint does not need any parameter.
 # **update_tax_rate**
 > update_tax_rate(tax_rate_id, update_tax_rate_param=update_tax_rate_param)
 
-税率を更新(Update Tax Rate)
+税率を更新
 
-税率を更新します。  Update tax rate. 
+税率を更新します。 
 
 ### Example
 
 * Bearer Authentication (Bearer):
+
 ```python
 import time
 import os
@@ -201,11 +208,11 @@ configuration = saasus_sdk_python.src.pricing.Configuration(
 with saasus_sdk_python.src.pricing.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = saasus_sdk_python.src.pricing.TaxRateApi(api_client)
-    tax_rate_id = 'tax_rate_id_example' # str | 税率ID(tax rate ID)
+    tax_rate_id = 'tax_rate_id_example' # str | 税率ID
     update_tax_rate_param = saasus_sdk_python.src.pricing.UpdateTaxRateParam() # UpdateTaxRateParam |  (optional)
 
     try:
-        # 税率を更新(Update Tax Rate)
+        # 税率を更新
         api_instance.update_tax_rate(tax_rate_id, update_tax_rate_param=update_tax_rate_param)
     except Exception as e:
         print("Exception when calling TaxRateApi->update_tax_rate: %s\n" % e)
@@ -215,9 +222,10 @@ with saasus_sdk_python.src.pricing.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **tax_rate_id** | **str**| 税率ID(tax rate ID) | 
+ **tax_rate_id** | **str**| 税率ID | 
  **update_tax_rate_param** | [**UpdateTaxRateParam**](UpdateTaxRateParam.md)|  | [optional] 
 
 ### Return type
@@ -234,6 +242,7 @@ void (empty response body)
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |

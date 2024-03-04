@@ -2,12 +2,13 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **int** |  | 
-**name** | **str** | 環境名(env name) | 
-**display_name** | **str** | 環境表示名(env display name) | [optional] 
-**roles** | [**List[Role]**](Role.md) | 役割(ロール)情報(role info) | 
+**name** | **str** | env name | 
+**display_name** | **str** | env display name | [optional] 
+**roles** | [**List[Role]**](Role.md) | role info | 
 
 ## Example
 

@@ -4,21 +4,22 @@ All URIs are relative to *https://api.saasus.io/v1/billing*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**delete_stripe_info**](StripeApi.md#delete_stripe_info) | **DELETE** /stripe/info | Stripe連携情報を削除(Delete Stripe Connection)
-[**get_stripe_info**](StripeApi.md#get_stripe_info) | **GET** /stripe/info | Stripe連携情報を取得(Get Stripe Connection information)
-[**update_stripe_info**](StripeApi.md#update_stripe_info) | **PUT** /stripe/info | Stripe連携情報を更新(Update Stripe Connection Info)
+[**delete_stripe_info**](StripeApi.md#delete_stripe_info) | **DELETE** /stripe/info | Delete Stripe Connection
+[**get_stripe_info**](StripeApi.md#get_stripe_info) | **GET** /stripe/info | Get Stripe Connection information
+[**update_stripe_info**](StripeApi.md#update_stripe_info) | **PUT** /stripe/info | Update Stripe Connection Info
 
 
 # **delete_stripe_info**
 > delete_stripe_info()
 
-Stripe連携情報を削除(Delete Stripe Connection)
+Delete Stripe Connection
 
-請求業務で使う外部SaaSとの連携情報を削除します。  Delete connection with external billing SaaS 
+Delete connection with external billing SaaS 
 
 ### Example
 
 * Bearer Authentication (Bearer):
+
 ```python
 import time
 import os
@@ -48,7 +49,7 @@ with saasus_sdk_python.src.billing.ApiClient(configuration) as api_client:
     api_instance = saasus_sdk_python.src.billing.StripeApi(api_client)
 
     try:
-        # Stripe連携情報を削除(Delete Stripe Connection)
+        # Delete Stripe Connection
         api_instance.delete_stripe_info()
     except Exception as e:
         print("Exception when calling StripeApi->delete_stripe_info: %s\n" % e)
@@ -57,6 +58,7 @@ with saasus_sdk_python.src.billing.ApiClient(configuration) as api_client:
 
 
 ### Parameters
+
 This endpoint does not need any parameter.
 
 ### Return type
@@ -73,6 +75,7 @@ void (empty response body)
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
@@ -83,13 +86,14 @@ void (empty response body)
 # **get_stripe_info**
 > StripeInfo get_stripe_info()
 
-Stripe連携情報を取得(Get Stripe Connection information)
+Get Stripe Connection information
 
-請求業務で使う外部SaaSとの連携情報を取得します。 現在は Stripe と連携が可能です。 連携を行わない場合は、 SaaSus SDK/API を利用して請求処理を実装する必要があります。  Get information on connnections with external billing SaaS. Currently possible to integrate with Stripe. Without integration, you will need to implement billing using the SaaSus SDK/API. 
+Get information on connnections with external billing SaaS. Currently possible to integrate with Stripe. Without integration, you will need to implement billing using the SaaSus SDK/API. 
 
 ### Example
 
 * Bearer Authentication (Bearer):
+
 ```python
 import time
 import os
@@ -120,7 +124,7 @@ with saasus_sdk_python.src.billing.ApiClient(configuration) as api_client:
     api_instance = saasus_sdk_python.src.billing.StripeApi(api_client)
 
     try:
-        # Stripe連携情報を取得(Get Stripe Connection information)
+        # Get Stripe Connection information
         api_response = api_instance.get_stripe_info()
         print("The response of StripeApi->get_stripe_info:\n")
         pprint(api_response)
@@ -131,6 +135,7 @@ with saasus_sdk_python.src.billing.ApiClient(configuration) as api_client:
 
 
 ### Parameters
+
 This endpoint does not need any parameter.
 
 ### Return type
@@ -147,6 +152,7 @@ This endpoint does not need any parameter.
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
@@ -157,13 +163,14 @@ This endpoint does not need any parameter.
 # **update_stripe_info**
 > update_stripe_info(update_stripe_info_param=update_stripe_info_param)
 
-Stripe連携情報を更新(Update Stripe Connection Info)
+Update Stripe Connection Info
 
-請求業務で使う外部SaaSとの連携情報を更新します。 現在は Stripe と連携が可能です。  Updates information on connection with external billing SaaS. Currently possible to connect to Stripe. 
+Updates information on connection with external billing SaaS. Currently possible to connect to Stripe. 
 
 ### Example
 
 * Bearer Authentication (Bearer):
+
 ```python
 import time
 import os
@@ -195,7 +202,7 @@ with saasus_sdk_python.src.billing.ApiClient(configuration) as api_client:
     update_stripe_info_param = saasus_sdk_python.src.billing.UpdateStripeInfoParam() # UpdateStripeInfoParam |  (optional)
 
     try:
-        # Stripe連携情報を更新(Update Stripe Connection Info)
+        # Update Stripe Connection Info
         api_instance.update_stripe_info(update_stripe_info_param=update_stripe_info_param)
     except Exception as e:
         print("Exception when calling StripeApi->update_stripe_info: %s\n" % e)
@@ -204,6 +211,7 @@ with saasus_sdk_python.src.billing.ApiClient(configuration) as api_client:
 
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -223,6 +231,7 @@ void (empty response body)
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |

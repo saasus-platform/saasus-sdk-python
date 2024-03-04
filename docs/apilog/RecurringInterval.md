@@ -1,8 +1,9 @@
 # RecurringInterval
 
-繰り返し期間(cycle) month: 月単位(monthly) year: 年単位(yearly) 
+繰り返し期間 month: 月単位 year: 年単位 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 

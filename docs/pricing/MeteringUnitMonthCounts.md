@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **counts** | [**List[MeteringUnitMonthCount]**](MeteringUnitMonthCount.md) |  | 

@@ -4,23 +4,24 @@ All URIs are relative to *https://api.saasus.io/v1/pricing*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**create_pricing_unit**](PricingUnitsApi.md#create_pricing_unit) | **POST** /units | プライシングユニットを作成(Create Pricing Unit)
-[**delete_pricing_unit**](PricingUnitsApi.md#delete_pricing_unit) | **DELETE** /units/{pricing_unit_id} | プライシングユニットを削除(Delete Pricing Unit)
-[**get_pricing_unit**](PricingUnitsApi.md#get_pricing_unit) | **GET** /units/{pricing_unit_id} | プライシングユニットを取得(Get Pricing Unit)
-[**get_pricing_units**](PricingUnitsApi.md#get_pricing_units) | **GET** /units | プライシングユニットの一覧を取得(Get Pricing Units)
-[**update_pricing_unit**](PricingUnitsApi.md#update_pricing_unit) | **PATCH** /units/{pricing_unit_id} | プライシングユニットを更新(Update Pricing Unit)
+[**create_pricing_unit**](PricingUnitsApi.md#create_pricing_unit) | **POST** /units | プライシングユニットを作成
+[**delete_pricing_unit**](PricingUnitsApi.md#delete_pricing_unit) | **DELETE** /units/{pricing_unit_id} | プライシングユニットを削除
+[**get_pricing_unit**](PricingUnitsApi.md#get_pricing_unit) | **GET** /units/{pricing_unit_id} | プライシングユニットを取得
+[**get_pricing_units**](PricingUnitsApi.md#get_pricing_units) | **GET** /units | プライシングユニットの一覧を取得
+[**update_pricing_unit**](PricingUnitsApi.md#update_pricing_unit) | **PATCH** /units/{pricing_unit_id} | プライシングユニットを更新
 
 
 # **create_pricing_unit**
 > PricingUnit create_pricing_unit(body=body)
 
-プライシングユニットを作成(Create Pricing Unit)
+プライシングユニットを作成
 
-プライシングユニットを作成します。  Create a pricing unit. 
+プライシングユニットを作成します。 
 
 ### Example
 
 * Bearer Authentication (Bearer):
+
 ```python
 import time
 import os
@@ -53,7 +54,7 @@ with saasus_sdk_python.src.pricing.ApiClient(configuration) as api_client:
     body = saasus_sdk_python.src.pricing.PricingUnitForSave() # PricingUnitForSave |  (optional)
 
     try:
-        # プライシングユニットを作成(Create Pricing Unit)
+        # プライシングユニットを作成
         api_response = api_instance.create_pricing_unit(body=body)
         print("The response of PricingUnitsApi->create_pricing_unit:\n")
         pprint(api_response)
@@ -64,6 +65,7 @@ with saasus_sdk_python.src.pricing.ApiClient(configuration) as api_client:
 
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -83,6 +85,7 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **201** | Created |  -  |
@@ -93,13 +96,14 @@ Name | Type | Description  | Notes
 # **delete_pricing_unit**
 > delete_pricing_unit(pricing_unit_id)
 
-プライシングユニットを削除(Delete Pricing Unit)
+プライシングユニットを削除
 
-プライシングユニットを削除します。  Delete a pricing unit. 
+プライシングユニットを削除します。 
 
 ### Example
 
 * Bearer Authentication (Bearer):
+
 ```python
 import time
 import os
@@ -127,10 +131,10 @@ configuration = saasus_sdk_python.src.pricing.Configuration(
 with saasus_sdk_python.src.pricing.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = saasus_sdk_python.src.pricing.PricingUnitsApi(api_client)
-    pricing_unit_id = 'pricing_unit_id_example' # str | ユニットID(unit id)
+    pricing_unit_id = 'pricing_unit_id_example' # str | ユニットID
 
     try:
-        # プライシングユニットを削除(Delete Pricing Unit)
+        # プライシングユニットを削除
         api_instance.delete_pricing_unit(pricing_unit_id)
     except Exception as e:
         print("Exception when calling PricingUnitsApi->delete_pricing_unit: %s\n" % e)
@@ -140,9 +144,10 @@ with saasus_sdk_python.src.pricing.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **pricing_unit_id** | **str**| ユニットID(unit id) | 
+ **pricing_unit_id** | **str**| ユニットID | 
 
 ### Return type
 
@@ -158,6 +163,7 @@ void (empty response body)
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
@@ -168,13 +174,14 @@ void (empty response body)
 # **get_pricing_unit**
 > PricingUnit get_pricing_unit(pricing_unit_id)
 
-プライシングユニットを取得(Get Pricing Unit)
+プライシングユニットを取得
 
-プライシングユニットを取得します。  Get a pricing unit. 
+プライシングユニットを取得します。 
 
 ### Example
 
 * Bearer Authentication (Bearer):
+
 ```python
 import time
 import os
@@ -203,10 +210,10 @@ configuration = saasus_sdk_python.src.pricing.Configuration(
 with saasus_sdk_python.src.pricing.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = saasus_sdk_python.src.pricing.PricingUnitsApi(api_client)
-    pricing_unit_id = 'pricing_unit_id_example' # str | ユニットID(unit id)
+    pricing_unit_id = 'pricing_unit_id_example' # str | ユニットID
 
     try:
-        # プライシングユニットを取得(Get Pricing Unit)
+        # プライシングユニットを取得
         api_response = api_instance.get_pricing_unit(pricing_unit_id)
         print("The response of PricingUnitsApi->get_pricing_unit:\n")
         pprint(api_response)
@@ -218,9 +225,10 @@ with saasus_sdk_python.src.pricing.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **pricing_unit_id** | **str**| ユニットID(unit id) | 
+ **pricing_unit_id** | **str**| ユニットID | 
 
 ### Return type
 
@@ -236,6 +244,7 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
@@ -246,13 +255,14 @@ Name | Type | Description  | Notes
 # **get_pricing_units**
 > PricingUnits get_pricing_units()
 
-プライシングユニットの一覧を取得(Get Pricing Units)
+プライシングユニットの一覧を取得
 
-料金のベースとなる最小の計測単位を取得します。 「固定ユニット」(type=fixed)は基本料金などの月額固定料金の単位、 「使用量ユニット」(type=usage)はユーザ数課金などの１単位あたりごとに料金が発生する単位、 「段階ユニット」(type=tiered)は携帯電話の段階的パケット料金のように利用量の段階ごとに一定の料金の単位、 「段階的使用量ユニット」(type=tiered_usage)はボリュームディスカウントのように利用量に応じて１単位あたりの料金が変化していく単位、となります。  Gets the smallest unit of measure on which the charges are based. \"Fixed Unit\" (type=fixed) is a unit of a monthly fixed charge such as a basic charge, \"Usage Unit\" (type=usage) is a unit in which a charge is generated per unit such as billing for the number of users, \"Tiered Unit\" (type = tiered) is a fixed charge unit for each tier of usage, such as the tiered packet charge for mobile phones, \"Tiered Usage Unit\" (type=tiered_usage) is a unit where the charge per unit changes according to the usage amount, such as a volume discount. 
+料金のベースとなる最小の計測単位を取得します。 「固定ユニット」(type=fixed)は基本料金などの月額固定料金の単位、 「使用量ユニット」(type=usage)はユーザ数課金などの１単位あたりごとに料金が発生する単位、 「段階ユニット」(type=tiered)は携帯電話の段階的パケット料金のように利用量の段階ごとに一定の料金の単位、 「段階的使用量ユニット」(type=tiered_usage)はボリュームディスカウントのように利用量に応じて１単位あたりの料金が変化していく単位、となります。 
 
 ### Example
 
 * Bearer Authentication (Bearer):
+
 ```python
 import time
 import os
@@ -283,7 +293,7 @@ with saasus_sdk_python.src.pricing.ApiClient(configuration) as api_client:
     api_instance = saasus_sdk_python.src.pricing.PricingUnitsApi(api_client)
 
     try:
-        # プライシングユニットの一覧を取得(Get Pricing Units)
+        # プライシングユニットの一覧を取得
         api_response = api_instance.get_pricing_units()
         print("The response of PricingUnitsApi->get_pricing_units:\n")
         pprint(api_response)
@@ -294,6 +304,7 @@ with saasus_sdk_python.src.pricing.ApiClient(configuration) as api_client:
 
 
 ### Parameters
+
 This endpoint does not need any parameter.
 
 ### Return type
@@ -310,6 +321,7 @@ This endpoint does not need any parameter.
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
@@ -320,13 +332,14 @@ This endpoint does not need any parameter.
 # **update_pricing_unit**
 > update_pricing_unit(pricing_unit_id, body=body)
 
-プライシングユニットを更新(Update Pricing Unit)
+プライシングユニットを更新
 
-プライシングユニット情報を更新します。  Update pricing unit. 
+プライシングユニット情報を更新します。 
 
 ### Example
 
 * Bearer Authentication (Bearer):
+
 ```python
 import time
 import os
@@ -355,11 +368,11 @@ configuration = saasus_sdk_python.src.pricing.Configuration(
 with saasus_sdk_python.src.pricing.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = saasus_sdk_python.src.pricing.PricingUnitsApi(api_client)
-    pricing_unit_id = 'pricing_unit_id_example' # str | ユニットID(unit id)
+    pricing_unit_id = 'pricing_unit_id_example' # str | ユニットID
     body = saasus_sdk_python.src.pricing.PricingUnitForSave() # PricingUnitForSave |  (optional)
 
     try:
-        # プライシングユニットを更新(Update Pricing Unit)
+        # プライシングユニットを更新
         api_instance.update_pricing_unit(pricing_unit_id, body=body)
     except Exception as e:
         print("Exception when calling PricingUnitsApi->update_pricing_unit: %s\n" % e)
@@ -369,9 +382,10 @@ with saasus_sdk_python.src.pricing.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **pricing_unit_id** | **str**| ユニットID(unit id) | 
+ **pricing_unit_id** | **str**| ユニットID | 
  **body** | **PricingUnitForSave**|  | [optional] 
 
 ### Return type
@@ -388,6 +402,7 @@ void (empty response body)
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |

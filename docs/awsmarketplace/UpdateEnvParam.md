@@ -2,10 +2,11 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**name** | **str** | 環境名(env name) | 
-**display_name** | **str** | 環境表示名(env display name) | [optional] 
+**name** | **str** | env name | 
+**display_name** | **str** | env display name | [optional] 
 
 ## Example
 

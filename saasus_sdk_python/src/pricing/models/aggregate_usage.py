@@ -12,18 +12,23 @@
 """  # noqa: E501
 
 
+from __future__ import annotations
 import json
 import pprint
 import re  # noqa: F401
-from aenum import Enum, no_arg
+from enum import Enum
 
 
 
+try:
+    from typing import Self
+except ImportError:
+    from typing_extensions import Self
 
 
 class AggregateUsage(str, Enum):
     """
-    使用量の集計方法(aggregate usage) sum: 期間内の使用量の合計(total usage during the period) max: 期間内の使用量の最大値(maximum usage during the period) 
+    使用量の集計方法 sum: 期間内の使用量の合計 max: 期間内の使用量の最大値 
     """
 
     """
@@ -33,8 +38,8 @@ class AggregateUsage(str, Enum):
     MAX = 'max'
 
     @classmethod
-    def from_json(cls, json_str: str) -> AggregateUsage:
+    def from_json(cls, json_str: str) -> Self:
         """Create an instance of AggregateUsage from a JSON string"""
-        return AggregateUsage(json.loads(json_str))
+        return cls(json.loads(json_str))
 
 

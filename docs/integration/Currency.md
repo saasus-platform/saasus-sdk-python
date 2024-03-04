@@ -1,8 +1,9 @@
 # Currency
 
-計測単位の通貨(unit of currency) 
+計測単位の通貨
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 

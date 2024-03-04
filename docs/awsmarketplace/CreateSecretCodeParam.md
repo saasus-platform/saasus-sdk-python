@@ -2,9 +2,10 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**access_token** | **str** | アクセストークン(access token) | 
+**access_token** | **str** | access token | 
 
 ## Example
 

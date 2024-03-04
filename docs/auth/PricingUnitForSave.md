@@ -2,18 +2,19 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**upper_count** | **int** | 上限値(upper limit) | 
-**metering_unit_name** | **str** |  | 
-**aggregate_usage** | [**AggregateUsage**](AggregateUsage.md) |  | [optional] 
-**name** | **str** | 名前(name) | 
-**display_name** | **str** | 表示名(display name) | 
-**description** | **str** | 説明(description) | 
 **type** | [**UnitType**](UnitType.md) |  | 
+**upper_count** | **int** | 上限値 | 
+**metering_unit_name** | **str** | 計測ユニット名 | 
+**aggregate_usage** | [**AggregateUsage**](AggregateUsage.md) |  | [optional] 
+**name** | **str** | 名前 | 
+**display_name** | **str** | 表示名 | 
+**description** | **str** | 説明 | 
 **currency** | [**Currency**](Currency.md) |  | 
 **tiers** | [**List[PricingTier]**](PricingTier.md) |  | 
-**unit_amount** | **int** | 料金(price) | 
+**unit_amount** | **int** | 料金 | 
 **recurring_interval** | [**RecurringInterval**](RecurringInterval.md) |  | 
 
 ## Example

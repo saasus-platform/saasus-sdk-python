@@ -2,9 +2,10 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**metering_unit_name** | **str** | 計測ユニット名(metering unit name) | 
+**metering_unit_name** | **str** | 計測ユニット名 | 
 **counts** | [**List[MeteringUnitCount]**](MeteringUnitCount.md) |  | 
 
 ## Example

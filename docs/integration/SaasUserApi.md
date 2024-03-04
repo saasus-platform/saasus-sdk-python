@@ -4,38 +4,39 @@ All URIs are relative to *https://api.saasus.io/v1/auth*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**confirm_email_update**](SaasUserApi.md#confirm_email_update) | **POST** /users/{user_id}/email/confirm | ユーザーのメールアドレス変更確認(Confirm User Email Update)
-[**confirm_external_user_link**](SaasUserApi.md#confirm_external_user_link) | **POST** /external-users/confirm | 外部アカウントのユーザーの連携確認(Confirm External User Account Link)
-[**confirm_sign_up_with_aws_marketplace**](SaasUserApi.md#confirm_sign_up_with_aws_marketplace) | **POST** /aws-marketplace/sign-up-confirm | AWS Marketplaceによるユーザー新規登録の確定(Confirm Sign Up with AWS Marketplace)
-[**create_saas_user**](SaasUserApi.md#create_saas_user) | **POST** /users | SaaSにユーザーを作成(Create SaaS User)
-[**create_secret_code**](SaasUserApi.md#create_secret_code) | **POST** /users/{user_id}/mfa/software-token/secret-code | 認証アプリケーション登録用のシークレットコードを作成(Creates secret code for authentication application registration)
-[**delete_saas_user**](SaasUserApi.md#delete_saas_user) | **DELETE** /users/{user_id} | ユーザー情報を削除(Delete User)
-[**get_saas_user**](SaasUserApi.md#get_saas_user) | **GET** /users/{user_id} | ユーザー情報を取得(Get User)
-[**get_saas_users**](SaasUserApi.md#get_saas_users) | **GET** /users | ユーザー一覧を取得(Get Users)
-[**get_user_mfa_preference**](SaasUserApi.md#get_user_mfa_preference) | **GET** /users/{user_id}/mfa/preference | ユーザーのMFA設定を取得(Get User&#39;s MFA Settings)
-[**link_aws_marketplace**](SaasUserApi.md#link_aws_marketplace) | **PATCH** /aws-marketplace/link | AWS Marketplaceと既存のテナントの連携(Link an existing tenant with AWS Marketplace)
-[**request_email_update**](SaasUserApi.md#request_email_update) | **POST** /users/{user_id}/email/request | ユーザーのメールアドレス変更要求(Request User Email Update)
-[**request_external_user_link**](SaasUserApi.md#request_external_user_link) | **POST** /external-users/request | 外部アカウントのユーザー連携要求(Request External User Account Link)
-[**resend_sign_up_confirmation_email**](SaasUserApi.md#resend_sign_up_confirmation_email) | **POST** /sign-up/resend | 新規登録時の確認メール再送信(Resend Sign Up Confirmation Email)
-[**sign_up**](SaasUserApi.md#sign_up) | **POST** /sign-up | 新規登録(Sign Up)
-[**sign_up_with_aws_marketplace**](SaasUserApi.md#sign_up_with_aws_marketplace) | **POST** /aws-marketplace/sign-up | AWS Marketplaceによるユーザー新規登録(Sign Up with AWS Marketplace)
-[**unlink_provider**](SaasUserApi.md#unlink_provider) | **DELETE** /users/{user_id}/providers/{provider_name} | 外部IDプロバイダの連携解除(Unlink external identity providers)
-[**update_saas_user_email**](SaasUserApi.md#update_saas_user_email) | **PATCH** /users/{user_id}/email | メールアドレスを変更(Change Email)
-[**update_saas_user_password**](SaasUserApi.md#update_saas_user_password) | **PATCH** /users/{user_id}/password | パスワードを変更(Change Password)
-[**update_software_token**](SaasUserApi.md#update_software_token) | **PUT** /users/{user_id}/mfa/software-token | 認証アプリケーションを登録(Register Authentication Application)
-[**update_user_mfa_preference**](SaasUserApi.md#update_user_mfa_preference) | **PATCH** /users/{user_id}/mfa/preference | ユーザーのMFA設定を更新(Update User&#39;s MFA Settings)
+[**confirm_email_update**](SaasUserApi.md#confirm_email_update) | **POST** /users/{user_id}/email/confirm | Confirm User Email Update
+[**confirm_external_user_link**](SaasUserApi.md#confirm_external_user_link) | **POST** /external-users/confirm | Confirm External User Account Link
+[**confirm_sign_up_with_aws_marketplace**](SaasUserApi.md#confirm_sign_up_with_aws_marketplace) | **POST** /aws-marketplace/sign-up-confirm | Confirm Sign Up with AWS Marketplace
+[**create_saas_user**](SaasUserApi.md#create_saas_user) | **POST** /users | Create SaaS User
+[**create_secret_code**](SaasUserApi.md#create_secret_code) | **POST** /users/{user_id}/mfa/software-token/secret-code | Create secret code for authentication application registration
+[**delete_saas_user**](SaasUserApi.md#delete_saas_user) | **DELETE** /users/{user_id} | Delete User
+[**get_saas_user**](SaasUserApi.md#get_saas_user) | **GET** /users/{user_id} | Get User
+[**get_saas_users**](SaasUserApi.md#get_saas_users) | **GET** /users | Get Users
+[**get_user_mfa_preference**](SaasUserApi.md#get_user_mfa_preference) | **GET** /users/{user_id}/mfa/preference | Get User&#39;s MFA Settings
+[**link_aws_marketplace**](SaasUserApi.md#link_aws_marketplace) | **PATCH** /aws-marketplace/link | Link an existing tenant with AWS Marketplace
+[**request_email_update**](SaasUserApi.md#request_email_update) | **POST** /users/{user_id}/email/request | Request User Email Update
+[**request_external_user_link**](SaasUserApi.md#request_external_user_link) | **POST** /external-users/request | Request External User Account Link
+[**resend_sign_up_confirmation_email**](SaasUserApi.md#resend_sign_up_confirmation_email) | **POST** /sign-up/resend | Resend Sign Up Confirmation Email
+[**sign_up**](SaasUserApi.md#sign_up) | **POST** /sign-up | Sign Up
+[**sign_up_with_aws_marketplace**](SaasUserApi.md#sign_up_with_aws_marketplace) | **POST** /aws-marketplace/sign-up | Sign Up with AWS Marketplace
+[**unlink_provider**](SaasUserApi.md#unlink_provider) | **DELETE** /users/{user_id}/providers/{provider_name} | Unlink external identity providers
+[**update_saas_user_email**](SaasUserApi.md#update_saas_user_email) | **PATCH** /users/{user_id}/email | Change Email
+[**update_saas_user_password**](SaasUserApi.md#update_saas_user_password) | **PATCH** /users/{user_id}/password | Change Password
+[**update_software_token**](SaasUserApi.md#update_software_token) | **PUT** /users/{user_id}/mfa/software-token | Register Authentication Application
+[**update_user_mfa_preference**](SaasUserApi.md#update_user_mfa_preference) | **PATCH** /users/{user_id}/mfa/preference | Update User&#39;s MFA Settings
 
 
 # **confirm_email_update**
 > confirm_email_update(user_id, confirm_email_update_param=confirm_email_update_param)
 
-ユーザーのメールアドレス変更確認(Confirm User Email Update)
+Confirm User Email Update
 
-ユーザーのメールアドレス変更確認のためにコードを検証します。 ユーザーのアクセストークンが必要です。  Verify the code to confirm the user's email address update. Requires the user's access token. 
+Verify the code to confirm the user's email address update. Requires the user's access token. 
 
 ### Example
 
 * Bearer Authentication (Bearer):
+
 ```python
 import time
 import os
@@ -64,11 +65,11 @@ configuration = saasus_sdk_python.src.auth.Configuration(
 with saasus_sdk_python.src.auth.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = saasus_sdk_python.src.auth.SaasUserApi(api_client)
-    user_id = 'f94bfffc-8be2-11ec-b41a-0242ac120004' # str | ユーザーID(User ID)
+    user_id = 'f94bfffc-8be2-11ec-b41a-0242ac120004' # str | User ID
     confirm_email_update_param = saasus_sdk_python.src.auth.ConfirmEmailUpdateParam() # ConfirmEmailUpdateParam |  (optional)
 
     try:
-        # ユーザーのメールアドレス変更確認(Confirm User Email Update)
+        # Confirm User Email Update
         api_instance.confirm_email_update(user_id, confirm_email_update_param=confirm_email_update_param)
     except Exception as e:
         print("Exception when calling SaasUserApi->confirm_email_update: %s\n" % e)
@@ -78,9 +79,10 @@ with saasus_sdk_python.src.auth.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **user_id** | **str**| ユーザーID(User ID) | 
+ **user_id** | **str**| User ID | 
  **confirm_email_update_param** | [**ConfirmEmailUpdateParam**](ConfirmEmailUpdateParam.md)|  | [optional] 
 
 ### Return type
@@ -97,6 +99,7 @@ void (empty response body)
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
@@ -107,13 +110,14 @@ void (empty response body)
 # **confirm_external_user_link**
 > confirm_external_user_link(confirm_external_user_link_param=confirm_external_user_link_param)
 
-外部アカウントのユーザーの連携確認(Confirm External User Account Link)
+Confirm External User Account Link
 
-外部アカウントのユーザー連携確認のためにコードを検証します。  Verify the code for external account user link confirmation. 
+Verify the code for external account user link confirmation. 
 
 ### Example
 
 * Bearer Authentication (Bearer):
+
 ```python
 import time
 import os
@@ -145,7 +149,7 @@ with saasus_sdk_python.src.auth.ApiClient(configuration) as api_client:
     confirm_external_user_link_param = saasus_sdk_python.src.auth.ConfirmExternalUserLinkParam() # ConfirmExternalUserLinkParam |  (optional)
 
     try:
-        # 外部アカウントのユーザーの連携確認(Confirm External User Account Link)
+        # Confirm External User Account Link
         api_instance.confirm_external_user_link(confirm_external_user_link_param=confirm_external_user_link_param)
     except Exception as e:
         print("Exception when calling SaasUserApi->confirm_external_user_link: %s\n" % e)
@@ -154,6 +158,7 @@ with saasus_sdk_python.src.auth.ApiClient(configuration) as api_client:
 
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -173,6 +178,7 @@ void (empty response body)
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
@@ -184,13 +190,14 @@ void (empty response body)
 # **confirm_sign_up_with_aws_marketplace**
 > Tenant confirm_sign_up_with_aws_marketplace(confirm_sign_up_with_aws_marketplace_param=confirm_sign_up_with_aws_marketplace_param)
 
-AWS Marketplaceによるユーザー新規登録の確定(Confirm Sign Up with AWS Marketplace)
+Confirm Sign Up with AWS Marketplace
 
-AWS Marketplaceと連携したユーザー新規登録を確定します。AWS Marketplaceと連携したテナントを新規作成します。 Registration Tokenが有効でない場合はエラーを返却します。  Confirm a new use registeration linked to AWS Marketplace. Create a new tenant linked to AWS Marketplace. If the Registration Token is not valid, an error is returned. 
+Confirm a new use registeration linked to AWS Marketplace. Create a new tenant linked to AWS Marketplace. If the Registration Token is not valid, an error is returned. 
 
 ### Example
 
 * Bearer Authentication (Bearer):
+
 ```python
 import time
 import os
@@ -223,7 +230,7 @@ with saasus_sdk_python.src.auth.ApiClient(configuration) as api_client:
     confirm_sign_up_with_aws_marketplace_param = saasus_sdk_python.src.auth.ConfirmSignUpWithAwsMarketplaceParam() # ConfirmSignUpWithAwsMarketplaceParam |  (optional)
 
     try:
-        # AWS Marketplaceによるユーザー新規登録の確定(Confirm Sign Up with AWS Marketplace)
+        # Confirm Sign Up with AWS Marketplace
         api_response = api_instance.confirm_sign_up_with_aws_marketplace(confirm_sign_up_with_aws_marketplace_param=confirm_sign_up_with_aws_marketplace_param)
         print("The response of SaasUserApi->confirm_sign_up_with_aws_marketplace:\n")
         pprint(api_response)
@@ -234,6 +241,7 @@ with saasus_sdk_python.src.auth.ApiClient(configuration) as api_client:
 
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -253,6 +261,7 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **201** | Created |  -  |
@@ -263,13 +272,14 @@ Name | Type | Description  | Notes
 # **create_saas_user**
 > SaasUser create_saas_user(create_saas_user_param=create_saas_user_param)
 
-SaaSにユーザーを作成(Create SaaS User)
+Create SaaS User
 
-SaaSにユーザーを作成します。  Create SaaS User. 
+Create SaaS User. 
 
 ### Example
 
 * Bearer Authentication (Bearer):
+
 ```python
 import time
 import os
@@ -302,7 +312,7 @@ with saasus_sdk_python.src.auth.ApiClient(configuration) as api_client:
     create_saas_user_param = saasus_sdk_python.src.auth.CreateSaasUserParam() # CreateSaasUserParam |  (optional)
 
     try:
-        # SaaSにユーザーを作成(Create SaaS User)
+        # Create SaaS User
         api_response = api_instance.create_saas_user(create_saas_user_param=create_saas_user_param)
         print("The response of SaasUserApi->create_saas_user:\n")
         pprint(api_response)
@@ -313,6 +323,7 @@ with saasus_sdk_python.src.auth.ApiClient(configuration) as api_client:
 
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -332,6 +343,7 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **201** | OK |  -  |
@@ -343,13 +355,14 @@ Name | Type | Description  | Notes
 # **create_secret_code**
 > SoftwareTokenSecretCode create_secret_code(user_id, create_secret_code_param=create_secret_code_param)
 
-認証アプリケーション登録用のシークレットコードを作成(Creates secret code for authentication application registration)
+Create secret code for authentication application registration
 
-認証アプリケーション登録用のシークレットコードを作成します。  Create a secret code for authentication application registration. 
+Create a secret code for authentication application registration. 
 
 ### Example
 
 * Bearer Authentication (Bearer):
+
 ```python
 import time
 import os
@@ -379,11 +392,11 @@ configuration = saasus_sdk_python.src.auth.Configuration(
 with saasus_sdk_python.src.auth.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = saasus_sdk_python.src.auth.SaasUserApi(api_client)
-    user_id = 'f94bfffc-8be2-11ec-b41a-0242ac120004' # str | ユーザーID(User ID)
+    user_id = 'f94bfffc-8be2-11ec-b41a-0242ac120004' # str | User ID
     create_secret_code_param = saasus_sdk_python.src.auth.CreateSecretCodeParam() # CreateSecretCodeParam |  (optional)
 
     try:
-        # 認証アプリケーション登録用のシークレットコードを作成(Creates secret code for authentication application registration)
+        # Create secret code for authentication application registration
         api_response = api_instance.create_secret_code(user_id, create_secret_code_param=create_secret_code_param)
         print("The response of SaasUserApi->create_secret_code:\n")
         pprint(api_response)
@@ -395,9 +408,10 @@ with saasus_sdk_python.src.auth.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **user_id** | **str**| ユーザーID(User ID) | 
+ **user_id** | **str**| User ID | 
  **create_secret_code_param** | [**CreateSecretCodeParam**](CreateSecretCodeParam.md)|  | [optional] 
 
 ### Return type
@@ -414,6 +428,7 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **201** | Created |  -  |
@@ -424,13 +439,14 @@ Name | Type | Description  | Notes
 # **delete_saas_user**
 > delete_saas_user(user_id)
 
-ユーザー情報を削除(Delete User)
+Delete User
 
-ユーザーIDを元に一致するユーザーをテナントからすべて削除し、SaaSからも削除します。  Delete all users with matching user ID from the tenant and SaaS. 
+Delete all users with matching user ID from the tenant and SaaS. 
 
 ### Example
 
 * Bearer Authentication (Bearer):
+
 ```python
 import time
 import os
@@ -458,10 +474,10 @@ configuration = saasus_sdk_python.src.auth.Configuration(
 with saasus_sdk_python.src.auth.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = saasus_sdk_python.src.auth.SaasUserApi(api_client)
-    user_id = 'f94bfffc-8be2-11ec-b41a-0242ac120004' # str | ユーザーID(User ID)
+    user_id = 'f94bfffc-8be2-11ec-b41a-0242ac120004' # str | User ID
 
     try:
-        # ユーザー情報を削除(Delete User)
+        # Delete User
         api_instance.delete_saas_user(user_id)
     except Exception as e:
         print("Exception when calling SaasUserApi->delete_saas_user: %s\n" % e)
@@ -471,9 +487,10 @@ with saasus_sdk_python.src.auth.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **user_id** | **str**| ユーザーID(User ID) | 
+ **user_id** | **str**| User ID | 
 
 ### Return type
 
@@ -489,6 +506,7 @@ void (empty response body)
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
@@ -500,13 +518,14 @@ void (empty response body)
 # **get_saas_user**
 > SaasUser get_saas_user(user_id)
 
-ユーザー情報を取得(Get User)
+Get User
 
-ユーザーIDからユーザー情報を取得します。  Get user information based on user ID. 
+Get user information based on user ID. 
 
 ### Example
 
 * Bearer Authentication (Bearer):
+
 ```python
 import time
 import os
@@ -535,10 +554,10 @@ configuration = saasus_sdk_python.src.auth.Configuration(
 with saasus_sdk_python.src.auth.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = saasus_sdk_python.src.auth.SaasUserApi(api_client)
-    user_id = 'f94bfffc-8be2-11ec-b41a-0242ac120004' # str | ユーザーID(User ID)
+    user_id = 'f94bfffc-8be2-11ec-b41a-0242ac120004' # str | User ID
 
     try:
-        # ユーザー情報を取得(Get User)
+        # Get User
         api_response = api_instance.get_saas_user(user_id)
         print("The response of SaasUserApi->get_saas_user:\n")
         pprint(api_response)
@@ -550,9 +569,10 @@ with saasus_sdk_python.src.auth.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **user_id** | **str**| ユーザーID(User ID) | 
+ **user_id** | **str**| User ID | 
 
 ### Return type
 
@@ -568,6 +588,7 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
@@ -579,13 +600,14 @@ Name | Type | Description  | Notes
 # **get_saas_users**
 > SaasUsers get_saas_users()
 
-ユーザー一覧を取得(Get Users)
+Get Users
 
-SaaSのユーザー全件を取得します。  Get all SaaS users. 
+Get all SaaS users. 
 
 ### Example
 
 * Bearer Authentication (Bearer):
+
 ```python
 import time
 import os
@@ -616,7 +638,7 @@ with saasus_sdk_python.src.auth.ApiClient(configuration) as api_client:
     api_instance = saasus_sdk_python.src.auth.SaasUserApi(api_client)
 
     try:
-        # ユーザー一覧を取得(Get Users)
+        # Get Users
         api_response = api_instance.get_saas_users()
         print("The response of SaasUserApi->get_saas_users:\n")
         pprint(api_response)
@@ -627,6 +649,7 @@ with saasus_sdk_python.src.auth.ApiClient(configuration) as api_client:
 
 
 ### Parameters
+
 This endpoint does not need any parameter.
 
 ### Return type
@@ -643,6 +666,7 @@ This endpoint does not need any parameter.
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
@@ -653,13 +677,14 @@ This endpoint does not need any parameter.
 # **get_user_mfa_preference**
 > MfaPreference get_user_mfa_preference(user_id)
 
-ユーザーのMFA設定を取得(Get User's MFA Settings)
+Get User's MFA Settings
 
-ユーザーのMFA設定を取得します。  Get the user's MFA settings. 
+Get the user's MFA settings. 
 
 ### Example
 
 * Bearer Authentication (Bearer):
+
 ```python
 import time
 import os
@@ -688,10 +713,10 @@ configuration = saasus_sdk_python.src.auth.Configuration(
 with saasus_sdk_python.src.auth.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = saasus_sdk_python.src.auth.SaasUserApi(api_client)
-    user_id = 'f94bfffc-8be2-11ec-b41a-0242ac120004' # str | ユーザーID(User ID)
+    user_id = 'f94bfffc-8be2-11ec-b41a-0242ac120004' # str | User ID
 
     try:
-        # ユーザーのMFA設定を取得(Get User's MFA Settings)
+        # Get User's MFA Settings
         api_response = api_instance.get_user_mfa_preference(user_id)
         print("The response of SaasUserApi->get_user_mfa_preference:\n")
         pprint(api_response)
@@ -703,9 +728,10 @@ with saasus_sdk_python.src.auth.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **user_id** | **str**| ユーザーID(User ID) | 
+ **user_id** | **str**| User ID | 
 
 ### Return type
 
@@ -721,6 +747,7 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
@@ -731,13 +758,14 @@ Name | Type | Description  | Notes
 # **link_aws_marketplace**
 > link_aws_marketplace(link_aws_marketplace_param=link_aws_marketplace_param)
 
-AWS Marketplaceと既存のテナントの連携(Link an existing tenant with AWS Marketplace)
+Link an existing tenant with AWS Marketplace
 
-AWS Marketplaceと既存のテナントを連携します。 Registration Tokenが有効でない場合はエラーを返却します。  Link an existing tenant with AWS Marketplace. If the Registration Token is not valid, an error is returned. 
+Link an existing tenant with AWS Marketplace. If the Registration Token is not valid, an error is returned. 
 
 ### Example
 
 * Bearer Authentication (Bearer):
+
 ```python
 import time
 import os
@@ -769,7 +797,7 @@ with saasus_sdk_python.src.auth.ApiClient(configuration) as api_client:
     link_aws_marketplace_param = saasus_sdk_python.src.auth.LinkAwsMarketplaceParam() # LinkAwsMarketplaceParam |  (optional)
 
     try:
-        # AWS Marketplaceと既存のテナントの連携(Link an existing tenant with AWS Marketplace)
+        # Link an existing tenant with AWS Marketplace
         api_instance.link_aws_marketplace(link_aws_marketplace_param=link_aws_marketplace_param)
     except Exception as e:
         print("Exception when calling SaasUserApi->link_aws_marketplace: %s\n" % e)
@@ -778,6 +806,7 @@ with saasus_sdk_python.src.auth.ApiClient(configuration) as api_client:
 
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -797,6 +826,7 @@ void (empty response body)
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
@@ -807,13 +837,14 @@ void (empty response body)
 # **request_email_update**
 > request_email_update(user_id, request_email_update_param=request_email_update_param)
 
-ユーザーのメールアドレス変更要求(Request User Email Update)
+Request User Email Update
 
-ユーザーのメールアドレス変更を要求します。 要求されたメールアドレスに対して検証コードを送信します。 ユーザーのアクセストークンが必要です。 検証コードの有効期限は24時間です。  Request to update the user's email address. Sends a verification code to the requested email address. Requires the user's access token. The verification code is valid for 24 hours. 
+Request to update the user's email address. Sends a verification code to the requested email address. Requires the user's access token. The verification code is valid for 24 hours. 
 
 ### Example
 
 * Bearer Authentication (Bearer):
+
 ```python
 import time
 import os
@@ -842,11 +873,11 @@ configuration = saasus_sdk_python.src.auth.Configuration(
 with saasus_sdk_python.src.auth.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = saasus_sdk_python.src.auth.SaasUserApi(api_client)
-    user_id = 'f94bfffc-8be2-11ec-b41a-0242ac120004' # str | ユーザーID(User ID)
+    user_id = 'f94bfffc-8be2-11ec-b41a-0242ac120004' # str | User ID
     request_email_update_param = saasus_sdk_python.src.auth.RequestEmailUpdateParam() # RequestEmailUpdateParam |  (optional)
 
     try:
-        # ユーザーのメールアドレス変更要求(Request User Email Update)
+        # Request User Email Update
         api_instance.request_email_update(user_id, request_email_update_param=request_email_update_param)
     except Exception as e:
         print("Exception when calling SaasUserApi->request_email_update: %s\n" % e)
@@ -856,9 +887,10 @@ with saasus_sdk_python.src.auth.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **user_id** | **str**| ユーザーID(User ID) | 
+ **user_id** | **str**| User ID | 
  **request_email_update_param** | [**RequestEmailUpdateParam**](RequestEmailUpdateParam.md)|  | [optional] 
 
 ### Return type
@@ -875,6 +907,7 @@ void (empty response body)
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
@@ -885,13 +918,14 @@ void (empty response body)
 # **request_external_user_link**
 > request_external_user_link(request_external_user_link_param=request_external_user_link_param)
 
-外部アカウントのユーザー連携要求(Request External User Account Link)
+Request External User Account Link
 
-外部アカウントのユーザー連携を要求します。 アクセストークンから連携するユーザーのメールアドレスを取得し、そのメールアドレスに対して検証コードを送信します。 検証コードの有効期限は24時間です。  Request to link an external account user. Get the email address of the user to be linked from the access token and send a verification code to that email address. The verification code is valid for 24 hours. 
+Request to link an external account user. Get the email address of the user to be linked from the access token and send a verification code to that email address. The verification code is valid for 24 hours. 
 
 ### Example
 
 * Bearer Authentication (Bearer):
+
 ```python
 import time
 import os
@@ -923,7 +957,7 @@ with saasus_sdk_python.src.auth.ApiClient(configuration) as api_client:
     request_external_user_link_param = saasus_sdk_python.src.auth.RequestExternalUserLinkParam() # RequestExternalUserLinkParam |  (optional)
 
     try:
-        # 外部アカウントのユーザー連携要求(Request External User Account Link)
+        # Request External User Account Link
         api_instance.request_external_user_link(request_external_user_link_param=request_external_user_link_param)
     except Exception as e:
         print("Exception when calling SaasUserApi->request_external_user_link: %s\n" % e)
@@ -932,6 +966,7 @@ with saasus_sdk_python.src.auth.ApiClient(configuration) as api_client:
 
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -951,6 +986,7 @@ void (empty response body)
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
@@ -962,13 +998,14 @@ void (empty response body)
 # **resend_sign_up_confirmation_email**
 > resend_sign_up_confirmation_email(resend_sign_up_confirmation_email_param=resend_sign_up_confirmation_email_param)
 
-新規登録時の確認メール再送信(Resend Sign Up Confirmation Email)
+Resend Sign Up Confirmation Email
 
-新規登録時の仮パスワードを再送信します。  Resend temporary password for the new registered user. 
+Resend temporary password for the new registered user. 
 
 ### Example
 
 * Bearer Authentication (Bearer):
+
 ```python
 import time
 import os
@@ -1000,7 +1037,7 @@ with saasus_sdk_python.src.auth.ApiClient(configuration) as api_client:
     resend_sign_up_confirmation_email_param = saasus_sdk_python.src.auth.ResendSignUpConfirmationEmailParam() # ResendSignUpConfirmationEmailParam |  (optional)
 
     try:
-        # 新規登録時の確認メール再送信(Resend Sign Up Confirmation Email)
+        # Resend Sign Up Confirmation Email
         api_instance.resend_sign_up_confirmation_email(resend_sign_up_confirmation_email_param=resend_sign_up_confirmation_email_param)
     except Exception as e:
         print("Exception when calling SaasUserApi->resend_sign_up_confirmation_email: %s\n" % e)
@@ -1009,6 +1046,7 @@ with saasus_sdk_python.src.auth.ApiClient(configuration) as api_client:
 
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -1028,6 +1066,7 @@ void (empty response body)
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
@@ -1038,13 +1077,14 @@ void (empty response body)
 # **sign_up**
 > SaasUser sign_up(sign_up_param=sign_up_param)
 
-新規登録(Sign Up)
+Sign Up
 
-ユーザーを新規登録します。登録されたメールアドレスに対して仮パスワードを送信します。  Register a new user. A temporary password will be sent to the registered email. 
+Register a new user. A temporary password will be sent to the registered email. 
 
 ### Example
 
 * Bearer Authentication (Bearer):
+
 ```python
 import time
 import os
@@ -1077,7 +1117,7 @@ with saasus_sdk_python.src.auth.ApiClient(configuration) as api_client:
     sign_up_param = saasus_sdk_python.src.auth.SignUpParam() # SignUpParam |  (optional)
 
     try:
-        # 新規登録(Sign Up)
+        # Sign Up
         api_response = api_instance.sign_up(sign_up_param=sign_up_param)
         print("The response of SaasUserApi->sign_up:\n")
         pprint(api_response)
@@ -1088,6 +1128,7 @@ with saasus_sdk_python.src.auth.ApiClient(configuration) as api_client:
 
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -1107,6 +1148,7 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **201** | Created |  -  |
@@ -1117,13 +1159,14 @@ Name | Type | Description  | Notes
 # **sign_up_with_aws_marketplace**
 > SaasUser sign_up_with_aws_marketplace(sign_up_with_aws_marketplace_param=sign_up_with_aws_marketplace_param)
 
-AWS Marketplaceによるユーザー新規登録(Sign Up with AWS Marketplace)
+Sign Up with AWS Marketplace
 
-AWS Marketplaceと連携したユーザーを新規登録します。登録されたメールアドレスに対して仮パスワードを送信します。 Registration Tokenが有効でない場合はエラーを返却します。  Register a new user linked to AWS Marketplace. A temporary password will be sent to the registered email. If the Registration Token is not valid, an error is returned. 
+Register a new user linked to AWS Marketplace. A temporary password will be sent to the registered email. If the Registration Token is not valid, an error is returned. 
 
 ### Example
 
 * Bearer Authentication (Bearer):
+
 ```python
 import time
 import os
@@ -1156,7 +1199,7 @@ with saasus_sdk_python.src.auth.ApiClient(configuration) as api_client:
     sign_up_with_aws_marketplace_param = saasus_sdk_python.src.auth.SignUpWithAwsMarketplaceParam() # SignUpWithAwsMarketplaceParam |  (optional)
 
     try:
-        # AWS Marketplaceによるユーザー新規登録(Sign Up with AWS Marketplace)
+        # Sign Up with AWS Marketplace
         api_response = api_instance.sign_up_with_aws_marketplace(sign_up_with_aws_marketplace_param=sign_up_with_aws_marketplace_param)
         print("The response of SaasUserApi->sign_up_with_aws_marketplace:\n")
         pprint(api_response)
@@ -1167,6 +1210,7 @@ with saasus_sdk_python.src.auth.ApiClient(configuration) as api_client:
 
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -1186,6 +1230,7 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **201** | OK |  -  |
@@ -1196,13 +1241,14 @@ Name | Type | Description  | Notes
 # **unlink_provider**
 > unlink_provider(provider_name, user_id)
 
-外部IDプロバイダの連携解除(Unlink external identity providers)
+Unlink external identity providers
 
-外部IDプロバイダの連携を解除します。  Unlink external identity providers. 
+Unlink external identity providers. 
 
 ### Example
 
 * Bearer Authentication (Bearer):
+
 ```python
 import time
 import os
@@ -1231,10 +1277,10 @@ with saasus_sdk_python.src.auth.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = saasus_sdk_python.src.auth.SaasUserApi(api_client)
     provider_name = 'Google' # str | 
-    user_id = 'f94bfffc-8be2-11ec-b41a-0242ac120004' # str | ユーザーID(User ID)
+    user_id = 'f94bfffc-8be2-11ec-b41a-0242ac120004' # str | User ID
 
     try:
-        # 外部IDプロバイダの連携解除(Unlink external identity providers)
+        # Unlink external identity providers
         api_instance.unlink_provider(provider_name, user_id)
     except Exception as e:
         print("Exception when calling SaasUserApi->unlink_provider: %s\n" % e)
@@ -1244,10 +1290,11 @@ with saasus_sdk_python.src.auth.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **provider_name** | **str**|  | 
- **user_id** | **str**| ユーザーID(User ID) | 
+ **user_id** | **str**| User ID | 
 
 ### Return type
 
@@ -1260,9 +1307,10 @@ void (empty response body)
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
@@ -1273,13 +1321,14 @@ void (empty response body)
 # **update_saas_user_email**
 > update_saas_user_email(user_id, update_saas_user_email_param=update_saas_user_email_param)
 
-メールアドレスを変更(Change Email)
+Change Email
 
-ユーザーのメールアドレスを変更します。  Change user's email. 
+Change user's email. 
 
 ### Example
 
 * Bearer Authentication (Bearer):
+
 ```python
 import time
 import os
@@ -1308,11 +1357,11 @@ configuration = saasus_sdk_python.src.auth.Configuration(
 with saasus_sdk_python.src.auth.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = saasus_sdk_python.src.auth.SaasUserApi(api_client)
-    user_id = 'f94bfffc-8be2-11ec-b41a-0242ac120004' # str | ユーザーID(User ID)
+    user_id = 'f94bfffc-8be2-11ec-b41a-0242ac120004' # str | User ID
     update_saas_user_email_param = saasus_sdk_python.src.auth.UpdateSaasUserEmailParam() # UpdateSaasUserEmailParam |  (optional)
 
     try:
-        # メールアドレスを変更(Change Email)
+        # Change Email
         api_instance.update_saas_user_email(user_id, update_saas_user_email_param=update_saas_user_email_param)
     except Exception as e:
         print("Exception when calling SaasUserApi->update_saas_user_email: %s\n" % e)
@@ -1322,9 +1371,10 @@ with saasus_sdk_python.src.auth.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **user_id** | **str**| ユーザーID(User ID) | 
+ **user_id** | **str**| User ID | 
  **update_saas_user_email_param** | [**UpdateSaasUserEmailParam**](UpdateSaasUserEmailParam.md)|  | [optional] 
 
 ### Return type
@@ -1341,6 +1391,7 @@ void (empty response body)
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
@@ -1351,13 +1402,14 @@ void (empty response body)
 # **update_saas_user_password**
 > update_saas_user_password(user_id, update_saas_user_password_param=update_saas_user_password_param)
 
-パスワードを変更(Change Password)
+Change Password
 
-ユーザーのログインパスワードを変更します。  Change user's login password. 
+Change user's login password. 
 
 ### Example
 
 * Bearer Authentication (Bearer):
+
 ```python
 import time
 import os
@@ -1386,11 +1438,11 @@ configuration = saasus_sdk_python.src.auth.Configuration(
 with saasus_sdk_python.src.auth.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = saasus_sdk_python.src.auth.SaasUserApi(api_client)
-    user_id = 'f94bfffc-8be2-11ec-b41a-0242ac120004' # str | ユーザーID(User ID)
+    user_id = 'f94bfffc-8be2-11ec-b41a-0242ac120004' # str | User ID
     update_saas_user_password_param = saasus_sdk_python.src.auth.UpdateSaasUserPasswordParam() # UpdateSaasUserPasswordParam |  (optional)
 
     try:
-        # パスワードを変更(Change Password)
+        # Change Password
         api_instance.update_saas_user_password(user_id, update_saas_user_password_param=update_saas_user_password_param)
     except Exception as e:
         print("Exception when calling SaasUserApi->update_saas_user_password: %s\n" % e)
@@ -1400,9 +1452,10 @@ with saasus_sdk_python.src.auth.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **user_id** | **str**| ユーザーID(User ID) | 
+ **user_id** | **str**| User ID | 
  **update_saas_user_password_param** | [**UpdateSaasUserPasswordParam**](UpdateSaasUserPasswordParam.md)|  | [optional] 
 
 ### Return type
@@ -1419,6 +1472,7 @@ void (empty response body)
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
@@ -1429,13 +1483,14 @@ void (empty response body)
 # **update_software_token**
 > update_software_token(user_id, update_software_token_param=update_software_token_param)
 
-認証アプリケーションを登録(Register Authentication Application)
+Register Authentication Application
 
-認証アプリケーションを登録します。  Register an authentication application. 
+Register an authentication application. 
 
 ### Example
 
 * Bearer Authentication (Bearer):
+
 ```python
 import time
 import os
@@ -1464,11 +1519,11 @@ configuration = saasus_sdk_python.src.auth.Configuration(
 with saasus_sdk_python.src.auth.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = saasus_sdk_python.src.auth.SaasUserApi(api_client)
-    user_id = 'f94bfffc-8be2-11ec-b41a-0242ac120004' # str | ユーザーID(User ID)
+    user_id = 'f94bfffc-8be2-11ec-b41a-0242ac120004' # str | User ID
     update_software_token_param = saasus_sdk_python.src.auth.UpdateSoftwareTokenParam() # UpdateSoftwareTokenParam |  (optional)
 
     try:
-        # 認証アプリケーションを登録(Register Authentication Application)
+        # Register Authentication Application
         api_instance.update_software_token(user_id, update_software_token_param=update_software_token_param)
     except Exception as e:
         print("Exception when calling SaasUserApi->update_software_token: %s\n" % e)
@@ -1478,9 +1533,10 @@ with saasus_sdk_python.src.auth.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **user_id** | **str**| ユーザーID(User ID) | 
+ **user_id** | **str**| User ID | 
  **update_software_token_param** | [**UpdateSoftwareTokenParam**](UpdateSoftwareTokenParam.md)|  | [optional] 
 
 ### Return type
@@ -1497,6 +1553,7 @@ void (empty response body)
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
@@ -1507,13 +1564,14 @@ void (empty response body)
 # **update_user_mfa_preference**
 > update_user_mfa_preference(user_id, body=body)
 
-ユーザーのMFA設定を更新(Update User's MFA Settings)
+Update User's MFA Settings
 
-ユーザーのMFA設定を更新します。  Update user's MFA settings. 
+Update user's MFA settings. 
 
 ### Example
 
 * Bearer Authentication (Bearer):
+
 ```python
 import time
 import os
@@ -1542,11 +1600,11 @@ configuration = saasus_sdk_python.src.auth.Configuration(
 with saasus_sdk_python.src.auth.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = saasus_sdk_python.src.auth.SaasUserApi(api_client)
-    user_id = 'f94bfffc-8be2-11ec-b41a-0242ac120004' # str | ユーザーID(User ID)
+    user_id = 'f94bfffc-8be2-11ec-b41a-0242ac120004' # str | User ID
     body = saasus_sdk_python.src.auth.MfaPreference() # MfaPreference |  (optional)
 
     try:
-        # ユーザーのMFA設定を更新(Update User's MFA Settings)
+        # Update User's MFA Settings
         api_instance.update_user_mfa_preference(user_id, body=body)
     except Exception as e:
         print("Exception when calling SaasUserApi->update_user_mfa_preference: %s\n" % e)
@@ -1556,9 +1614,10 @@ with saasus_sdk_python.src.auth.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **user_id** | **str**| ユーザーID(User ID) | 
+ **user_id** | **str**| User ID | 
  **body** | **MfaPreference**|  | [optional] 
 
 ### Return type
@@ -1575,6 +1634,7 @@ void (empty response body)
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |

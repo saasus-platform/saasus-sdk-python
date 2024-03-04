@@ -1,8 +1,9 @@
 # InvoiceLanguage
 
-請求書の言語  Language of invoice 
+Language of invoice
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 

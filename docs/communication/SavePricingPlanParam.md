@@ -2,12 +2,13 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**name** | **str** | 料金プラン名(pricing plan name) | 
-**display_name** | **str** | 料金プラン表示名(pricing plan display name) | 
-**description** | **str** | 料金プラン説明(pricing plan description) | 
-**menu_ids** | **List[str]** | メニューID（料金プランに追加するメニューIDを設定） Menu ID (menu ID to be added to the pricing plan)  | 
+**name** | **str** | 料金プラン名 | 
+**display_name** | **str** | 料金プラン表示名 | 
+**description** | **str** | 料金プラン説明 | 
+**menu_ids** | **List[str]** | メニューID（料金プランに追加するメニューID） | 
 
 ## Example
 

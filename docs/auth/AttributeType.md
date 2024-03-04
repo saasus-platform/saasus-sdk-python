@@ -1,8 +1,9 @@
 # AttributeType
 
-型（dateはYYYY-MM-DDの形式で使用する事ができます。） (Type (date can be set to YYYY-MM-DD format.)) 
+Type (date can be set to YYYY-MM-DD format.) 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 

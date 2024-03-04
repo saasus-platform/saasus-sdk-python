@@ -2,11 +2,12 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**event_type** | **str** | イベントタイプ(event type) | 
-**event_detail_type** | **str** | 詳細イベントタイプ(detailed event type) | 
-**message** | **str** | イベントメッセージ(event message) | 
+**event_type** | **str** | event type | 
+**event_detail_type** | **str** | detailed event type | 
+**message** | **str** | event message | 
 
 ## Example
 

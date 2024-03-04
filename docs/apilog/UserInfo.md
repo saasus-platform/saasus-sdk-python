@@ -2,11 +2,12 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **str** |  | 
-**email** | **str** | メールアドレス(E-mail) | 
-**tenants** | [**List[UserAvailableTenant]**](UserAvailableTenant.md) | テナント情報(Tenant Info) | 
+**email** | **str** | E-mail | 
+**tenants** | [**List[UserAvailableTenant]**](UserAvailableTenant.md) | Tenant Info | 
 
 ## Example
 

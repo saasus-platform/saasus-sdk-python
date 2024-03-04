@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **sign_up** | [**MessageTemplate**](MessageTemplate.md) |  | 

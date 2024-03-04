@@ -2,17 +2,18 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**domain_name** | **str** | ドメイン名(Domain Name) | 
-**is_dns_validated** | **bool** | DNSレコードの検証結果(DNS Record Verification Results) | 
+**domain_name** | **str** | Domain Name | 
+**is_dns_validated** | **bool** | DNS Record Verification Results | 
 **certificate_dns_record** | [**DnsRecord**](DnsRecord.md) |  | 
 **cloud_front_dns_record** | [**DnsRecord**](DnsRecord.md) |  | 
-**dkim_dns_records** | [**List[DnsRecord]**](DnsRecord.md) | DKIM DNS レコード(DKIM DNS Records) | 
-**default_domain_name** | **str** | デフォルトドメイン名(Default Domain Name) | 
-**from_email_address** | **str** | 認証メールの送信元メールアドレス(Sender Email for Authentication Email) | 
-**reply_email_address** | **str** | 認証メールの返信元メールアドレス(Reply-from email address of authentication email) | 
-**is_ses_sandbox_granted** | **bool** | SESのサンドボックス解除及びCognitoのSES設定結果(SES sandbox release and Cognito SES configuration results) | 
+**dkim_dns_records** | [**List[DnsRecord]**](DnsRecord.md) | DKIM DNS Records | 
+**default_domain_name** | **str** | Default Domain Name | 
+**from_email_address** | **str** | Sender Email for Authentication Email | 
+**reply_email_address** | **str** | Reply-from email address of authentication email | 
+**is_ses_sandbox_granted** | **bool** | SES sandbox release and Cognito SES configuration results | 
 
 ## Example
 

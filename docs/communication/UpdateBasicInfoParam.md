@@ -2,11 +2,12 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**domain_name** | **str** | ドメイン名(Domain Name) | 
-**from_email_address** | **str** | 認証メールの送信元メールアドレス(Sender email of authentication email) | 
-**reply_email_address** | **str** | 認証メールの返信元メールアドレス(Reply-from email address of authentication email) | [optional] 
+**domain_name** | **str** | Domain Name | 
+**from_email_address** | **str** | Sender email of authentication email | 
+**reply_email_address** | **str** | Reply-from email address of authentication email | [optional] 
 
 ## Example
 

@@ -12,18 +12,23 @@
 """  # noqa: E501
 
 
+from __future__ import annotations
 import json
 import pprint
 import re  # noqa: F401
-from aenum import Enum, no_arg
+from enum import Enum
 
 
 
+try:
+    from typing import Self
+except ImportError:
+    from typing_extensions import Self
 
 
 class UpdateMeteringUnitTimestampCountMethod(str, Enum):
     """
-    更新方法(update method) add: 加算(addition) sub: 減算(subtraction) direct: 上書き(overwrite) 
+    更新方法 add: 加算 sub: 減算 direct: 上書き 
     """
 
     """
@@ -34,8 +39,8 @@ class UpdateMeteringUnitTimestampCountMethod(str, Enum):
     DIRECT = 'direct'
 
     @classmethod
-    def from_json(cls, json_str: str) -> UpdateMeteringUnitTimestampCountMethod:
+    def from_json(cls, json_str: str) -> Self:
         """Create an instance of UpdateMeteringUnitTimestampCountMethod from a JSON string"""
-        return UpdateMeteringUnitTimestampCountMethod(json.loads(json_str))
+        return cls(json.loads(json_str))
 
 

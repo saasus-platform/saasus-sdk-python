@@ -18,60 +18,77 @@ import re  # noqa: F401
 import json
 
 
-
-from pydantic import BaseModel, Field, StrictStr
+from typing import Any, ClassVar, Dict, List
+from pydantic import BaseModel, StrictStr
+try:
+    from typing import Self
+except ImportError:
+    from typing_extensions import Self
 
 class Settings(BaseModel):
     """
     Settings
-    """
-    product_code: StrictStr = Field(...)
-    role_arn: StrictStr = Field(...)
-    role_external_id: StrictStr = Field(...)
-    sns_topic_arn: StrictStr = Field(...)
-    cas_bucket_name: StrictStr = Field(...)
-    cas_sns_topic_arn: StrictStr = Field(...)
-    seller_sns_topic_arn: StrictStr = Field(...)
-    redirect_sign_up_page_function_url: StrictStr = Field(...)
-    sqs_arn: StrictStr = Field(...)
-    __properties = ["product_code", "role_arn", "role_external_id", "sns_topic_arn", "cas_bucket_name", "cas_sns_topic_arn", "seller_sns_topic_arn", "redirect_sign_up_page_function_url", "sqs_arn"]
+    """ # noqa: E501
+    product_code: StrictStr
+    role_arn: StrictStr
+    role_external_id: StrictStr
+    sns_topic_arn: StrictStr
+    cas_bucket_name: StrictStr
+    cas_sns_topic_arn: StrictStr
+    seller_sns_topic_arn: StrictStr
+    redirect_sign_up_page_function_url: StrictStr
+    sqs_arn: StrictStr
+    __properties: ClassVar[List[str]] = ["product_code", "role_arn", "role_external_id", "sns_topic_arn", "cas_bucket_name", "cas_sns_topic_arn", "seller_sns_topic_arn", "redirect_sign_up_page_function_url", "sqs_arn"]
 
-    class Config:
-        """Pydantic configuration"""
-        allow_population_by_field_name = True
-        validate_assignment = True
+    model_config = {
+        "populate_by_name": True,
+        "validate_assignment": True,
+        "protected_namespaces": (),
+    }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
-        return pprint.pformat(self.dict(by_alias=True))
+        return pprint.pformat(self.model_dump(by_alias=True))
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> Settings:
+    def from_json(cls, json_str: str) -> Self:
         """Create an instance of Settings from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
-    def to_dict(self):
-        """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
-                          exclude={
-                          },
-                          exclude_none=True)
+    def to_dict(self) -> Dict[str, Any]:
+        """Return the dictionary representation of the model using alias.
+
+        This has the following differences from calling pydantic's
+        `self.model_dump(by_alias=True)`:
+
+        * `None` is only added to the output dict for nullable fields that
+          were set at model initialization. Other fields with value `None`
+          are ignored.
+        """
+        _dict = self.model_dump(
+            by_alias=True,
+            exclude={
+            },
+            exclude_none=True,
+        )
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: dict) -> Settings:
+    def from_dict(cls, obj: Dict) -> Self:
         """Create an instance of Settings from a dict"""
         if obj is None:
             return None
 
         if not isinstance(obj, dict):
-            return Settings.parse_obj(obj)
+            return cls.model_validate(obj)
 
-        _obj = Settings.parse_obj({
+        _obj = cls.model_validate({
             "product_code": obj.get("product_code"),
             "role_arn": obj.get("role_arn"),
             "role_external_id": obj.get("role_external_id"),

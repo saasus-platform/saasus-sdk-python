@@ -2,11 +2,12 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**metering_unit_name** | **str** | 計測ユニット名(metering unit name) | 
-**month** | **str** | 月(month) | 
-**count** | **int** | 件数(count) | 
+**metering_unit_name** | **str** | 計測ユニット名 | 
+**month** | **str** | 月 | 
+**count** | **int** | 件数 | 
 
 ## Example
 

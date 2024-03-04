@@ -4,19 +4,20 @@ All URIs are relative to *https://api.saasus.io/v1/auth*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**get_user_info**](UserInfoApi.md#get_user_info) | **GET** /userinfo | ユーザー情報取得(Get User Info)
+[**get_user_info**](UserInfoApi.md#get_user_info) | **GET** /userinfo | Get User Info
 
 
 # **get_user_info**
 > UserInfo get_user_info(token)
 
-ユーザー情報取得(Get User Info)
+Get User Info
 
-SaaS利用ユーザ(登録ユーザ)のIDトークンを元に、ユーザ情報を取得します。 IDトークンは、SaaSus Platform生成のログイン画面からログイン時にCallback URLに渡されます。 サーバ側でそのURLからIDトークンを取得し、このAPIを呼ぶことにより、該当ユーザの情報が取得できます。 取得した上には、所属テナントや役割(ロール)、料金プランなどが含まれているため、それを元に認可の実装を行うことが可能です。  User information is obtained based on the ID token of the SaaS user (registered user). The ID token is passed to the Callback URL during login from the SaaSus Platform generated login screen. User information can be obtained from calling this API with an ID token from the URL on the server side. Since the acquired tenant, role (role), price plan, etc. are included, it is possible to implement authorization based on it. 
+User information is obtained based on the ID token of the SaaS user (registered user). The ID token is passed to the Callback URL during login from the SaaSus Platform generated login screen. User information can be obtained from calling this API with an ID token from the URL on the server side. Since the acquired tenant, role (role), price plan, etc. are included, it is possible to implement authorization based on it. 
 
 ### Example
 
 * Bearer Authentication (Bearer):
+
 ```python
 import time
 import os
@@ -45,10 +46,10 @@ configuration = saasus_sdk_python.src.auth.Configuration(
 with saasus_sdk_python.src.auth.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = saasus_sdk_python.src.auth.UserInfoApi(api_client)
-    token = 'token_example' # str | IDトークン(ID Token)
+    token = 'token_example' # str | ID Token
 
     try:
-        # ユーザー情報取得(Get User Info)
+        # Get User Info
         api_response = api_instance.get_user_info(token)
         print("The response of UserInfoApi->get_user_info:\n")
         pprint(api_response)
@@ -60,9 +61,10 @@ with saasus_sdk_python.src.auth.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **token** | **str**| IDトークン(ID Token) | 
+ **token** | **str**| ID Token | 
 
 ### Return type
 
@@ -78,6 +80,7 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
