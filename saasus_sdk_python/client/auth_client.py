@@ -1,48 +1,44 @@
 import os
 from saasus_sdk_python.client.client import Client
-from urllib.parse import urlencode
 from saasus_sdk_python.src.auth.api_client import ApiClient
-
+from saasus_sdk_python.src.auth import rest
 
 class SignedAuthApiClient(ApiClient):
 
     def __init__(self, *args, **kwargs):
-        self.client = Client()
-        self.base_url = os.getenv("SAASUS_BASE_URL", "https://api.saasus.io/v1")
         super().__init__(*args, **kwargs)
-
-    def call_api(self, resource_path, method,
-                 path_params=None, query_params=None, header_params=None,
-                 body=None, post_params=None, files=None,
-                 response_types_map=None, auth_settings=None,
-                 async_req=None, _return_http_data_only=None,
-                 collection_formats=None, _preload_content=True,
-                 _request_timeout=None, _host=None, _request_auth=None):
-
-        if path_params:
-            resource_path = resource_path.format(**path_params)
-        if query_params:
-            query_string = urlencode(query_params)
-            resource_path += f"?{query_string}"
-
+        self.client = Client()
+        self.base_url = os.getenv("SAASUS_BASE_URL", "https://api.dev.saasus.io/v1")
         self.configuration.host = f"{self.base_url}/auth"
 
-        # リクエストを行う直前に署名を生成する
-        signature_headers = self.client.generate_signature(
-            method, self.configuration.host + resource_path, body
-        )
+    def call_api(
+        self,
+        method,
+        url,
+        header_params=None,
+        body=None,
+        post_params=None,
+        _request_timeout=None
+    ) -> rest.RESTResponse:
 
-        # header_paramsを署名つきのヘッダで更新する。
-        if header_params is None:
+
+        # 署名ヘッダを生成してリクエストヘッダに追加する
+        signature_headers = self.client.generate_signature(
+            method, url, body
+        )
+        print(method, url, body)
+
+        # header_paramsが辞書ではない場合は、新しい辞書を作成する
+        if header_params is None or not isinstance(header_params, dict):
             header_params = {}
         header_params.update(signature_headers)
 
+        # APIクライアントのcall_apiメソッドを呼び出して、署名付きのリクエストを行う
         return super().call_api(
-            resource_path, method,
-            path_params, query_params, header_params,
-            body, post_params, files,
-            response_types_map, auth_settings,
-            async_req, _return_http_data_only,
-            collection_formats, _preload_content,
-            _request_timeout, _host, _request_auth
+            method=method,
+            url=url,
+            header_params=header_params,
+            body=body,
+            post_params=post_params,
+            _request_timeout=_request_timeout
         )
