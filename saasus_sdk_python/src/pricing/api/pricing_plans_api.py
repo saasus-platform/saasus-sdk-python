@@ -69,9 +69,9 @@ class PricingPlansApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> PricingPlan:
-        """料金プランを作成
+        """Create Pricing Plan
 
-        料金プランを作成します。 
+        Create a pricing plan. 
 
         :param body:
         :type body: SavePricingPlanParam
@@ -137,9 +137,9 @@ class PricingPlansApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[PricingPlan]:
-        """料金プランを作成
+        """Create Pricing Plan
 
-        料金プランを作成します。 
+        Create a pricing plan. 
 
         :param body:
         :type body: SavePricingPlanParam
@@ -205,9 +205,9 @@ class PricingPlansApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """料金プランを作成
+        """Create Pricing Plan
 
-        料金プランを作成します。 
+        Create a pricing plan. 
 
         :param body:
         :type body: SavePricingPlanParam
@@ -342,9 +342,9 @@ class PricingPlansApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> None:
-        """全てのPlans,Menus,Units,Metersの削除
+        """Delete all Plans, Menus, Units, Meters and Tax Rates
 
-        無条件に全料金プラン、メニュー、ユニット、メーター、税率を削除します。 
+        Unconditionally remove all rate plans, menus, units, meters and tax rates. 
 
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -406,9 +406,9 @@ class PricingPlansApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[None]:
-        """全てのPlans,Menus,Units,Metersの削除
+        """Delete all Plans, Menus, Units, Meters and Tax Rates
 
-        無条件に全料金プラン、メニュー、ユニット、メーター、税率を削除します。 
+        Unconditionally remove all rate plans, menus, units, meters and tax rates. 
 
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -470,9 +470,9 @@ class PricingPlansApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """全てのPlans,Menus,Units,Metersの削除
+        """Delete all Plans, Menus, Units, Meters and Tax Rates
 
-        無条件に全料金プラン、メニュー、ユニット、メーター、税率を削除します。 
+        Unconditionally remove all rate plans, menus, units, meters and tax rates. 
 
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -575,7 +575,7 @@ class PricingPlansApi:
     @validate_call
     def delete_pricing_plan(
         self,
-        plan_id: Annotated[StrictStr, Field(description="料金プランID")],
+        plan_id: Annotated[StrictStr, Field(description="Pricing Plan ID")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -589,11 +589,11 @@ class PricingPlansApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> None:
-        """料金プランを削除
+        """Delete Pricing Plan
 
-        料金プランを削除します。 
+        Delete a pricing plan. 
 
-        :param plan_id: 料金プランID (required)
+        :param plan_id: Pricing Plan ID (required)
         :type plan_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -644,7 +644,7 @@ class PricingPlansApi:
     @validate_call
     def delete_pricing_plan_with_http_info(
         self,
-        plan_id: Annotated[StrictStr, Field(description="料金プランID")],
+        plan_id: Annotated[StrictStr, Field(description="Pricing Plan ID")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -658,11 +658,11 @@ class PricingPlansApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[None]:
-        """料金プランを削除
+        """Delete Pricing Plan
 
-        料金プランを削除します。 
+        Delete a pricing plan. 
 
-        :param plan_id: 料金プランID (required)
+        :param plan_id: Pricing Plan ID (required)
         :type plan_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -713,7 +713,7 @@ class PricingPlansApi:
     @validate_call
     def delete_pricing_plan_without_preload_content(
         self,
-        plan_id: Annotated[StrictStr, Field(description="料金プランID")],
+        plan_id: Annotated[StrictStr, Field(description="Pricing Plan ID")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -727,11 +727,11 @@ class PricingPlansApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """料金プランを削除
+        """Delete Pricing Plan
 
-        料金プランを削除します。 
+        Delete a pricing plan. 
 
-        :param plan_id: 料金プランID (required)
+        :param plan_id: Pricing Plan ID (required)
         :type plan_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -852,9 +852,9 @@ class PricingPlansApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> None:
-        """stripe上の商品情報を削除
+        """Delete Product Data from Stripe
 
-        stripe上の商品情報を削除します。 
+        Delete product data from Stripe. 
 
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -916,9 +916,9 @@ class PricingPlansApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[None]:
-        """stripe上の商品情報を削除
+        """Delete Product Data from Stripe
 
-        stripe上の商品情報を削除します。 
+        Delete product data from Stripe. 
 
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -980,9 +980,9 @@ class PricingPlansApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """stripe上の商品情報を削除
+        """Delete Product Data from Stripe
 
-        stripe上の商品情報を削除します。 
+        Delete product data from Stripe. 
 
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -1085,7 +1085,7 @@ class PricingPlansApi:
     @validate_call
     def get_pricing_plan(
         self,
-        plan_id: Annotated[StrictStr, Field(description="料金プランID")],
+        plan_id: Annotated[StrictStr, Field(description="Pricing Plan ID")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1099,11 +1099,11 @@ class PricingPlansApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> PricingPlan:
-        """料金プランを取得
+        """Get Pricing Plan
 
-        料金プランを取得します。 
+        Get a pricing plan. 
 
-        :param plan_id: 料金プランID (required)
+        :param plan_id: Pricing Plan ID (required)
         :type plan_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -1153,7 +1153,7 @@ class PricingPlansApi:
     @validate_call
     def get_pricing_plan_with_http_info(
         self,
-        plan_id: Annotated[StrictStr, Field(description="料金プランID")],
+        plan_id: Annotated[StrictStr, Field(description="Pricing Plan ID")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1167,11 +1167,11 @@ class PricingPlansApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[PricingPlan]:
-        """料金プランを取得
+        """Get Pricing Plan
 
-        料金プランを取得します。 
+        Get a pricing plan. 
 
-        :param plan_id: 料金プランID (required)
+        :param plan_id: Pricing Plan ID (required)
         :type plan_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -1221,7 +1221,7 @@ class PricingPlansApi:
     @validate_call
     def get_pricing_plan_without_preload_content(
         self,
-        plan_id: Annotated[StrictStr, Field(description="料金プランID")],
+        plan_id: Annotated[StrictStr, Field(description="Pricing Plan ID")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1235,11 +1235,11 @@ class PricingPlansApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """料金プランを取得
+        """Get Pricing Plan
 
-        料金プランを取得します。 
+        Get a pricing plan. 
 
-        :param plan_id: 料金プランID (required)
+        :param plan_id: Pricing Plan ID (required)
         :type plan_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -1359,9 +1359,9 @@ class PricingPlansApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> PricingPlans:
-        """料金プラン一覧を取得
+        """Get Pricing Plans
 
-        料金プラン一覧を取得します。機能メニューを複数まとめて、１つの料金プランとして定義します。ここで定義した料金プランを各テナントは選ぶことができます。もし特定テナント特有の料金（プライベートプライシング）がある場合は、そのテナント専用の料金プランを作成して結びつけます。 
+        Get pricing plans. Multiple feature menus are grouped together and defined as one pricing plan. Each tenant can choose a pricing plan defined here. If you have a specific tenant-specific rate (private pricing), create and connect the pricing plan specifically for that tenant. 
 
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -1423,9 +1423,9 @@ class PricingPlansApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[PricingPlans]:
-        """料金プラン一覧を取得
+        """Get Pricing Plans
 
-        料金プラン一覧を取得します。機能メニューを複数まとめて、１つの料金プランとして定義します。ここで定義した料金プランを各テナントは選ぶことができます。もし特定テナント特有の料金（プライベートプライシング）がある場合は、そのテナント専用の料金プランを作成して結びつけます。 
+        Get pricing plans. Multiple feature menus are grouped together and defined as one pricing plan. Each tenant can choose a pricing plan defined here. If you have a specific tenant-specific rate (private pricing), create and connect the pricing plan specifically for that tenant. 
 
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -1487,9 +1487,9 @@ class PricingPlansApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """料金プラン一覧を取得
+        """Get Pricing Plans
 
-        料金プラン一覧を取得します。機能メニューを複数まとめて、１つの料金プランとして定義します。ここで定義した料金プランを各テナントは選ぶことができます。もし特定テナント特有の料金（プライベートプライシング）がある場合は、そのテナント専用の料金プランを作成して結びつけます。 
+        Get pricing plans. Multiple feature menus are grouped together and defined as one pricing plan. Each tenant can choose a pricing plan defined here. If you have a specific tenant-specific rate (private pricing), create and connect the pricing plan specifically for that tenant. 
 
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -1605,9 +1605,9 @@ class PricingPlansApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> None:
-        """stripe連携
+        """Connect to Stripe
 
-        stripeへ情報を連携します。 
+        Connect information to Stripe. 
 
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -1669,9 +1669,9 @@ class PricingPlansApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[None]:
-        """stripe連携
+        """Connect to Stripe
 
-        stripeへ情報を連携します。 
+        Connect information to Stripe. 
 
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -1733,9 +1733,9 @@ class PricingPlansApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """stripe連携
+        """Connect to Stripe
 
-        stripeへ情報を連携します。 
+        Connect information to Stripe. 
 
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -1838,7 +1838,7 @@ class PricingPlansApi:
     @validate_call
     def update_pricing_plan(
         self,
-        plan_id: Annotated[StrictStr, Field(description="料金プランID")],
+        plan_id: Annotated[StrictStr, Field(description="Pricing Plan ID")],
         body: Optional[SavePricingPlanParam] = None,
         _request_timeout: Union[
             None,
@@ -1853,11 +1853,11 @@ class PricingPlansApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> None:
-        """料金プランを更新
+        """Update Pricing Plan
 
-        料金プランを更新します。 
+        Update a pricing plan. 
 
-        :param plan_id: 料金プランID (required)
+        :param plan_id: Pricing Plan ID (required)
         :type plan_id: str
         :param body:
         :type body: SavePricingPlanParam
@@ -1910,7 +1910,7 @@ class PricingPlansApi:
     @validate_call
     def update_pricing_plan_with_http_info(
         self,
-        plan_id: Annotated[StrictStr, Field(description="料金プランID")],
+        plan_id: Annotated[StrictStr, Field(description="Pricing Plan ID")],
         body: Optional[SavePricingPlanParam] = None,
         _request_timeout: Union[
             None,
@@ -1925,11 +1925,11 @@ class PricingPlansApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[None]:
-        """料金プランを更新
+        """Update Pricing Plan
 
-        料金プランを更新します。 
+        Update a pricing plan. 
 
-        :param plan_id: 料金プランID (required)
+        :param plan_id: Pricing Plan ID (required)
         :type plan_id: str
         :param body:
         :type body: SavePricingPlanParam
@@ -1982,7 +1982,7 @@ class PricingPlansApi:
     @validate_call
     def update_pricing_plan_without_preload_content(
         self,
-        plan_id: Annotated[StrictStr, Field(description="料金プランID")],
+        plan_id: Annotated[StrictStr, Field(description="Pricing Plan ID")],
         body: Optional[SavePricingPlanParam] = None,
         _request_timeout: Union[
             None,
@@ -1997,11 +1997,11 @@ class PricingPlansApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """料金プランを更新
+        """Update Pricing Plan
 
-        料金プランを更新します。 
+        Update a pricing plan. 
 
-        :param plan_id: 料金プランID (required)
+        :param plan_id: Pricing Plan ID (required)
         :type plan_id: str
         :param body:
         :type body: SavePricingPlanParam
@@ -2141,9 +2141,9 @@ class PricingPlansApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> None:
-        """使用済みフラグ更新
+        """Update Used Flag
 
-        料金プランと配下のメニュー・ユニットを使用済みに更新します。 
+        Update price plan and feature menu/pricing unit to used. 
 
         :param update_pricing_plans_used_param:
         :type update_pricing_plans_used_param: UpdatePricingPlansUsedParam
@@ -2209,9 +2209,9 @@ class PricingPlansApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[None]:
-        """使用済みフラグ更新
+        """Update Used Flag
 
-        料金プランと配下のメニュー・ユニットを使用済みに更新します。 
+        Update price plan and feature menu/pricing unit to used. 
 
         :param update_pricing_plans_used_param:
         :type update_pricing_plans_used_param: UpdatePricingPlansUsedParam
@@ -2277,9 +2277,9 @@ class PricingPlansApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """使用済みフラグ更新
+        """Update Used Flag
 
-        料金プランと配下のメニュー・ユニットを使用済みに更新します。 
+        Update price plan and feature menu/pricing unit to used. 
 
         :param update_pricing_plans_used_param:
         :type update_pricing_plans_used_param: UpdatePricingPlansUsedParam

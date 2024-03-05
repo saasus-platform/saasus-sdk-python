@@ -28,7 +28,7 @@ except ImportError:
 
 class RecurringInterval(str, Enum):
     """
-    繰り返し期間 month: 月単位 year: 年単位 
+    Cycle month: Monthly year: Yearly 
     """
 
     """

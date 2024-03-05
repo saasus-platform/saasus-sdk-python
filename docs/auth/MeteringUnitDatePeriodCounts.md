@@ -5,7 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**metering_unit_name** | **str** | 計測ユニット名 | 
+**metering_unit_name** | **str** | Metering unit name | 
 **counts** | [**List[MeteringUnitCount]**](MeteringUnitCount.md) |  | 
 
 ## Example

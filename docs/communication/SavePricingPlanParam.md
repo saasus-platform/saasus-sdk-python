@@ -5,10 +5,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**name** | **str** | 料金プラン名 | 
-**display_name** | **str** | 料金プラン表示名 | 
-**description** | **str** | 料金プラン説明 | 
-**menu_ids** | **List[str]** | メニューID（料金プランに追加するメニューID） | 
+**name** | **str** | Pricing plan name | 
+**display_name** | **str** | Pricing plan display name | 
+**description** | **str** | Pricing plan description | 
+**menu_ids** | **List[str]** | Menu ID to be added to the pricing plan | 
 
 ## Example
 

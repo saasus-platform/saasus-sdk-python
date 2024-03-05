@@ -68,9 +68,9 @@ class PricingMenusApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> PricingMenu:
-        """プライシング機能メニューを作成
+        """Create a Pricing Feature Menu
 
-        プライシング機能メニューを作成します。 
+        Create a pricing feature menu. 
 
         :param body:
         :type body: SavePricingMenuParam
@@ -136,9 +136,9 @@ class PricingMenusApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[PricingMenu]:
-        """プライシング機能メニューを作成
+        """Create a Pricing Feature Menu
 
-        プライシング機能メニューを作成します。 
+        Create a pricing feature menu. 
 
         :param body:
         :type body: SavePricingMenuParam
@@ -204,9 +204,9 @@ class PricingMenusApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """プライシング機能メニューを作成
+        """Create a Pricing Feature Menu
 
-        プライシング機能メニューを作成します。 
+        Create a pricing feature menu. 
 
         :param body:
         :type body: SavePricingMenuParam
@@ -328,7 +328,7 @@ class PricingMenusApi:
     @validate_call
     def delete_pricing_menu(
         self,
-        menu_id: Annotated[StrictStr, Field(description="メニューID")],
+        menu_id: Annotated[StrictStr, Field(description="Menu ID")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -342,11 +342,11 @@ class PricingMenusApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> None:
-        """プライシング機能メニューを削除
+        """Delete Pricing Feature Menu
 
-        プライシング機能メニューを削除します。 
+        Delete pricing feature menu. 
 
-        :param menu_id: メニューID (required)
+        :param menu_id: Menu ID (required)
         :type menu_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -397,7 +397,7 @@ class PricingMenusApi:
     @validate_call
     def delete_pricing_menu_with_http_info(
         self,
-        menu_id: Annotated[StrictStr, Field(description="メニューID")],
+        menu_id: Annotated[StrictStr, Field(description="Menu ID")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -411,11 +411,11 @@ class PricingMenusApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[None]:
-        """プライシング機能メニューを削除
+        """Delete Pricing Feature Menu
 
-        プライシング機能メニューを削除します。 
+        Delete pricing feature menu. 
 
-        :param menu_id: メニューID (required)
+        :param menu_id: Menu ID (required)
         :type menu_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -466,7 +466,7 @@ class PricingMenusApi:
     @validate_call
     def delete_pricing_menu_without_preload_content(
         self,
-        menu_id: Annotated[StrictStr, Field(description="メニューID")],
+        menu_id: Annotated[StrictStr, Field(description="Menu ID")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -480,11 +480,11 @@ class PricingMenusApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """プライシング機能メニューを削除
+        """Delete Pricing Feature Menu
 
-        プライシング機能メニューを削除します。 
+        Delete pricing feature menu. 
 
-        :param menu_id: メニューID (required)
+        :param menu_id: Menu ID (required)
         :type menu_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -592,7 +592,7 @@ class PricingMenusApi:
     @validate_call
     def get_pricing_menu(
         self,
-        menu_id: Annotated[StrictStr, Field(description="メニューID")],
+        menu_id: Annotated[StrictStr, Field(description="Menu ID")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -606,11 +606,11 @@ class PricingMenusApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> PricingMenu:
-        """プライシング機能メニューを取得
+        """Get Pricing Feature Menu
 
-        プライシング機能メニューを取得します。 
+        Get a pricing feature menu. 
 
-        :param menu_id: メニューID (required)
+        :param menu_id: Menu ID (required)
         :type menu_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -660,7 +660,7 @@ class PricingMenusApi:
     @validate_call
     def get_pricing_menu_with_http_info(
         self,
-        menu_id: Annotated[StrictStr, Field(description="メニューID")],
+        menu_id: Annotated[StrictStr, Field(description="Menu ID")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -674,11 +674,11 @@ class PricingMenusApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[PricingMenu]:
-        """プライシング機能メニューを取得
+        """Get Pricing Feature Menu
 
-        プライシング機能メニューを取得します。 
+        Get a pricing feature menu. 
 
-        :param menu_id: メニューID (required)
+        :param menu_id: Menu ID (required)
         :type menu_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -728,7 +728,7 @@ class PricingMenusApi:
     @validate_call
     def get_pricing_menu_without_preload_content(
         self,
-        menu_id: Annotated[StrictStr, Field(description="メニューID")],
+        menu_id: Annotated[StrictStr, Field(description="Menu ID")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -742,11 +742,11 @@ class PricingMenusApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """プライシング機能メニューを取得
+        """Get Pricing Feature Menu
 
-        プライシング機能メニューを取得します。 
+        Get a pricing feature menu. 
 
-        :param menu_id: メニューID (required)
+        :param menu_id: Menu ID (required)
         :type menu_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -866,9 +866,9 @@ class PricingMenusApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> PricingMenus:
-        """プライシング機能メニュー一覧を取得
+        """Get Pricing Feature Menus
 
-        機能メニュー一覧を取得します。計測単位を複数まとめて、１つの機能メニューとして定義します。ここで定義した機能メニューを複数合わせ１つの料金プランとします。 
+        Get the feature menu list. Multiple measurement units are grouped together and defined as one feature menu. Multiple feature menus defined here are combined into one billing plan. 
 
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -930,9 +930,9 @@ class PricingMenusApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[PricingMenus]:
-        """プライシング機能メニュー一覧を取得
+        """Get Pricing Feature Menus
 
-        機能メニュー一覧を取得します。計測単位を複数まとめて、１つの機能メニューとして定義します。ここで定義した機能メニューを複数合わせ１つの料金プランとします。 
+        Get the feature menu list. Multiple measurement units are grouped together and defined as one feature menu. Multiple feature menus defined here are combined into one billing plan. 
 
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -994,9 +994,9 @@ class PricingMenusApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """プライシング機能メニュー一覧を取得
+        """Get Pricing Feature Menus
 
-        機能メニュー一覧を取得します。計測単位を複数まとめて、１つの機能メニューとして定義します。ここで定義した機能メニューを複数合わせ１つの料金プランとします。 
+        Get the feature menu list. Multiple measurement units are grouped together and defined as one feature menu. Multiple feature menus defined here are combined into one billing plan. 
 
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -1099,7 +1099,7 @@ class PricingMenusApi:
     @validate_call
     def update_pricing_menu(
         self,
-        menu_id: Annotated[StrictStr, Field(description="メニューID")],
+        menu_id: Annotated[StrictStr, Field(description="Menu ID")],
         body: Optional[SavePricingMenuParam] = None,
         _request_timeout: Union[
             None,
@@ -1114,11 +1114,11 @@ class PricingMenusApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> None:
-        """プライシング機能メニューを更新
+        """Update Pricing Feature Menu
 
-        プライシング機能メニューを更新します。 
+        Update pricing feature menu. 
 
-        :param menu_id: メニューID (required)
+        :param menu_id: Menu ID (required)
         :type menu_id: str
         :param body:
         :type body: SavePricingMenuParam
@@ -1171,7 +1171,7 @@ class PricingMenusApi:
     @validate_call
     def update_pricing_menu_with_http_info(
         self,
-        menu_id: Annotated[StrictStr, Field(description="メニューID")],
+        menu_id: Annotated[StrictStr, Field(description="Menu ID")],
         body: Optional[SavePricingMenuParam] = None,
         _request_timeout: Union[
             None,
@@ -1186,11 +1186,11 @@ class PricingMenusApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[None]:
-        """プライシング機能メニューを更新
+        """Update Pricing Feature Menu
 
-        プライシング機能メニューを更新します。 
+        Update pricing feature menu. 
 
-        :param menu_id: メニューID (required)
+        :param menu_id: Menu ID (required)
         :type menu_id: str
         :param body:
         :type body: SavePricingMenuParam
@@ -1243,7 +1243,7 @@ class PricingMenusApi:
     @validate_call
     def update_pricing_menu_without_preload_content(
         self,
-        menu_id: Annotated[StrictStr, Field(description="メニューID")],
+        menu_id: Annotated[StrictStr, Field(description="Menu ID")],
         body: Optional[SavePricingMenuParam] = None,
         _request_timeout: Union[
             None,
@@ -1258,11 +1258,11 @@ class PricingMenusApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """プライシング機能メニューを更新
+        """Update Pricing Feature Menu
 
-        プライシング機能メニューを更新します。 
+        Update pricing feature menu. 
 
-        :param menu_id: メニューID (required)
+        :param menu_id: Menu ID (required)
         :type menu_id: str
         :param body:
         :type body: SavePricingMenuParam

@@ -31,7 +31,7 @@ class MeteringUnitDatePeriodCounts(BaseModel):
     """
     MeteringUnitDatePeriodCounts
     """ # noqa: E501
-    metering_unit_name: StrictStr = Field(description="計測ユニット名")
+    metering_unit_name: StrictStr = Field(description="Metering unit name")
     counts: List[MeteringUnitCount]
     __properties: ClassVar[List[str]] = ["metering_unit_name", "counts"]
 

@@ -30,8 +30,8 @@ class MeteringUnitCount(BaseModel):
     """
     MeteringUnitCount
     """ # noqa: E501
-    timestamp: StrictInt = Field(description="日時")
-    count: StrictInt = Field(description="件数")
+    timestamp: StrictInt = Field(description="Timestamp")
+    count: StrictInt = Field(description="Count")
     __properties: ClassVar[List[str]] = ["timestamp", "count"]
 
     model_config = {

@@ -31,12 +31,12 @@ class PricingMenu(BaseModel):
     """
     PricingMenu
     """ # noqa: E501
-    name: StrictStr = Field(description="メニュー名")
-    display_name: StrictStr = Field(description="メニュー表示名")
-    description: StrictStr = Field(description="メニュー説明")
-    used: StrictBool = Field(description="メニューの使用済み設定")
+    name: StrictStr = Field(description="Menu name")
+    display_name: StrictStr = Field(description="Menu display name")
+    description: StrictStr = Field(description="Menu description")
+    used: StrictBool = Field(description="Menu used settings")
     units: List[PricingUnit]
-    id: StrictStr = Field(description="ユニバーサル一意識別子")
+    id: StrictStr = Field(description="Universally Unique Identifier")
     __properties: ClassVar[List[str]] = ["name", "display_name", "description", "used", "units", "id"]
 
     model_config = {

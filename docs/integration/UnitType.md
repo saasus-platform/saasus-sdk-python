@@ -1,6 +1,6 @@
 # UnitType
 
-計測単位の種別 fixed: 固定ユニット usage: 使用量ユニット tiered: 段階ユニット tiered_usage: 段階的使用量ユニット 
+Unit of measurement type fixed: Fixed unit usage: Usage unit tiered: Tiered unit tiered_usage: Tiered usage unit 
 
 ## Properties
 

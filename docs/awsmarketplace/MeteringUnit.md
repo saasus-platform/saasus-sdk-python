@@ -5,12 +5,12 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**unit_name** | **str** | 計測ユニット名 | 
+**unit_name** | **str** | Metering unit name | 
 **aggregate_usage** | [**AggregateUsage**](AggregateUsage.md) |  | [optional] 
-**display_name** | **str** | 表示名 | 
-**description** | **str** | 説明 | 
-**id** | **str** | ユニバーサル一意識別子 | 
-**used** | **bool** | メータリングユニットの使用済み設定 | 
+**display_name** | **str** | Display name | 
+**description** | **str** | Description | 
+**id** | **str** | Universally Unique Identifier | 
+**used** | **bool** | Metering unit used settings | 
 
 ## Example
 

@@ -5,12 +5,12 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**name** | **str** | 名前 | 
-**display_name** | **str** | 表示名 | 
-**description** | **str** | 説明 | 
+**name** | **str** | Name | 
+**display_name** | **str** | Display Name | 
+**description** | **str** | Description | 
 **type** | [**UnitType**](UnitType.md) |  | 
 **currency** | [**Currency**](Currency.md) |  | 
-**unit_amount** | **int** | 料金 | 
+**unit_amount** | **int** | Price | 
 **recurring_interval** | [**RecurringInterval**](RecurringInterval.md) |  | 
 
 ## Example

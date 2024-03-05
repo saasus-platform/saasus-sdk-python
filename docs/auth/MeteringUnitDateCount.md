@@ -5,9 +5,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**metering_unit_name** | **str** | 計測ユニット名 | 
-**var_date** | **str** | 日 | 
-**count** | **int** | 件数 | 
+**metering_unit_name** | **str** | Metering unit name | 
+**var_date** | **str** | Date | 
+**count** | **int** | Count | 
 
 ## Example
 

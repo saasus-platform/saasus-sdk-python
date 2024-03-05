@@ -69,9 +69,9 @@ class TaxRateApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> TaxRate:
-        """税率の作成
+        """Create Tax Rate
 
-        税率を作成します。 
+        Creates a tax rate. 
 
         :param body:
         :type body: TaxRateProps
@@ -138,9 +138,9 @@ class TaxRateApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[TaxRate]:
-        """税率の作成
+        """Create Tax Rate
 
-        税率を作成します。 
+        Creates a tax rate. 
 
         :param body:
         :type body: TaxRateProps
@@ -207,9 +207,9 @@ class TaxRateApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """税率の作成
+        """Create Tax Rate
 
-        税率を作成します。 
+        Creates a tax rate. 
 
         :param body:
         :type body: TaxRateProps
@@ -345,9 +345,9 @@ class TaxRateApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> TaxRates:
-        """税率を取得します
+        """Get Tax Rates
 
-        税率を取得します。 
+        Get all Tax Rates 
 
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -409,9 +409,9 @@ class TaxRateApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[TaxRates]:
-        """税率を取得します
+        """Get Tax Rates
 
-        税率を取得します。 
+        Get all Tax Rates 
 
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -473,9 +473,9 @@ class TaxRateApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """税率を取得します
+        """Get Tax Rates
 
-        税率を取得します。 
+        Get all Tax Rates 
 
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -578,7 +578,7 @@ class TaxRateApi:
     @validate_call
     def update_tax_rate(
         self,
-        tax_rate_id: Annotated[StrictStr, Field(description="税率ID")],
+        tax_rate_id: Annotated[StrictStr, Field(description="Tax Rate ID")],
         update_tax_rate_param: Optional[UpdateTaxRateParam] = None,
         _request_timeout: Union[
             None,
@@ -593,11 +593,11 @@ class TaxRateApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> None:
-        """税率を更新
+        """Update Tax Rate
 
-        税率を更新します。 
+        Update tax rate. 
 
-        :param tax_rate_id: 税率ID (required)
+        :param tax_rate_id: Tax Rate ID (required)
         :type tax_rate_id: str
         :param update_tax_rate_param:
         :type update_tax_rate_param: UpdateTaxRateParam
@@ -651,7 +651,7 @@ class TaxRateApi:
     @validate_call
     def update_tax_rate_with_http_info(
         self,
-        tax_rate_id: Annotated[StrictStr, Field(description="税率ID")],
+        tax_rate_id: Annotated[StrictStr, Field(description="Tax Rate ID")],
         update_tax_rate_param: Optional[UpdateTaxRateParam] = None,
         _request_timeout: Union[
             None,
@@ -666,11 +666,11 @@ class TaxRateApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[None]:
-        """税率を更新
+        """Update Tax Rate
 
-        税率を更新します。 
+        Update tax rate. 
 
-        :param tax_rate_id: 税率ID (required)
+        :param tax_rate_id: Tax Rate ID (required)
         :type tax_rate_id: str
         :param update_tax_rate_param:
         :type update_tax_rate_param: UpdateTaxRateParam
@@ -724,7 +724,7 @@ class TaxRateApi:
     @validate_call
     def update_tax_rate_without_preload_content(
         self,
-        tax_rate_id: Annotated[StrictStr, Field(description="税率ID")],
+        tax_rate_id: Annotated[StrictStr, Field(description="Tax Rate ID")],
         update_tax_rate_param: Optional[UpdateTaxRateParam] = None,
         _request_timeout: Union[
             None,
@@ -739,11 +739,11 @@ class TaxRateApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """税率を更新
+        """Update Tax Rate
 
-        税率を更新します。 
+        Update tax rate. 
 
-        :param tax_rate_id: 税率ID (required)
+        :param tax_rate_id: Tax Rate ID (required)
         :type tax_rate_id: str
         :param update_tax_rate_param:
         :type update_tax_rate_param: UpdateTaxRateParam

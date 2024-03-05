@@ -6,15 +6,15 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **type** | [**UnitType**](UnitType.md) |  | 
-**upper_count** | **int** | 上限値 | 
-**metering_unit_name** | **str** | 計測ユニット名 | 
+**upper_count** | **int** | Upper limit | 
+**metering_unit_name** | **str** | Metering unit name | 
 **aggregate_usage** | [**AggregateUsage**](AggregateUsage.md) |  | [optional] 
-**name** | **str** | 名前 | 
-**display_name** | **str** | 表示名 | 
-**description** | **str** | 説明 | 
+**name** | **str** | Name | 
+**display_name** | **str** | Display Name | 
+**description** | **str** | Description | 
 **currency** | [**Currency**](Currency.md) |  | 
 **tiers** | [**List[PricingTier]**](PricingTier.md) |  | 
-**unit_amount** | **int** | 料金 | 
+**unit_amount** | **int** | Price | 
 **recurring_interval** | [**RecurringInterval**](RecurringInterval.md) |  | 
 
 ## Example

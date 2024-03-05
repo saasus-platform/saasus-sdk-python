@@ -5,12 +5,12 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**name** | **str** | 税率の名前 | 
-**display_name** | **str** | 表示名 | 
-**percentage** | **float** | 税率 | 
-**inclusive** | **bool** | 内税かどうか | 
-**country** | **str** | ISO 3166-1 alpha-2 の国コード | 
-**description** | **str** | 説明 | 
+**name** | **str** | Name of tax rate | 
+**display_name** | **str** | Display name | 
+**percentage** | **float** | Percentage | 
+**inclusive** | **bool** | Inclusive or not | 
+**country** | **str** | Country code of ISO 3166-1 alpha-2 | 
+**description** | **str** | Description | 
 
 ## Example
 

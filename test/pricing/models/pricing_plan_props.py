@@ -32,10 +32,10 @@ class PricingPlanProps(BaseModel):
     PricingPlanProps
     """ # noqa: E501
     pricing_menus: List[PricingMenu]
-    name: StrictStr = Field(description="料金プラン名")
-    display_name: StrictStr = Field(description="料金プラン表示名")
-    description: StrictStr = Field(description="料金プラン説明")
-    used: StrictBool = Field(description="料金プランの使用済み設定")
+    name: StrictStr = Field(description="Pricing plan name")
+    display_name: StrictStr = Field(description="Pricing plan display name")
+    description: StrictStr = Field(description="Pricing plan description")
+    used: StrictBool = Field(description="Pricing plan used settings")
     __properties: ClassVar[List[str]] = ["pricing_menus", "name", "display_name", "description", "used"]
 
     model_config = {

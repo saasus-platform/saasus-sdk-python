@@ -5,8 +5,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**display_name** | **str** | 表示名 | 
-**description** | **str** | 説明 | 
+**display_name** | **str** | Display name | 
+**description** | **str** | Description | 
 
 ## Example
 

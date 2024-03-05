@@ -30,10 +30,10 @@ class SavePricingMenuParam(BaseModel):
     """
     SavePricingMenuParam
     """ # noqa: E501
-    name: StrictStr = Field(description="メニュー名")
-    display_name: StrictStr = Field(description="メニュー表示名")
-    description: StrictStr = Field(description="メニュー説明")
-    unit_ids: List[StrictStr] = Field(description="追加するユニットID")
+    name: StrictStr = Field(description="Menu name")
+    display_name: StrictStr = Field(description="Menu display name")
+    description: StrictStr = Field(description="Menu description")
+    unit_ids: List[StrictStr] = Field(description="Unit IDs to add")
     __properties: ClassVar[List[str]] = ["name", "display_name", "description", "unit_ids"]
 
     model_config = {

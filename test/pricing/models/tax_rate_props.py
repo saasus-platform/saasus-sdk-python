@@ -31,12 +31,12 @@ class TaxRateProps(BaseModel):
     """
     TaxRateProps
     """ # noqa: E501
-    name: StrictStr = Field(description="税率の名前")
-    display_name: StrictStr = Field(description="表示名")
-    percentage: Union[StrictFloat, StrictInt] = Field(description="税率")
-    inclusive: StrictBool = Field(description="内税かどうか")
-    country: Annotated[str, Field(strict=True)] = Field(description="ISO 3166-1 alpha-2 の国コード")
-    description: StrictStr = Field(description="説明")
+    name: StrictStr = Field(description="Name of tax rate")
+    display_name: StrictStr = Field(description="Display name")
+    percentage: Union[StrictFloat, StrictInt] = Field(description="Percentage")
+    inclusive: StrictBool = Field(description="Inclusive or not")
+    country: Annotated[str, Field(strict=True)] = Field(description="Country code of ISO 3166-1 alpha-2")
+    description: StrictStr = Field(description="Description")
     __properties: ClassVar[List[str]] = ["name", "display_name", "percentage", "inclusive", "country", "description"]
 
     @field_validator('country')

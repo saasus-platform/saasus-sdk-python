@@ -4,17 +4,17 @@ All URIs are relative to *https://api.saasus.io/v1/pricing*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**create_tax_rate**](TaxRateApi.md#create_tax_rate) | **POST** /tax-rates | 税率の作成
-[**get_tax_rates**](TaxRateApi.md#get_tax_rates) | **GET** /tax-rates | 税率を取得します
-[**update_tax_rate**](TaxRateApi.md#update_tax_rate) | **PATCH** /tax-rates/{tax_rate_id} | 税率を更新
+[**create_tax_rate**](TaxRateApi.md#create_tax_rate) | **POST** /tax-rates | Create Tax Rate
+[**get_tax_rates**](TaxRateApi.md#get_tax_rates) | **GET** /tax-rates | Get Tax Rates
+[**update_tax_rate**](TaxRateApi.md#update_tax_rate) | **PATCH** /tax-rates/{tax_rate_id} | Update Tax Rate
 
 
 # **create_tax_rate**
 > TaxRate create_tax_rate(body=body)
 
-税率の作成
+Create Tax Rate
 
-税率を作成します。 
+Creates a tax rate. 
 
 ### Example
 
@@ -52,7 +52,7 @@ with saasus_sdk_python.src.pricing.ApiClient(configuration) as api_client:
     body = saasus_sdk_python.src.pricing.TaxRateProps() # TaxRateProps |  (optional)
 
     try:
-        # 税率の作成
+        # Create Tax Rate
         api_response = api_instance.create_tax_rate(body=body)
         print("The response of TaxRateApi->create_tax_rate:\n")
         pprint(api_response)
@@ -95,9 +95,9 @@ Name | Type | Description  | Notes
 # **get_tax_rates**
 > TaxRates get_tax_rates()
 
-税率を取得します
+Get Tax Rates
 
-税率を取得します。 
+Get all Tax Rates 
 
 ### Example
 
@@ -133,7 +133,7 @@ with saasus_sdk_python.src.pricing.ApiClient(configuration) as api_client:
     api_instance = saasus_sdk_python.src.pricing.TaxRateApi(api_client)
 
     try:
-        # 税率を取得します
+        # Get Tax Rates
         api_response = api_instance.get_tax_rates()
         print("The response of TaxRateApi->get_tax_rates:\n")
         pprint(api_response)
@@ -172,9 +172,9 @@ This endpoint does not need any parameter.
 # **update_tax_rate**
 > update_tax_rate(tax_rate_id, update_tax_rate_param=update_tax_rate_param)
 
-税率を更新
+Update Tax Rate
 
-税率を更新します。 
+Update tax rate. 
 
 ### Example
 
@@ -208,11 +208,11 @@ configuration = saasus_sdk_python.src.pricing.Configuration(
 with saasus_sdk_python.src.pricing.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = saasus_sdk_python.src.pricing.TaxRateApi(api_client)
-    tax_rate_id = 'tax_rate_id_example' # str | 税率ID
+    tax_rate_id = 'tax_rate_id_example' # str | Tax Rate ID
     update_tax_rate_param = saasus_sdk_python.src.pricing.UpdateTaxRateParam() # UpdateTaxRateParam |  (optional)
 
     try:
-        # 税率を更新
+        # Update Tax Rate
         api_instance.update_tax_rate(tax_rate_id, update_tax_rate_param=update_tax_rate_param)
     except Exception as e:
         print("Exception when calling TaxRateApi->update_tax_rate: %s\n" % e)
@@ -225,7 +225,7 @@ with saasus_sdk_python.src.pricing.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **tax_rate_id** | **str**| 税率ID | 
+ **tax_rate_id** | **str**| Tax Rate ID | 
  **update_tax_rate_param** | [**UpdateTaxRateParam**](UpdateTaxRateParam.md)|  | [optional] 
 
 ### Return type

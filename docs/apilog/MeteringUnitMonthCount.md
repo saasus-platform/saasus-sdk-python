@@ -5,9 +5,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**metering_unit_name** | **str** | 計測ユニット名 | 
-**month** | **str** | 月 | 
-**count** | **int** | 件数 | 
+**metering_unit_name** | **str** | Metering unit name | 
+**month** | **str** | Month | 
+**count** | **int** | Count | 
 
 ## Example
 

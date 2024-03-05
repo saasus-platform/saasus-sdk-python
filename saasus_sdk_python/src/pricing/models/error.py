@@ -30,8 +30,8 @@ class Error(BaseModel):
     """
     Error
     """ # noqa: E501
-    type: StrictStr = Field(description="エラータイプ")
-    message: StrictStr = Field(description="エラーメッセージ")
+    type: StrictStr = Field(description="Error type")
+    message: StrictStr = Field(description="Error message")
     __properties: ClassVar[List[str]] = ["type", "message"]
 
     model_config = {

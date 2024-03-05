@@ -32,9 +32,9 @@ class PricingUnitBaseProps(BaseModel):
     """
     PricingUnitBaseProps
     """ # noqa: E501
-    name: StrictStr = Field(description="名前")
-    display_name: StrictStr = Field(description="表示名")
-    description: StrictStr = Field(description="説明")
+    name: StrictStr = Field(description="Name")
+    display_name: StrictStr = Field(description="Display Name")
+    description: StrictStr = Field(description="Description")
     type: UnitType
     currency: Currency
     __properties: ClassVar[List[str]] = ["name", "display_name", "description", "type", "currency"]

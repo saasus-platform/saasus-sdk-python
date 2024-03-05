@@ -31,12 +31,12 @@ class PricingPlan(BaseModel):
     """
     PricingPlan
     """ # noqa: E501
-    name: StrictStr = Field(description="料金プラン名")
-    display_name: StrictStr = Field(description="料金プラン表示名")
-    description: StrictStr = Field(description="料金プラン説明")
-    used: StrictBool = Field(description="料金プランの使用済み設定")
+    name: StrictStr = Field(description="Pricing plan name")
+    display_name: StrictStr = Field(description="Pricing plan display name")
+    description: StrictStr = Field(description="Pricing plan description")
+    used: StrictBool = Field(description="Pricing plan used settings")
     pricing_menus: List[PricingMenu]
-    id: StrictStr = Field(description="ユニバーサル一意識別子")
+    id: StrictStr = Field(description="Universally Unique Identifier")
     __properties: ClassVar[List[str]] = ["name", "display_name", "description", "used", "pricing_menus", "id"]
 
     model_config = {

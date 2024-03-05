@@ -30,10 +30,10 @@ class PricingTier(BaseModel):
     """
     PricingTier
     """ # noqa: E501
-    up_to: StrictInt = Field(description="上限")
-    unit_amount: StrictInt = Field(description="単位金額")
-    flat_amount: StrictInt = Field(description="固定金額")
-    inf: StrictBool = Field(description="無限")
+    up_to: StrictInt = Field(description="Upper limit")
+    unit_amount: StrictInt = Field(description="Amount per unit")
+    flat_amount: StrictInt = Field(description="Fixed amount")
+    inf: StrictBool = Field(description="Indefinite")
     __properties: ClassVar[List[str]] = ["up_to", "unit_amount", "flat_amount", "inf"]
 
     model_config = {

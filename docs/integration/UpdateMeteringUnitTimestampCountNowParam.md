@@ -6,7 +6,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **method** | [**UpdateMeteringUnitTimestampCountMethod**](UpdateMeteringUnitTimestampCountMethod.md) |  | 
-**count** | **int** | 件数 | 
+**count** | **int** | Count | 
 
 ## Example
 

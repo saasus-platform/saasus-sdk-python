@@ -32,7 +32,7 @@ class UpdateMeteringUnitTimestampCountParam(BaseModel):
     UpdateMeteringUnitTimestampCountParam
     """ # noqa: E501
     method: UpdateMeteringUnitTimestampCountMethod
-    count: StrictInt = Field(description="件数")
+    count: StrictInt = Field(description="Count")
     __properties: ClassVar[List[str]] = ["method", "count"]
 
     model_config = {

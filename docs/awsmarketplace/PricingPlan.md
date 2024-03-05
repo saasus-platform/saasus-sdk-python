@@ -5,12 +5,12 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**name** | **str** | 料金プラン名 | 
-**display_name** | **str** | 料金プラン表示名 | 
-**description** | **str** | 料金プラン説明 | 
-**used** | **bool** | 料金プランの使用済み設定 | 
+**name** | **str** | Pricing plan name | 
+**display_name** | **str** | Pricing plan display name | 
+**description** | **str** | Pricing plan description | 
+**used** | **bool** | Pricing plan used settings | 
 **pricing_menus** | [**List[PricingMenu]**](PricingMenu.md) |  | 
-**id** | **str** | ユニバーサル一意識別子 | 
+**id** | **str** | Universally Unique Identifier | 
 
 ## Example
 

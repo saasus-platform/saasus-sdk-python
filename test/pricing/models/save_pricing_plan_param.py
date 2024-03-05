@@ -30,10 +30,10 @@ class SavePricingPlanParam(BaseModel):
     """
     SavePricingPlanParam
     """ # noqa: E501
-    name: StrictStr = Field(description="料金プラン名")
-    display_name: StrictStr = Field(description="料金プラン表示名")
-    description: StrictStr = Field(description="料金プラン説明")
-    menu_ids: List[StrictStr] = Field(description="メニューID（料金プランに追加するメニューID）")
+    name: StrictStr = Field(description="Pricing plan name")
+    display_name: StrictStr = Field(description="Pricing plan display name")
+    description: StrictStr = Field(description="Pricing plan description")
+    menu_ids: List[StrictStr] = Field(description="Menu ID to be added to the pricing plan")
     __properties: ClassVar[List[str]] = ["name", "display_name", "description", "menu_ids"]
 
     model_config = {

@@ -1,6 +1,6 @@
 # Currency
 
-計測単位の通貨
+Unit of currency
 
 ## Properties
 

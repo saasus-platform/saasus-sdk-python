@@ -31,12 +31,12 @@ class MeteringUnit(BaseModel):
     """
     MeteringUnit
     """ # noqa: E501
-    unit_name: StrictStr = Field(description="計測ユニット名")
+    unit_name: StrictStr = Field(description="Metering unit name")
     aggregate_usage: Optional[AggregateUsage] = None
-    display_name: StrictStr = Field(description="表示名")
-    description: StrictStr = Field(description="説明")
-    id: StrictStr = Field(description="ユニバーサル一意識別子")
-    used: StrictBool = Field(description="メータリングユニットの使用済み設定")
+    display_name: StrictStr = Field(description="Display name")
+    description: StrictStr = Field(description="Description")
+    id: StrictStr = Field(description="Universally Unique Identifier")
+    used: StrictBool = Field(description="Metering unit used settings")
     __properties: ClassVar[List[str]] = ["unit_name", "aggregate_usage", "display_name", "description", "id", "used"]
 
     model_config = {

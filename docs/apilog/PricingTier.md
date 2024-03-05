@@ -5,10 +5,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**up_to** | **int** | 上限 | 
-**unit_amount** | **int** | 単位金額 | 
-**flat_amount** | **int** | 固定金額 | 
-**inf** | **bool** | 無限 | 
+**up_to** | **int** | Upper limit | 
+**unit_amount** | **int** | Amount per unit | 
+**flat_amount** | **int** | Fixed amount | 
+**inf** | **bool** | Indefinite | 
 
 ## Example
 

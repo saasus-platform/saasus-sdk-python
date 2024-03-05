@@ -31,10 +31,10 @@ class MeteringUnitProps(BaseModel):
     """
     MeteringUnitProps
     """ # noqa: E501
-    unit_name: StrictStr = Field(description="計測ユニット名")
+    unit_name: StrictStr = Field(description="Metering unit name")
     aggregate_usage: Optional[AggregateUsage] = None
-    display_name: StrictStr = Field(description="表示名")
-    description: StrictStr = Field(description="説明")
+    display_name: StrictStr = Field(description="Display name")
+    description: StrictStr = Field(description="Description")
     __properties: ClassVar[List[str]] = ["unit_name", "aggregate_usage", "display_name", "description"]
 
     model_config = {

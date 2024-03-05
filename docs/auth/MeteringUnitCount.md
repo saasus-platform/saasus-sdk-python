@@ -5,8 +5,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**timestamp** | **int** | 日時 | 
-**count** | **int** | 件数 | 
+**timestamp** | **int** | Timestamp | 
+**count** | **int** | Count | 
 
 ## Example
 

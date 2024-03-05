@@ -35,19 +35,19 @@ class PricingTieredUsageUnit(BaseModel):
     """
     PricingTieredUsageUnit
     """ # noqa: E501
-    upper_count: StrictInt = Field(description="上限値")
-    metering_unit_name: StrictStr = Field(description="計測ユニット名")
+    upper_count: StrictInt = Field(description="Upper limit")
+    metering_unit_name: StrictStr = Field(description="Metering unit name")
     aggregate_usage: Optional[AggregateUsage] = None
-    name: StrictStr = Field(description="名前")
-    display_name: StrictStr = Field(description="表示名")
-    description: StrictStr = Field(description="説明")
+    name: StrictStr = Field(description="Name")
+    display_name: StrictStr = Field(description="Display Name")
+    description: StrictStr = Field(description="Description")
     type: UnitType
     currency: Currency
     tiers: List[PricingTier]
-    id: StrictStr = Field(description="ユニバーサル一意識別子")
-    metering_unit_id: StrictStr = Field(description="ユニバーサル一意識別子")
+    id: StrictStr = Field(description="Universally Unique Identifier")
+    metering_unit_id: StrictStr = Field(description="Universally Unique Identifier")
     recurring_interval: RecurringInterval
-    used: StrictBool = Field(description="使用済みかどうかを示す")
+    used: StrictBool = Field(description="Indicates if the unit is used")
     __properties: ClassVar[List[str]] = ["upper_count", "metering_unit_name", "aggregate_usage", "name", "display_name", "description", "type", "currency", "tiers", "id", "metering_unit_id", "recurring_interval", "used"]
 
     model_config = {

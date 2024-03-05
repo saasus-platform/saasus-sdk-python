@@ -33,12 +33,12 @@ class PricingFixedUnitForSave(BaseModel):
     """
     PricingFixedUnitForSave
     """ # noqa: E501
-    name: StrictStr = Field(description="名前")
-    display_name: StrictStr = Field(description="表示名")
-    description: StrictStr = Field(description="説明")
+    name: StrictStr = Field(description="Name")
+    display_name: StrictStr = Field(description="Display Name")
+    description: StrictStr = Field(description="Description")
     type: UnitType
     currency: Currency
-    unit_amount: StrictInt = Field(description="料金")
+    unit_amount: StrictInt = Field(description="Price")
     recurring_interval: RecurringInterval
     __properties: ClassVar[List[str]] = ["name", "display_name", "description", "type", "currency", "unit_amount", "recurring_interval"]
 

@@ -5,10 +5,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**unit_name** | **str** | 計測ユニット名 | 
+**unit_name** | **str** | Metering unit name | 
 **aggregate_usage** | [**AggregateUsage**](AggregateUsage.md) |  | [optional] 
-**display_name** | **str** | 表示名 | 
-**description** | **str** | 説明 | 
+**display_name** | **str** | Display name | 
+**description** | **str** | Description | 
 
 ## Example
 

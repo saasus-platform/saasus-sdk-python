@@ -5,17 +5,17 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**upper_count** | **int** | 上限値 | 
-**unit_amount** | **int** | 使用量あたりの金額 | 
-**metering_unit_name** | **str** | 計測ユニット名 | 
+**upper_count** | **int** | Upper limit | 
+**unit_amount** | **int** | Amount per usage | 
+**metering_unit_name** | **str** | Metering unit name | 
 **aggregate_usage** | [**AggregateUsage**](AggregateUsage.md) |  | [optional] 
-**name** | **str** | 名前 | 
-**display_name** | **str** | 表示名 | 
-**description** | **str** | 説明 | 
+**name** | **str** | Name | 
+**display_name** | **str** | Display Name | 
+**description** | **str** | Description | 
 **type** | [**UnitType**](UnitType.md) |  | 
 **currency** | [**Currency**](Currency.md) |  | 
-**id** | **str** | ユニバーサル一意識別子 | 
-**metering_unit_id** | **str** | ユニバーサル一意識別子 | 
+**id** | **str** | Universally Unique Identifier | 
+**metering_unit_id** | **str** | Universally Unique Identifier | 
 **recurring_interval** | [**RecurringInterval**](RecurringInterval.md) |  | 
 **used** | **bool** |  | 
 

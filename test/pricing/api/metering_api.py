@@ -76,9 +76,9 @@ class MeteringApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> MeteringUnit:
-        """メータリングユニットの作成
+        """Create Metering Unit
 
-        メータリングユニットを作成します。 
+        Create a metering unit. 
 
         :param body:
         :type body: MeteringUnitProps
@@ -145,9 +145,9 @@ class MeteringApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[MeteringUnit]:
-        """メータリングユニットの作成
+        """Create Metering Unit
 
-        メータリングユニットを作成します。 
+        Create a metering unit. 
 
         :param body:
         :type body: MeteringUnitProps
@@ -214,9 +214,9 @@ class MeteringApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """メータリングユニットの作成
+        """Create Metering Unit
 
-        メータリングユニットを作成します。 
+        Create a metering unit. 
 
         :param body:
         :type body: MeteringUnitProps
@@ -339,7 +339,7 @@ class MeteringApi:
     @validate_call
     def delete_metering_unit_by_id(
         self,
-        metering_unit_id: Annotated[StrictStr, Field(description="メータリングユニットID")],
+        metering_unit_id: Annotated[StrictStr, Field(description="Metering Unit ID")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -353,11 +353,11 @@ class MeteringApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> None:
-        """メータリングユニットを削除
+        """Delete Metering Unit
 
-        メータリングユニットを削除します。 
+        Delete metering unit. 
 
-        :param metering_unit_id: メータリングユニットID (required)
+        :param metering_unit_id: Metering Unit ID (required)
         :type metering_unit_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -408,7 +408,7 @@ class MeteringApi:
     @validate_call
     def delete_metering_unit_by_id_with_http_info(
         self,
-        metering_unit_id: Annotated[StrictStr, Field(description="メータリングユニットID")],
+        metering_unit_id: Annotated[StrictStr, Field(description="Metering Unit ID")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -422,11 +422,11 @@ class MeteringApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[None]:
-        """メータリングユニットを削除
+        """Delete Metering Unit
 
-        メータリングユニットを削除します。 
+        Delete metering unit. 
 
-        :param metering_unit_id: メータリングユニットID (required)
+        :param metering_unit_id: Metering Unit ID (required)
         :type metering_unit_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -477,7 +477,7 @@ class MeteringApi:
     @validate_call
     def delete_metering_unit_by_id_without_preload_content(
         self,
-        metering_unit_id: Annotated[StrictStr, Field(description="メータリングユニットID")],
+        metering_unit_id: Annotated[StrictStr, Field(description="Metering Unit ID")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -491,11 +491,11 @@ class MeteringApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """メータリングユニットを削除
+        """Delete Metering Unit
 
-        メータリングユニットを削除します。 
+        Delete metering unit. 
 
-        :param metering_unit_id: メータリングユニットID (required)
+        :param metering_unit_id: Metering Unit ID (required)
         :type metering_unit_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -603,9 +603,9 @@ class MeteringApi:
     @validate_call
     def delete_metering_unit_timestamp_count(
         self,
-        tenant_id: Annotated[StrictStr, Field(description="テナントID")],
-        metering_unit_name: Annotated[StrictStr, Field(description="計測ユニット名")],
-        timestamp: Annotated[StrictInt, Field(description="タイムスタンプ")],
+        tenant_id: Annotated[StrictStr, Field(description="Tenant ID")],
+        metering_unit_name: Annotated[StrictStr, Field(description="Metering Unit Name")],
+        timestamp: Annotated[StrictInt, Field(description="Timestamp")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -619,15 +619,15 @@ class MeteringApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> None:
-        """指定したタイムスタンプのメータリングユニットカウントを削除
+        """Delete Metering Unit Count for Specified Timestamp
 
-        指定したタイムスタンプのメータリングユニットカウントを削除します。
+        Deletes metering unit count for the specified timestamp. 
 
-        :param tenant_id: テナントID (required)
+        :param tenant_id: Tenant ID (required)
         :type tenant_id: str
-        :param metering_unit_name: 計測ユニット名 (required)
+        :param metering_unit_name: Metering Unit Name (required)
         :type metering_unit_name: str
-        :param timestamp: タイムスタンプ (required)
+        :param timestamp: Timestamp (required)
         :type timestamp: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -679,9 +679,9 @@ class MeteringApi:
     @validate_call
     def delete_metering_unit_timestamp_count_with_http_info(
         self,
-        tenant_id: Annotated[StrictStr, Field(description="テナントID")],
-        metering_unit_name: Annotated[StrictStr, Field(description="計測ユニット名")],
-        timestamp: Annotated[StrictInt, Field(description="タイムスタンプ")],
+        tenant_id: Annotated[StrictStr, Field(description="Tenant ID")],
+        metering_unit_name: Annotated[StrictStr, Field(description="Metering Unit Name")],
+        timestamp: Annotated[StrictInt, Field(description="Timestamp")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -695,15 +695,15 @@ class MeteringApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[None]:
-        """指定したタイムスタンプのメータリングユニットカウントを削除
+        """Delete Metering Unit Count for Specified Timestamp
 
-        指定したタイムスタンプのメータリングユニットカウントを削除します。
+        Deletes metering unit count for the specified timestamp. 
 
-        :param tenant_id: テナントID (required)
+        :param tenant_id: Tenant ID (required)
         :type tenant_id: str
-        :param metering_unit_name: 計測ユニット名 (required)
+        :param metering_unit_name: Metering Unit Name (required)
         :type metering_unit_name: str
-        :param timestamp: タイムスタンプ (required)
+        :param timestamp: Timestamp (required)
         :type timestamp: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -755,9 +755,9 @@ class MeteringApi:
     @validate_call
     def delete_metering_unit_timestamp_count_without_preload_content(
         self,
-        tenant_id: Annotated[StrictStr, Field(description="テナントID")],
-        metering_unit_name: Annotated[StrictStr, Field(description="計測ユニット名")],
-        timestamp: Annotated[StrictInt, Field(description="タイムスタンプ")],
+        tenant_id: Annotated[StrictStr, Field(description="Tenant ID")],
+        metering_unit_name: Annotated[StrictStr, Field(description="Metering Unit Name")],
+        timestamp: Annotated[StrictInt, Field(description="Timestamp")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -771,15 +771,15 @@ class MeteringApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """指定したタイムスタンプのメータリングユニットカウントを削除
+        """Delete Metering Unit Count for Specified Timestamp
 
-        指定したタイムスタンプのメータリングユニットカウントを削除します。
+        Deletes metering unit count for the specified timestamp. 
 
-        :param tenant_id: テナントID (required)
+        :param tenant_id: Tenant ID (required)
         :type tenant_id: str
-        :param metering_unit_name: 計測ユニット名 (required)
+        :param metering_unit_name: Metering Unit Name (required)
         :type metering_unit_name: str
-        :param timestamp: タイムスタンプ (required)
+        :param timestamp: Timestamp (required)
         :type timestamp: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -894,9 +894,9 @@ class MeteringApi:
     @validate_call
     def get_metering_unit_date_count_by_tenant_id_and_unit_name_and_date(
         self,
-        tenant_id: Annotated[StrictStr, Field(description="テナントID")],
-        metering_unit_name: Annotated[StrictStr, Field(description="計測ユニット名")],
-        var_date: Annotated[StrictStr, Field(description="日")],
+        tenant_id: Annotated[StrictStr, Field(description="Tenant ID")],
+        metering_unit_name: Annotated[StrictStr, Field(description="Metering Unit Name")],
+        var_date: Annotated[StrictStr, Field(description="Date")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -910,15 +910,15 @@ class MeteringApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> MeteringUnitDateCount:
-        """指定した日付のメータリングユニットカウントを取得
+        """Get Metering Unit Count for Specific Date
 
-        指定した日付のメータリングユニットカウントを取得します。 
+        Gets the metering unit count for a specific date. 
 
-        :param tenant_id: テナントID (required)
+        :param tenant_id: Tenant ID (required)
         :type tenant_id: str
-        :param metering_unit_name: 計測ユニット名 (required)
+        :param metering_unit_name: Metering Unit Name (required)
         :type metering_unit_name: str
-        :param var_date: 日 (required)
+        :param var_date: Date (required)
         :type var_date: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -970,9 +970,9 @@ class MeteringApi:
     @validate_call
     def get_metering_unit_date_count_by_tenant_id_and_unit_name_and_date_with_http_info(
         self,
-        tenant_id: Annotated[StrictStr, Field(description="テナントID")],
-        metering_unit_name: Annotated[StrictStr, Field(description="計測ユニット名")],
-        var_date: Annotated[StrictStr, Field(description="日")],
+        tenant_id: Annotated[StrictStr, Field(description="Tenant ID")],
+        metering_unit_name: Annotated[StrictStr, Field(description="Metering Unit Name")],
+        var_date: Annotated[StrictStr, Field(description="Date")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -986,15 +986,15 @@ class MeteringApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[MeteringUnitDateCount]:
-        """指定した日付のメータリングユニットカウントを取得
+        """Get Metering Unit Count for Specific Date
 
-        指定した日付のメータリングユニットカウントを取得します。 
+        Gets the metering unit count for a specific date. 
 
-        :param tenant_id: テナントID (required)
+        :param tenant_id: Tenant ID (required)
         :type tenant_id: str
-        :param metering_unit_name: 計測ユニット名 (required)
+        :param metering_unit_name: Metering Unit Name (required)
         :type metering_unit_name: str
-        :param var_date: 日 (required)
+        :param var_date: Date (required)
         :type var_date: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -1046,9 +1046,9 @@ class MeteringApi:
     @validate_call
     def get_metering_unit_date_count_by_tenant_id_and_unit_name_and_date_without_preload_content(
         self,
-        tenant_id: Annotated[StrictStr, Field(description="テナントID")],
-        metering_unit_name: Annotated[StrictStr, Field(description="計測ユニット名")],
-        var_date: Annotated[StrictStr, Field(description="日")],
+        tenant_id: Annotated[StrictStr, Field(description="Tenant ID")],
+        metering_unit_name: Annotated[StrictStr, Field(description="Metering Unit Name")],
+        var_date: Annotated[StrictStr, Field(description="Date")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1062,15 +1062,15 @@ class MeteringApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """指定した日付のメータリングユニットカウントを取得
+        """Get Metering Unit Count for Specific Date
 
-        指定した日付のメータリングユニットカウントを取得します。 
+        Gets the metering unit count for a specific date. 
 
-        :param tenant_id: テナントID (required)
+        :param tenant_id: Tenant ID (required)
         :type tenant_id: str
-        :param metering_unit_name: 計測ユニット名 (required)
+        :param metering_unit_name: Metering Unit Name (required)
         :type metering_unit_name: str
-        :param var_date: 日 (required)
+        :param var_date: Date (required)
         :type var_date: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -1185,10 +1185,10 @@ class MeteringApi:
     @validate_call
     def get_metering_unit_date_count_by_tenant_id_and_unit_name_and_date_period(
         self,
-        tenant_id: Annotated[StrictStr, Field(description="テナントID")],
-        metering_unit_name: Annotated[StrictStr, Field(description="計測ユニット名")],
-        start_timestamp: Annotated[Optional[StrictInt], Field(description="開始日時")] = None,
-        end_timestamp: Annotated[Optional[StrictInt], Field(description="終了日時")] = None,
+        tenant_id: Annotated[StrictStr, Field(description="Tenant ID")],
+        metering_unit_name: Annotated[StrictStr, Field(description="Metering Unit Name")],
+        start_timestamp: Annotated[Optional[StrictInt], Field(description="Start Date-Time")] = None,
+        end_timestamp: Annotated[Optional[StrictInt], Field(description="End Date-Time")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1202,17 +1202,17 @@ class MeteringApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> MeteringUnitDatePeriodCounts:
-        """指定した日時期間のメータリングユニットカウントを取得
+        """Obtain metering unit counts for a specified date/time period
 
-        指定した日時期間のメータリングユニットカウントを取得します。 
+        Obtain metering unit counts for a specified date/time period. 
 
-        :param tenant_id: テナントID (required)
+        :param tenant_id: Tenant ID (required)
         :type tenant_id: str
-        :param metering_unit_name: 計測ユニット名 (required)
+        :param metering_unit_name: Metering Unit Name (required)
         :type metering_unit_name: str
-        :param start_timestamp: 開始日時
+        :param start_timestamp: Start Date-Time
         :type start_timestamp: int
-        :param end_timestamp: 終了日時
+        :param end_timestamp: End Date-Time
         :type end_timestamp: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -1265,10 +1265,10 @@ class MeteringApi:
     @validate_call
     def get_metering_unit_date_count_by_tenant_id_and_unit_name_and_date_period_with_http_info(
         self,
-        tenant_id: Annotated[StrictStr, Field(description="テナントID")],
-        metering_unit_name: Annotated[StrictStr, Field(description="計測ユニット名")],
-        start_timestamp: Annotated[Optional[StrictInt], Field(description="開始日時")] = None,
-        end_timestamp: Annotated[Optional[StrictInt], Field(description="終了日時")] = None,
+        tenant_id: Annotated[StrictStr, Field(description="Tenant ID")],
+        metering_unit_name: Annotated[StrictStr, Field(description="Metering Unit Name")],
+        start_timestamp: Annotated[Optional[StrictInt], Field(description="Start Date-Time")] = None,
+        end_timestamp: Annotated[Optional[StrictInt], Field(description="End Date-Time")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1282,17 +1282,17 @@ class MeteringApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[MeteringUnitDatePeriodCounts]:
-        """指定した日時期間のメータリングユニットカウントを取得
+        """Obtain metering unit counts for a specified date/time period
 
-        指定した日時期間のメータリングユニットカウントを取得します。 
+        Obtain metering unit counts for a specified date/time period. 
 
-        :param tenant_id: テナントID (required)
+        :param tenant_id: Tenant ID (required)
         :type tenant_id: str
-        :param metering_unit_name: 計測ユニット名 (required)
+        :param metering_unit_name: Metering Unit Name (required)
         :type metering_unit_name: str
-        :param start_timestamp: 開始日時
+        :param start_timestamp: Start Date-Time
         :type start_timestamp: int
-        :param end_timestamp: 終了日時
+        :param end_timestamp: End Date-Time
         :type end_timestamp: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -1345,10 +1345,10 @@ class MeteringApi:
     @validate_call
     def get_metering_unit_date_count_by_tenant_id_and_unit_name_and_date_period_without_preload_content(
         self,
-        tenant_id: Annotated[StrictStr, Field(description="テナントID")],
-        metering_unit_name: Annotated[StrictStr, Field(description="計測ユニット名")],
-        start_timestamp: Annotated[Optional[StrictInt], Field(description="開始日時")] = None,
-        end_timestamp: Annotated[Optional[StrictInt], Field(description="終了日時")] = None,
+        tenant_id: Annotated[StrictStr, Field(description="Tenant ID")],
+        metering_unit_name: Annotated[StrictStr, Field(description="Metering Unit Name")],
+        start_timestamp: Annotated[Optional[StrictInt], Field(description="Start Date-Time")] = None,
+        end_timestamp: Annotated[Optional[StrictInt], Field(description="End Date-Time")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1362,17 +1362,17 @@ class MeteringApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """指定した日時期間のメータリングユニットカウントを取得
+        """Obtain metering unit counts for a specified date/time period
 
-        指定した日時期間のメータリングユニットカウントを取得します。 
+        Obtain metering unit counts for a specified date/time period. 
 
-        :param tenant_id: テナントID (required)
+        :param tenant_id: Tenant ID (required)
         :type tenant_id: str
-        :param metering_unit_name: 計測ユニット名 (required)
+        :param metering_unit_name: Metering Unit Name (required)
         :type metering_unit_name: str
-        :param start_timestamp: 開始日時
+        :param start_timestamp: Start Date-Time
         :type start_timestamp: int
-        :param end_timestamp: 終了日時
+        :param end_timestamp: End Date-Time
         :type end_timestamp: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -1495,8 +1495,8 @@ class MeteringApi:
     @validate_call
     def get_metering_unit_date_count_by_tenant_id_and_unit_name_today(
         self,
-        tenant_id: Annotated[StrictStr, Field(description="テナントID")],
-        metering_unit_name: Annotated[StrictStr, Field(description="計測ユニット名")],
+        tenant_id: Annotated[StrictStr, Field(description="Tenant ID")],
+        metering_unit_name: Annotated[StrictStr, Field(description="Metering Unit Name")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1510,13 +1510,13 @@ class MeteringApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> MeteringUnitDateCount:
-        """当日のメータリングユニットカウントを取得
+        """Get Metering Unit Count for the Current Day
 
-        当日のメータリングユニットカウントを取得します。
+        Get the metering unit count for the current day. 
 
-        :param tenant_id: テナントID (required)
+        :param tenant_id: Tenant ID (required)
         :type tenant_id: str
-        :param metering_unit_name: 計測ユニット名 (required)
+        :param metering_unit_name: Metering Unit Name (required)
         :type metering_unit_name: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -1567,8 +1567,8 @@ class MeteringApi:
     @validate_call
     def get_metering_unit_date_count_by_tenant_id_and_unit_name_today_with_http_info(
         self,
-        tenant_id: Annotated[StrictStr, Field(description="テナントID")],
-        metering_unit_name: Annotated[StrictStr, Field(description="計測ユニット名")],
+        tenant_id: Annotated[StrictStr, Field(description="Tenant ID")],
+        metering_unit_name: Annotated[StrictStr, Field(description="Metering Unit Name")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1582,13 +1582,13 @@ class MeteringApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[MeteringUnitDateCount]:
-        """当日のメータリングユニットカウントを取得
+        """Get Metering Unit Count for the Current Day
 
-        当日のメータリングユニットカウントを取得します。
+        Get the metering unit count for the current day. 
 
-        :param tenant_id: テナントID (required)
+        :param tenant_id: Tenant ID (required)
         :type tenant_id: str
-        :param metering_unit_name: 計測ユニット名 (required)
+        :param metering_unit_name: Metering Unit Name (required)
         :type metering_unit_name: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -1639,8 +1639,8 @@ class MeteringApi:
     @validate_call
     def get_metering_unit_date_count_by_tenant_id_and_unit_name_today_without_preload_content(
         self,
-        tenant_id: Annotated[StrictStr, Field(description="テナントID")],
-        metering_unit_name: Annotated[StrictStr, Field(description="計測ユニット名")],
+        tenant_id: Annotated[StrictStr, Field(description="Tenant ID")],
+        metering_unit_name: Annotated[StrictStr, Field(description="Metering Unit Name")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1654,13 +1654,13 @@ class MeteringApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """当日のメータリングユニットカウントを取得
+        """Get Metering Unit Count for the Current Day
 
-        当日のメータリングユニットカウントを取得します。
+        Get the metering unit count for the current day. 
 
-        :param tenant_id: テナントID (required)
+        :param tenant_id: Tenant ID (required)
         :type tenant_id: str
-        :param metering_unit_name: 計測ユニット名 (required)
+        :param metering_unit_name: Metering Unit Name (required)
         :type metering_unit_name: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -1771,8 +1771,8 @@ class MeteringApi:
     @validate_call
     def get_metering_unit_date_counts_by_tenant_id_and_date(
         self,
-        tenant_id: Annotated[StrictStr, Field(description="テナントID")],
-        var_date: Annotated[StrictStr, Field(description="日")],
+        tenant_id: Annotated[StrictStr, Field(description="Tenant ID")],
+        var_date: Annotated[StrictStr, Field(description="Date")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1786,13 +1786,13 @@ class MeteringApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> MeteringUnitDateCounts:
-        """指定日の全メータリングユニットカウントを取得
+        """Get All Metering Unit Counts for a Specified Date
 
-        指定した日の全メータリングユニットカウントを取得します。 
+        Gets the total metering unit count for the specified date. 
 
-        :param tenant_id: テナントID (required)
+        :param tenant_id: Tenant ID (required)
         :type tenant_id: str
-        :param var_date: 日 (required)
+        :param var_date: Date (required)
         :type var_date: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -1843,8 +1843,8 @@ class MeteringApi:
     @validate_call
     def get_metering_unit_date_counts_by_tenant_id_and_date_with_http_info(
         self,
-        tenant_id: Annotated[StrictStr, Field(description="テナントID")],
-        var_date: Annotated[StrictStr, Field(description="日")],
+        tenant_id: Annotated[StrictStr, Field(description="Tenant ID")],
+        var_date: Annotated[StrictStr, Field(description="Date")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1858,13 +1858,13 @@ class MeteringApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[MeteringUnitDateCounts]:
-        """指定日の全メータリングユニットカウントを取得
+        """Get All Metering Unit Counts for a Specified Date
 
-        指定した日の全メータリングユニットカウントを取得します。 
+        Gets the total metering unit count for the specified date. 
 
-        :param tenant_id: テナントID (required)
+        :param tenant_id: Tenant ID (required)
         :type tenant_id: str
-        :param var_date: 日 (required)
+        :param var_date: Date (required)
         :type var_date: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -1915,8 +1915,8 @@ class MeteringApi:
     @validate_call
     def get_metering_unit_date_counts_by_tenant_id_and_date_without_preload_content(
         self,
-        tenant_id: Annotated[StrictStr, Field(description="テナントID")],
-        var_date: Annotated[StrictStr, Field(description="日")],
+        tenant_id: Annotated[StrictStr, Field(description="Tenant ID")],
+        var_date: Annotated[StrictStr, Field(description="Date")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1930,13 +1930,13 @@ class MeteringApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """指定日の全メータリングユニットカウントを取得
+        """Get All Metering Unit Counts for a Specified Date
 
-        指定した日の全メータリングユニットカウントを取得します。 
+        Gets the total metering unit count for the specified date. 
 
-        :param tenant_id: テナントID (required)
+        :param tenant_id: Tenant ID (required)
         :type tenant_id: str
-        :param var_date: 日 (required)
+        :param var_date: Date (required)
         :type var_date: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -2047,9 +2047,9 @@ class MeteringApi:
     @validate_call
     def get_metering_unit_month_count_by_tenant_id_and_unit_name_and_month(
         self,
-        tenant_id: Annotated[StrictStr, Field(description="テナントID")],
-        metering_unit_name: Annotated[StrictStr, Field(description="計測ユニット名")],
-        month: Annotated[StrictStr, Field(description="月")],
+        tenant_id: Annotated[StrictStr, Field(description="Tenant ID")],
+        metering_unit_name: Annotated[StrictStr, Field(description="Metering Unit Name")],
+        month: Annotated[StrictStr, Field(description="Month")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2063,15 +2063,15 @@ class MeteringApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> MeteringUnitMonthCount:
-        """指定月のメータリングユニットカウントを取得
+        """Get the Metering Unit Count for the Specified Month
 
-        指定した月のメータリングユニットカウントを取得します。 
+        Gets the metering unit count for the specified month. 
 
-        :param tenant_id: テナントID (required)
+        :param tenant_id: Tenant ID (required)
         :type tenant_id: str
-        :param metering_unit_name: 計測ユニット名 (required)
+        :param metering_unit_name: Metering Unit Name (required)
         :type metering_unit_name: str
-        :param month: 月 (required)
+        :param month: Month (required)
         :type month: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -2123,9 +2123,9 @@ class MeteringApi:
     @validate_call
     def get_metering_unit_month_count_by_tenant_id_and_unit_name_and_month_with_http_info(
         self,
-        tenant_id: Annotated[StrictStr, Field(description="テナントID")],
-        metering_unit_name: Annotated[StrictStr, Field(description="計測ユニット名")],
-        month: Annotated[StrictStr, Field(description="月")],
+        tenant_id: Annotated[StrictStr, Field(description="Tenant ID")],
+        metering_unit_name: Annotated[StrictStr, Field(description="Metering Unit Name")],
+        month: Annotated[StrictStr, Field(description="Month")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2139,15 +2139,15 @@ class MeteringApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[MeteringUnitMonthCount]:
-        """指定月のメータリングユニットカウントを取得
+        """Get the Metering Unit Count for the Specified Month
 
-        指定した月のメータリングユニットカウントを取得します。 
+        Gets the metering unit count for the specified month. 
 
-        :param tenant_id: テナントID (required)
+        :param tenant_id: Tenant ID (required)
         :type tenant_id: str
-        :param metering_unit_name: 計測ユニット名 (required)
+        :param metering_unit_name: Metering Unit Name (required)
         :type metering_unit_name: str
-        :param month: 月 (required)
+        :param month: Month (required)
         :type month: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -2199,9 +2199,9 @@ class MeteringApi:
     @validate_call
     def get_metering_unit_month_count_by_tenant_id_and_unit_name_and_month_without_preload_content(
         self,
-        tenant_id: Annotated[StrictStr, Field(description="テナントID")],
-        metering_unit_name: Annotated[StrictStr, Field(description="計測ユニット名")],
-        month: Annotated[StrictStr, Field(description="月")],
+        tenant_id: Annotated[StrictStr, Field(description="Tenant ID")],
+        metering_unit_name: Annotated[StrictStr, Field(description="Metering Unit Name")],
+        month: Annotated[StrictStr, Field(description="Month")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2215,15 +2215,15 @@ class MeteringApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """指定月のメータリングユニットカウントを取得
+        """Get the Metering Unit Count for the Specified Month
 
-        指定した月のメータリングユニットカウントを取得します。 
+        Gets the metering unit count for the specified month. 
 
-        :param tenant_id: テナントID (required)
+        :param tenant_id: Tenant ID (required)
         :type tenant_id: str
-        :param metering_unit_name: 計測ユニット名 (required)
+        :param metering_unit_name: Metering Unit Name (required)
         :type metering_unit_name: str
-        :param month: 月 (required)
+        :param month: Month (required)
         :type month: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -2338,8 +2338,8 @@ class MeteringApi:
     @validate_call
     def get_metering_unit_month_count_by_tenant_id_and_unit_name_this_month(
         self,
-        tenant_id: Annotated[StrictStr, Field(description="テナントID")],
-        metering_unit_name: Annotated[StrictStr, Field(description="計測ユニット名")],
+        tenant_id: Annotated[StrictStr, Field(description="Tenant ID")],
+        metering_unit_name: Annotated[StrictStr, Field(description="Metering Unit Name")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2353,13 +2353,13 @@ class MeteringApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> MeteringUnitMonthCount:
-        """当月のメータリングユニットカウントを取得
+        """Get Metering Unit Count for the Current Month
 
-        当月のメータリングユニットカウントを取得します。
+        Get the metering unit count for the current month. 
 
-        :param tenant_id: テナントID (required)
+        :param tenant_id: Tenant ID (required)
         :type tenant_id: str
-        :param metering_unit_name: 計測ユニット名 (required)
+        :param metering_unit_name: Metering Unit Name (required)
         :type metering_unit_name: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -2410,8 +2410,8 @@ class MeteringApi:
     @validate_call
     def get_metering_unit_month_count_by_tenant_id_and_unit_name_this_month_with_http_info(
         self,
-        tenant_id: Annotated[StrictStr, Field(description="テナントID")],
-        metering_unit_name: Annotated[StrictStr, Field(description="計測ユニット名")],
+        tenant_id: Annotated[StrictStr, Field(description="Tenant ID")],
+        metering_unit_name: Annotated[StrictStr, Field(description="Metering Unit Name")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2425,13 +2425,13 @@ class MeteringApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[MeteringUnitMonthCount]:
-        """当月のメータリングユニットカウントを取得
+        """Get Metering Unit Count for the Current Month
 
-        当月のメータリングユニットカウントを取得します。
+        Get the metering unit count for the current month. 
 
-        :param tenant_id: テナントID (required)
+        :param tenant_id: Tenant ID (required)
         :type tenant_id: str
-        :param metering_unit_name: 計測ユニット名 (required)
+        :param metering_unit_name: Metering Unit Name (required)
         :type metering_unit_name: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -2482,8 +2482,8 @@ class MeteringApi:
     @validate_call
     def get_metering_unit_month_count_by_tenant_id_and_unit_name_this_month_without_preload_content(
         self,
-        tenant_id: Annotated[StrictStr, Field(description="テナントID")],
-        metering_unit_name: Annotated[StrictStr, Field(description="計測ユニット名")],
+        tenant_id: Annotated[StrictStr, Field(description="Tenant ID")],
+        metering_unit_name: Annotated[StrictStr, Field(description="Metering Unit Name")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2497,13 +2497,13 @@ class MeteringApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """当月のメータリングユニットカウントを取得
+        """Get Metering Unit Count for the Current Month
 
-        当月のメータリングユニットカウントを取得します。
+        Get the metering unit count for the current month. 
 
-        :param tenant_id: テナントID (required)
+        :param tenant_id: Tenant ID (required)
         :type tenant_id: str
-        :param metering_unit_name: 計測ユニット名 (required)
+        :param metering_unit_name: Metering Unit Name (required)
         :type metering_unit_name: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -2614,8 +2614,8 @@ class MeteringApi:
     @validate_call
     def get_metering_unit_month_counts_by_tenant_id_and_month(
         self,
-        tenant_id: Annotated[StrictStr, Field(description="テナントID")],
-        month: Annotated[StrictStr, Field(description="月")],
+        tenant_id: Annotated[StrictStr, Field(description="Tenant ID")],
+        month: Annotated[StrictStr, Field(description="Month")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2629,13 +2629,13 @@ class MeteringApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> MeteringUnitMonthCounts:
-        """指定月の全メータリングユニットカウントを取得
+        """Get All Metering Unit Counts for the Specified Month
 
-        指定した月の全メータリングユニットカウントを取得します。 
+        Gets all metering unit counts for the specified month. 
 
-        :param tenant_id: テナントID (required)
+        :param tenant_id: Tenant ID (required)
         :type tenant_id: str
-        :param month: 月 (required)
+        :param month: Month (required)
         :type month: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -2686,8 +2686,8 @@ class MeteringApi:
     @validate_call
     def get_metering_unit_month_counts_by_tenant_id_and_month_with_http_info(
         self,
-        tenant_id: Annotated[StrictStr, Field(description="テナントID")],
-        month: Annotated[StrictStr, Field(description="月")],
+        tenant_id: Annotated[StrictStr, Field(description="Tenant ID")],
+        month: Annotated[StrictStr, Field(description="Month")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2701,13 +2701,13 @@ class MeteringApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[MeteringUnitMonthCounts]:
-        """指定月の全メータリングユニットカウントを取得
+        """Get All Metering Unit Counts for the Specified Month
 
-        指定した月の全メータリングユニットカウントを取得します。 
+        Gets all metering unit counts for the specified month. 
 
-        :param tenant_id: テナントID (required)
+        :param tenant_id: Tenant ID (required)
         :type tenant_id: str
-        :param month: 月 (required)
+        :param month: Month (required)
         :type month: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -2758,8 +2758,8 @@ class MeteringApi:
     @validate_call
     def get_metering_unit_month_counts_by_tenant_id_and_month_without_preload_content(
         self,
-        tenant_id: Annotated[StrictStr, Field(description="テナントID")],
-        month: Annotated[StrictStr, Field(description="月")],
+        tenant_id: Annotated[StrictStr, Field(description="Tenant ID")],
+        month: Annotated[StrictStr, Field(description="Month")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2773,13 +2773,13 @@ class MeteringApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """指定月の全メータリングユニットカウントを取得
+        """Get All Metering Unit Counts for the Specified Month
 
-        指定した月の全メータリングユニットカウントを取得します。 
+        Gets all metering unit counts for the specified month. 
 
-        :param tenant_id: テナントID (required)
+        :param tenant_id: Tenant ID (required)
         :type tenant_id: str
-        :param month: 月 (required)
+        :param month: Month (required)
         :type month: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -2903,9 +2903,9 @@ class MeteringApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> MeteringUnits:
-        """メータリングユニットを取得
+        """Get all metering units
 
-        全てのメータリングユニットを取得します。 
+        Get all metering units. 
 
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -2967,9 +2967,9 @@ class MeteringApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[MeteringUnits]:
-        """メータリングユニットを取得
+        """Get all metering units
 
-        全てのメータリングユニットを取得します。 
+        Get all metering units. 
 
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -3031,9 +3031,9 @@ class MeteringApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """メータリングユニットを取得
+        """Get all metering units
 
-        全てのメータリングユニットを取得します。 
+        Get all metering units. 
 
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -3136,7 +3136,7 @@ class MeteringApi:
     @validate_call
     def update_metering_unit_by_id(
         self,
-        metering_unit_id: Annotated[StrictStr, Field(description="メータリングユニットID")],
+        metering_unit_id: Annotated[StrictStr, Field(description="Metering Unit ID")],
         body: Optional[MeteringUnitProps] = None,
         _request_timeout: Union[
             None,
@@ -3151,11 +3151,11 @@ class MeteringApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> None:
-        """メータリングユニットを更新
+        """Update Metering Unit
 
-        メータリングユニットを更新します。 
+        Update metering unit. 
 
-        :param metering_unit_id: メータリングユニットID (required)
+        :param metering_unit_id: Metering Unit ID (required)
         :type metering_unit_id: str
         :param body:
         :type body: MeteringUnitProps
@@ -3209,7 +3209,7 @@ class MeteringApi:
     @validate_call
     def update_metering_unit_by_id_with_http_info(
         self,
-        metering_unit_id: Annotated[StrictStr, Field(description="メータリングユニットID")],
+        metering_unit_id: Annotated[StrictStr, Field(description="Metering Unit ID")],
         body: Optional[MeteringUnitProps] = None,
         _request_timeout: Union[
             None,
@@ -3224,11 +3224,11 @@ class MeteringApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[None]:
-        """メータリングユニットを更新
+        """Update Metering Unit
 
-        メータリングユニットを更新します。 
+        Update metering unit. 
 
-        :param metering_unit_id: メータリングユニットID (required)
+        :param metering_unit_id: Metering Unit ID (required)
         :type metering_unit_id: str
         :param body:
         :type body: MeteringUnitProps
@@ -3282,7 +3282,7 @@ class MeteringApi:
     @validate_call
     def update_metering_unit_by_id_without_preload_content(
         self,
-        metering_unit_id: Annotated[StrictStr, Field(description="メータリングユニットID")],
+        metering_unit_id: Annotated[StrictStr, Field(description="Metering Unit ID")],
         body: Optional[MeteringUnitProps] = None,
         _request_timeout: Union[
             None,
@@ -3297,11 +3297,11 @@ class MeteringApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """メータリングユニットを更新
+        """Update Metering Unit
 
-        メータリングユニットを更新します。 
+        Update metering unit. 
 
-        :param metering_unit_id: メータリングユニットID (required)
+        :param metering_unit_id: Metering Unit ID (required)
         :type metering_unit_id: str
         :param body:
         :type body: MeteringUnitProps
@@ -3428,9 +3428,9 @@ class MeteringApi:
     @validate_call
     def update_metering_unit_timestamp_count(
         self,
-        tenant_id: Annotated[StrictStr, Field(description="テナントID")],
-        metering_unit_name: Annotated[StrictStr, Field(description="計測ユニット名")],
-        timestamp: Annotated[StrictInt, Field(description="タイムスタンプ")],
+        tenant_id: Annotated[StrictStr, Field(description="Tenant ID")],
+        metering_unit_name: Annotated[StrictStr, Field(description="Metering Unit Name")],
+        timestamp: Annotated[StrictInt, Field(description="Timestamp")],
         update_metering_unit_timestamp_count_param: Optional[UpdateMeteringUnitTimestampCountParam] = None,
         _request_timeout: Union[
             None,
@@ -3445,15 +3445,15 @@ class MeteringApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> MeteringUnitTimestampCount:
-        """指定したタイムスタンプのメータリングユニットカウントを更新
+        """Update Metering Unit Count for Specified Timestamp
 
-        指定したタイムスタンプのメータリングユニットカウントを更新します。
+        Update metering unit count for the specified timestamp. 
 
-        :param tenant_id: テナントID (required)
+        :param tenant_id: Tenant ID (required)
         :type tenant_id: str
-        :param metering_unit_name: 計測ユニット名 (required)
+        :param metering_unit_name: Metering Unit Name (required)
         :type metering_unit_name: str
-        :param timestamp: タイムスタンプ (required)
+        :param timestamp: Timestamp (required)
         :type timestamp: int
         :param update_metering_unit_timestamp_count_param:
         :type update_metering_unit_timestamp_count_param: UpdateMeteringUnitTimestampCountParam
@@ -3508,9 +3508,9 @@ class MeteringApi:
     @validate_call
     def update_metering_unit_timestamp_count_with_http_info(
         self,
-        tenant_id: Annotated[StrictStr, Field(description="テナントID")],
-        metering_unit_name: Annotated[StrictStr, Field(description="計測ユニット名")],
-        timestamp: Annotated[StrictInt, Field(description="タイムスタンプ")],
+        tenant_id: Annotated[StrictStr, Field(description="Tenant ID")],
+        metering_unit_name: Annotated[StrictStr, Field(description="Metering Unit Name")],
+        timestamp: Annotated[StrictInt, Field(description="Timestamp")],
         update_metering_unit_timestamp_count_param: Optional[UpdateMeteringUnitTimestampCountParam] = None,
         _request_timeout: Union[
             None,
@@ -3525,15 +3525,15 @@ class MeteringApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[MeteringUnitTimestampCount]:
-        """指定したタイムスタンプのメータリングユニットカウントを更新
+        """Update Metering Unit Count for Specified Timestamp
 
-        指定したタイムスタンプのメータリングユニットカウントを更新します。
+        Update metering unit count for the specified timestamp. 
 
-        :param tenant_id: テナントID (required)
+        :param tenant_id: Tenant ID (required)
         :type tenant_id: str
-        :param metering_unit_name: 計測ユニット名 (required)
+        :param metering_unit_name: Metering Unit Name (required)
         :type metering_unit_name: str
-        :param timestamp: タイムスタンプ (required)
+        :param timestamp: Timestamp (required)
         :type timestamp: int
         :param update_metering_unit_timestamp_count_param:
         :type update_metering_unit_timestamp_count_param: UpdateMeteringUnitTimestampCountParam
@@ -3588,9 +3588,9 @@ class MeteringApi:
     @validate_call
     def update_metering_unit_timestamp_count_without_preload_content(
         self,
-        tenant_id: Annotated[StrictStr, Field(description="テナントID")],
-        metering_unit_name: Annotated[StrictStr, Field(description="計測ユニット名")],
-        timestamp: Annotated[StrictInt, Field(description="タイムスタンプ")],
+        tenant_id: Annotated[StrictStr, Field(description="Tenant ID")],
+        metering_unit_name: Annotated[StrictStr, Field(description="Metering Unit Name")],
+        timestamp: Annotated[StrictInt, Field(description="Timestamp")],
         update_metering_unit_timestamp_count_param: Optional[UpdateMeteringUnitTimestampCountParam] = None,
         _request_timeout: Union[
             None,
@@ -3605,15 +3605,15 @@ class MeteringApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """指定したタイムスタンプのメータリングユニットカウントを更新
+        """Update Metering Unit Count for Specified Timestamp
 
-        指定したタイムスタンプのメータリングユニットカウントを更新します。
+        Update metering unit count for the specified timestamp. 
 
-        :param tenant_id: テナントID (required)
+        :param tenant_id: Tenant ID (required)
         :type tenant_id: str
-        :param metering_unit_name: 計測ユニット名 (required)
+        :param metering_unit_name: Metering Unit Name (required)
         :type metering_unit_name: str
-        :param timestamp: タイムスタンプ (required)
+        :param timestamp: Timestamp (required)
         :type timestamp: int
         :param update_metering_unit_timestamp_count_param:
         :type update_metering_unit_timestamp_count_param: UpdateMeteringUnitTimestampCountParam
@@ -3747,8 +3747,8 @@ class MeteringApi:
     @validate_call
     def update_metering_unit_timestamp_count_now(
         self,
-        tenant_id: Annotated[StrictStr, Field(description="テナントID")],
-        metering_unit_name: Annotated[StrictStr, Field(description="計測ユニット名")],
+        tenant_id: Annotated[StrictStr, Field(description="Tenant ID")],
+        metering_unit_name: Annotated[StrictStr, Field(description="Metering Unit Name")],
         update_metering_unit_timestamp_count_now_param: Optional[UpdateMeteringUnitTimestampCountNowParam] = None,
         _request_timeout: Union[
             None,
@@ -3763,13 +3763,13 @@ class MeteringApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> MeteringUnitTimestampCount:
-        """現在時刻のメータリングユニットカウントを更新
+        """Update Metering Unit Count for Current Time
 
-        現在時刻のメータリングユニットカウントを更新します。
+        Update the metering unit count for the current time. 
 
-        :param tenant_id: テナントID (required)
+        :param tenant_id: Tenant ID (required)
         :type tenant_id: str
-        :param metering_unit_name: 計測ユニット名 (required)
+        :param metering_unit_name: Metering Unit Name (required)
         :type metering_unit_name: str
         :param update_metering_unit_timestamp_count_now_param:
         :type update_metering_unit_timestamp_count_now_param: UpdateMeteringUnitTimestampCountNowParam
@@ -3823,8 +3823,8 @@ class MeteringApi:
     @validate_call
     def update_metering_unit_timestamp_count_now_with_http_info(
         self,
-        tenant_id: Annotated[StrictStr, Field(description="テナントID")],
-        metering_unit_name: Annotated[StrictStr, Field(description="計測ユニット名")],
+        tenant_id: Annotated[StrictStr, Field(description="Tenant ID")],
+        metering_unit_name: Annotated[StrictStr, Field(description="Metering Unit Name")],
         update_metering_unit_timestamp_count_now_param: Optional[UpdateMeteringUnitTimestampCountNowParam] = None,
         _request_timeout: Union[
             None,
@@ -3839,13 +3839,13 @@ class MeteringApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[MeteringUnitTimestampCount]:
-        """現在時刻のメータリングユニットカウントを更新
+        """Update Metering Unit Count for Current Time
 
-        現在時刻のメータリングユニットカウントを更新します。
+        Update the metering unit count for the current time. 
 
-        :param tenant_id: テナントID (required)
+        :param tenant_id: Tenant ID (required)
         :type tenant_id: str
-        :param metering_unit_name: 計測ユニット名 (required)
+        :param metering_unit_name: Metering Unit Name (required)
         :type metering_unit_name: str
         :param update_metering_unit_timestamp_count_now_param:
         :type update_metering_unit_timestamp_count_now_param: UpdateMeteringUnitTimestampCountNowParam
@@ -3899,8 +3899,8 @@ class MeteringApi:
     @validate_call
     def update_metering_unit_timestamp_count_now_without_preload_content(
         self,
-        tenant_id: Annotated[StrictStr, Field(description="テナントID")],
-        metering_unit_name: Annotated[StrictStr, Field(description="計測ユニット名")],
+        tenant_id: Annotated[StrictStr, Field(description="Tenant ID")],
+        metering_unit_name: Annotated[StrictStr, Field(description="Metering Unit Name")],
         update_metering_unit_timestamp_count_now_param: Optional[UpdateMeteringUnitTimestampCountNowParam] = None,
         _request_timeout: Union[
             None,
@@ -3915,13 +3915,13 @@ class MeteringApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """現在時刻のメータリングユニットカウントを更新
+        """Update Metering Unit Count for Current Time
 
-        現在時刻のメータリングユニットカウントを更新します。
+        Update the metering unit count for the current time. 
 
-        :param tenant_id: テナントID (required)
+        :param tenant_id: Tenant ID (required)
         :type tenant_id: str
-        :param metering_unit_name: 計測ユニット名 (required)
+        :param metering_unit_name: Metering Unit Name (required)
         :type metering_unit_name: str
         :param update_metering_unit_timestamp_count_now_param:
         :type update_metering_unit_timestamp_count_now_param: UpdateMeteringUnitTimestampCountNowParam

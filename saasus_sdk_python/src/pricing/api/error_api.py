@@ -58,9 +58,9 @@ class ErrorApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> None:
-        """ステータスコード500でサーバーエラーを返却
+        """Return Internal Server Error
 
-        テスト用途で使用するエンドポイントです。ステータスコード500でサーバーエラーを返却します。
+        This endpoint is used for testing purposes. Returns a server error with status code 500. 
 
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -121,9 +121,9 @@ class ErrorApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[None]:
-        """ステータスコード500でサーバーエラーを返却
+        """Return Internal Server Error
 
-        テスト用途で使用するエンドポイントです。ステータスコード500でサーバーエラーを返却します。
+        This endpoint is used for testing purposes. Returns a server error with status code 500. 
 
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -184,9 +184,9 @@ class ErrorApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """ステータスコード500でサーバーエラーを返却
+        """Return Internal Server Error
 
-        テスト用途で使用するエンドポイントです。ステータスコード500でサーバーエラーを返却します。
+        This endpoint is used for testing purposes. Returns a server error with status code 500. 
 
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request

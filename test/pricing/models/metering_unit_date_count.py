@@ -30,9 +30,9 @@ class MeteringUnitDateCount(BaseModel):
     """
     MeteringUnitDateCount
     """ # noqa: E501
-    metering_unit_name: StrictStr = Field(description="計測ユニット名")
-    var_date: StrictStr = Field(description="日", alias="date")
-    count: StrictInt = Field(description="件数")
+    metering_unit_name: StrictStr = Field(description="Metering unit name")
+    var_date: StrictStr = Field(description="Date", alias="date")
+    count: StrictInt = Field(description="Count")
     __properties: ClassVar[List[str]] = ["metering_unit_name", "date", "count"]
 
     model_config = {

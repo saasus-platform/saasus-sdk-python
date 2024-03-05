@@ -1,6 +1,6 @@
 # AggregateUsage
 
-使用量の集計方法 sum: 期間内の使用量の合計 max: 期間内の使用量の最大値 
+Aggregate usage sum: Total usage during the period max: Maximum usage during the period 
 
 ## Properties
 

@@ -5,12 +5,12 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**name** | **str** | メニュー名 | 
-**display_name** | **str** | メニュー表示名 | 
-**description** | **str** | メニュー説明 | 
-**used** | **bool** | メニューの使用済み設定 | 
+**name** | **str** | Menu name | 
+**display_name** | **str** | Menu display name | 
+**description** | **str** | Menu description | 
+**used** | **bool** | Menu used settings | 
 **units** | [**List[PricingUnit]**](PricingUnit.md) |  | 
-**id** | **str** | ユニバーサル一意識別子 | 
+**id** | **str** | Universally Unique Identifier | 
 
 ## Example
 
