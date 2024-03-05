@@ -48,7 +48,7 @@ do
     -i ${target} \
     -g python \
     -o /local/saasus_sdk_python/generated/ \
-     --additional-properties useOneOfDiscriminatorLookup=true \
+    --additional-properties useOneOfDiscriminatorLookup=true \
     --package-name saasus_sdk_python.src.${module}
 done
 
