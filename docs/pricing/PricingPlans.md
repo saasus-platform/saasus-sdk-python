@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **pricing_plans** | [**List[PricingPlan]**](PricingPlan.md) |  | 

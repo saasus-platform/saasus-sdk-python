@@ -2,12 +2,13 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**up_to** | **int** | 上限(upper limit) | 
-**unit_amount** | **int** | 単位金額(amount per unit) | 
-**flat_amount** | **int** | 固定金額(fixed Amount) | 
-**inf** | **bool** | inf | 
+**up_to** | **int** | Upper limit | 
+**unit_amount** | **int** | Amount per unit | 
+**flat_amount** | **int** | Fixed amount | 
+**inf** | **bool** | Indefinite | 
 
 ## Example
 

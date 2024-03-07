@@ -2,13 +2,14 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **str** |  | 
-**email** | **str** | 招待されたユーザーのメールアドレス(email address of the invited user) | 
-**invitation_url** | **str** | 招待URL(invitation URL) | 
+**email** | **str** | Email address of the invited user | 
+**invitation_url** | **str** | Invitation URL | 
 **envs** | [**List[UserAvailableEnv]**](UserAvailableEnv.md) |  | 
-**expired_at** | **int** | 招待の有効期限(expiration date of the invitation) | 
+**expired_at** | **int** | Expiration date of the invitation | 
 **status** | [**InvitationStatus**](InvitationStatus.md) |  | 
 
 ## Example

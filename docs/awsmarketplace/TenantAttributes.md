@@ -2,9 +2,10 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**tenant_attributes** | [**List[Attribute]**](Attribute.md) | テナント属性定義(Tenant Attribute Definition) | 
+**tenant_attributes** | [**List[Attribute]**](Attribute.md) | Tenant Attribute Definition | 
 
 ## Example
 

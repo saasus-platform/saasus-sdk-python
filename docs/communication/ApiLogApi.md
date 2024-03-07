@@ -4,20 +4,21 @@ All URIs are relative to *https://api.saasus.io/v1/apilog*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**get_log**](ApiLogApi.md#get_log) | **GET** /logs/{api_log_id} | API実行ログ取得
-[**get_logs**](ApiLogApi.md#get_logs) | **GET** /logs | API実行ログ取得
+[**get_log**](ApiLogApi.md#get_log) | **GET** /logs/{api_log_id} | Get API execution log
+[**get_logs**](ApiLogApi.md#get_logs) | **GET** /logs | Get API execution log list
 
 
 # **get_log**
 > ApiLog get_log(api_log_id)
 
-API実行ログ取得
+Get API execution log
 
-指定したIDのAPI実行のログ登録を取得します。
+Retrieve the log of the API execution with the specified ID.
 
 ### Example
 
 * Bearer Authentication (Bearer):
+
 ```python
 import time
 import os
@@ -46,10 +47,10 @@ configuration = saasus_sdk_python.src.apilog.Configuration(
 with saasus_sdk_python.src.apilog.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = saasus_sdk_python.src.apilog.ApiLogApi(api_client)
-    api_log_id = 'api_log_id_example' # str | APIログID(API Log ID)
+    api_log_id = 'api_log_id_example' # str | API Log ID
 
     try:
-        # API実行ログ取得
+        # Get API execution log
         api_response = api_instance.get_log(api_log_id)
         print("The response of ApiLogApi->get_log:\n")
         pprint(api_response)
@@ -61,9 +62,10 @@ with saasus_sdk_python.src.apilog.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **api_log_id** | **str**| APIログID(API Log ID) | 
+ **api_log_id** | **str**| API Log ID | 
 
 ### Return type
 
@@ -79,6 +81,7 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
@@ -87,15 +90,16 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_logs**
-> ApiLogs get_logs()
+> ApiLogs get_logs(created_date=created_date, created_at=created_at, limit=limit, cursor=cursor)
 
-API実行ログ取得
+Get API execution log list
 
-全API実行のログ登録を取得します。
+Retrieve the log of all API executions.
 
 ### Example
 
 * Bearer Authentication (Bearer):
+
 ```python
 import time
 import os
@@ -124,10 +128,14 @@ configuration = saasus_sdk_python.src.apilog.Configuration(
 with saasus_sdk_python.src.apilog.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = saasus_sdk_python.src.apilog.ApiLogApi(api_client)
+    created_date = '2013-10-20' # date | The date, in format of YYYY-MM-DD, to retrieve the log. (optional)
+    created_at = '2013-10-20T19:20:30+01:00' # datetime | The datetime, in ISO 8601 format, to retrieve the log. (optional)
+    limit = 56 # int | Maximum number of logs to retrieve. (optional)
+    cursor = 'cursor_example' # str | Cursor for cursor pagination. (optional)
 
     try:
-        # API実行ログ取得
-        api_response = api_instance.get_logs()
+        # Get API execution log list
+        api_response = api_instance.get_logs(created_date=created_date, created_at=created_at, limit=limit, cursor=cursor)
         print("The response of ApiLogApi->get_logs:\n")
         pprint(api_response)
     except Exception as e:
@@ -137,7 +145,14 @@ with saasus_sdk_python.src.apilog.ApiClient(configuration) as api_client:
 
 
 ### Parameters
-This endpoint does not need any parameter.
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **created_date** | **date**| The date, in format of YYYY-MM-DD, to retrieve the log. | [optional] 
+ **created_at** | **datetime**| The datetime, in ISO 8601 format, to retrieve the log. | [optional] 
+ **limit** | **int**| Maximum number of logs to retrieve. | [optional] 
+ **cursor** | **str**| Cursor for cursor pagination. | [optional] 
 
 ### Return type
 
@@ -153,6 +168,7 @@ This endpoint does not need any parameter.
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |

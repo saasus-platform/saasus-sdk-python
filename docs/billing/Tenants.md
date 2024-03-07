@@ -1,8 +1,9 @@
 # Tenants
 
-テナント情報(Tenant Info)
+Tenant Info
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **tenants** | [**List[Tenant]**](Tenant.md) |  | 

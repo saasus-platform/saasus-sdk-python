@@ -4,26 +4,27 @@ All URIs are relative to *https://api.saasus.io/v1/auth*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**find_notification_messages**](BasicInfoApi.md#find_notification_messages) | **GET** /notification-messages | 通知メールテンプレートを取得(Get Notification Email Templates)
-[**get_basic_info**](BasicInfoApi.md#get_basic_info) | **GET** /basic-info | 基本設定情報の取得(Get Basic Configurations)
-[**get_customize_page_settings**](BasicInfoApi.md#get_customize_page_settings) | **GET** /customize-page-settings | 認証認可基本情報取得(Get Authentication Authorization Basic Information)
-[**get_customize_pages**](BasicInfoApi.md#get_customize_pages) | **GET** /customize-pages | 認証系画面設定情報取得(Get Authentication Page Setting)
-[**update_basic_info**](BasicInfoApi.md#update_basic_info) | **PUT** /basic-info | 基本設定情報の更新(Update Basic Configurations)
-[**update_customize_page_settings**](BasicInfoApi.md#update_customize_page_settings) | **PATCH** /customize-page-settings | 認証認可基本情報更新(Update Authentication Authorization Basic Information)
-[**update_customize_pages**](BasicInfoApi.md#update_customize_pages) | **PATCH** /customize-pages | 認証系画面設定情報設定(Authentication Page Setting)
-[**update_notification_messages**](BasicInfoApi.md#update_notification_messages) | **PUT** /notification-messages | 通知メールテンプレートを更新(Update Notification Email Template)
+[**find_notification_messages**](BasicInfoApi.md#find_notification_messages) | **GET** /notification-messages | Get Notification Email Templates
+[**get_basic_info**](BasicInfoApi.md#get_basic_info) | **GET** /basic-info | Get Basic Configurations
+[**get_customize_page_settings**](BasicInfoApi.md#get_customize_page_settings) | **GET** /customize-page-settings | Get Authentication Authorization Basic Information
+[**get_customize_pages**](BasicInfoApi.md#get_customize_pages) | **GET** /customize-pages | Get Authentication Page Setting
+[**update_basic_info**](BasicInfoApi.md#update_basic_info) | **PUT** /basic-info | Update Basic Configurations
+[**update_customize_page_settings**](BasicInfoApi.md#update_customize_page_settings) | **PATCH** /customize-page-settings | Update Authentication Authorization Basic Information
+[**update_customize_pages**](BasicInfoApi.md#update_customize_pages) | **PATCH** /customize-pages | Authentication Page Setting
+[**update_notification_messages**](BasicInfoApi.md#update_notification_messages) | **PUT** /notification-messages | Update Notification Email Template
 
 
 # **find_notification_messages**
 > NotificationMessages find_notification_messages()
 
-通知メールテンプレートを取得(Get Notification Email Templates)
+Get Notification Email Templates
 
-各種通知メールテンプレートを取得します。  Get notification email templates. 
+Get notification email templates. 
 
 ### Example
 
 * Bearer Authentication (Bearer):
+
 ```python
 import time
 import os
@@ -54,7 +55,7 @@ with saasus_sdk_python.src.auth.ApiClient(configuration) as api_client:
     api_instance = saasus_sdk_python.src.auth.BasicInfoApi(api_client)
 
     try:
-        # 通知メールテンプレートを取得(Get Notification Email Templates)
+        # Get Notification Email Templates
         api_response = api_instance.find_notification_messages()
         print("The response of BasicInfoApi->find_notification_messages:\n")
         pprint(api_response)
@@ -65,6 +66,7 @@ with saasus_sdk_python.src.auth.ApiClient(configuration) as api_client:
 
 
 ### Parameters
+
 This endpoint does not need any parameter.
 
 ### Return type
@@ -81,6 +83,7 @@ This endpoint does not need any parameter.
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
@@ -91,13 +94,14 @@ This endpoint does not need any parameter.
 # **get_basic_info**
 > BasicInfo get_basic_info()
 
-基本設定情報の取得(Get Basic Configurations)
+Get Basic Configurations
 
-SaaS ID を元に設定されているドメイン名と CNAME レコードを取得します。 取得した CNAME レコードを DNS に設定することで、ログイン画面を生成します。  Get the domain name and CNAME record based on the SaaS ID. By setting the CNAME record on the DNS the login screen will be generated. 
+Get the domain name and CNAME record based on the SaaS ID. By setting the CNAME record on the DNS the login screen will be generated. 
 
 ### Example
 
 * Bearer Authentication (Bearer):
+
 ```python
 import time
 import os
@@ -128,7 +132,7 @@ with saasus_sdk_python.src.auth.ApiClient(configuration) as api_client:
     api_instance = saasus_sdk_python.src.auth.BasicInfoApi(api_client)
 
     try:
-        # 基本設定情報の取得(Get Basic Configurations)
+        # Get Basic Configurations
         api_response = api_instance.get_basic_info()
         print("The response of BasicInfoApi->get_basic_info:\n")
         pprint(api_response)
@@ -139,6 +143,7 @@ with saasus_sdk_python.src.auth.ApiClient(configuration) as api_client:
 
 
 ### Parameters
+
 This endpoint does not need any parameter.
 
 ### Return type
@@ -155,6 +160,7 @@ This endpoint does not need any parameter.
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
@@ -165,13 +171,14 @@ This endpoint does not need any parameter.
 # **get_customize_page_settings**
 > CustomizePageSettings get_customize_page_settings()
 
-認証認可基本情報取得(Get Authentication Authorization Basic Information)
+Get Authentication Authorization Basic Information
 
-認証認可基本情報を取得します。  Get authentication authorization basic information. 
+Get authentication authorization basic information. 
 
 ### Example
 
 * Bearer Authentication (Bearer):
+
 ```python
 import time
 import os
@@ -202,7 +209,7 @@ with saasus_sdk_python.src.auth.ApiClient(configuration) as api_client:
     api_instance = saasus_sdk_python.src.auth.BasicInfoApi(api_client)
 
     try:
-        # 認証認可基本情報取得(Get Authentication Authorization Basic Information)
+        # Get Authentication Authorization Basic Information
         api_response = api_instance.get_customize_page_settings()
         print("The response of BasicInfoApi->get_customize_page_settings:\n")
         pprint(api_response)
@@ -213,6 +220,7 @@ with saasus_sdk_python.src.auth.ApiClient(configuration) as api_client:
 
 
 ### Parameters
+
 This endpoint does not need any parameter.
 
 ### Return type
@@ -229,6 +237,7 @@ This endpoint does not need any parameter.
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
@@ -239,13 +248,14 @@ This endpoint does not need any parameter.
 # **get_customize_pages**
 > CustomizePages get_customize_pages()
 
-認証系画面設定情報取得(Get Authentication Page Setting)
+Get Authentication Page Setting
 
-認証系画面設定情報（新規登録・ログイン・パスワードリセット等）を取得します。  Get the authentication screen setting information (new registration, login, password reset, etc.). 
+Get the authentication screen setting information (new registration, login, password reset, etc.). 
 
 ### Example
 
 * Bearer Authentication (Bearer):
+
 ```python
 import time
 import os
@@ -276,7 +286,7 @@ with saasus_sdk_python.src.auth.ApiClient(configuration) as api_client:
     api_instance = saasus_sdk_python.src.auth.BasicInfoApi(api_client)
 
     try:
-        # 認証系画面設定情報取得(Get Authentication Page Setting)
+        # Get Authentication Page Setting
         api_response = api_instance.get_customize_pages()
         print("The response of BasicInfoApi->get_customize_pages:\n")
         pprint(api_response)
@@ -287,6 +297,7 @@ with saasus_sdk_python.src.auth.ApiClient(configuration) as api_client:
 
 
 ### Parameters
+
 This endpoint does not need any parameter.
 
 ### Return type
@@ -303,6 +314,7 @@ This endpoint does not need any parameter.
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
@@ -313,13 +325,14 @@ This endpoint does not need any parameter.
 # **update_basic_info**
 > update_basic_info(update_basic_info_param=update_basic_info_param)
 
-基本設定情報の更新(Update Basic Configurations)
+Update Basic Configurations
 
-SaaS ID を元にパラメータとして設定したドメイン名を設定更新します。 CNAME レコードが生成されますので、 DNS に設定して下さい。 既に稼働中の SaaS アプリケーションに設定している場合には、動作に影響があります。  Update the domain name that was set as a parameter based on the SaaS ID. After the CNAME record is generated, set it in your DNS. If it is set on a SaaS application that is already running, it will affect the behavior. 
+Update the domain name that was set as a parameter based on the SaaS ID. After the CNAME record is generated, set it in your DNS. If it is set on a SaaS application that is already running, it will affect the behavior. 
 
 ### Example
 
 * Bearer Authentication (Bearer):
+
 ```python
 import time
 import os
@@ -351,7 +364,7 @@ with saasus_sdk_python.src.auth.ApiClient(configuration) as api_client:
     update_basic_info_param = saasus_sdk_python.src.auth.UpdateBasicInfoParam() # UpdateBasicInfoParam |  (optional)
 
     try:
-        # 基本設定情報の更新(Update Basic Configurations)
+        # Update Basic Configurations
         api_instance.update_basic_info(update_basic_info_param=update_basic_info_param)
     except Exception as e:
         print("Exception when calling BasicInfoApi->update_basic_info: %s\n" % e)
@@ -360,6 +373,7 @@ with saasus_sdk_python.src.auth.ApiClient(configuration) as api_client:
 
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -379,6 +393,7 @@ void (empty response body)
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
@@ -389,13 +404,14 @@ void (empty response body)
 # **update_customize_page_settings**
 > update_customize_page_settings(update_customize_page_settings_param=update_customize_page_settings_param)
 
-認証認可基本情報更新(Update Authentication Authorization Basic Information)
+Update Authentication Authorization Basic Information
 
-認証認可基本情報を更新します。  Update authentication authorization basic information. 
+Update authentication authorization basic information. 
 
 ### Example
 
 * Bearer Authentication (Bearer):
+
 ```python
 import time
 import os
@@ -427,7 +443,7 @@ with saasus_sdk_python.src.auth.ApiClient(configuration) as api_client:
     update_customize_page_settings_param = saasus_sdk_python.src.auth.UpdateCustomizePageSettingsParam() # UpdateCustomizePageSettingsParam |  (optional)
 
     try:
-        # 認証認可基本情報更新(Update Authentication Authorization Basic Information)
+        # Update Authentication Authorization Basic Information
         api_instance.update_customize_page_settings(update_customize_page_settings_param=update_customize_page_settings_param)
     except Exception as e:
         print("Exception when calling BasicInfoApi->update_customize_page_settings: %s\n" % e)
@@ -436,6 +452,7 @@ with saasus_sdk_python.src.auth.ApiClient(configuration) as api_client:
 
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -455,6 +472,7 @@ void (empty response body)
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
@@ -465,13 +483,14 @@ void (empty response body)
 # **update_customize_pages**
 > update_customize_pages(update_customize_pages_param=update_customize_pages_param)
 
-認証系画面設定情報設定(Authentication Page Setting)
+Authentication Page Setting
 
-認証系画面設定情報（新規登録・ログイン・パスワードリセット等）を更新します。  Update the authentication page setting information (new registration, login, password reset, etc.). 
+Update the authentication page setting information (new registration, login, password reset, etc.). 
 
 ### Example
 
 * Bearer Authentication (Bearer):
+
 ```python
 import time
 import os
@@ -503,7 +522,7 @@ with saasus_sdk_python.src.auth.ApiClient(configuration) as api_client:
     update_customize_pages_param = saasus_sdk_python.src.auth.UpdateCustomizePagesParam() # UpdateCustomizePagesParam |  (optional)
 
     try:
-        # 認証系画面設定情報設定(Authentication Page Setting)
+        # Authentication Page Setting
         api_instance.update_customize_pages(update_customize_pages_param=update_customize_pages_param)
     except Exception as e:
         print("Exception when calling BasicInfoApi->update_customize_pages: %s\n" % e)
@@ -512,6 +531,7 @@ with saasus_sdk_python.src.auth.ApiClient(configuration) as api_client:
 
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -531,6 +551,7 @@ void (empty response body)
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
@@ -541,13 +562,14 @@ void (empty response body)
 # **update_notification_messages**
 > update_notification_messages(update_notification_messages_param=update_notification_messages_param)
 
-通知メールテンプレートを更新(Update Notification Email Template)
+Update Notification Email Template
 
-各種通知メールテンプレート更新します。  Update notification email template. 
+Update notification email template. 
 
 ### Example
 
 * Bearer Authentication (Bearer):
+
 ```python
 import time
 import os
@@ -579,7 +601,7 @@ with saasus_sdk_python.src.auth.ApiClient(configuration) as api_client:
     update_notification_messages_param = saasus_sdk_python.src.auth.UpdateNotificationMessagesParam() # UpdateNotificationMessagesParam |  (optional)
 
     try:
-        # 通知メールテンプレートを更新(Update Notification Email Template)
+        # Update Notification Email Template
         api_instance.update_notification_messages(update_notification_messages_param=update_notification_messages_param)
     except Exception as e:
         print("Exception when calling BasicInfoApi->update_notification_messages: %s\n" % e)
@@ -588,6 +610,7 @@ with saasus_sdk_python.src.auth.ApiClient(configuration) as api_client:
 
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -607,6 +630,7 @@ void (empty response body)
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |

@@ -2,14 +2,15 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**name** | **str** | 料金プラン名(pricing plan name) | 
-**display_name** | **str** | 料金プラン表示名(pricing plan display name) | 
-**description** | **str** | 料金プラン説明(pricing plan description) | 
-**used** | **bool** | 料金プランの使用済み設定(pricing plan used settings) | 
+**name** | **str** | Pricing plan name | 
+**display_name** | **str** | Pricing plan display name | 
+**description** | **str** | Pricing plan description | 
+**used** | **bool** | Pricing plan used settings | 
 **pricing_menus** | [**List[PricingMenu]**](PricingMenu.md) |  | 
-**id** | **str** |  | 
+**id** | **str** | Universally Unique Identifier | 
 
 ## Example
 

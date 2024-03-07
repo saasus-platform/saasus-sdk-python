@@ -2,10 +2,11 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**subject** | **str** | タイトル(title) | 
-**message** | **str** | メッセージ(message) | 
+**subject** | **str** | Title | 
+**message** | **str** | Message | 
 
 ## Example
 

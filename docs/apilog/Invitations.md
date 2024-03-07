@@ -2,9 +2,10 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**invitations** | [**List[Invitation]**](Invitation.md) | 招待一覧(invitation list) | 
+**invitations** | [**List[Invitation]**](Invitation.md) | Invitation list | 
 
 ## Example
 

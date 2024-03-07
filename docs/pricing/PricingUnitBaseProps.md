@@ -2,11 +2,12 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**name** | **str** | 名前(name) | 
-**display_name** | **str** | 表示名(display name) | 
-**description** | **str** | 説明(description) | 
+**name** | **str** | Name | 
+**display_name** | **str** | Display Name | 
+**description** | **str** | Description | 
 **type** | [**UnitType**](UnitType.md) |  | 
 **currency** | [**Currency**](Currency.md) |  | 
 

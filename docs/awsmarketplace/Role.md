@@ -1,12 +1,13 @@
 # Role
 
-役割(ロール)情報(role info)
+role info
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**role_name** | **str** | 役割(ロール)名(role name) | 
-**display_name** | **str** | 役割(ロール)表示名(role display name) | 
+**role_name** | **str** | role name | 
+**display_name** | **str** | role display name | 
 
 ## Example
 

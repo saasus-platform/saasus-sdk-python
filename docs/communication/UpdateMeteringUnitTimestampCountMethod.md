@@ -1,8 +1,9 @@
 # UpdateMeteringUnitTimestampCountMethod
 
-更新方法(update method) add: 加算(addition) sub: 減算(subtraction) direct: 上書き(overwrite) 
+Update method add: Addition sub: Subtraction direct: Overwrite 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 

@@ -12,18 +12,23 @@
 """  # noqa: E501
 
 
+from __future__ import annotations
 import json
 import pprint
 import re  # noqa: F401
-from aenum import Enum, no_arg
+from enum import Enum
 
 
 
+try:
+    from typing import Self
+except ImportError:
+    from typing_extensions import Self
 
 
 class RecurringInterval(str, Enum):
     """
-    繰り返し期間(cycle) month: 月単位(monthly) year: 年単位(yearly) 
+    Cycle month: Monthly year: Yearly 
     """
 
     """
@@ -33,8 +38,8 @@ class RecurringInterval(str, Enum):
     YEAR = 'year'
 
     @classmethod
-    def from_json(cls, json_str: str) -> RecurringInterval:
+    def from_json(cls, json_str: str) -> Self:
         """Create an instance of RecurringInterval from a JSON string"""
-        return RecurringInterval(json.loads(json_str))
+        return cls(json.loads(json_str))
 
 

@@ -2,16 +2,17 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **str** |  | 
-**name** | **str** | テナント名(tenant name) | 
+**name** | **str** | Tenant Name | 
 **completed_sign_up** | **bool** |  | 
-**envs** | [**List[UserAvailableEnv]**](UserAvailableEnv.md) | 環境情報、役割(ロール)情報(environmental info, role info) | 
-**user_attribute** | **Dict[str, object]** | ユーザー追加属性(user additional attributes) | 
-**back_office_staff_email** | **str** | バックオフィス担当者のメール(back office contact email) | 
+**envs** | [**List[UserAvailableEnv]**](UserAvailableEnv.md) | environmental info, role info | 
+**user_attribute** | **Dict[str, object]** | user additional attributes | 
+**back_office_staff_email** | **str** | back office contact email | 
 **plan_id** | **str** |  | [optional] 
-**is_paid** | **bool** | テナントの支払い状況(tenant payment status)  ※ 現在はストライプ連携時のみ返却されます。Currently, it is returned only when stripe is linked.  | [optional] 
+**is_paid** | **bool** | tenant payment status ※ Currently, it is returned only when stripe is linked.  | [optional] 
 
 ## Example
 

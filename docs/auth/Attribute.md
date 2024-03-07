@@ -2,10 +2,11 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**attribute_name** | **str** | 属性名(attribute name) | 
-**display_name** | **str** | 表示名(display name) | 
+**attribute_name** | **str** | Attribute Name | 
+**display_name** | **str** | Display Name | 
 **attribute_type** | [**AttributeType**](AttributeType.md) |  | 
 
 ## Example

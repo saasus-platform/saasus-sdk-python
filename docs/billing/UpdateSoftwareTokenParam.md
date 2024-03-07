@@ -2,10 +2,11 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**access_token** | **str** | アクセストークン(access token) | 
-**verification_code** | **str** | 検証コード(verification code) | 
+**access_token** | **str** | access token | 
+**verification_code** | **str** | verification code | 
 
 ## Example
 

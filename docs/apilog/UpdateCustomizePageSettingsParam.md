@@ -2,14 +2,15 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**title** | **str** | サービス名(service name) | 
-**terms_of_service_url** | **str** | 利用規約URL(terms of service URL) | 
-**privacy_policy_url** | **str** | プライバシーポリシーURL(privacy policy URL) | 
-**google_tag_manager_container_id** | **str** | Google Tag Manager コンテナ ID(Google Tag Manager container ID) | 
-**icon** | **str** | サービスアイコン(service icon) | 
-**favicon** | **str** | ファビコン(favicon) | 
+**title** | **str** | service name | 
+**terms_of_service_url** | **str** | terms of service URL | 
+**privacy_policy_url** | **str** | privacy policy URL | 
+**google_tag_manager_container_id** | **str** | Google Tag Manager container ID | 
+**icon** | **str** | service icon | 
+**favicon** | **str** | favicon | 
 
 ## Example
 

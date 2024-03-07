@@ -2,9 +2,10 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**callback_url** | **str** | 認証後遷移先(Redirect After Authentication) | 
+**callback_url** | **str** | Redirect After Authentication | 
 
 ## Example
 

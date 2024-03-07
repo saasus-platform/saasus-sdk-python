@@ -2,11 +2,12 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**type** | **str** | CNAMEリソースレコード(CNAME Resource Record) | 
-**name** | **str** | レコード名(Record Name) | 
-**value** | **str** | 値(Value) | 
+**type** | **str** | CNAME Resource Record | 
+**name** | **str** | Record Name | 
+**value** | **str** | Value | 
 
 ## Example
 

@@ -4,30 +4,31 @@ All URIs are relative to *https://api.saasus.io/v1/communication*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**create_feedback**](FeedbackApi.md#create_feedback) | **POST** /feedbacks | 
-[**create_feedback_comment**](FeedbackApi.md#create_feedback_comment) | **POST** /feedbacks/{feedback_id}/comments | 
-[**create_vote_user**](FeedbackApi.md#create_vote_user) | **POST** /feedbacks/{feedback_id}/votes/users | 
-[**delete_feedback**](FeedbackApi.md#delete_feedback) | **DELETE** /feedbacks/{feedback_id} | 
-[**delete_feedback_comment**](FeedbackApi.md#delete_feedback_comment) | **DELETE** /feedbacks/{feedback_id}/comments/{comment_id} | 
-[**delete_vote_for_feedback**](FeedbackApi.md#delete_vote_for_feedback) | **DELETE** /feedbacks/{feedback_id}/votes/users/{user_id} | 
-[**get_feedback**](FeedbackApi.md#get_feedback) | **GET** /feedbacks/{feedback_id} | 
-[**get_feedback_comment**](FeedbackApi.md#get_feedback_comment) | **GET** /feedbacks/{feedback_id}/comments/{comment_id} | 
-[**get_feedbacks**](FeedbackApi.md#get_feedbacks) | **GET** /feedbacks | 
-[**update_feedback**](FeedbackApi.md#update_feedback) | **PATCH** /feedbacks/{feedback_id} | 
-[**update_feedback_comment**](FeedbackApi.md#update_feedback_comment) | **PATCH** /feedbacks/{feedback_id}/comments/{comment_id} | 
-[**update_feedback_status**](FeedbackApi.md#update_feedback_status) | **PATCH** /feedbacks/{feedback_id}/status | 
+[**create_feedback**](FeedbackApi.md#create_feedback) | **POST** /feedbacks | Create Feedback
+[**create_feedback_comment**](FeedbackApi.md#create_feedback_comment) | **POST** /feedbacks/{feedback_id}/comments | Create Feedback Comment
+[**create_vote_user**](FeedbackApi.md#create_vote_user) | **POST** /feedbacks/{feedback_id}/votes/users | Create Vote User
+[**delete_feedback**](FeedbackApi.md#delete_feedback) | **DELETE** /feedbacks/{feedback_id} | Delete Feedback
+[**delete_feedback_comment**](FeedbackApi.md#delete_feedback_comment) | **DELETE** /feedbacks/{feedback_id}/comments/{comment_id} | Delete Feedback Comment
+[**delete_vote_for_feedback**](FeedbackApi.md#delete_vote_for_feedback) | **DELETE** /feedbacks/{feedback_id}/votes/users/{user_id} | Delete Vote For Feedback
+[**get_feedback**](FeedbackApi.md#get_feedback) | **GET** /feedbacks/{feedback_id} | Get Feedback
+[**get_feedback_comment**](FeedbackApi.md#get_feedback_comment) | **GET** /feedbacks/{feedback_id}/comments/{comment_id} | Get Feedback Comment
+[**get_feedbacks**](FeedbackApi.md#get_feedbacks) | **GET** /feedbacks | Get Feedbacks
+[**update_feedback**](FeedbackApi.md#update_feedback) | **PATCH** /feedbacks/{feedback_id} | Update Feedback
+[**update_feedback_comment**](FeedbackApi.md#update_feedback_comment) | **PATCH** /feedbacks/{feedback_id}/comments/{comment_id} | Update Feedback Comment
+[**update_feedback_status**](FeedbackApi.md#update_feedback_status) | **PATCH** /feedbacks/{feedback_id}/status | Update Feedback Status
 
 
 # **create_feedback**
 > Feedback create_feedback(create_feedback_param=create_feedback_param)
 
+Create Feedback
 
-
-フィードバックを起票
+Create Feedback.
 
 ### Example
 
 * Bearer Authentication (Bearer):
+
 ```python
 import time
 import os
@@ -60,6 +61,7 @@ with saasus_sdk_python.src.communication.ApiClient(configuration) as api_client:
     create_feedback_param = saasus_sdk_python.src.communication.CreateFeedbackParam() # CreateFeedbackParam |  (optional)
 
     try:
+        # Create Feedback
         api_response = api_instance.create_feedback(create_feedback_param=create_feedback_param)
         print("The response of FeedbackApi->create_feedback:\n")
         pprint(api_response)
@@ -70,6 +72,7 @@ with saasus_sdk_python.src.communication.ApiClient(configuration) as api_client:
 
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -89,6 +92,7 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **201** | Created |  -  |
@@ -99,13 +103,14 @@ Name | Type | Description  | Notes
 # **create_feedback_comment**
 > Comment create_feedback_comment(feedback_id, create_feedback_comment_param=create_feedback_comment_param)
 
+Create Feedback Comment
 
-
-フィードバックへのコメント
+Post comment to feedback.
 
 ### Example
 
 * Bearer Authentication (Bearer):
+
 ```python
 import time
 import os
@@ -139,6 +144,7 @@ with saasus_sdk_python.src.communication.ApiClient(configuration) as api_client:
     create_feedback_comment_param = saasus_sdk_python.src.communication.CreateFeedbackCommentParam() # CreateFeedbackCommentParam |  (optional)
 
     try:
+        # Create Feedback Comment
         api_response = api_instance.create_feedback_comment(feedback_id, create_feedback_comment_param=create_feedback_comment_param)
         print("The response of FeedbackApi->create_feedback_comment:\n")
         pprint(api_response)
@@ -149,6 +155,7 @@ with saasus_sdk_python.src.communication.ApiClient(configuration) as api_client:
 
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -169,6 +176,7 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **201** | Created |  -  |
@@ -180,13 +188,14 @@ Name | Type | Description  | Notes
 # **create_vote_user**
 > Votes create_vote_user(feedback_id, create_vote_user_param=create_vote_user_param)
 
+Create Vote User
 
-
-フィードバックへの投票
+Vote for feedback.
 
 ### Example
 
 * Bearer Authentication (Bearer):
+
 ```python
 import time
 import os
@@ -220,6 +229,7 @@ with saasus_sdk_python.src.communication.ApiClient(configuration) as api_client:
     create_vote_user_param = saasus_sdk_python.src.communication.CreateVoteUserParam() # CreateVoteUserParam |  (optional)
 
     try:
+        # Create Vote User
         api_response = api_instance.create_vote_user(feedback_id, create_vote_user_param=create_vote_user_param)
         print("The response of FeedbackApi->create_vote_user:\n")
         pprint(api_response)
@@ -230,6 +240,7 @@ with saasus_sdk_python.src.communication.ApiClient(configuration) as api_client:
 
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -250,6 +261,7 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **201** | Created |  -  |
@@ -261,13 +273,14 @@ Name | Type | Description  | Notes
 # **delete_feedback**
 > delete_feedback(feedback_id)
 
+Delete Feedback
 
-
-フィードバックの削除
+Delete Feedback.
 
 ### Example
 
 * Bearer Authentication (Bearer):
+
 ```python
 import time
 import os
@@ -298,6 +311,7 @@ with saasus_sdk_python.src.communication.ApiClient(configuration) as api_client:
     feedback_id = 'feedback_id_example' # str | 
 
     try:
+        # Delete Feedback
         api_instance.delete_feedback(feedback_id)
     except Exception as e:
         print("Exception when calling FeedbackApi->delete_feedback: %s\n" % e)
@@ -306,6 +320,7 @@ with saasus_sdk_python.src.communication.ApiClient(configuration) as api_client:
 
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -325,6 +340,7 @@ void (empty response body)
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
@@ -336,13 +352,14 @@ void (empty response body)
 # **delete_feedback_comment**
 > delete_feedback_comment(feedback_id, comment_id)
 
+Delete Feedback Comment
 
-
-フィードバックへのコメント削除
+Delete comment for feedback.
 
 ### Example
 
 * Bearer Authentication (Bearer):
+
 ```python
 import time
 import os
@@ -374,6 +391,7 @@ with saasus_sdk_python.src.communication.ApiClient(configuration) as api_client:
     comment_id = 'comment_id_example' # str | 
 
     try:
+        # Delete Feedback Comment
         api_instance.delete_feedback_comment(feedback_id, comment_id)
     except Exception as e:
         print("Exception when calling FeedbackApi->delete_feedback_comment: %s\n" % e)
@@ -382,6 +400,7 @@ with saasus_sdk_python.src.communication.ApiClient(configuration) as api_client:
 
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -402,6 +421,7 @@ void (empty response body)
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
@@ -413,13 +433,14 @@ void (empty response body)
 # **delete_vote_for_feedback**
 > delete_vote_for_feedback(feedback_id, user_id)
 
+Delete Vote For Feedback
 
-
-フィードバックへの投票の取消
+Cancel vote for feedback.
 
 ### Example
 
 * Bearer Authentication (Bearer):
+
 ```python
 import time
 import os
@@ -451,6 +472,7 @@ with saasus_sdk_python.src.communication.ApiClient(configuration) as api_client:
     user_id = 'user_id_example' # str | 
 
     try:
+        # Delete Vote For Feedback
         api_instance.delete_vote_for_feedback(feedback_id, user_id)
     except Exception as e:
         print("Exception when calling FeedbackApi->delete_vote_for_feedback: %s\n" % e)
@@ -459,6 +481,7 @@ with saasus_sdk_python.src.communication.ApiClient(configuration) as api_client:
 
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -479,6 +502,7 @@ void (empty response body)
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
@@ -490,13 +514,14 @@ void (empty response body)
 # **get_feedback**
 > Feedback get_feedback(feedback_id)
 
+Get Feedback
 
-
-フィードバックの取得
+Retrieve feedback.
 
 ### Example
 
 * Bearer Authentication (Bearer):
+
 ```python
 import time
 import os
@@ -528,6 +553,7 @@ with saasus_sdk_python.src.communication.ApiClient(configuration) as api_client:
     feedback_id = 'feedback_id_example' # str | 
 
     try:
+        # Get Feedback
         api_response = api_instance.get_feedback(feedback_id)
         print("The response of FeedbackApi->get_feedback:\n")
         pprint(api_response)
@@ -538,6 +564,7 @@ with saasus_sdk_python.src.communication.ApiClient(configuration) as api_client:
 
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -557,6 +584,7 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
@@ -568,13 +596,14 @@ Name | Type | Description  | Notes
 # **get_feedback_comment**
 > Comment get_feedback_comment(feedback_id, comment_id)
 
+Get Feedback Comment
 
-
-フィードバックへのコメント取得
+Retrieve comment from feedback.
 
 ### Example
 
 * Bearer Authentication (Bearer):
+
 ```python
 import time
 import os
@@ -607,6 +636,7 @@ with saasus_sdk_python.src.communication.ApiClient(configuration) as api_client:
     comment_id = 'comment_id_example' # str | 
 
     try:
+        # Get Feedback Comment
         api_response = api_instance.get_feedback_comment(feedback_id, comment_id)
         print("The response of FeedbackApi->get_feedback_comment:\n")
         pprint(api_response)
@@ -617,6 +647,7 @@ with saasus_sdk_python.src.communication.ApiClient(configuration) as api_client:
 
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -637,6 +668,7 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Ok |  -  |
@@ -648,13 +680,14 @@ Name | Type | Description  | Notes
 # **get_feedbacks**
 > Feedbacks get_feedbacks()
 
+Get Feedbacks
 
-
-フィードバックの一覧を取得
+Get the list of feedbacks.
 
 ### Example
 
 * Bearer Authentication (Bearer):
+
 ```python
 import time
 import os
@@ -685,6 +718,7 @@ with saasus_sdk_python.src.communication.ApiClient(configuration) as api_client:
     api_instance = saasus_sdk_python.src.communication.FeedbackApi(api_client)
 
     try:
+        # Get Feedbacks
         api_response = api_instance.get_feedbacks()
         print("The response of FeedbackApi->get_feedbacks:\n")
         pprint(api_response)
@@ -695,6 +729,7 @@ with saasus_sdk_python.src.communication.ApiClient(configuration) as api_client:
 
 
 ### Parameters
+
 This endpoint does not need any parameter.
 
 ### Return type
@@ -711,6 +746,7 @@ This endpoint does not need any parameter.
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
@@ -721,13 +757,14 @@ This endpoint does not need any parameter.
 # **update_feedback**
 > update_feedback(feedback_id, update_feedback_param=update_feedback_param)
 
+Update Feedback
 
-
-フィードバックの編集
+Edit feedback.
 
 ### Example
 
 * Bearer Authentication (Bearer):
+
 ```python
 import time
 import os
@@ -760,6 +797,7 @@ with saasus_sdk_python.src.communication.ApiClient(configuration) as api_client:
     update_feedback_param = saasus_sdk_python.src.communication.UpdateFeedbackParam() # UpdateFeedbackParam |  (optional)
 
     try:
+        # Update Feedback
         api_instance.update_feedback(feedback_id, update_feedback_param=update_feedback_param)
     except Exception as e:
         print("Exception when calling FeedbackApi->update_feedback: %s\n" % e)
@@ -768,6 +806,7 @@ with saasus_sdk_python.src.communication.ApiClient(configuration) as api_client:
 
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -788,6 +827,7 @@ void (empty response body)
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
@@ -799,13 +839,14 @@ void (empty response body)
 # **update_feedback_comment**
 > update_feedback_comment(feedback_id, comment_id, update_feedback_comment_param=update_feedback_comment_param)
 
+Update Feedback Comment
 
-
-フィードバックへのコメント編集
+Edit comment for feedback.
 
 ### Example
 
 * Bearer Authentication (Bearer):
+
 ```python
 import time
 import os
@@ -839,6 +880,7 @@ with saasus_sdk_python.src.communication.ApiClient(configuration) as api_client:
     update_feedback_comment_param = saasus_sdk_python.src.communication.UpdateFeedbackCommentParam() # UpdateFeedbackCommentParam |  (optional)
 
     try:
+        # Update Feedback Comment
         api_instance.update_feedback_comment(feedback_id, comment_id, update_feedback_comment_param=update_feedback_comment_param)
     except Exception as e:
         print("Exception when calling FeedbackApi->update_feedback_comment: %s\n" % e)
@@ -847,6 +889,7 @@ with saasus_sdk_python.src.communication.ApiClient(configuration) as api_client:
 
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -868,6 +911,7 @@ void (empty response body)
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
@@ -879,13 +923,14 @@ void (empty response body)
 # **update_feedback_status**
 > update_feedback_status(feedback_id, update_feedback_status_param=update_feedback_status_param)
 
+Update Feedback Status
 
-
-フィードバックのステータス更新
+Update Feedback Status.
 
 ### Example
 
 * Bearer Authentication (Bearer):
+
 ```python
 import time
 import os
@@ -918,6 +963,7 @@ with saasus_sdk_python.src.communication.ApiClient(configuration) as api_client:
     update_feedback_status_param = saasus_sdk_python.src.communication.UpdateFeedbackStatusParam() # UpdateFeedbackStatusParam |  (optional)
 
     try:
+        # Update Feedback Status
         api_instance.update_feedback_status(feedback_id, update_feedback_status_param=update_feedback_status_param)
     except Exception as e:
         print("Exception when calling FeedbackApi->update_feedback_status: %s\n" % e)
@@ -926,6 +972,7 @@ with saasus_sdk_python.src.communication.ApiClient(configuration) as api_client:
 
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -946,6 +993,7 @@ void (empty response body)
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |

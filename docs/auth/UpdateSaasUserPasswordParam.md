@@ -2,9 +2,10 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**password** | **str** | パスワード(password) | 
+**password** | **str** | Password | 
 
 ## Example
 

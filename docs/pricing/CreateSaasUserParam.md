@@ -2,10 +2,11 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**email** | **str** | メールアドレス(E-mail) | 
-**password** | **str** | パスワード(Password) | 
+**email** | **str** | E-mail | 
+**password** | **str** | Password | 
 
 ## Example
 

@@ -2,12 +2,13 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**unit_name** | **str** | 計測ユニット名(metering unit name) | 
-**aggregate_usage** | [**AggregateUsage**](AggregateUsage.md) |  | 
-**display_name** | **str** | 表示名(display name) | 
-**description** | **str** | 説明(description) | 
+**unit_name** | **str** | Metering unit name | 
+**aggregate_usage** | [**AggregateUsage**](AggregateUsage.md) |  | [optional] 
+**display_name** | **str** | Display name | 
+**description** | **str** | Description | 
 
 ## Example
 

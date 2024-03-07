@@ -2,10 +2,11 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**timestamp** | **int** | 日時(timestamp) | 
-**count** | **int** | 件数(count) | 
+**timestamp** | **int** | Timestamp | 
+**count** | **int** | Count | 
 
 ## Example
 

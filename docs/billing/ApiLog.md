@@ -2,22 +2,23 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**trace_id** | **str** | トレースID | 
+**trace_id** | **str** | Trace ID | 
 **api_log_id** | **str** |  | 
-**created_at** | **int** | APIログ登録日時のエポック秒 | 
-**created_date** | **str** | APIログ登録日 | 
-**ttl** | **int** | APIログ削除予定エポック秒 | 
-**request_method** | **str** | リクエストメソッド | 
+**created_at** | **int** | Epoch second of API log registration timestamp | 
+**created_date** | **str** | API log registration date | 
+**ttl** | **int** | Epoch second of planned API log deletion | 
+**request_method** | **str** | Request method | 
 **saas_id** | **str** |  | 
-**api_key** | **str** | APIキー | 
-**response_status** | **str** | レスポンスステータス | 
-**request_uri** | **str** | リクエストURI | 
-**remote_address** | **str** | クライアントIPアドレス | 
-**referer** | **str** | リクエストリファラー | 
-**request_body** | **str** | リクエストボディー | 
-**response_body** | **str** | レスポンスボディー | 
+**api_key** | **str** | API Key | 
+**response_status** | **str** | Response status | 
+**request_uri** | **str** | Request URI | 
+**remote_address** | **str** | Client IP Address | 
+**referer** | **str** | The referrer of the request | 
+**request_body** | **str** | The body of the request | 
+**response_body** | **str** | The body of the response | 
 
 ## Example
 

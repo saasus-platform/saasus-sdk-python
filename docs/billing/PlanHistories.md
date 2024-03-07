@@ -2,9 +2,10 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**plan_histories** | [**List[PlanHistory]**](PlanHistory.md) | 料金プラン履歴 | 
+**plan_histories** | [**List[PlanHistory]**](PlanHistory.md) | Plan History | 
 
 ## Example
 

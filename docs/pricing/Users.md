@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **users** | [**List[User]**](User.md) |  | 
@@ -9,7 +10,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from saasus_sdk_python.src.auth.models.users import Users
+from saasus_sdk_python.src.communication.models.users import Users
 
 # TODO update the JSON string below
 json = "{}"

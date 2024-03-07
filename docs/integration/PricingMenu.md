@@ -2,14 +2,15 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**name** | **str** | メニュー名(menu name) | 
-**display_name** | **str** | メニュー表示名(menu display name) | 
-**description** | **str** | メニュー説明(menu description) | 
-**used** | **bool** | メニューの使用済み設定(menu used settings) | 
+**name** | **str** | Menu name | 
+**display_name** | **str** | Menu display name | 
+**description** | **str** | Menu description | 
+**used** | **bool** | Menu used settings | 
 **units** | [**List[PricingUnit]**](PricingUnit.md) |  | 
-**id** | **str** |  | 
+**id** | **str** | Universally Unique Identifier | 
 
 ## Example
 

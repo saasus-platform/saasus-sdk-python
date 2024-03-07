@@ -2,10 +2,11 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**enabled** | **bool** | MFAを有効にするか否か(enable MFA) | 
-**method** | **str** | MFAの方法(enabledがtrueの場合は必須)(MFA method (required if enabled is true)) | [optional] 
+**enabled** | **bool** | enable MFA | 
+**method** | **str** | MFA method (required if enabled is true) | [optional] 
 
 ## Example
 

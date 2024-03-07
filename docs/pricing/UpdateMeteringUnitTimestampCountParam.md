@@ -2,10 +2,11 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **method** | [**UpdateMeteringUnitTimestampCountMethod**](UpdateMeteringUnitTimestampCountMethod.md) |  | 
-**count** | **int** | 件数(count) | 
+**count** | **int** | Count | 
 
 ## Example
 

@@ -4,24 +4,25 @@ All URIs are relative to *https://api.saasus.io/v1/auth*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**get_auth_info**](AuthInfoApi.md#get_auth_info) | **GET** /auth-info | 認証情報を取得(Get Authentication Info)
-[**get_identity_providers**](AuthInfoApi.md#get_identity_providers) | **GET** /identity-providers | 
-[**get_sign_in_settings**](AuthInfoApi.md#get_sign_in_settings) | **GET** /sign-in-settings | パスワード要件を取得(Get Password Requirements)
-[**update_auth_info**](AuthInfoApi.md#update_auth_info) | **PUT** /auth-info | 認証情報を更新(Update Authentication Info)
-[**update_identity_provider**](AuthInfoApi.md#update_identity_provider) | **PUT** /identity-providers | 
-[**update_sign_in_settings**](AuthInfoApi.md#update_sign_in_settings) | **PUT** /sign-in-settings | パスワード要件を更新(Update Password Requirements)
+[**get_auth_info**](AuthInfoApi.md#get_auth_info) | **GET** /auth-info | Get Authentication Info
+[**get_identity_providers**](AuthInfoApi.md#get_identity_providers) | **GET** /identity-providers | Get Sign-In Information Via External Provider
+[**get_sign_in_settings**](AuthInfoApi.md#get_sign_in_settings) | **GET** /sign-in-settings | Get Password Requirements
+[**update_auth_info**](AuthInfoApi.md#update_auth_info) | **PUT** /auth-info | Update Authentication Info
+[**update_identity_provider**](AuthInfoApi.md#update_identity_provider) | **PUT** /identity-providers | Update Sign-In Information
+[**update_sign_in_settings**](AuthInfoApi.md#update_sign_in_settings) | **PUT** /sign-in-settings | Update Password Requirements
 
 
 # **get_auth_info**
 > AuthInfo get_auth_info()
 
-認証情報を取得(Get Authentication Info)
+Get Authentication Info
 
-ログイン後に認証情報を渡す SaaS の URL を取得します。 ここで取得した URL へ認証情報を渡し、SaaSus SDK を利用してこの Callback の実装をすることが可能となります。  Get the post-login SaaS URL that contains authentication information. You can pass authentication information to the URL obtained here and implement this Callback using the SaaSus SDK. 
+Get the post-login SaaS URL that contains authentication information. You can pass authentication information to the URL obtained here and implement this Callback using the SaaSus SDK. 
 
 ### Example
 
 * Bearer Authentication (Bearer):
+
 ```python
 import time
 import os
@@ -52,7 +53,7 @@ with saasus_sdk_python.src.auth.ApiClient(configuration) as api_client:
     api_instance = saasus_sdk_python.src.auth.AuthInfoApi(api_client)
 
     try:
-        # 認証情報を取得(Get Authentication Info)
+        # Get Authentication Info
         api_response = api_instance.get_auth_info()
         print("The response of AuthInfoApi->get_auth_info:\n")
         pprint(api_response)
@@ -63,6 +64,7 @@ with saasus_sdk_python.src.auth.ApiClient(configuration) as api_client:
 
 
 ### Parameters
+
 This endpoint does not need any parameter.
 
 ### Return type
@@ -79,6 +81,7 @@ This endpoint does not need any parameter.
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
@@ -89,13 +92,14 @@ This endpoint does not need any parameter.
 # **get_identity_providers**
 > IdentityProviders get_identity_providers()
 
+Get Sign-In Information Via External Provider
 
-
-cognitoに設定している外部プロバイダ経由のサインイン情報取得  Get sign-in information via external provider set in cognito 
+Get sign-in information via external provider set in cognito. 
 
 ### Example
 
 * Bearer Authentication (Bearer):
+
 ```python
 import time
 import os
@@ -126,6 +130,7 @@ with saasus_sdk_python.src.auth.ApiClient(configuration) as api_client:
     api_instance = saasus_sdk_python.src.auth.AuthInfoApi(api_client)
 
     try:
+        # Get Sign-In Information Via External Provider
         api_response = api_instance.get_identity_providers()
         print("The response of AuthInfoApi->get_identity_providers:\n")
         pprint(api_response)
@@ -136,6 +141,7 @@ with saasus_sdk_python.src.auth.ApiClient(configuration) as api_client:
 
 
 ### Parameters
+
 This endpoint does not need any parameter.
 
 ### Return type
@@ -152,6 +158,7 @@ This endpoint does not need any parameter.
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
@@ -162,13 +169,14 @@ This endpoint does not need any parameter.
 # **get_sign_in_settings**
 > SignInSettings get_sign_in_settings()
 
-パスワード要件を取得(Get Password Requirements)
+Get Password Requirements
 
-ユーザーパスワードの要件設定を取得します。 アルファベット、数字、記号の組み合わせで、桁数を長くすれば解読されづらい安全なパスワードを設定することが可能となります。  Get user password requirements. Set a secure password that is difficult to decipher by increasing the number of digits by combining alphabets, numbers, and symbols. 
+Get user password requirements. Set a secure password that is difficult to decipher by increasing the number of digits by combining alphabets, numbers, and symbols. 
 
 ### Example
 
 * Bearer Authentication (Bearer):
+
 ```python
 import time
 import os
@@ -199,7 +207,7 @@ with saasus_sdk_python.src.auth.ApiClient(configuration) as api_client:
     api_instance = saasus_sdk_python.src.auth.AuthInfoApi(api_client)
 
     try:
-        # パスワード要件を取得(Get Password Requirements)
+        # Get Password Requirements
         api_response = api_instance.get_sign_in_settings()
         print("The response of AuthInfoApi->get_sign_in_settings:\n")
         pprint(api_response)
@@ -210,6 +218,7 @@ with saasus_sdk_python.src.auth.ApiClient(configuration) as api_client:
 
 
 ### Parameters
+
 This endpoint does not need any parameter.
 
 ### Return type
@@ -226,6 +235,7 @@ This endpoint does not need any parameter.
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
@@ -236,13 +246,14 @@ This endpoint does not need any parameter.
 # **update_auth_info**
 > update_auth_info(body=body)
 
-認証情報を更新(Update Authentication Info)
+Update Authentication Info
 
-ログイン後に認証情報を渡す SaaS の URL を登録します。 ここで登録した URL に認証情報を渡し、SaaSus SDK を利用してこの Callback の実装をすることが可能となります。  Register post-login SaaS URL for authentication information. It is possible to pass authentication information to the URL registered here and implement this Callback using the SaaSus SDK. 
+Register post-login SaaS URL for authentication information. It is possible to pass authentication information to the URL registered here and implement this Callback using the SaaSus SDK. 
 
 ### Example
 
 * Bearer Authentication (Bearer):
+
 ```python
 import time
 import os
@@ -274,7 +285,7 @@ with saasus_sdk_python.src.auth.ApiClient(configuration) as api_client:
     body = saasus_sdk_python.src.auth.AuthInfo() # AuthInfo |  (optional)
 
     try:
-        # 認証情報を更新(Update Authentication Info)
+        # Update Authentication Info
         api_instance.update_auth_info(body=body)
     except Exception as e:
         print("Exception when calling AuthInfoApi->update_auth_info: %s\n" % e)
@@ -283,6 +294,7 @@ with saasus_sdk_python.src.auth.ApiClient(configuration) as api_client:
 
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -302,6 +314,7 @@ void (empty response body)
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
@@ -312,13 +325,14 @@ void (empty response body)
 # **update_identity_provider**
 > update_identity_provider(update_identity_provider_param=update_identity_provider_param)
 
+Update Sign-In Information
 
-
-外部IDプロバイダのサインイン情報更新
+Update the sign-in information for the external ID provider
 
 ### Example
 
 * Bearer Authentication (Bearer):
+
 ```python
 import time
 import os
@@ -350,6 +364,7 @@ with saasus_sdk_python.src.auth.ApiClient(configuration) as api_client:
     update_identity_provider_param = saasus_sdk_python.src.auth.UpdateIdentityProviderParam() # UpdateIdentityProviderParam |  (optional)
 
     try:
+        # Update Sign-In Information
         api_instance.update_identity_provider(update_identity_provider_param=update_identity_provider_param)
     except Exception as e:
         print("Exception when calling AuthInfoApi->update_identity_provider: %s\n" % e)
@@ -358,6 +373,7 @@ with saasus_sdk_python.src.auth.ApiClient(configuration) as api_client:
 
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -377,6 +393,7 @@ void (empty response body)
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
@@ -387,13 +404,14 @@ void (empty response body)
 # **update_sign_in_settings**
 > update_sign_in_settings(update_sign_in_settings_param=update_sign_in_settings_param)
 
-パスワード要件を更新(Update Password Requirements)
+Update Password Requirements
 
-ユーザーパスワードの要件設定を更新します。 アルファベット、数字、記号の組み合わせで、桁数を長くすれば解読されづらい安全なパスワードを設定することが可能となります。  Update user password requirements. Set a secure password that is difficult to decipher by increasing the number of digits by combining alphabets, numbers, and symbols. 
+Update user password requirements. Set a secure password that is difficult to decipher by increasing the number of digits by combining alphabets, numbers, and symbols. 
 
 ### Example
 
 * Bearer Authentication (Bearer):
+
 ```python
 import time
 import os
@@ -425,7 +443,7 @@ with saasus_sdk_python.src.auth.ApiClient(configuration) as api_client:
     update_sign_in_settings_param = saasus_sdk_python.src.auth.UpdateSignInSettingsParam() # UpdateSignInSettingsParam |  (optional)
 
     try:
-        # パスワード要件を更新(Update Password Requirements)
+        # Update Password Requirements
         api_instance.update_sign_in_settings(update_sign_in_settings_param=update_sign_in_settings_param)
     except Exception as e:
         print("Exception when calling AuthInfoApi->update_sign_in_settings: %s\n" % e)
@@ -434,6 +452,7 @@ with saasus_sdk_python.src.auth.ApiClient(configuration) as api_client:
 
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -453,6 +472,7 @@ void (empty response body)
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |

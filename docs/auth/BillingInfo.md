@@ -2,9 +2,10 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**name** | **str** | 請求用のテナント名  Tenant name for billing  | 
+**name** | **str** | Tenant name for billing | 
 **address** | [**BillingAddress**](BillingAddress.md) |  | 
 **invoice_language** | [**InvoiceLanguage**](InvoiceLanguage.md) |  | 
 
