@@ -2,9 +2,10 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**role_names** | **List[str]** | 役割(ロール)情報(Role Info) | 
+**role_names** | **List[str]** | Role Info | 
 
 ## Example
 

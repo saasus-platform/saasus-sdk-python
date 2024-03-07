@@ -42,10 +42,13 @@ do
         target="/local/${module}api.yml"
     fi
 
-    docker run --rm -v ${PWD}:/local openapitools/openapi-generator-cli generate \
+    # don't use v7.3.0
+    # https://github.com/OpenAPITools/openapi-generator/issues/17863
+    docker run --rm -v ${PWD}:/local openapitools/openapi-generator-cli:v7.2.0 generate \
     -i ${target} \
     -g python \
     -o /local/saasus_sdk_python/generated/ \
+    --additional-properties useOneOfDiscriminatorLookup=true \
     --package-name saasus_sdk_python.src.${module}
 done
 

@@ -2,9 +2,10 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**secret_code** | **str** | シークレットコード(secret code) | 
+**secret_code** | **str** | secret code | 
 
 ## Example
 

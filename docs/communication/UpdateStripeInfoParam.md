@@ -2,9 +2,10 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**secret_key** | **str** | シークレットキー(secret key) | 
+**secret_key** | **str** | secret key | 
 
 ## Example
 

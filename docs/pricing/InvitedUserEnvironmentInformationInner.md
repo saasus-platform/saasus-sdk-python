@@ -2,10 +2,11 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **int** |  | 
-**role_names** | **List[str]** | 役割名(role name) | 
+**role_names** | **List[str]** | Role name | 
 
 ## Example
 

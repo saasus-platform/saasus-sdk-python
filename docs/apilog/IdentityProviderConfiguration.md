@@ -1,14 +1,15 @@
 # IdentityProviderConfiguration
 
-外部IDプロバイダを利用したサインインの設定をするために必要な情報です。(This information is required to set up sign-in using an external identity provider.) 変更はできません。(It cannot be changed.) 
+This information is required to set up sign-in using an external identity provider. It cannot be changed. 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**domain** | **str** | ドメイン(domain) | 
-**redirect_url** | **str** | リダイレクトURL(redirect URL) | 
-**entity_id** | **str** | 識別子(entity ID) | 
-**reply_url** | **str** | 応答URL(reply URL) | 
+**domain** | **str** | domain | 
+**redirect_url** | **str** | redirect URL | 
+**entity_id** | **str** | entity ID | 
+**reply_url** | **str** | reply URL | 
 
 ## Example
 

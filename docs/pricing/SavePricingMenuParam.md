@@ -2,12 +2,13 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**name** | **str** | メニュー名(menu name) | 
-**display_name** | **str** | メニュー表示名(menu display name) | 
-**description** | **str** | メニュー説明(menu description) | 
-**unit_ids** | **List[str]** | 追加するユニットID(unit id to add) | 
+**name** | **str** | Menu name | 
+**display_name** | **str** | Menu display name | 
+**description** | **str** | Menu description | 
+**unit_ids** | **List[str]** | Unit IDs to add | 
 
 ## Example
 

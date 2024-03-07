@@ -1,12 +1,13 @@
 # RecaptchaProps
 
-reCAPTCHA認証設定(reCAPTCHA authentication settings) ※ 未提供の機能のため、変更・保存はできません(This function is not yet provided, so it cannot be changed or saved.) 
+reCAPTCHA authentication settings ※ This function is not yet provided, so it cannot be changed or saved. 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**site_key** | **str** | サイトキー(site key) | 
-**secret_key** | **str** | シークレットキー(secret key) | 
+**site_key** | **str** | site key | 
+**secret_key** | **str** | secret key | 
 
 ## Example
 

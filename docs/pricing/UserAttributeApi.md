@@ -4,21 +4,22 @@ All URIs are relative to *https://api.saasus.io/v1/auth*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**create_user_attribute**](UserAttributeApi.md#create_user_attribute) | **POST** /user-attributes | ユーザー属性の作成(Create User Attributes)
-[**delete_user_attribute**](UserAttributeApi.md#delete_user_attribute) | **DELETE** /user-attributes/{attribute_name} | ユーザー属性の削除(Delete User Attribute)
-[**get_user_attributes**](UserAttributeApi.md#get_user_attributes) | **GET** /user-attributes | ユーザー属性の一覧を取得(Get User Attributes)
+[**create_user_attribute**](UserAttributeApi.md#create_user_attribute) | **POST** /user-attributes | Create User Attributes
+[**delete_user_attribute**](UserAttributeApi.md#delete_user_attribute) | **DELETE** /user-attributes/{attribute_name} | Delete User Attribute
+[**get_user_attributes**](UserAttributeApi.md#get_user_attributes) | **GET** /user-attributes | Get User Attributes
 
 
 # **create_user_attribute**
 > Attribute create_user_attribute(body=body)
 
-ユーザー属性の作成(Create User Attributes)
+Create User Attributes
 
-SaaSus Platform にて保持するユーザーの追加属性を登録します。 例えば、ユーザー名を持たせる、誕生日を持たせるなど、ユーザーに紐付いた項目の定義を行うことができます。 一方で、個人情報を SaaSus Platform 側に持たせたくない場合は、このユーザー属性定義を行わずに SaaS 側で個人情報を持つことを検討してください。  Create additional user attributes to be kept on the SaaSus Platform. For example, you can define items associated with a user, such as user name, birthday, etc. If you don't want personal information on the SaaS Platform side, personal information can be kept on the SaaS side without user attribute definition. 
+Create additional user attributes to be kept on the SaaSus Platform. For example, you can define items associated with a user, such as user name, birthday, etc. If you don't want personal information on the SaaS Platform side, personal information can be kept on the SaaS side without user attribute definition. 
 
 ### Example
 
 * Bearer Authentication (Bearer):
+
 ```python
 import time
 import os
@@ -50,7 +51,7 @@ with saasus_sdk_python.src.auth.ApiClient(configuration) as api_client:
     body = saasus_sdk_python.src.auth.Attribute() # Attribute |  (optional)
 
     try:
-        # ユーザー属性の作成(Create User Attributes)
+        # Create User Attributes
         api_response = api_instance.create_user_attribute(body=body)
         print("The response of UserAttributeApi->create_user_attribute:\n")
         pprint(api_response)
@@ -61,6 +62,7 @@ with saasus_sdk_python.src.auth.ApiClient(configuration) as api_client:
 
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -80,6 +82,7 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **201** | Created |  -  |
@@ -90,13 +93,14 @@ Name | Type | Description  | Notes
 # **delete_user_attribute**
 > delete_user_attribute(attribute_name)
 
-ユーザー属性の削除(Delete User Attribute)
+Delete User Attribute
 
-SaaSus Platform にて保持するユーザーの追加属性を削除します。  Delete user attributes kept on the SaaSus Platform. 
+Delete user attributes kept on the SaaSus Platform. 
 
 ### Example
 
 * Bearer Authentication (Bearer):
+
 ```python
 import time
 import os
@@ -124,10 +128,10 @@ configuration = saasus_sdk_python.src.auth.Configuration(
 with saasus_sdk_python.src.auth.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = saasus_sdk_python.src.auth.UserAttributeApi(api_client)
-    attribute_name = 'birthday' # str | 属性名(Attribute Name)
+    attribute_name = 'birthday' # str | Attribute Name
 
     try:
-        # ユーザー属性の削除(Delete User Attribute)
+        # Delete User Attribute
         api_instance.delete_user_attribute(attribute_name)
     except Exception as e:
         print("Exception when calling UserAttributeApi->delete_user_attribute: %s\n" % e)
@@ -137,9 +141,10 @@ with saasus_sdk_python.src.auth.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **attribute_name** | **str**| 属性名(Attribute Name) | 
+ **attribute_name** | **str**| Attribute Name | 
 
 ### Return type
 
@@ -155,6 +160,7 @@ void (empty response body)
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
@@ -166,13 +172,14 @@ void (empty response body)
 # **get_user_attributes**
 > UserAttributes get_user_attributes()
 
-ユーザー属性の一覧を取得(Get User Attributes)
+Get User Attributes
 
-SaaSus Platform にて保持するユーザーの追加属性を取得します。 例えば、ユーザー名を持たせる、誕生日を持たせるなど、ユーザーに紐付いた項目の定義を行うことができます。 一方で、個人情報を SaaSus Platform 側に持たせたくない場合は、このユーザー属性定義を行わずに SaaS 側で個人情報を持つことを検討してください。  Get additional attributes of the user saved in the SaaSus Platform. For example, you can define items associated with a user, such as user name, birthday, etc. If you don't want personal information on the SaaS Platform side, personal information can be kept on the SaaS side without user attribute definition. 
+Get additional attributes of the user saved in the SaaSus Platform. For example, you can define items associated with a user, such as user name, birthday, etc. If you don't want personal information on the SaaS Platform side, personal information can be kept on the SaaS side without user attribute definition. 
 
 ### Example
 
 * Bearer Authentication (Bearer):
+
 ```python
 import time
 import os
@@ -203,7 +210,7 @@ with saasus_sdk_python.src.auth.ApiClient(configuration) as api_client:
     api_instance = saasus_sdk_python.src.auth.UserAttributeApi(api_client)
 
     try:
-        # ユーザー属性の一覧を取得(Get User Attributes)
+        # Get User Attributes
         api_response = api_instance.get_user_attributes()
         print("The response of UserAttributeApi->get_user_attributes:\n")
         pprint(api_response)
@@ -214,6 +221,7 @@ with saasus_sdk_python.src.auth.ApiClient(configuration) as api_client:
 
 
 ### Parameters
+
 This endpoint does not need any parameter.
 
 ### Return type
@@ -230,6 +238,7 @@ This endpoint does not need any parameter.
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |

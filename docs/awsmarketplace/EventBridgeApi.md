@@ -4,23 +4,24 @@ All URIs are relative to *https://api.saasus.io/v1/integration*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**create_event_bridge_event**](EventBridgeApi.md#create_event_bridge_event) | **POST** /eventbridge/event | イベント連携の送信(Send Events)
-[**create_event_bridge_test_event**](EventBridgeApi.md#create_event_bridge_test_event) | **POST** /eventbridge/test-event | イベント連携のテスト送信(Test EventBridge Connection)
-[**delete_event_bridge_settings**](EventBridgeApi.md#delete_event_bridge_settings) | **DELETE** /eventbridge/info | イベント連携設定を削除(Delete EventBridge Settings)
-[**get_event_bridge_settings**](EventBridgeApi.md#get_event_bridge_settings) | **GET** /eventbridge/info | イベント連携設定を取得(Get EventBridge Settings)
-[**save_event_bridge_settings**](EventBridgeApi.md#save_event_bridge_settings) | **PUT** /eventbridge/info | イベント連携設定を更新(Update EventBridge Settings)
+[**create_event_bridge_event**](EventBridgeApi.md#create_event_bridge_event) | **POST** /eventbridge/event | Send Events
+[**create_event_bridge_test_event**](EventBridgeApi.md#create_event_bridge_test_event) | **POST** /eventbridge/test-event | Test EventBridge Connection
+[**delete_event_bridge_settings**](EventBridgeApi.md#delete_event_bridge_settings) | **DELETE** /eventbridge/info | Delete EventBridge Settings
+[**get_event_bridge_settings**](EventBridgeApi.md#get_event_bridge_settings) | **GET** /eventbridge/info | Get EventBridge Settings
+[**save_event_bridge_settings**](EventBridgeApi.md#save_event_bridge_settings) | **PUT** /eventbridge/info | Update EventBridge Settings
 
 
 # **create_event_bridge_event**
 > create_event_bridge_event(create_event_bridge_event_param=create_event_bridge_event_param)
 
-イベント連携の送信(Send Events)
+Send Events
 
-Amazon EventBridge へイベントを送信します。  Send events to Amazon EventBridge. 
+Send events to Amazon EventBridge. 
 
 ### Example
 
 * Bearer Authentication (Bearer):
+
 ```python
 import time
 import os
@@ -52,7 +53,7 @@ with saasus_sdk_python.src.integration.ApiClient(configuration) as api_client:
     create_event_bridge_event_param = saasus_sdk_python.src.integration.CreateEventBridgeEventParam() # CreateEventBridgeEventParam |  (optional)
 
     try:
-        # イベント連携の送信(Send Events)
+        # Send Events
         api_instance.create_event_bridge_event(create_event_bridge_event_param=create_event_bridge_event_param)
     except Exception as e:
         print("Exception when calling EventBridgeApi->create_event_bridge_event: %s\n" % e)
@@ -61,6 +62,7 @@ with saasus_sdk_python.src.integration.ApiClient(configuration) as api_client:
 
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -80,6 +82,7 @@ void (empty response body)
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **201** | Created |  -  |
@@ -90,13 +93,14 @@ void (empty response body)
 # **create_event_bridge_test_event**
 > create_event_bridge_test_event()
 
-イベント連携のテスト送信(Test EventBridge Connection)
+Test EventBridge Connection
 
-Amazon EventBridge との連携をテストする為のイベントを送信します。  Send events to test the connection with Amazon EventBridge. 
+Send events to test the connection with Amazon EventBridge. 
 
 ### Example
 
 * Bearer Authentication (Bearer):
+
 ```python
 import time
 import os
@@ -126,7 +130,7 @@ with saasus_sdk_python.src.integration.ApiClient(configuration) as api_client:
     api_instance = saasus_sdk_python.src.integration.EventBridgeApi(api_client)
 
     try:
-        # イベント連携のテスト送信(Test EventBridge Connection)
+        # Test EventBridge Connection
         api_instance.create_event_bridge_test_event()
     except Exception as e:
         print("Exception when calling EventBridgeApi->create_event_bridge_test_event: %s\n" % e)
@@ -135,6 +139,7 @@ with saasus_sdk_python.src.integration.ApiClient(configuration) as api_client:
 
 
 ### Parameters
+
 This endpoint does not need any parameter.
 
 ### Return type
@@ -151,6 +156,7 @@ void (empty response body)
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **201** | Created |  -  |
@@ -161,13 +167,14 @@ void (empty response body)
 # **delete_event_bridge_settings**
 > delete_event_bridge_settings()
 
-イベント連携設定を削除(Delete EventBridge Settings)
+Delete EventBridge Settings
 
-ホストの状態を Amazon EventBridge 経由で提供するための設定を解除します。  Delete settings used to provide host state via Amazon EventBridge. 
+Delete settings used to provide host state via Amazon EventBridge. 
 
 ### Example
 
 * Bearer Authentication (Bearer):
+
 ```python
 import time
 import os
@@ -197,7 +204,7 @@ with saasus_sdk_python.src.integration.ApiClient(configuration) as api_client:
     api_instance = saasus_sdk_python.src.integration.EventBridgeApi(api_client)
 
     try:
-        # イベント連携設定を削除(Delete EventBridge Settings)
+        # Delete EventBridge Settings
         api_instance.delete_event_bridge_settings()
     except Exception as e:
         print("Exception when calling EventBridgeApi->delete_event_bridge_settings: %s\n" % e)
@@ -206,6 +213,7 @@ with saasus_sdk_python.src.integration.ApiClient(configuration) as api_client:
 
 
 ### Parameters
+
 This endpoint does not need any parameter.
 
 ### Return type
@@ -222,6 +230,7 @@ void (empty response body)
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
@@ -232,13 +241,14 @@ void (empty response body)
 # **get_event_bridge_settings**
 > EventBridgeSettings get_event_bridge_settings()
 
-イベント連携設定を取得(Get EventBridge Settings)
+Get EventBridge Settings
 
-監視対象となっている全ホストの状態をリアルタイムにAmazon EventBridge 経由で提供するための設定を取得します。  Gets the settings for providing real-time status of all monitored hosts via Amazon EventBridge. 
+Gets the settings for providing real-time status of all monitored hosts via Amazon EventBridge. 
 
 ### Example
 
 * Bearer Authentication (Bearer):
+
 ```python
 import time
 import os
@@ -269,7 +279,7 @@ with saasus_sdk_python.src.integration.ApiClient(configuration) as api_client:
     api_instance = saasus_sdk_python.src.integration.EventBridgeApi(api_client)
 
     try:
-        # イベント連携設定を取得(Get EventBridge Settings)
+        # Get EventBridge Settings
         api_response = api_instance.get_event_bridge_settings()
         print("The response of EventBridgeApi->get_event_bridge_settings:\n")
         pprint(api_response)
@@ -280,6 +290,7 @@ with saasus_sdk_python.src.integration.ApiClient(configuration) as api_client:
 
 
 ### Parameters
+
 This endpoint does not need any parameter.
 
 ### Return type
@@ -296,6 +307,7 @@ This endpoint does not need any parameter.
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
@@ -306,13 +318,14 @@ This endpoint does not need any parameter.
 # **save_event_bridge_settings**
 > save_event_bridge_settings(body=body)
 
-イベント連携設定を更新(Update EventBridge Settings)
+Update EventBridge Settings
 
-ホストの状態を Amazon EventBridge 経由で提供するための設定を更新します。  Update configuration used to provide the host state via Amazon EventBridge. 
+Update configuration used to provide the host state via Amazon EventBridge. 
 
 ### Example
 
 * Bearer Authentication (Bearer):
+
 ```python
 import time
 import os
@@ -344,7 +357,7 @@ with saasus_sdk_python.src.integration.ApiClient(configuration) as api_client:
     body = saasus_sdk_python.src.integration.EventBridgeSettings() # EventBridgeSettings |  (optional)
 
     try:
-        # イベント連携設定を更新(Update EventBridge Settings)
+        # Update EventBridge Settings
         api_instance.save_event_bridge_settings(body=body)
     except Exception as e:
         print("Exception when calling EventBridgeApi->save_event_bridge_settings: %s\n" % e)
@@ -353,6 +366,7 @@ with saasus_sdk_python.src.integration.ApiClient(configuration) as api_client:
 
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -372,6 +386,7 @@ void (empty response body)
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |

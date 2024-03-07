@@ -18,50 +18,67 @@ import re  # noqa: F401
 import json
 
 
-from typing import List
-from pydantic import BaseModel, Field, StrictInt, StrictStr, conlist
+from typing import Any, ClassVar, Dict, List
+from pydantic import BaseModel, StrictInt, StrictStr
 from saasus_sdk_python.src.communication.models.comment import Comment
 from saasus_sdk_python.src.communication.models.user import User
+try:
+    from typing import Self
+except ImportError:
+    from typing_extensions import Self
 
 class Feedback(BaseModel):
     """
     Feedback
-    """
-    feedback_title: StrictStr = Field(...)
-    feedback_description: StrictStr = Field(...)
-    comments: conlist(Comment) = Field(...)
-    count: StrictInt = Field(...)
-    users: conlist(User) = Field(...)
-    id: StrictStr = Field(...)
-    user_id: StrictStr = Field(...)
-    created_at: StrictInt = Field(...)
-    status: StrictInt = Field(...)
-    __properties = ["feedback_title", "feedback_description", "comments", "count", "users", "id", "user_id", "created_at", "status"]
+    """ # noqa: E501
+    feedback_title: StrictStr
+    feedback_description: StrictStr
+    comments: List[Comment]
+    count: StrictInt
+    users: List[User]
+    id: StrictStr
+    user_id: StrictStr
+    created_at: StrictInt
+    status: StrictInt
+    __properties: ClassVar[List[str]] = ["feedback_title", "feedback_description", "comments", "count", "users", "id", "user_id", "created_at", "status"]
 
-    class Config:
-        """Pydantic configuration"""
-        allow_population_by_field_name = True
-        validate_assignment = True
+    model_config = {
+        "populate_by_name": True,
+        "validate_assignment": True,
+        "protected_namespaces": (),
+    }
+
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
-        return pprint.pformat(self.dict(by_alias=True))
+        return pprint.pformat(self.model_dump(by_alias=True))
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> Feedback:
+    def from_json(cls, json_str: str) -> Self:
         """Create an instance of Feedback from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
-    def to_dict(self):
-        """Returns the dictionary representation of the model using alias"""
-        _dict = self.dict(by_alias=True,
-                          exclude={
-                          },
-                          exclude_none=True)
+    def to_dict(self) -> Dict[str, Any]:
+        """Return the dictionary representation of the model using alias.
+
+        This has the following differences from calling pydantic's
+        `self.model_dump(by_alias=True)`:
+
+        * `None` is only added to the output dict for nullable fields that
+          were set at model initialization. Other fields with value `None`
+          are ignored.
+        """
+        _dict = self.model_dump(
+            by_alias=True,
+            exclude={
+            },
+            exclude_none=True,
+        )
         # override the default output from pydantic by calling `to_dict()` of each item in comments (list)
         _items = []
         if self.comments:
@@ -79,15 +96,15 @@ class Feedback(BaseModel):
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: dict) -> Feedback:
+    def from_dict(cls, obj: Dict) -> Self:
         """Create an instance of Feedback from a dict"""
         if obj is None:
             return None
 
         if not isinstance(obj, dict):
-            return Feedback.parse_obj(obj)
+            return cls.model_validate(obj)
 
-        _obj = Feedback.parse_obj({
+        _obj = cls.model_validate({
             "feedback_title": obj.get("feedback_title"),
             "feedback_description": obj.get("feedback_description"),
             "comments": [Comment.from_dict(_item) for _item in obj.get("comments")] if obj.get("comments") is not None else None,

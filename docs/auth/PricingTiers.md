@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **tiers** | [**List[PricingTier]**](PricingTier.md) |  | 

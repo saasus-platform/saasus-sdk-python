@@ -12,18 +12,23 @@
 """  # noqa: E501
 
 
+from __future__ import annotations
 import json
 import pprint
 import re  # noqa: F401
-from aenum import Enum, no_arg
+from enum import Enum
 
 
 
+try:
+    from typing import Self
+except ImportError:
+    from typing_extensions import Self
 
 
 class UnitType(str, Enum):
     """
-    計測単位の種別(unit of measurement type) fixed: 固定ユニット(fixed unit) usage: 使用量ユニット(usage unit) tiered: 段階ユニット(tiered unit) tiered_usage: 段階的使用量ユニット(tiered usage unit) 
+    Unit of measurement type fixed: Fixed unit usage: Usage unit tiered: Tiered unit tiered_usage: Tiered usage unit 
     """
 
     """
@@ -35,8 +40,8 @@ class UnitType(str, Enum):
     TIERED_USAGE = 'tiered_usage'
 
     @classmethod
-    def from_json(cls, json_str: str) -> UnitType:
+    def from_json(cls, json_str: str) -> Self:
         """Create an instance of UnitType from a JSON string"""
-        return UnitType(json.loads(json_str))
+        return cls(json.loads(json_str))
 
 

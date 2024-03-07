@@ -4,23 +4,24 @@ All URIs are relative to *https://api.saasus.io/v1/auth*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**create_env**](EnvApi.md#create_env) | **POST** /envs | 環境情報を作成(Create Env Info)
-[**delete_env**](EnvApi.md#delete_env) | **DELETE** /envs/{env_id} | 環境情報を削除(Delete Env Info)
-[**get_env**](EnvApi.md#get_env) | **GET** /envs/{env_id} | 環境情報を取得(Get Env Details)
-[**get_envs**](EnvApi.md#get_envs) | **GET** /envs | 環境情報一覧を取得(Get Env Info)
-[**update_env**](EnvApi.md#update_env) | **PATCH** /envs/{env_id} | 環境情報を更新(Update Env Info)
+[**create_env**](EnvApi.md#create_env) | **POST** /envs | Create Env Info
+[**delete_env**](EnvApi.md#delete_env) | **DELETE** /envs/{env_id} | Delete Env Info
+[**get_env**](EnvApi.md#get_env) | **GET** /envs/{env_id} | Get Env Details
+[**get_envs**](EnvApi.md#get_envs) | **GET** /envs | Get Env Info
+[**update_env**](EnvApi.md#update_env) | **PATCH** /envs/{env_id} | Update Env Info
 
 
 # **create_env**
 > Env create_env(body=body)
 
-環境情報を作成(Create Env Info)
+Create Env Info
 
-環境情報を作成します。 連携のテストや開発用環境や実際の運用で利用する環境など複数の環境を定義することができます。  Create environment information. Multiple environments can be defined, such as an environment for testing linkage, an environment for development, and an environment for actual operation. 
+Create environment information. Multiple environments can be defined, such as an environment for testing linkage, an environment for development, and an environment for actual operation. 
 
 ### Example
 
 * Bearer Authentication (Bearer):
+
 ```python
 import time
 import os
@@ -52,7 +53,7 @@ with saasus_sdk_python.src.auth.ApiClient(configuration) as api_client:
     body = saasus_sdk_python.src.auth.Env() # Env |  (optional)
 
     try:
-        # 環境情報を作成(Create Env Info)
+        # Create Env Info
         api_response = api_instance.create_env(body=body)
         print("The response of EnvApi->create_env:\n")
         pprint(api_response)
@@ -63,6 +64,7 @@ with saasus_sdk_python.src.auth.ApiClient(configuration) as api_client:
 
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -82,6 +84,7 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **201** | Created |  -  |
@@ -92,13 +95,14 @@ Name | Type | Description  | Notes
 # **delete_env**
 > delete_env(env_id)
 
-環境情報を削除(Delete Env Info)
+Delete Env Info
 
-環境情報を削除します。idが3の環境は削除できません。  Delete env info. Env with id 3 cannot be deleted. 
+Delete env info. Env with id 3 cannot be deleted. 
 
 ### Example
 
 * Bearer Authentication (Bearer):
+
 ```python
 import time
 import os
@@ -126,10 +130,10 @@ configuration = saasus_sdk_python.src.auth.Configuration(
 with saasus_sdk_python.src.auth.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = saasus_sdk_python.src.auth.EnvApi(api_client)
-    env_id = 56 # int | 環境ID(Env ID)
+    env_id = 56 # int | Env ID
 
     try:
-        # 環境情報を削除(Delete Env Info)
+        # Delete Env Info
         api_instance.delete_env(env_id)
     except Exception as e:
         print("Exception when calling EnvApi->delete_env: %s\n" % e)
@@ -139,9 +143,10 @@ with saasus_sdk_python.src.auth.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **env_id** | **int**| 環境ID(Env ID) | 
+ **env_id** | **int**| Env ID | 
 
 ### Return type
 
@@ -157,6 +162,7 @@ void (empty response body)
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
@@ -168,13 +174,14 @@ void (empty response body)
 # **get_env**
 > Env get_env(env_id)
 
-環境情報を取得(Get Env Details)
+Get Env Details
 
-環境情報の詳細を取得します。  Get environment details. 
+Get environment details. 
 
 ### Example
 
 * Bearer Authentication (Bearer):
+
 ```python
 import time
 import os
@@ -203,10 +210,10 @@ configuration = saasus_sdk_python.src.auth.Configuration(
 with saasus_sdk_python.src.auth.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = saasus_sdk_python.src.auth.EnvApi(api_client)
-    env_id = 56 # int | 環境ID(Env ID)
+    env_id = 56 # int | Env ID
 
     try:
-        # 環境情報を取得(Get Env Details)
+        # Get Env Details
         api_response = api_instance.get_env(env_id)
         print("The response of EnvApi->get_env:\n")
         pprint(api_response)
@@ -218,9 +225,10 @@ with saasus_sdk_python.src.auth.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **env_id** | **int**| 環境ID(Env ID) | 
+ **env_id** | **int**| Env ID | 
 
 ### Return type
 
@@ -236,6 +244,7 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
@@ -247,13 +256,14 @@ Name | Type | Description  | Notes
 # **get_envs**
 > Envs get_envs()
 
-環境情報一覧を取得(Get Env Info)
+Get Env Info
 
-登録されている環境情報を取得します。 連携のテストや開発用環境や実際の運用で利用する環境など複数の環境を定義することができます。  Get registered environment information. Multiple environments can be defined, such as an environment for testing linkage, an environment for development, and an environment for actual operation. 
+Get registered environment information. Multiple environments can be defined, such as an environment for testing linkage, an environment for development, and an environment for actual operation. 
 
 ### Example
 
 * Bearer Authentication (Bearer):
+
 ```python
 import time
 import os
@@ -284,7 +294,7 @@ with saasus_sdk_python.src.auth.ApiClient(configuration) as api_client:
     api_instance = saasus_sdk_python.src.auth.EnvApi(api_client)
 
     try:
-        # 環境情報一覧を取得(Get Env Info)
+        # Get Env Info
         api_response = api_instance.get_envs()
         print("The response of EnvApi->get_envs:\n")
         pprint(api_response)
@@ -295,6 +305,7 @@ with saasus_sdk_python.src.auth.ApiClient(configuration) as api_client:
 
 
 ### Parameters
+
 This endpoint does not need any parameter.
 
 ### Return type
@@ -311,6 +322,7 @@ This endpoint does not need any parameter.
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
@@ -321,13 +333,14 @@ This endpoint does not need any parameter.
 # **update_env**
 > update_env(env_id, update_env_param=update_env_param)
 
-環境情報を更新(Update Env Info)
+Update Env Info
 
-環境情報を更新します。  Update env info. 
+Update env info. 
 
 ### Example
 
 * Bearer Authentication (Bearer):
+
 ```python
 import time
 import os
@@ -356,11 +369,11 @@ configuration = saasus_sdk_python.src.auth.Configuration(
 with saasus_sdk_python.src.auth.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = saasus_sdk_python.src.auth.EnvApi(api_client)
-    env_id = 56 # int | 環境ID(Env ID)
+    env_id = 56 # int | Env ID
     update_env_param = saasus_sdk_python.src.auth.UpdateEnvParam() # UpdateEnvParam |  (optional)
 
     try:
-        # 環境情報を更新(Update Env Info)
+        # Update Env Info
         api_instance.update_env(env_id, update_env_param=update_env_param)
     except Exception as e:
         print("Exception when calling EnvApi->update_env: %s\n" % e)
@@ -370,9 +383,10 @@ with saasus_sdk_python.src.auth.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **env_id** | **int**| 環境ID(Env ID) | 
+ **env_id** | **int**| Env ID | 
  **update_env_param** | [**UpdateEnvParam**](UpdateEnvParam.md)|  | [optional] 
 
 ### Return type
@@ -389,6 +403,7 @@ void (empty response body)
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |

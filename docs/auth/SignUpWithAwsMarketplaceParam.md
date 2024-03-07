@@ -2,9 +2,10 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**email** | **str** | メールアドレス(Email Address) | 
+**email** | **str** | Email Address | 
 **registration_token** | **str** | Registration Token | 
 
 ## Example

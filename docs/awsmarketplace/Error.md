@@ -2,15 +2,16 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**type** | **str** |  | 
-**message** | **str** |  | 
+**type** | **str** | permission_denied | 
+**message** | **str** | Error message | 
 
 ## Example
 
 ```python
-from saasus_sdk_python.src.awsmarketplace.models.error import Error
+from saasus_sdk_python.src.communication.models.error import Error
 
 # TODO update the JSON string below
 json = "{}"

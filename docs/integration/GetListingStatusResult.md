@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **listing_status** | [**ListingStatus**](ListingStatus.md) |  | 

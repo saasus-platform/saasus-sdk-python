@@ -2,11 +2,12 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **tenant_id** | **str** |  | 
 **env_id** | **int** |  | 
-**saas_id** | **str** | saas id | 
+**saas_id** | **str** | SaaS ID | 
 
 ## Example
 

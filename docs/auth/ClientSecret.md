@@ -2,9 +2,10 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**client_secret** | **str** | クライアントシークレット(client secret) | 
+**client_secret** | **str** | Client Secret | 
 
 ## Example
 

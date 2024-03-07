@@ -2,11 +2,12 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**name** | **str** | テナント名(tenant name) | 
-**attributes** | **Dict[str, object]** | 属性情報(attribute info) | 
-**back_office_staff_email** | **str** | 事務管理部門スタッフメールアドレス(administrative staff email address) | 
+**name** | **str** | tenant name | 
+**attributes** | **Dict[str, object]** | attribute info | 
+**back_office_staff_email** | **str** | administrative staff email address | 
 
 ## Example
 

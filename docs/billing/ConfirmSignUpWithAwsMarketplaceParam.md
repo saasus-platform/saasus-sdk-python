@@ -2,10 +2,11 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**tenant_name** | **str** | テナント名(tenant name) | [optional] 
-**access_token** | **str** | アクセストークン(access token) | 
+**tenant_name** | **str** | Tenant name | [optional] 
+**access_token** | **str** | Access token | 
 **registration_token** | **str** | Registration Token | 
 
 ## Example

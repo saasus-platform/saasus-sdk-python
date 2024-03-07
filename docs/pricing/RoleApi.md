@@ -4,21 +4,22 @@ All URIs are relative to *https://api.saasus.io/v1/auth*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**create_role**](RoleApi.md#create_role) | **POST** /roles | 役割(ロール)を作成(Create Role)
-[**delete_role**](RoleApi.md#delete_role) | **DELETE** /roles/{role_name} | 役割(ロール)を削除(Delete Role)
-[**get_roles**](RoleApi.md#get_roles) | **GET** /roles | 役割(ロール)一覧を取得(Get Roles)
+[**create_role**](RoleApi.md#create_role) | **POST** /roles | Create Role
+[**delete_role**](RoleApi.md#delete_role) | **DELETE** /roles/{role_name} | Delete Role
+[**get_roles**](RoleApi.md#get_roles) | **GET** /roles | Get Roles
 
 
 # **create_role**
 > Role create_role(body=body)
 
-役割(ロール)を作成(Create Role)
+Create Role
 
-役割(ロール)を作成します。 ここで作成した役割をユーザーに付与することによって、SaaS側で役割ベースの認可を実装することが用意になります。 また、同じユーザーでも、属するテナント・環境ごとに持っている役割を変えることが可能です。  Create a role. By granting users the roles created here, it becomes easier to implement role-based authorization on the SaaS side. In addition, even the same user can have different roles for each tenant/environment to which they belong. 
+Create a role. By granting users the roles created here, it becomes easier to implement role-based authorization on the SaaS side. In addition, even the same user can have different roles for each tenant/environment to which they belong. 
 
 ### Example
 
 * Bearer Authentication (Bearer):
+
 ```python
 import time
 import os
@@ -50,7 +51,7 @@ with saasus_sdk_python.src.auth.ApiClient(configuration) as api_client:
     body = saasus_sdk_python.src.auth.Role() # Role |  (optional)
 
     try:
-        # 役割(ロール)を作成(Create Role)
+        # Create Role
         api_response = api_instance.create_role(body=body)
         print("The response of RoleApi->create_role:\n")
         pprint(api_response)
@@ -61,6 +62,7 @@ with saasus_sdk_python.src.auth.ApiClient(configuration) as api_client:
 
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -80,6 +82,7 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **201** | Created |  -  |
@@ -90,13 +93,14 @@ Name | Type | Description  | Notes
 # **delete_role**
 > delete_role(role_name)
 
-役割(ロール)を削除(Delete Role)
+Delete Role
 
-役割(ロール)を削除します。  Delete role. 
+Delete role. 
 
 ### Example
 
 * Bearer Authentication (Bearer):
+
 ```python
 import time
 import os
@@ -124,10 +128,10 @@ configuration = saasus_sdk_python.src.auth.Configuration(
 with saasus_sdk_python.src.auth.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = saasus_sdk_python.src.auth.RoleApi(api_client)
-    role_name = 'admin' # str | 役割(ロール)名(role name)
+    role_name = 'admin' # str | Role name
 
     try:
-        # 役割(ロール)を削除(Delete Role)
+        # Delete Role
         api_instance.delete_role(role_name)
     except Exception as e:
         print("Exception when calling RoleApi->delete_role: %s\n" % e)
@@ -137,9 +141,10 @@ with saasus_sdk_python.src.auth.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **role_name** | **str**| 役割(ロール)名(role name) | 
+ **role_name** | **str**| Role name | 
 
 ### Return type
 
@@ -155,6 +160,7 @@ void (empty response body)
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
@@ -167,13 +173,14 @@ void (empty response body)
 # **get_roles**
 > Roles get_roles()
 
-役割(ロール)一覧を取得(Get Roles)
+Get Roles
 
-登録されている役割(ロール)を一覧として取得します。 ここで定義した役割をユーザーに付与することによって、SaaS側で役割ベースの認可を実装することが用意になります。 また、同じユーザーでも、属するテナント・環境ごとに持っている役割を変えることが可能です。  Get registered roles list. Granting users the roles defined here makes it easy to implement role-based authorization on the SaaS side. In addition, even the same user can have different roles for each tenant/environment to which they belong. 
+Get registered roles list. Granting users the roles defined here makes it easy to implement role-based authorization on the SaaS side. In addition, even the same user can have different roles for each tenant/environment to which they belong. 
 
 ### Example
 
 * Bearer Authentication (Bearer):
+
 ```python
 import time
 import os
@@ -204,7 +211,7 @@ with saasus_sdk_python.src.auth.ApiClient(configuration) as api_client:
     api_instance = saasus_sdk_python.src.auth.RoleApi(api_client)
 
     try:
-        # 役割(ロール)一覧を取得(Get Roles)
+        # Get Roles
         api_response = api_instance.get_roles()
         print("The response of RoleApi->get_roles:\n")
         pprint(api_response)
@@ -215,6 +222,7 @@ with saasus_sdk_python.src.auth.ApiClient(configuration) as api_client:
 
 
 ### Parameters
+
 This endpoint does not need any parameter.
 
 ### Return type
@@ -231,6 +239,7 @@ This endpoint does not need any parameter.
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |

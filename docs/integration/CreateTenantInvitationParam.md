@@ -2,10 +2,11 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**email** | **str** | 招待するユーザーのメールアドレス(email address of the user to be invited) | 
-**access_token** | **str** | 招待を作成するユーザーのアクセストークン(access token of the user who creates an invitation) | 
+**email** | **str** | Email address of the user to be invited | 
+**access_token** | **str** | Access token of the user who creates an invitation | 
 **envs** | [**List[InvitedUserEnvironmentInformationInner]**](InvitedUserEnvironmentInformationInner.md) |  | 
 
 ## Example

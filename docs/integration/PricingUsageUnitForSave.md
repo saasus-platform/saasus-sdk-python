@@ -2,16 +2,17 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**name** | **str** | 名前(name) | 
-**display_name** | **str** | 表示名(display name) | 
-**description** | **str** | 説明(description) | 
+**name** | **str** | Name | 
+**display_name** | **str** | Display Name | 
+**description** | **str** | Description | 
 **type** | [**UnitType**](UnitType.md) |  | 
 **currency** | [**Currency**](Currency.md) |  | 
-**upper_count** | **int** | 上限値(upper limit) | 
-**unit_amount** | **int** | 使用量あたりの金額(amount per usage) | 
-**metering_unit_name** | **str** |  | 
+**upper_count** | **int** | Upper limit | 
+**unit_amount** | **int** | Amount per usage | 
+**metering_unit_name** | **str** | Metering unit name | 
 **aggregate_usage** | [**AggregateUsage**](AggregateUsage.md) |  | [optional] 
 
 ## Example

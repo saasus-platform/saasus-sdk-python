@@ -2,11 +2,12 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**metering_unit_name** | **str** | 計測ユニット名(metering unit name) | 
-**timestamp** | **int** | タイムスタンプ(timestamp) | 
-**count** | **int** | 件数(count) | 
+**metering_unit_name** | **str** | Metering unit name | 
+**timestamp** | **int** | Timestamp | 
+**count** | **int** | Count | 
 
 ## Example
 

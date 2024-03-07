@@ -4,19 +4,20 @@ All URIs are relative to *https://api.saasus.io/v1/communication*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**return_internal_server_error**](ErrorApi.md#return_internal_server_error) | **GET** /errors/internal-server-error | ステータスコード500でサーバーエラーを返却(Return Internal Server Error)
+[**return_internal_server_error**](ErrorApi.md#return_internal_server_error) | **GET** /errors/internal-server-error | Return Internal Server Error
 
 
 # **return_internal_server_error**
 > return_internal_server_error()
 
-ステータスコード500でサーバーエラーを返却(Return Internal Server Error)
+Return Internal Server Error
 
-テスト用途で使用するエンドポイントです。ステータスコード500でサーバーエラーを返却します。  This endpoint is used for testing purposes. Returns a server error with status code 500. 
+This endpoint is used for testing purposes. Returns a server error with status code 500. 
 
 ### Example
 
 * Bearer Authentication (Bearer):
+
 ```python
 import time
 import os
@@ -46,7 +47,7 @@ with saasus_sdk_python.src.communication.ApiClient(configuration) as api_client:
     api_instance = saasus_sdk_python.src.communication.ErrorApi(api_client)
 
     try:
-        # ステータスコード500でサーバーエラーを返却(Return Internal Server Error)
+        # Return Internal Server Error
         api_instance.return_internal_server_error()
     except Exception as e:
         print("Exception when calling ErrorApi->return_internal_server_error: %s\n" % e)
@@ -55,6 +56,7 @@ with saasus_sdk_python.src.communication.ApiClient(configuration) as api_client:
 
 
 ### Parameters
+
 This endpoint does not need any parameter.
 
 ### Return type
@@ -71,6 +73,7 @@ void (empty response body)
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **500** | Internal Server Error |  -  |

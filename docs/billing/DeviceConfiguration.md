@@ -1,11 +1,12 @@
 # DeviceConfiguration
 
-信頼済みデバイスの記憶の設定(settings for remembering trusted devices) 
+Settings for remembering trusted devices
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**device_remembering** | **str** | always: 常に記憶する(always remember) userOptIn: ユーザーオプトイン(user opt-in) no: (don&#39;t save)  | 
+**device_remembering** | **str** | always: always remember userOptIn: user opt-in no: don&#39;t save  | 
 
 ## Example
 

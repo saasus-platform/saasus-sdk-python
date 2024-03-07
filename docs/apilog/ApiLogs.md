@@ -2,9 +2,11 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **api_logs** | [**List[ApiLog]**](ApiLog.md) |  | 
+**cursor** | **str** | Cursor for cursor pagination | [optional] 
 
 ## Example
 
