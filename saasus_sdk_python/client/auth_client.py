@@ -28,8 +28,8 @@ class SignedAuthApiClient(ApiClient):
         )
         print(method, url, body)
 
-        # header_paramsが辞書ではない場合は、新しい辞書を作成する
-        if header_params is None or not isinstance(header_params, dict):
+        # header_paramsを署名つきのヘッダで更新する。
+        if header_params is None:
             header_params = {}
         header_params.update(signature_headers)
 
