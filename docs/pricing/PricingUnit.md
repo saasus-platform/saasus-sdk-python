@@ -5,7 +5,6 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**type** | [**UnitType**](UnitType.md) |  | 
 **id** | **str** | Universally Unique Identifier | 
 **metering_unit_id** | **str** | Universally Unique Identifier | 
 **recurring_interval** | [**RecurringInterval**](RecurringInterval.md) |  | 
@@ -16,6 +15,7 @@ Name | Type | Description | Notes
 **name** | **str** | Name | 
 **display_name** | **str** | Display Name | 
 **description** | **str** | Description | 
+**type** | [**UnitType**](UnitType.md) |  | 
 **currency** | [**Currency**](Currency.md) |  | 
 **tiers** | [**List[PricingTier]**](PricingTier.md) |  | 
 **unit_amount** | **int** | Price | 

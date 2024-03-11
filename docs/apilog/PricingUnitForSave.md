@@ -5,13 +5,13 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**type** | [**UnitType**](UnitType.md) |  | 
 **upper_count** | **int** | Upper limit | 
 **metering_unit_name** | **str** | Metering unit name | 
 **aggregate_usage** | [**AggregateUsage**](AggregateUsage.md) |  | [optional] 
 **name** | **str** | Name | 
 **display_name** | **str** | Display Name | 
 **description** | **str** | Description | 
+**type** | [**UnitType**](UnitType.md) |  | 
 **currency** | [**Currency**](Currency.md) |  | 
 **tiers** | [**List[PricingTier]**](PricingTier.md) |  | 
 **unit_amount** | **int** | Price | 

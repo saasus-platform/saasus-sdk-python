@@ -129,7 +129,7 @@ class PricingUnit(BaseModel):
             return instance
 
         # check if data type is `PricingTieredUsageUnit`
-        if _data_type == "tieredUsage":
+        if _data_type == "tiered_usage":
             instance.actual_instance = PricingTieredUsageUnit.from_json(json_str)
             return instance
 
