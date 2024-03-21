@@ -30,7 +30,6 @@ Create customer information to be linked to AWS Marketplace.
 ### Example
 
 * Bearer Authentication (Bearer):
-
 ```python
 import time
 import os
@@ -75,7 +74,6 @@ with saasus_sdk_python.src.awsmarketplace.ApiClient(configuration) as api_client
 
 ### Parameters
 
-
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **create_customer_param** | [**CreateCustomerParam**](CreateCustomerParam.md)|  | [optional] 
@@ -94,7 +92,6 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
-
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **201** | Created |  -  |
@@ -112,7 +109,6 @@ Retrieve the product's publication status from AWS Marketplace.
 ### Example
 
 * Bearer Authentication (Bearer):
-
 ```python
 import time
 import os
@@ -154,7 +150,6 @@ with saasus_sdk_python.src.awsmarketplace.ApiClient(configuration) as api_client
 
 
 ### Parameters
-
 This endpoint does not need any parameter.
 
 ### Return type
@@ -171,7 +166,6 @@ This endpoint does not need any parameter.
  - **Accept**: application/json
 
 ### HTTP response details
-
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
@@ -189,7 +183,6 @@ Get the CloudFormation Quick Create link.
 ### Example
 
 * Bearer Authentication (Bearer):
-
 ```python
 import time
 import os
@@ -231,7 +224,6 @@ with saasus_sdk_python.src.awsmarketplace.ApiClient(configuration) as api_client
 
 
 ### Parameters
-
 This endpoint does not need any parameter.
 
 ### Return type
@@ -248,7 +240,6 @@ This endpoint does not need any parameter.
  - **Accept**: application/json
 
 ### HTTP response details
-
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
@@ -266,7 +257,6 @@ Get customer information to be linked to AWS Marketplace.
 ### Example
 
 * Bearer Authentication (Bearer):
-
 ```python
 import time
 import os
@@ -310,7 +300,6 @@ with saasus_sdk_python.src.awsmarketplace.ApiClient(configuration) as api_client
 
 ### Parameters
 
-
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **customer_identifier** | **str**| Customer ID | 
@@ -329,7 +318,6 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
-
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
@@ -347,7 +335,6 @@ Get a list of customer information to be linked to AWS Marketplace.
 ### Example
 
 * Bearer Authentication (Bearer):
-
 ```python
 import time
 import os
@@ -391,7 +378,6 @@ with saasus_sdk_python.src.awsmarketplace.ApiClient(configuration) as api_client
 
 ### Parameters
 
-
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **tenant_ids** | [**List[str]**](str.md)| 指定したテナントIDの顧客を取得する(Get customers with the specified tenant ID) | [optional] 
@@ -410,7 +396,6 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
-
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
@@ -428,7 +413,6 @@ Get AWS Marketplace Listing Status.
 ### Example
 
 * Bearer Authentication (Bearer):
-
 ```python
 import time
 import os
@@ -470,7 +454,6 @@ with saasus_sdk_python.src.awsmarketplace.ApiClient(configuration) as api_client
 
 
 ### Parameters
-
 This endpoint does not need any parameter.
 
 ### Return type
@@ -487,7 +470,6 @@ This endpoint does not need any parameter.
  - **Accept**: application/json
 
 ### HTTP response details
-
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
@@ -505,7 +487,6 @@ Obtain plan information to link to AWS Marketplace.
 ### Example
 
 * Bearer Authentication (Bearer):
-
 ```python
 import time
 import os
@@ -549,7 +530,6 @@ with saasus_sdk_python.src.awsmarketplace.ApiClient(configuration) as api_client
 
 ### Parameters
 
-
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **plan_name** | **str**| AWS Marketplace linked plan name | 
@@ -568,7 +548,6 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
-
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
@@ -586,7 +565,6 @@ Obtain plan information to link to AWS Marketplace.
 ### Example
 
 * Bearer Authentication (Bearer):
-
 ```python
 import time
 import os
@@ -628,7 +606,6 @@ with saasus_sdk_python.src.awsmarketplace.ApiClient(configuration) as api_client
 
 
 ### Parameters
-
 This endpoint does not need any parameter.
 
 ### Return type
@@ -645,7 +622,6 @@ This endpoint does not need any parameter.
  - **Accept**: application/json
 
 ### HTTP response details
-
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
@@ -663,7 +639,6 @@ Get AWS Marketplace Settings.
 ### Example
 
 * Bearer Authentication (Bearer):
-
 ```python
 import time
 import os
@@ -705,7 +680,6 @@ with saasus_sdk_python.src.awsmarketplace.ApiClient(configuration) as api_client
 
 
 ### Parameters
-
 This endpoint does not need any parameter.
 
 ### Return type
@@ -722,7 +696,6 @@ This endpoint does not need any parameter.
  - **Accept**: application/json
 
 ### HTTP response details
-
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
@@ -740,7 +713,6 @@ Save plan information to be linked to AWSMarketplace.
 ### Example
 
 * Bearer Authentication (Bearer):
-
 ```python
 import time
 import os
@@ -782,7 +754,6 @@ with saasus_sdk_python.src.awsmarketplace.ApiClient(configuration) as api_client
 
 ### Parameters
 
-
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **save_plan_param** | [**SavePlanParam**](SavePlanParam.md)|  | [optional] 
@@ -801,7 +772,6 @@ void (empty response body)
  - **Accept**: application/json
 
 ### HTTP response details
-
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
@@ -819,7 +789,6 @@ Sync AWS Marketplace customer information to SaaSus.
 ### Example
 
 * Bearer Authentication (Bearer):
-
 ```python
 import time
 import os
@@ -860,7 +829,6 @@ with saasus_sdk_python.src.awsmarketplace.ApiClient(configuration) as api_client
 
 ### Parameters
 
-
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **customer_identifier** | **str**| Customer ID | 
@@ -879,7 +847,6 @@ void (empty response body)
  - **Accept**: application/json
 
 ### HTTP response details
-
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
@@ -897,7 +864,6 @@ Update AWS Marketplace Listing Status.
 ### Example
 
 * Bearer Authentication (Bearer):
-
 ```python
 import time
 import os
@@ -939,7 +905,6 @@ with saasus_sdk_python.src.awsmarketplace.ApiClient(configuration) as api_client
 
 ### Parameters
 
-
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **update_listing_status_param** | [**UpdateListingStatusParam**](UpdateListingStatusParam.md)|  | [optional] 
@@ -958,7 +923,6 @@ void (empty response body)
  - **Accept**: application/json
 
 ### HTTP response details
-
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
@@ -976,7 +940,6 @@ Update AWS Marketplace Settings.
 ### Example
 
 * Bearer Authentication (Bearer):
-
 ```python
 import time
 import os
@@ -1018,7 +981,6 @@ with saasus_sdk_python.src.awsmarketplace.ApiClient(configuration) as api_client
 
 ### Parameters
 
-
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **update_settings_param** | [**UpdateSettingsParam**](UpdateSettingsParam.md)|  | [optional] 
@@ -1037,7 +999,6 @@ void (empty response body)
  - **Accept**: application/json
 
 ### HTTP response details
-
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
@@ -1055,7 +1016,6 @@ Verify Registration Token.
 ### Example
 
 * Bearer Authentication (Bearer):
-
 ```python
 import time
 import os
@@ -1097,7 +1057,6 @@ with saasus_sdk_python.src.awsmarketplace.ApiClient(configuration) as api_client
 
 ### Parameters
 
-
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **verify_registration_token_param** | [**VerifyRegistrationTokenParam**](VerifyRegistrationTokenParam.md)|  | [optional] 
@@ -1116,7 +1075,6 @@ void (empty response body)
  - **Accept**: application/json
 
 ### HTTP response details
-
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |

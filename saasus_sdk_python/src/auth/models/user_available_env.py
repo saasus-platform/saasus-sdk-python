@@ -18,62 +18,44 @@ import re  # noqa: F401
 import json
 
 
-from typing import Any, ClassVar, Dict, List, Optional
-from pydantic import BaseModel, StrictInt, StrictStr
-from pydantic import Field
+from typing import List, Optional
+from pydantic import BaseModel, Field, StrictInt, StrictStr, conlist
 from saasus_sdk_python.src.auth.models.role import Role
-try:
-    from typing import Self
-except ImportError:
-    from typing_extensions import Self
 
 class UserAvailableEnv(BaseModel):
     """
     UserAvailableEnv
-    """ # noqa: E501
-    id: StrictInt
-    name: StrictStr = Field(description="env name")
-    display_name: Optional[StrictStr] = Field(default=None, description="env display name")
-    roles: List[Role] = Field(description="role info")
-    __properties: ClassVar[List[str]] = ["id", "name", "display_name", "roles"]
+    """
+    id: StrictInt = Field(...)
+    name: StrictStr = Field(..., description="env name")
+    display_name: Optional[StrictStr] = Field(None, description="env display name")
+    roles: conlist(Role) = Field(..., description="role info")
+    __properties = ["id", "name", "display_name", "roles"]
 
-    model_config = {
-        "populate_by_name": True,
-        "validate_assignment": True,
-        "protected_namespaces": (),
-    }
-
+    class Config:
+        """Pydantic configuration"""
+        allow_population_by_field_name = True
+        validate_assignment = True
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
-        return pprint.pformat(self.model_dump(by_alias=True))
+        return pprint.pformat(self.dict(by_alias=True))
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> Self:
+    def from_json(cls, json_str: str) -> UserAvailableEnv:
         """Create an instance of UserAvailableEnv from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
-    def to_dict(self) -> Dict[str, Any]:
-        """Return the dictionary representation of the model using alias.
-
-        This has the following differences from calling pydantic's
-        `self.model_dump(by_alias=True)`:
-
-        * `None` is only added to the output dict for nullable fields that
-          were set at model initialization. Other fields with value `None`
-          are ignored.
-        """
-        _dict = self.model_dump(
-            by_alias=True,
-            exclude={
-            },
-            exclude_none=True,
-        )
+    def to_dict(self):
+        """Returns the dictionary representation of the model using alias"""
+        _dict = self.dict(by_alias=True,
+                          exclude={
+                          },
+                          exclude_none=True)
         # override the default output from pydantic by calling `to_dict()` of each item in roles (list)
         _items = []
         if self.roles:
@@ -84,15 +66,15 @@ class UserAvailableEnv(BaseModel):
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: Dict) -> Self:
+    def from_dict(cls, obj: dict) -> UserAvailableEnv:
         """Create an instance of UserAvailableEnv from a dict"""
         if obj is None:
             return None
 
         if not isinstance(obj, dict):
-            return cls.model_validate(obj)
+            return UserAvailableEnv.parse_obj(obj)
 
-        _obj = cls.model_validate({
+        _obj = UserAvailableEnv.parse_obj({
             "id": obj.get("id"),
             "name": obj.get("name"),
             "display_name": obj.get("display_name"),

@@ -2,7 +2,6 @@
 
 
 ## Properties
-
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **enabled** | **bool** | enable MFA | 

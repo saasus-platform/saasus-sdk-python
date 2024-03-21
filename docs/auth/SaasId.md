@@ -2,7 +2,6 @@
 
 
 ## Properties
-
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **tenant_id** | **str** |  | 

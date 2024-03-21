@@ -18,59 +18,41 @@ import re  # noqa: F401
 import json
 
 
-from typing import Any, ClassVar, Dict, List
-from pydantic import BaseModel
-from pydantic import Field
+from typing import List
+from pydantic import BaseModel, Field, conlist
 from saasus_sdk_python.src.auth.models.plan_history import PlanHistory
-try:
-    from typing import Self
-except ImportError:
-    from typing_extensions import Self
 
 class PlanHistories(BaseModel):
     """
     PlanHistories
-    """ # noqa: E501
-    plan_histories: List[PlanHistory] = Field(description="Plan History")
-    __properties: ClassVar[List[str]] = ["plan_histories"]
+    """
+    plan_histories: conlist(PlanHistory) = Field(..., description="Plan History")
+    __properties = ["plan_histories"]
 
-    model_config = {
-        "populate_by_name": True,
-        "validate_assignment": True,
-        "protected_namespaces": (),
-    }
-
+    class Config:
+        """Pydantic configuration"""
+        allow_population_by_field_name = True
+        validate_assignment = True
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
-        return pprint.pformat(self.model_dump(by_alias=True))
+        return pprint.pformat(self.dict(by_alias=True))
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> Self:
+    def from_json(cls, json_str: str) -> PlanHistories:
         """Create an instance of PlanHistories from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
-    def to_dict(self) -> Dict[str, Any]:
-        """Return the dictionary representation of the model using alias.
-
-        This has the following differences from calling pydantic's
-        `self.model_dump(by_alias=True)`:
-
-        * `None` is only added to the output dict for nullable fields that
-          were set at model initialization. Other fields with value `None`
-          are ignored.
-        """
-        _dict = self.model_dump(
-            by_alias=True,
-            exclude={
-            },
-            exclude_none=True,
-        )
+    def to_dict(self):
+        """Returns the dictionary representation of the model using alias"""
+        _dict = self.dict(by_alias=True,
+                          exclude={
+                          },
+                          exclude_none=True)
         # override the default output from pydantic by calling `to_dict()` of each item in plan_histories (list)
         _items = []
         if self.plan_histories:
@@ -81,15 +63,15 @@ class PlanHistories(BaseModel):
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: Dict) -> Self:
+    def from_dict(cls, obj: dict) -> PlanHistories:
         """Create an instance of PlanHistories from a dict"""
         if obj is None:
             return None
 
         if not isinstance(obj, dict):
-            return cls.model_validate(obj)
+            return PlanHistories.parse_obj(obj)
 
-        _obj = cls.model_validate({
+        _obj = PlanHistories.parse_obj({
             "plan_histories": [PlanHistory.from_dict(_item) for _item in obj.get("plan_histories")] if obj.get("plan_histories") is not None else None
         })
         return _obj

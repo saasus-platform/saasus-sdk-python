@@ -3,7 +3,6 @@
 Access token is required for existing users, and email and password is required for new users. 
 
 ## Properties
-
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **access_token** | **str** | Access token of the invited user | [optional] 

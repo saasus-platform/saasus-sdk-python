@@ -2,7 +2,6 @@
 
 
 ## Properties
-
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **display_name** | **str** | Display name | 

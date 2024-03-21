@@ -18,85 +18,67 @@ import re  # noqa: F401
 import json
 
 
-from typing import Any, ClassVar, Dict, List
-from pydantic import BaseModel, StrictStr, field_validator
-from pydantic import Field
-try:
-    from typing import Self
-except ImportError:
-    from typing_extensions import Self
+
+from pydantic import BaseModel, Field, StrictStr, validator
 
 class AccountVerification(BaseModel):
     """
     Account authentication settings ※ This function is not yet provided, so it cannot be changed or saved. 
-    """ # noqa: E501
-    verification_method: StrictStr = Field(description="code: verification code link: verification link ※ This function is not yet provided, so it cannot be changed or saved. ")
-    sending_to: StrictStr = Field(description="email: e-mail sms: SMS smsOrEmail: email if SMS is not possible ")
-    __properties: ClassVar[List[str]] = ["verification_method", "sending_to"]
+    """
+    verification_method: StrictStr = Field(..., description="code: verification code link: verification link ※ This function is not yet provided, so it cannot be changed or saved. ")
+    sending_to: StrictStr = Field(..., description="email: e-mail sms: SMS smsOrEmail: email if SMS is not possible ")
+    __properties = ["verification_method", "sending_to"]
 
-    @field_validator('verification_method')
+    @validator('verification_method')
     def verification_method_validate_enum(cls, value):
         """Validates the enum"""
         if value not in ('code', 'link'):
             raise ValueError("must be one of enum values ('code', 'link')")
         return value
 
-    @field_validator('sending_to')
+    @validator('sending_to')
     def sending_to_validate_enum(cls, value):
         """Validates the enum"""
         if value not in ('email', 'sms', 'smsOrEmail'):
             raise ValueError("must be one of enum values ('email', 'sms', 'smsOrEmail')")
         return value
 
-    model_config = {
-        "populate_by_name": True,
-        "validate_assignment": True,
-        "protected_namespaces": (),
-    }
-
+    class Config:
+        """Pydantic configuration"""
+        allow_population_by_field_name = True
+        validate_assignment = True
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
-        return pprint.pformat(self.model_dump(by_alias=True))
+        return pprint.pformat(self.dict(by_alias=True))
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> Self:
+    def from_json(cls, json_str: str) -> AccountVerification:
         """Create an instance of AccountVerification from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
-    def to_dict(self) -> Dict[str, Any]:
-        """Return the dictionary representation of the model using alias.
-
-        This has the following differences from calling pydantic's
-        `self.model_dump(by_alias=True)`:
-
-        * `None` is only added to the output dict for nullable fields that
-          were set at model initialization. Other fields with value `None`
-          are ignored.
-        """
-        _dict = self.model_dump(
-            by_alias=True,
-            exclude={
-            },
-            exclude_none=True,
-        )
+    def to_dict(self):
+        """Returns the dictionary representation of the model using alias"""
+        _dict = self.dict(by_alias=True,
+                          exclude={
+                          },
+                          exclude_none=True)
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: Dict) -> Self:
+    def from_dict(cls, obj: dict) -> AccountVerification:
         """Create an instance of AccountVerification from a dict"""
         if obj is None:
             return None
 
         if not isinstance(obj, dict):
-            return cls.model_validate(obj)
+            return AccountVerification.parse_obj(obj)
 
-        _obj = cls.model_validate({
+        _obj = AccountVerification.parse_obj({
             "verification_method": obj.get("verification_method"),
             "sending_to": obj.get("sending_to")
         })

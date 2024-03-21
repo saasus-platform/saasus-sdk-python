@@ -2,7 +2,6 @@
 
 
 ## Properties
-
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **units** | [**List[PricingUnit]**](PricingUnit.md) |  | 

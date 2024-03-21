@@ -3,7 +3,6 @@
 Unit of measurement type fixed: Fixed unit usage: Usage unit tiered: Tiered unit tiered_usage: Tiered usage unit 
 
 ## Properties
-
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 

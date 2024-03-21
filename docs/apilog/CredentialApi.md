@@ -18,7 +18,6 @@ Temporarily save the parameter for the ID token, access token, and refresh token
 ### Example
 
 * Bearer Authentication (Bearer):
-
 ```python
 import time
 import os
@@ -63,7 +62,6 @@ with saasus_sdk_python.src.auth.ApiClient(configuration) as api_client:
 
 ### Parameters
 
-
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **body** | **Credentials**|  | [optional] 
@@ -82,7 +80,6 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
-
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **201** | Created |  -  |
@@ -102,7 +99,6 @@ Get ID token, access token, and refresh token using a temporary code or a refres
 ### Example
 
 * Bearer Authentication (Bearer):
-
 ```python
 import time
 import os
@@ -148,7 +144,6 @@ with saasus_sdk_python.src.auth.ApiClient(configuration) as api_client:
 
 ### Parameters
 
-
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **code** | **str**| Temp Code | [optional] 
@@ -169,7 +164,6 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
-
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |

@@ -2,7 +2,6 @@
 
 
 ## Properties
-
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **user_attributes** | [**List[Attribute]**](Attribute.md) | User Attribute Definition | 

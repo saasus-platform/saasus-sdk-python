@@ -2,7 +2,6 @@
 
 
 ## Properties
-
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **html_contents** | **str** | Edit page HTML ※ This function is not yet provided, so it cannot be changed or saved.  | 

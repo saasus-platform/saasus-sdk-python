@@ -3,7 +3,6 @@
 Aggregate usage sum: Total usage during the period max: Maximum usage during the period 
 
 ## Properties
-
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 

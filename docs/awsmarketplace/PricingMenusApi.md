@@ -21,7 +21,6 @@ Create a pricing feature menu.
 ### Example
 
 * Bearer Authentication (Bearer):
-
 ```python
 import time
 import os
@@ -66,7 +65,6 @@ with saasus_sdk_python.src.pricing.ApiClient(configuration) as api_client:
 
 ### Parameters
 
-
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **body** | **SavePricingMenuParam**|  | [optional] 
@@ -85,7 +83,6 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
-
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **201** | Created |  -  |
@@ -103,7 +100,6 @@ Delete pricing feature menu.
 ### Example
 
 * Bearer Authentication (Bearer):
-
 ```python
 import time
 import os
@@ -144,7 +140,6 @@ with saasus_sdk_python.src.pricing.ApiClient(configuration) as api_client:
 
 ### Parameters
 
-
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **menu_id** | **str**| Menu ID | 
@@ -163,7 +158,6 @@ void (empty response body)
  - **Accept**: application/json
 
 ### HTTP response details
-
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
@@ -182,7 +176,6 @@ Get a pricing feature menu.
 ### Example
 
 * Bearer Authentication (Bearer):
-
 ```python
 import time
 import os
@@ -226,7 +219,6 @@ with saasus_sdk_python.src.pricing.ApiClient(configuration) as api_client:
 
 ### Parameters
 
-
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **menu_id** | **str**| Menu ID | 
@@ -245,7 +237,6 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
-
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
@@ -263,7 +254,6 @@ Get the feature menu list. Multiple measurement units are grouped together and d
 ### Example
 
 * Bearer Authentication (Bearer):
-
 ```python
 import time
 import os
@@ -305,7 +295,6 @@ with saasus_sdk_python.src.pricing.ApiClient(configuration) as api_client:
 
 
 ### Parameters
-
 This endpoint does not need any parameter.
 
 ### Return type
@@ -322,7 +311,6 @@ This endpoint does not need any parameter.
  - **Accept**: application/json
 
 ### HTTP response details
-
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
@@ -340,7 +328,6 @@ Update pricing feature menu.
 ### Example
 
 * Bearer Authentication (Bearer):
-
 ```python
 import time
 import os
@@ -383,7 +370,6 @@ with saasus_sdk_python.src.pricing.ApiClient(configuration) as api_client:
 
 ### Parameters
 
-
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **menu_id** | **str**| Menu ID | 
@@ -403,7 +389,6 @@ void (empty response body)
  - **Accept**: application/json
 
 ### HTTP response details
-
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |

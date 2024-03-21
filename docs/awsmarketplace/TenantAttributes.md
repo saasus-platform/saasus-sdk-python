@@ -2,7 +2,6 @@
 
 
 ## Properties
-
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **tenant_attributes** | [**List[Attribute]**](Attribute.md) | Tenant Attribute Definition | 

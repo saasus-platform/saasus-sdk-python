@@ -28,7 +28,6 @@ Create a tenant managed by the SaaSus Platform.
 ### Example
 
 * Bearer Authentication (Bearer):
-
 ```python
 import time
 import os
@@ -73,7 +72,6 @@ with saasus_sdk_python.src.auth.ApiClient(configuration) as api_client:
 
 ### Parameters
 
-
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **body** | **TenantProps**|  | [optional] 
@@ -92,7 +90,6 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
-
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **201** | Created |  -  |
@@ -110,7 +107,6 @@ Set Stripe initial information via billing
 ### Example
 
 * Bearer Authentication (Bearer):
-
 ```python
 import time
 import os
@@ -149,7 +145,6 @@ with saasus_sdk_python.src.auth.ApiClient(configuration) as api_client:
 
 
 ### Parameters
-
 This endpoint does not need any parameter.
 
 ### Return type
@@ -166,7 +161,6 @@ void (empty response body)
  - **Accept**: application/json
 
 ### HTTP response details
-
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
@@ -184,7 +178,6 @@ Delete customer and product from Stripe.
 ### Example
 
 * Bearer Authentication (Bearer):
-
 ```python
 import time
 import os
@@ -223,7 +216,6 @@ with saasus_sdk_python.src.auth.ApiClient(configuration) as api_client:
 
 
 ### Parameters
-
 This endpoint does not need any parameter.
 
 ### Return type
@@ -240,7 +232,6 @@ void (empty response body)
  - **Accept**: application/json
 
 ### HTTP response details
-
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
@@ -258,7 +249,6 @@ Delete SaaSus Platform tenant.
 ### Example
 
 * Bearer Authentication (Bearer):
-
 ```python
 import time
 import os
@@ -299,7 +289,6 @@ with saasus_sdk_python.src.auth.ApiClient(configuration) as api_client:
 
 ### Parameters
 
-
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **tenant_id** | **str**| Tenant ID | 
@@ -318,7 +307,6 @@ void (empty response body)
  - **Accept**: application/json
 
 ### HTTP response details
-
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
@@ -336,7 +324,6 @@ Get the details of tenant managed on the SaaSus Platform.
 ### Example
 
 * Bearer Authentication (Bearer):
-
 ```python
 import time
 import os
@@ -380,7 +367,6 @@ with saasus_sdk_python.src.auth.ApiClient(configuration) as api_client:
 
 ### Parameters
 
-
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **tenant_id** | **str**| Tenant ID | 
@@ -399,7 +385,6 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
-
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
@@ -418,7 +403,6 @@ Get sign-in information via external identity provider per tenant.
 ### Example
 
 * Bearer Authentication (Bearer):
-
 ```python
 import time
 import os
@@ -462,7 +446,6 @@ with saasus_sdk_python.src.auth.ApiClient(configuration) as api_client:
 
 ### Parameters
 
-
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **tenant_id** | **str**| Tenant ID | 
@@ -481,7 +464,6 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
-
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
@@ -499,7 +481,6 @@ Get tenants managed by SaaSus Platform.
 ### Example
 
 * Bearer Authentication (Bearer):
-
 ```python
 import time
 import os
@@ -541,7 +522,6 @@ with saasus_sdk_python.src.auth.ApiClient(configuration) as api_client:
 
 
 ### Parameters
-
 This endpoint does not need any parameter.
 
 ### Return type
@@ -558,7 +538,6 @@ This endpoint does not need any parameter.
  - **Accept**: application/json
 
 ### HTTP response details
-
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
@@ -576,7 +555,6 @@ Delete all information related to rate plans. Delete plans linked to tenants and
 ### Example
 
 * Bearer Authentication (Bearer):
-
 ```python
 import time
 import os
@@ -615,7 +593,6 @@ with saasus_sdk_python.src.auth.ApiClient(configuration) as api_client:
 
 
 ### Parameters
-
 This endpoint does not need any parameter.
 
 ### Return type
@@ -632,7 +609,6 @@ void (empty response body)
  - **Accept**: application/json
 
 ### HTTP response details
-
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
@@ -650,7 +626,6 @@ Update SaaSus Platform tenant details.
 ### Example
 
 * Bearer Authentication (Bearer):
-
 ```python
 import time
 import os
@@ -693,7 +668,6 @@ with saasus_sdk_python.src.auth.ApiClient(configuration) as api_client:
 
 ### Parameters
 
-
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **tenant_id** | **str**| Tenant ID | 
@@ -713,7 +687,6 @@ void (empty response body)
  - **Accept**: application/json
 
 ### HTTP response details
-
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
@@ -732,7 +705,6 @@ Update SaaSus Platform tenant billing information.
 ### Example
 
 * Bearer Authentication (Bearer):
-
 ```python
 import time
 import os
@@ -775,7 +747,6 @@ with saasus_sdk_python.src.auth.ApiClient(configuration) as api_client:
 
 ### Parameters
 
-
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **tenant_id** | **str**| Tenant ID | 
@@ -795,7 +766,6 @@ void (empty response body)
  - **Accept**: application/json
 
 ### HTTP response details
-
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
@@ -815,7 +785,6 @@ Update sign-in information via external identity provider per tenant.
 ### Example
 
 * Bearer Authentication (Bearer):
-
 ```python
 import time
 import os
@@ -858,7 +827,6 @@ with saasus_sdk_python.src.auth.ApiClient(configuration) as api_client:
 
 ### Parameters
 
-
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **tenant_id** | **str**| Tenant ID | 
@@ -878,7 +846,6 @@ void (empty response body)
  - **Accept**: application/json
 
 ### HTTP response details
-
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
@@ -896,7 +863,6 @@ Update SaaSus Platform tenant plan information.
 ### Example
 
 * Bearer Authentication (Bearer):
-
 ```python
 import time
 import os
@@ -939,7 +905,6 @@ with saasus_sdk_python.src.auth.ApiClient(configuration) as api_client:
 
 ### Parameters
 
-
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **tenant_id** | **str**| Tenant ID | 
@@ -959,7 +924,6 @@ void (empty response body)
  - **Accept**: application/json
 
 ### HTTP response details
-
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |

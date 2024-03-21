@@ -3,7 +3,6 @@
 Language of invoice
 
 ## Properties
-
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 

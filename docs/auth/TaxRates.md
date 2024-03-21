@@ -2,7 +2,6 @@
 
 
 ## Properties
-
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **tax_rates** | [**List[TaxRate]**](TaxRate.md) |  | 

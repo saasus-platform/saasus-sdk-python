@@ -18,7 +18,6 @@ Retrieve the log of the API execution with the specified ID.
 ### Example
 
 * Bearer Authentication (Bearer):
-
 ```python
 import time
 import os
@@ -62,7 +61,6 @@ with saasus_sdk_python.src.apilog.ApiClient(configuration) as api_client:
 
 ### Parameters
 
-
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **api_log_id** | **str**| API Log ID | 
@@ -81,7 +79,6 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
-
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
@@ -99,7 +96,6 @@ Retrieve the log of all API executions.
 ### Example
 
 * Bearer Authentication (Bearer):
-
 ```python
 import time
 import os
@@ -146,7 +142,6 @@ with saasus_sdk_python.src.apilog.ApiClient(configuration) as api_client:
 
 ### Parameters
 
-
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **created_date** | **date**| The date, in format of YYYY-MM-DD, to retrieve the log. | [optional] 
@@ -168,7 +163,6 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
-
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |

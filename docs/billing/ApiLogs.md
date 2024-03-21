@@ -2,7 +2,6 @@
 
 
 ## Properties
-
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **api_logs** | [**List[ApiLog]**](ApiLog.md) |  | 

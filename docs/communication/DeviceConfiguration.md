@@ -3,7 +3,6 @@
 Settings for remembering trusted devices
 
 ## Properties
-
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **device_remembering** | **str** | always: always remember userOptIn: user opt-in no: don&#39;t save  | 

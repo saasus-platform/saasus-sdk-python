@@ -3,7 +3,6 @@
 This information is required to set up sign-in using an external identity provider. It cannot be changed. 
 
 ## Properties
-
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **domain** | **str** | domain | 

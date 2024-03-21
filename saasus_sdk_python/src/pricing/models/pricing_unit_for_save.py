@@ -19,18 +19,13 @@ import pprint
 import re  # noqa: F401
 
 from typing import Any, List, Optional
-from pydantic import BaseModel, Field, StrictStr, ValidationError, field_validator
+from pydantic import BaseModel, Field, StrictStr, ValidationError, validator
 from saasus_sdk_python.src.pricing.models.pricing_fixed_unit_for_save import PricingFixedUnitForSave
 from saasus_sdk_python.src.pricing.models.pricing_tiered_unit_for_save import PricingTieredUnitForSave
 from saasus_sdk_python.src.pricing.models.pricing_tiered_usage_unit_for_save import PricingTieredUsageUnitForSave
 from saasus_sdk_python.src.pricing.models.pricing_usage_unit_for_save import PricingUsageUnitForSave
-from typing import Union, Any, List, TYPE_CHECKING, Optional, Dict
-from typing_extensions import Literal
+from typing import Union, Any, List, TYPE_CHECKING
 from pydantic import StrictStr, Field
-try:
-    from typing import Self
-except ImportError:
-    from typing_extensions import Self
 
 PRICINGUNITFORSAVE_ONE_OF_SCHEMAS = ["PricingFixedUnitForSave", "PricingTieredUnitForSave", "PricingTieredUsageUnitForSave", "PricingUsageUnitForSave"]
 
@@ -46,19 +41,19 @@ class PricingUnitForSave(BaseModel):
     oneof_schema_3_validator: Optional[PricingUsageUnitForSave] = None
     # data type: PricingFixedUnitForSave
     oneof_schema_4_validator: Optional[PricingFixedUnitForSave] = None
-    actual_instance: Optional[Union[PricingFixedUnitForSave, PricingTieredUnitForSave, PricingTieredUsageUnitForSave, PricingUsageUnitForSave]] = None
-    one_of_schemas: List[str] = Literal["PricingFixedUnitForSave", "PricingTieredUnitForSave", "PricingTieredUsageUnitForSave", "PricingUsageUnitForSave"]
+    if TYPE_CHECKING:
+        actual_instance: Union[PricingFixedUnitForSave, PricingTieredUnitForSave, PricingTieredUsageUnitForSave, PricingUsageUnitForSave]
+    else:
+        actual_instance: Any
+    one_of_schemas: List[str] = Field(PRICINGUNITFORSAVE_ONE_OF_SCHEMAS, const=True)
 
-    model_config = {
-        "validate_assignment": True,
-        "protected_namespaces": (),
+    class Config:
+        validate_assignment = True
+
+    discriminator_value_class_map = {
     }
 
-
-    discriminator_value_class_map: Dict[str, str] = {
-    }
-
-    def __init__(self, *args, **kwargs) -> None:
+    def __init__(self, *args, **kwargs):
         if args:
             if len(args) > 1:
                 raise ValueError("If a position argument is used, only 1 is allowed to set `actual_instance`")
@@ -68,9 +63,9 @@ class PricingUnitForSave(BaseModel):
         else:
             super().__init__(**kwargs)
 
-    @field_validator('actual_instance')
+    @validator('actual_instance')
     def actual_instance_must_validate_oneof(cls, v):
-        instance = PricingUnitForSave.model_construct()
+        instance = PricingUnitForSave.construct()
         error_messages = []
         match = 0
         # validate data type: PricingTieredUsageUnitForSave
@@ -103,13 +98,13 @@ class PricingUnitForSave(BaseModel):
             return v
 
     @classmethod
-    def from_dict(cls, obj: dict) -> Self:
+    def from_dict(cls, obj: dict) -> PricingUnitForSave:
         return cls.from_json(json.dumps(obj))
 
     @classmethod
-    def from_json(cls, json_str: str) -> Self:
+    def from_json(cls, json_str: str) -> PricingUnitForSave:
         """Returns the object represented by the json string"""
-        instance = cls.model_construct()
+        instance = PricingUnitForSave.construct()
         error_messages = []
         match = 0
 
@@ -117,26 +112,6 @@ class PricingUnitForSave(BaseModel):
         _data_type = json.loads(json_str).get("type")
         if not _data_type:
             raise ValueError("Failed to lookup data type from the field `type` in the input.")
-
-        # check if data type is `PricingFixedUnitForSave`
-        if _data_type == "fixed":
-            instance.actual_instance = PricingFixedUnitForSave.from_json(json_str)
-            return instance
-
-        # check if data type is `PricingTieredUnitForSave`
-        if _data_type == "tiered":
-            instance.actual_instance = PricingTieredUnitForSave.from_json(json_str)
-            return instance
-
-        # check if data type is `PricingTieredUsageUnitForSave`
-        if _data_type == "tiered_usage":
-            instance.actual_instance = PricingTieredUsageUnitForSave.from_json(json_str)
-            return instance
-
-        # check if data type is `PricingUsageUnitForSave`
-        if _data_type == "usage":
-            instance.actual_instance = PricingUsageUnitForSave.from_json(json_str)
-            return instance
 
         # check if data type is `PricingFixedUnitForSave`
         if _data_type == "PricingFixedUnitForSave":
@@ -155,6 +130,26 @@ class PricingUnitForSave(BaseModel):
 
         # check if data type is `PricingUsageUnitForSave`
         if _data_type == "PricingUsageUnitForSave":
+            instance.actual_instance = PricingUsageUnitForSave.from_json(json_str)
+            return instance
+
+        # check if data type is `PricingFixedUnitForSave`
+        if _data_type == "fixed":
+            instance.actual_instance = PricingFixedUnitForSave.from_json(json_str)
+            return instance
+
+        # check if data type is `PricingTieredUnitForSave`
+        if _data_type == "tiered":
+            instance.actual_instance = PricingTieredUnitForSave.from_json(json_str)
+            return instance
+
+        # check if data type is `PricingTieredUsageUnitForSave`
+        if _data_type == "tiered_usage":
+            instance.actual_instance = PricingTieredUsageUnitForSave.from_json(json_str)
+            return instance
+
+        # check if data type is `PricingUsageUnitForSave`
+        if _data_type == "usage":
             instance.actual_instance = PricingUsageUnitForSave.from_json(json_str)
             return instance
 
@@ -203,7 +198,7 @@ class PricingUnitForSave(BaseModel):
         else:
             return json.dumps(self.actual_instance)
 
-    def to_dict(self) -> Dict:
+    def to_dict(self) -> dict:
         """Returns the dict representation of the actual instance"""
         if self.actual_instance is None:
             return None
@@ -217,6 +212,6 @@ class PricingUnitForSave(BaseModel):
 
     def to_str(self) -> str:
         """Returns the string representation of the actual instance"""
-        return pprint.pformat(self.model_dump())
+        return pprint.pformat(self.dict())
 
 

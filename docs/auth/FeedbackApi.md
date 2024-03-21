@@ -28,7 +28,6 @@ Create Feedback.
 ### Example
 
 * Bearer Authentication (Bearer):
-
 ```python
 import time
 import os
@@ -73,7 +72,6 @@ with saasus_sdk_python.src.communication.ApiClient(configuration) as api_client:
 
 ### Parameters
 
-
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **create_feedback_param** | [**CreateFeedbackParam**](CreateFeedbackParam.md)|  | [optional] 
@@ -92,7 +90,6 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
-
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **201** | Created |  -  |
@@ -110,7 +107,6 @@ Post comment to feedback.
 ### Example
 
 * Bearer Authentication (Bearer):
-
 ```python
 import time
 import os
@@ -156,7 +152,6 @@ with saasus_sdk_python.src.communication.ApiClient(configuration) as api_client:
 
 ### Parameters
 
-
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **feedback_id** | **str**|  | 
@@ -176,7 +171,6 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
-
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **201** | Created |  -  |
@@ -195,7 +189,6 @@ Vote for feedback.
 ### Example
 
 * Bearer Authentication (Bearer):
-
 ```python
 import time
 import os
@@ -241,7 +234,6 @@ with saasus_sdk_python.src.communication.ApiClient(configuration) as api_client:
 
 ### Parameters
 
-
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **feedback_id** | **str**|  | 
@@ -261,7 +253,6 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
-
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **201** | Created |  -  |
@@ -280,7 +271,6 @@ Delete Feedback.
 ### Example
 
 * Bearer Authentication (Bearer):
-
 ```python
 import time
 import os
@@ -321,7 +311,6 @@ with saasus_sdk_python.src.communication.ApiClient(configuration) as api_client:
 
 ### Parameters
 
-
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **feedback_id** | **str**|  | 
@@ -340,7 +329,6 @@ void (empty response body)
  - **Accept**: application/json
 
 ### HTTP response details
-
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
@@ -359,7 +347,6 @@ Delete comment for feedback.
 ### Example
 
 * Bearer Authentication (Bearer):
-
 ```python
 import time
 import os
@@ -401,7 +388,6 @@ with saasus_sdk_python.src.communication.ApiClient(configuration) as api_client:
 
 ### Parameters
 
-
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **feedback_id** | **str**|  | 
@@ -421,7 +407,6 @@ void (empty response body)
  - **Accept**: application/json
 
 ### HTTP response details
-
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
@@ -440,7 +425,6 @@ Cancel vote for feedback.
 ### Example
 
 * Bearer Authentication (Bearer):
-
 ```python
 import time
 import os
@@ -482,7 +466,6 @@ with saasus_sdk_python.src.communication.ApiClient(configuration) as api_client:
 
 ### Parameters
 
-
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **feedback_id** | **str**|  | 
@@ -502,7 +485,6 @@ void (empty response body)
  - **Accept**: application/json
 
 ### HTTP response details
-
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
@@ -521,7 +503,6 @@ Retrieve feedback.
 ### Example
 
 * Bearer Authentication (Bearer):
-
 ```python
 import time
 import os
@@ -565,7 +546,6 @@ with saasus_sdk_python.src.communication.ApiClient(configuration) as api_client:
 
 ### Parameters
 
-
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **feedback_id** | **str**|  | 
@@ -584,7 +564,6 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
-
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
@@ -603,7 +582,6 @@ Retrieve comment from feedback.
 ### Example
 
 * Bearer Authentication (Bearer):
-
 ```python
 import time
 import os
@@ -648,7 +626,6 @@ with saasus_sdk_python.src.communication.ApiClient(configuration) as api_client:
 
 ### Parameters
 
-
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **feedback_id** | **str**|  | 
@@ -668,7 +645,6 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
-
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Ok |  -  |
@@ -687,7 +663,6 @@ Get the list of feedbacks.
 ### Example
 
 * Bearer Authentication (Bearer):
-
 ```python
 import time
 import os
@@ -729,7 +704,6 @@ with saasus_sdk_python.src.communication.ApiClient(configuration) as api_client:
 
 
 ### Parameters
-
 This endpoint does not need any parameter.
 
 ### Return type
@@ -746,7 +720,6 @@ This endpoint does not need any parameter.
  - **Accept**: application/json
 
 ### HTTP response details
-
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
@@ -764,7 +737,6 @@ Edit feedback.
 ### Example
 
 * Bearer Authentication (Bearer):
-
 ```python
 import time
 import os
@@ -807,7 +779,6 @@ with saasus_sdk_python.src.communication.ApiClient(configuration) as api_client:
 
 ### Parameters
 
-
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **feedback_id** | **str**|  | 
@@ -827,7 +798,6 @@ void (empty response body)
  - **Accept**: application/json
 
 ### HTTP response details
-
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
@@ -846,7 +816,6 @@ Edit comment for feedback.
 ### Example
 
 * Bearer Authentication (Bearer):
-
 ```python
 import time
 import os
@@ -890,7 +859,6 @@ with saasus_sdk_python.src.communication.ApiClient(configuration) as api_client:
 
 ### Parameters
 
-
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **feedback_id** | **str**|  | 
@@ -911,7 +879,6 @@ void (empty response body)
  - **Accept**: application/json
 
 ### HTTP response details
-
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
@@ -930,7 +897,6 @@ Update Feedback Status.
 ### Example
 
 * Bearer Authentication (Bearer):
-
 ```python
 import time
 import os
@@ -973,7 +939,6 @@ with saasus_sdk_python.src.communication.ApiClient(configuration) as api_client:
 
 ### Parameters
 
-
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **feedback_id** | **str**|  | 
@@ -993,7 +958,6 @@ void (empty response body)
  - **Accept**: application/json
 
 ### HTTP response details
-
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |

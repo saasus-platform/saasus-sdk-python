@@ -25,7 +25,6 @@ Create a pricing plan.
 ### Example
 
 * Bearer Authentication (Bearer):
-
 ```python
 import time
 import os
@@ -70,7 +69,6 @@ with saasus_sdk_python.src.pricing.ApiClient(configuration) as api_client:
 
 ### Parameters
 
-
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **body** | **SavePricingPlanParam**|  | [optional] 
@@ -89,7 +87,6 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
-
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **201** | Created |  -  |
@@ -107,7 +104,6 @@ Unconditionally remove all rate plans, menus, units, meters and tax rates.
 ### Example
 
 * Bearer Authentication (Bearer):
-
 ```python
 import time
 import os
@@ -146,7 +142,6 @@ with saasus_sdk_python.src.pricing.ApiClient(configuration) as api_client:
 
 
 ### Parameters
-
 This endpoint does not need any parameter.
 
 ### Return type
@@ -163,7 +158,6 @@ void (empty response body)
  - **Accept**: application/json
 
 ### HTTP response details
-
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
@@ -181,7 +175,6 @@ Delete a pricing plan.
 ### Example
 
 * Bearer Authentication (Bearer):
-
 ```python
 import time
 import os
@@ -222,7 +215,6 @@ with saasus_sdk_python.src.pricing.ApiClient(configuration) as api_client:
 
 ### Parameters
 
-
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **plan_id** | **str**| Pricing Plan ID | 
@@ -241,7 +233,6 @@ void (empty response body)
  - **Accept**: application/json
 
 ### HTTP response details
-
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
@@ -260,7 +251,6 @@ Delete product data from Stripe.
 ### Example
 
 * Bearer Authentication (Bearer):
-
 ```python
 import time
 import os
@@ -299,7 +289,6 @@ with saasus_sdk_python.src.pricing.ApiClient(configuration) as api_client:
 
 
 ### Parameters
-
 This endpoint does not need any parameter.
 
 ### Return type
@@ -316,7 +305,6 @@ void (empty response body)
  - **Accept**: application/json
 
 ### HTTP response details
-
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
@@ -334,7 +322,6 @@ Get a pricing plan.
 ### Example
 
 * Bearer Authentication (Bearer):
-
 ```python
 import time
 import os
@@ -378,7 +365,6 @@ with saasus_sdk_python.src.pricing.ApiClient(configuration) as api_client:
 
 ### Parameters
 
-
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **plan_id** | **str**| Pricing Plan ID | 
@@ -397,7 +383,6 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
-
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
@@ -415,7 +400,6 @@ Get pricing plans. Multiple feature menus are grouped together and defined as on
 ### Example
 
 * Bearer Authentication (Bearer):
-
 ```python
 import time
 import os
@@ -457,7 +441,6 @@ with saasus_sdk_python.src.pricing.ApiClient(configuration) as api_client:
 
 
 ### Parameters
-
 This endpoint does not need any parameter.
 
 ### Return type
@@ -474,7 +457,6 @@ This endpoint does not need any parameter.
  - **Accept**: application/json
 
 ### HTTP response details
-
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
@@ -492,7 +474,6 @@ Connect information to Stripe.
 ### Example
 
 * Bearer Authentication (Bearer):
-
 ```python
 import time
 import os
@@ -531,7 +512,6 @@ with saasus_sdk_python.src.pricing.ApiClient(configuration) as api_client:
 
 
 ### Parameters
-
 This endpoint does not need any parameter.
 
 ### Return type
@@ -548,7 +528,6 @@ void (empty response body)
  - **Accept**: application/json
 
 ### HTTP response details
-
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
@@ -566,7 +545,6 @@ Update a pricing plan.
 ### Example
 
 * Bearer Authentication (Bearer):
-
 ```python
 import time
 import os
@@ -609,7 +587,6 @@ with saasus_sdk_python.src.pricing.ApiClient(configuration) as api_client:
 
 ### Parameters
 
-
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **plan_id** | **str**| Pricing Plan ID | 
@@ -629,7 +606,6 @@ void (empty response body)
  - **Accept**: application/json
 
 ### HTTP response details
-
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
@@ -647,7 +623,6 @@ Update price plan and feature menu/pricing unit to used.
 ### Example
 
 * Bearer Authentication (Bearer):
-
 ```python
 import time
 import os
@@ -689,7 +664,6 @@ with saasus_sdk_python.src.pricing.ApiClient(configuration) as api_client:
 
 ### Parameters
 
-
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **update_pricing_plans_used_param** | [**UpdatePricingPlansUsedParam**](UpdatePricingPlansUsedParam.md)|  | [optional] 
@@ -708,7 +682,6 @@ void (empty response body)
  - **Accept**: application/json
 
 ### HTTP response details
-
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |

@@ -25,7 +25,6 @@ Create a tenant user. If attributes is empty, the additional attributes will be 
 ### Example
 
 * Bearer Authentication (Bearer):
-
 ```python
 import time
 import os
@@ -71,7 +70,6 @@ with saasus_sdk_python.src.auth.ApiClient(configuration) as api_client:
 
 ### Parameters
 
-
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **tenant_id** | **str**| Tenant ID | 
@@ -91,7 +89,6 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
-
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **201** | Created |  -  |
@@ -109,7 +106,6 @@ Create roles on tenant users.
 ### Example
 
 * Bearer Authentication (Bearer):
-
 ```python
 import time
 import os
@@ -154,7 +150,6 @@ with saasus_sdk_python.src.auth.ApiClient(configuration) as api_client:
 
 ### Parameters
 
-
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **tenant_id** | **str**| Tenant ID | 
@@ -176,7 +171,6 @@ void (empty response body)
  - **Accept**: application/json
 
 ### HTTP response details
-
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **201** | Created |  -  |
@@ -194,7 +188,6 @@ Delete a user from the tenant.
 ### Example
 
 * Bearer Authentication (Bearer):
-
 ```python
 import time
 import os
@@ -236,7 +229,6 @@ with saasus_sdk_python.src.auth.ApiClient(configuration) as api_client:
 
 ### Parameters
 
-
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **tenant_id** | **str**| Tenant ID | 
@@ -256,7 +248,6 @@ void (empty response body)
  - **Accept**: application/json
 
 ### HTTP response details
-
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
@@ -275,7 +266,6 @@ Remove a role from a tenant user.
 ### Example
 
 * Bearer Authentication (Bearer):
-
 ```python
 import time
 import os
@@ -319,7 +309,6 @@ with saasus_sdk_python.src.auth.ApiClient(configuration) as api_client:
 
 ### Parameters
 
-
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **tenant_id** | **str**| Tenant ID | 
@@ -341,7 +330,6 @@ void (empty response body)
  - **Accept**: application/json
 
 ### HTTP response details
-
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
@@ -360,7 +348,6 @@ Get information on user belonging to the tenant from the user ID. If the user be
 ### Example
 
 * Bearer Authentication (Bearer):
-
 ```python
 import time
 import os
@@ -404,7 +391,6 @@ with saasus_sdk_python.src.auth.ApiClient(configuration) as api_client:
 
 ### Parameters
 
-
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **user_id** | **str**| User ID | 
@@ -423,7 +409,6 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
-
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
@@ -442,7 +427,6 @@ Get all users belonging to the tenant. The same user belonging to multiple tenan
 ### Example
 
 * Bearer Authentication (Bearer):
-
 ```python
 import time
 import os
@@ -484,7 +468,6 @@ with saasus_sdk_python.src.auth.ApiClient(configuration) as api_client:
 
 
 ### Parameters
-
 This endpoint does not need any parameter.
 
 ### Return type
@@ -501,7 +484,6 @@ This endpoint does not need any parameter.
  - **Accept**: application/json
 
 ### HTTP response details
-
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
@@ -519,7 +501,6 @@ Get one tenant user by specific ID.
 ### Example
 
 * Bearer Authentication (Bearer):
-
 ```python
 import time
 import os
@@ -564,7 +545,6 @@ with saasus_sdk_python.src.auth.ApiClient(configuration) as api_client:
 
 ### Parameters
 
-
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **tenant_id** | **str**| Tenant ID | 
@@ -584,7 +564,6 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
-
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
@@ -603,7 +582,6 @@ Get all the users belonging to the tenant. Id is unique.
 ### Example
 
 * Bearer Authentication (Bearer):
-
 ```python
 import time
 import os
@@ -647,7 +625,6 @@ with saasus_sdk_python.src.auth.ApiClient(configuration) as api_client:
 
 ### Parameters
 
-
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **tenant_id** | **str**| Tenant ID | 
@@ -666,7 +643,6 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
-
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
@@ -684,7 +660,6 @@ Update tenant user attributes.
 ### Example
 
 * Bearer Authentication (Bearer):
-
 ```python
 import time
 import os
@@ -728,7 +703,6 @@ with saasus_sdk_python.src.auth.ApiClient(configuration) as api_client:
 
 ### Parameters
 
-
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **tenant_id** | **str**| Tenant ID | 
@@ -749,7 +723,6 @@ void (empty response body)
  - **Accept**: application/json
 
 ### HTTP response details
-
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
