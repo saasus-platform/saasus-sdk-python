@@ -3,7 +3,6 @@
 Cycle month: Monthly year: Yearly 
 
 ## Properties
-
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 

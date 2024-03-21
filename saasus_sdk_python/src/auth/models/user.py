@@ -18,64 +18,46 @@ import re  # noqa: F401
 import json
 
 
-from typing import Any, ClassVar, Dict, List
-from pydantic import BaseModel, StrictStr
-from pydantic import Field
+from typing import Any, Dict, List
+from pydantic import BaseModel, Field, StrictStr, conlist
 from saasus_sdk_python.src.auth.models.user_available_env import UserAvailableEnv
-try:
-    from typing import Self
-except ImportError:
-    from typing_extensions import Self
 
 class User(BaseModel):
     """
     User
-    """ # noqa: E501
-    id: StrictStr = Field(description="User ID")
-    tenant_id: StrictStr
-    tenant_name: StrictStr = Field(description="Tenant Name")
-    email: StrictStr = Field(description="E-mail")
-    attributes: Dict[str, Any] = Field(description="Attribute information (Get information set by defining user attributes in the SaaS development console) ")
-    envs: List[UserAvailableEnv]
-    __properties: ClassVar[List[str]] = ["id", "tenant_id", "tenant_name", "email", "attributes", "envs"]
+    """
+    id: StrictStr = Field(..., description="User ID")
+    tenant_id: StrictStr = Field(...)
+    tenant_name: StrictStr = Field(..., description="Tenant Name")
+    email: StrictStr = Field(..., description="E-mail")
+    attributes: Dict[str, Any] = Field(..., description="Attribute information (Get information set by defining user attributes in the SaaS development console) ")
+    envs: conlist(UserAvailableEnv) = Field(...)
+    __properties = ["id", "tenant_id", "tenant_name", "email", "attributes", "envs"]
 
-    model_config = {
-        "populate_by_name": True,
-        "validate_assignment": True,
-        "protected_namespaces": (),
-    }
-
+    class Config:
+        """Pydantic configuration"""
+        allow_population_by_field_name = True
+        validate_assignment = True
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
-        return pprint.pformat(self.model_dump(by_alias=True))
+        return pprint.pformat(self.dict(by_alias=True))
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> Self:
+    def from_json(cls, json_str: str) -> User:
         """Create an instance of User from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
-    def to_dict(self) -> Dict[str, Any]:
-        """Return the dictionary representation of the model using alias.
-
-        This has the following differences from calling pydantic's
-        `self.model_dump(by_alias=True)`:
-
-        * `None` is only added to the output dict for nullable fields that
-          were set at model initialization. Other fields with value `None`
-          are ignored.
-        """
-        _dict = self.model_dump(
-            by_alias=True,
-            exclude={
-            },
-            exclude_none=True,
-        )
+    def to_dict(self):
+        """Returns the dictionary representation of the model using alias"""
+        _dict = self.dict(by_alias=True,
+                          exclude={
+                          },
+                          exclude_none=True)
         # override the default output from pydantic by calling `to_dict()` of each item in envs (list)
         _items = []
         if self.envs:
@@ -86,15 +68,15 @@ class User(BaseModel):
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: Dict) -> Self:
+    def from_dict(cls, obj: dict) -> User:
         """Create an instance of User from a dict"""
         if obj is None:
             return None
 
         if not isinstance(obj, dict):
-            return cls.model_validate(obj)
+            return User.parse_obj(obj)
 
-        _obj = cls.model_validate({
+        _obj = User.parse_obj({
             "id": obj.get("id"),
             "tenant_id": obj.get("tenant_id"),
             "tenant_name": obj.get("tenant_name"),

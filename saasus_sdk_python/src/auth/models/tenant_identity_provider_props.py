@@ -19,15 +19,10 @@ import pprint
 import re  # noqa: F401
 
 from typing import Any, List, Optional
-from pydantic import BaseModel, Field, StrictStr, ValidationError, field_validator
+from pydantic import BaseModel, Field, StrictStr, ValidationError, validator
 from saasus_sdk_python.src.auth.models.identity_provider_saml import IdentityProviderSaml
-from typing import Union, Any, List, TYPE_CHECKING, Optional, Dict
-from typing_extensions import Literal
+from typing import Union, Any, List, TYPE_CHECKING
 from pydantic import StrictStr, Field
-try:
-    from typing import Self
-except ImportError:
-    from typing_extensions import Self
 
 TENANTIDENTITYPROVIDERPROPS_ONE_OF_SCHEMAS = ["IdentityProviderSaml"]
 
@@ -37,16 +32,16 @@ class TenantIdentityProviderProps(BaseModel):
     """
     # data type: IdentityProviderSaml
     oneof_schema_1_validator: Optional[IdentityProviderSaml] = None
-    actual_instance: Optional[Union[IdentityProviderSaml]] = None
-    one_of_schemas: List[str] = Literal["IdentityProviderSaml"]
+    if TYPE_CHECKING:
+        actual_instance: Union[IdentityProviderSaml]
+    else:
+        actual_instance: Any
+    one_of_schemas: List[str] = Field(TENANTIDENTITYPROVIDERPROPS_ONE_OF_SCHEMAS, const=True)
 
-    model_config = {
-        "validate_assignment": True,
-        "protected_namespaces": (),
-    }
+    class Config:
+        validate_assignment = True
 
-
-    def __init__(self, *args, **kwargs) -> None:
+    def __init__(self, *args, **kwargs):
         if args:
             if len(args) > 1:
                 raise ValueError("If a position argument is used, only 1 is allowed to set `actual_instance`")
@@ -56,9 +51,9 @@ class TenantIdentityProviderProps(BaseModel):
         else:
             super().__init__(**kwargs)
 
-    @field_validator('actual_instance')
+    @validator('actual_instance')
     def actual_instance_must_validate_oneof(cls, v):
-        instance = TenantIdentityProviderProps.model_construct()
+        instance = TenantIdentityProviderProps.construct()
         error_messages = []
         match = 0
         # validate data type: IdentityProviderSaml
@@ -76,13 +71,13 @@ class TenantIdentityProviderProps(BaseModel):
             return v
 
     @classmethod
-    def from_dict(cls, obj: dict) -> Self:
+    def from_dict(cls, obj: dict) -> TenantIdentityProviderProps:
         return cls.from_json(json.dumps(obj))
 
     @classmethod
-    def from_json(cls, json_str: str) -> Self:
+    def from_json(cls, json_str: str) -> TenantIdentityProviderProps:
         """Returns the object represented by the json string"""
-        instance = cls.model_construct()
+        instance = TenantIdentityProviderProps.construct()
         error_messages = []
         match = 0
 
@@ -113,7 +108,7 @@ class TenantIdentityProviderProps(BaseModel):
         else:
             return json.dumps(self.actual_instance)
 
-    def to_dict(self) -> Dict:
+    def to_dict(self) -> dict:
         """Returns the dict representation of the actual instance"""
         if self.actual_instance is None:
             return None
@@ -127,6 +122,6 @@ class TenantIdentityProviderProps(BaseModel):
 
     def to_str(self) -> str:
         """Returns the string representation of the actual instance"""
-        return pprint.pformat(self.model_dump())
+        return pprint.pformat(self.dict())
 
 

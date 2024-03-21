@@ -2,7 +2,6 @@
 
 
 ## Properties
-
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **attributes** | **Dict[str, object]** | Attribute information (Get information set by defining user attributes in the SaaS development console)  | 

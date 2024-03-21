@@ -2,7 +2,6 @@
 
 
 ## Properties
-
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **invitations** | [**List[Invitation]**](Invitation.md) | Invitation list | 

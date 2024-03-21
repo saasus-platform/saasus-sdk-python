@@ -3,7 +3,6 @@
 Password Policy
 
 ## Properties
-
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **minimum_length** | **int** | Minimum number of characters | 

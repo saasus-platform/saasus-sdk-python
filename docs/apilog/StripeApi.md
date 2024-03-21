@@ -19,7 +19,6 @@ Delete connection with external billing SaaS
 ### Example
 
 * Bearer Authentication (Bearer):
-
 ```python
 import time
 import os
@@ -58,7 +57,6 @@ with saasus_sdk_python.src.billing.ApiClient(configuration) as api_client:
 
 
 ### Parameters
-
 This endpoint does not need any parameter.
 
 ### Return type
@@ -75,7 +73,6 @@ void (empty response body)
  - **Accept**: application/json
 
 ### HTTP response details
-
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
@@ -93,7 +90,6 @@ Get information on connnections with external billing SaaS. Currently possible t
 ### Example
 
 * Bearer Authentication (Bearer):
-
 ```python
 import time
 import os
@@ -135,7 +131,6 @@ with saasus_sdk_python.src.billing.ApiClient(configuration) as api_client:
 
 
 ### Parameters
-
 This endpoint does not need any parameter.
 
 ### Return type
@@ -152,7 +147,6 @@ This endpoint does not need any parameter.
  - **Accept**: application/json
 
 ### HTTP response details
-
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
@@ -170,7 +164,6 @@ Updates information on connection with external billing SaaS. Currently possible
 ### Example
 
 * Bearer Authentication (Bearer):
-
 ```python
 import time
 import os
@@ -212,7 +205,6 @@ with saasus_sdk_python.src.billing.ApiClient(configuration) as api_client:
 
 ### Parameters
 
-
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **update_stripe_info_param** | [**UpdateStripeInfoParam**](UpdateStripeInfoParam.md)|  | [optional] 
@@ -231,7 +223,6 @@ void (empty response body)
  - **Accept**: application/json
 
 ### HTTP response details
-
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |

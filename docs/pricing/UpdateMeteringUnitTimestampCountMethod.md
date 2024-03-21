@@ -3,7 +3,6 @@
 Update method add: Addition sub: Subtraction direct: Overwrite 
 
 ## Properties
-
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 

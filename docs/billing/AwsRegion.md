@@ -3,7 +3,6 @@
 All AWS regions except Ningxia and Beijing in China can be selected. 
 
 ## Properties
-
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 

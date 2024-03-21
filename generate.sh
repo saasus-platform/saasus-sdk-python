@@ -44,7 +44,7 @@ do
 
     # don't use v7.3.0
     # https://github.com/OpenAPITools/openapi-generator/issues/17863
-    docker run --rm -v ${PWD}:/local openapitools/openapi-generator-cli:v7.2.0 generate \
+    docker run --rm -v ${PWD}:/local openapitools/openapi-generator-cli:v7.0.0 generate \
     -i ${target} \
     -g python \
     -o /local/saasus_sdk_python/generated/ \

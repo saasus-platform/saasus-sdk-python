@@ -2,7 +2,6 @@
 
 
 ## Properties
-
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **pricing_menus** | [**List[PricingMenu]**](PricingMenu.md) |  | 

@@ -3,7 +3,6 @@
 Invitation validity
 
 ## Properties
-
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **is_valid** | **bool** | Whether the validation is valid or not | 

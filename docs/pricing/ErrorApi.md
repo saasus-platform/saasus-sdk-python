@@ -17,7 +17,6 @@ This endpoint is used for testing purposes. Returns a server error with status c
 ### Example
 
 * Bearer Authentication (Bearer):
-
 ```python
 import time
 import os
@@ -56,7 +55,6 @@ with saasus_sdk_python.src.communication.ApiClient(configuration) as api_client:
 
 
 ### Parameters
-
 This endpoint does not need any parameter.
 
 ### Return type
@@ -73,7 +71,6 @@ void (empty response body)
  - **Accept**: application/json
 
 ### HTTP response details
-
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **500** | Internal Server Error |  -  |

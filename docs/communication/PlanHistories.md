@@ -2,7 +2,6 @@
 
 
 ## Properties
-
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **plan_histories** | [**List[PlanHistory]**](PlanHistory.md) | Plan History | 

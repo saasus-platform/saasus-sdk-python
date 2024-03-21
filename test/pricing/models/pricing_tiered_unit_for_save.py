@@ -18,70 +18,52 @@ import re  # noqa: F401
 import json
 
 
-from typing import Any, ClassVar, Dict, List, Optional
-from pydantic import BaseModel, StrictInt, StrictStr
-from pydantic import Field
+from typing import List, Optional
+from pydantic import BaseModel, Field, StrictInt, StrictStr, conlist
 from saasus_sdk_python.src.pricing.models.aggregate_usage import AggregateUsage
 from saasus_sdk_python.src.pricing.models.currency import Currency
 from saasus_sdk_python.src.pricing.models.pricing_tier import PricingTier
 from saasus_sdk_python.src.pricing.models.unit_type import UnitType
-try:
-    from typing import Self
-except ImportError:
-    from typing_extensions import Self
 
 class PricingTieredUnitForSave(BaseModel):
     """
     PricingTieredUnitForSave
-    """ # noqa: E501
-    name: StrictStr = Field(description="Name")
-    display_name: StrictStr = Field(description="Display Name")
-    description: StrictStr = Field(description="Description")
-    type: UnitType
-    currency: Currency
-    tiers: List[PricingTier]
-    upper_count: StrictInt = Field(description="Upper limit")
-    metering_unit_name: StrictStr = Field(description="Metering unit name")
+    """
+    name: StrictStr = Field(..., description="Name")
+    display_name: StrictStr = Field(..., description="Display Name")
+    description: StrictStr = Field(..., description="Description")
+    type: UnitType = Field(...)
+    currency: Currency = Field(...)
+    tiers: conlist(PricingTier) = Field(...)
+    upper_count: StrictInt = Field(..., description="Upper limit")
+    metering_unit_name: StrictStr = Field(..., description="Metering unit name")
     aggregate_usage: Optional[AggregateUsage] = None
-    __properties: ClassVar[List[str]] = ["name", "display_name", "description", "type", "currency", "tiers", "upper_count", "metering_unit_name", "aggregate_usage"]
+    __properties = ["name", "display_name", "description", "type", "currency", "tiers", "upper_count", "metering_unit_name", "aggregate_usage"]
 
-    model_config = {
-        "populate_by_name": True,
-        "validate_assignment": True,
-        "protected_namespaces": (),
-    }
-
+    class Config:
+        """Pydantic configuration"""
+        allow_population_by_field_name = True
+        validate_assignment = True
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
-        return pprint.pformat(self.model_dump(by_alias=True))
+        return pprint.pformat(self.dict(by_alias=True))
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> Self:
+    def from_json(cls, json_str: str) -> PricingTieredUnitForSave:
         """Create an instance of PricingTieredUnitForSave from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
-    def to_dict(self) -> Dict[str, Any]:
-        """Return the dictionary representation of the model using alias.
-
-        This has the following differences from calling pydantic's
-        `self.model_dump(by_alias=True)`:
-
-        * `None` is only added to the output dict for nullable fields that
-          were set at model initialization. Other fields with value `None`
-          are ignored.
-        """
-        _dict = self.model_dump(
-            by_alias=True,
-            exclude={
-            },
-            exclude_none=True,
-        )
+    def to_dict(self):
+        """Returns the dictionary representation of the model using alias"""
+        _dict = self.dict(by_alias=True,
+                          exclude={
+                          },
+                          exclude_none=True)
         # override the default output from pydantic by calling `to_dict()` of each item in tiers (list)
         _items = []
         if self.tiers:
@@ -92,15 +74,15 @@ class PricingTieredUnitForSave(BaseModel):
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: Dict) -> Self:
+    def from_dict(cls, obj: dict) -> PricingTieredUnitForSave:
         """Create an instance of PricingTieredUnitForSave from a dict"""
         if obj is None:
             return None
 
         if not isinstance(obj, dict):
-            return cls.model_validate(obj)
+            return PricingTieredUnitForSave.parse_obj(obj)
 
-        _obj = cls.model_validate({
+        _obj = PricingTieredUnitForSave.parse_obj({
             "name": obj.get("name"),
             "display_name": obj.get("display_name"),
             "description": obj.get("description"),

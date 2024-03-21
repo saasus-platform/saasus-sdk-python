@@ -3,7 +3,6 @@
 Unit of currency
 
 ## Properties
-
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 

@@ -3,7 +3,6 @@
 Account authentication settings ※ This function is not yet provided, so it cannot be changed or saved. 
 
 ## Properties
-
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **verification_method** | **str** | code: verification code link: verification link ※ This function is not yet provided, so it cannot be changed or saved.  | 

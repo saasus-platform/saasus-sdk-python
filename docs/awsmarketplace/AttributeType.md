@@ -3,7 +3,6 @@
 Type (date can be set to YYYY-MM-DD format.) 
 
 ## Properties
-
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 

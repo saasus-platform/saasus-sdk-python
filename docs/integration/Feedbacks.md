@@ -2,7 +2,6 @@
 
 
 ## Properties
-
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **feedbacks** | [**List[Feedback]**](Feedback.md) |  | 

@@ -3,7 +3,6 @@
 role info
 
 ## Properties
-
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **role_name** | **str** | role name | 
