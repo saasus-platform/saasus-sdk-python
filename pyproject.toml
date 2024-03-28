@@ -10,7 +10,7 @@ keywords = ["OpenAPI", "OpenAPI-Generator", "SaaSus Auth API Schema"]
 include = ["saasus_sdk_python/py.typed"]
 
 [tool.poetry.dependencies]
-python = "^3.9"
+python = "^3.8"
 openapi-client = "^1.1.7"
 aenum = "^3.1.15"
 python-dotenv = "^1.0.0"

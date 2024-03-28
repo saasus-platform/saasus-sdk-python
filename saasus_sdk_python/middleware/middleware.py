@@ -2,9 +2,9 @@ from __future__ import annotations
 import os
 
 from openapi_client.exceptions import UnauthorizedException, ServiceException
-from saasus_sdk_python import UserInfoApi, UserInfo
-from saasus_sdk_python.client.client import AuthClient
-from saasus_sdk_python import ApiClient
+from saasus_sdk_python.src.auth import UserInfoApi, UserInfo
+from saasus_sdk_python.client.client import Client
+from saasus_sdk_python.src.auth import ApiClient
 
 
 class AuthenticationError(Exception):
@@ -23,8 +23,8 @@ class ErrorResponse:
 
 class Authenticate:
     def __init__(self):
-        self.client = AuthClient()
-        self.api_base_url = os.getenv("SAASUS_BASE_URL", "https://api.saasus.io/v1")
+        self.client = Client()
+        self.base_url = os.getenv("SAASUS_BASE_URL", "https://api.saasus.io/v1")
 
     def authenticate(self, id_token: str, referer: str | None) -> tuple[None, AuthenticationError] | tuple[UserInfo, None] | tuple[None, ErrorResponse]:  # noqa: E501
         if not id_token:
@@ -47,7 +47,7 @@ class Authenticate:
         headers = self.client.set_referer_header(headers)
         api_client.configuration.default_headers = headers
         # 環境変数でAPIサーバーを切り替える
-        api_client.configuration.host = f"{self.api_base_url}/auth"
+        api_client.configuration.host = f"{self.base_url}/auth"
 
         user_info = UserInfoApi(api_client=api_client).get_user_info(_headers=headers, token=id_token)
         return user_info
