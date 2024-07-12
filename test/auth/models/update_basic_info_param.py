@@ -19,7 +19,7 @@ import json
 
 
 from typing import Optional
-from pydantic import BaseModel, Field, StrictStr
+from pydantic import ConfigDict, BaseModel, Field, StrictStr
 
 class UpdateBasicInfoParam(BaseModel):
     """
@@ -29,11 +29,7 @@ class UpdateBasicInfoParam(BaseModel):
     from_email_address: StrictStr = Field(..., description="Sender email of authentication email")
     reply_email_address: Optional[StrictStr] = Field(None, description="Reply-from email address of authentication email")
     __properties = ["domain_name", "from_email_address", "reply_email_address"]
-
-    class Config:
-        """Pydantic configuration"""
-        allow_population_by_field_name = True
-        validate_assignment = True
+    model_config = ConfigDict(populate_by_name=True, validate_assignment=True)
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""

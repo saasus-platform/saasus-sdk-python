@@ -19,8 +19,9 @@ import json
 
 
 from typing import List
-from pydantic import BaseModel, Field, StrictBool, StrictStr, conlist
+from pydantic import ConfigDict, BaseModel, Field, StrictBool, StrictStr
 from saasus_sdk_python.src.auth.models.dns_record import DnsRecord
+from typing_extensions import Annotated
 
 class BasicInfo(BaseModel):
     """
@@ -30,17 +31,13 @@ class BasicInfo(BaseModel):
     is_dns_validated: StrictBool = Field(..., description="DNS Record Verification Results")
     certificate_dns_record: DnsRecord = Field(...)
     cloud_front_dns_record: DnsRecord = Field(...)
-    dkim_dns_records: conlist(DnsRecord) = Field(..., description="DKIM DNS Records")
+    dkim_dns_records: Annotated[List[DnsRecord], Field()] = Field(..., description="DKIM DNS Records")
     default_domain_name: StrictStr = Field(..., description="Default Domain Name")
     from_email_address: StrictStr = Field(..., description="Sender Email for Authentication Email")
     reply_email_address: StrictStr = Field(..., description="Reply-from email address of authentication email")
     is_ses_sandbox_granted: StrictBool = Field(..., description="SES sandbox release and Cognito SES configuration results")
     __properties = ["domain_name", "is_dns_validated", "certificate_dns_record", "cloud_front_dns_record", "dkim_dns_records", "default_domain_name", "from_email_address", "reply_email_address", "is_ses_sandbox_granted"]
-
-    class Config:
-        """Pydantic configuration"""
-        allow_population_by_field_name = True
-        validate_assignment = True
+    model_config = ConfigDict(populate_by_name=True, validate_assignment=True)
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""

@@ -19,21 +19,18 @@ import json
 
 
 from typing import List, Optional
-from pydantic import BaseModel, Field, StrictStr, conlist
+from pydantic import ConfigDict, BaseModel, Field, StrictStr
 from saasus_sdk_python.src.apilog.models.api_log import ApiLog
+from typing_extensions import Annotated
 
 class ApiLogs(BaseModel):
     """
     ApiLogs
     """
-    api_logs: conlist(ApiLog) = Field(...)
+    api_logs: Annotated[List[ApiLog], Field()] = Field(...)
     cursor: Optional[StrictStr] = Field(None, description="Cursor for cursor pagination")
     __properties = ["api_logs", "cursor"]
-
-    class Config:
-        """Pydantic configuration"""
-        allow_population_by_field_name = True
-        validate_assignment = True
+    model_config = ConfigDict(populate_by_name=True, validate_assignment=True)
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""

@@ -19,21 +19,18 @@ import json
 
 
 from typing import List
-from pydantic import BaseModel, Field, StrictStr, conlist
+from pydantic import ConfigDict, BaseModel, Field, StrictStr
 from saasus_sdk_python.src.pricing.models.metering_unit_count import MeteringUnitCount
+from typing_extensions import Annotated
 
 class MeteringUnitDatePeriodCounts(BaseModel):
     """
     MeteringUnitDatePeriodCounts
     """
     metering_unit_name: StrictStr = Field(..., description="Metering unit name")
-    counts: conlist(MeteringUnitCount) = Field(...)
+    counts: Annotated[List[MeteringUnitCount], Field()] = Field(...)
     __properties = ["metering_unit_name", "counts"]
-
-    class Config:
-        """Pydantic configuration"""
-        allow_population_by_field_name = True
-        validate_assignment = True
+    model_config = ConfigDict(populate_by_name=True, validate_assignment=True)
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""

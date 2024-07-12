@@ -19,7 +19,7 @@ import json
 
 
 from typing import Optional
-from pydantic import BaseModel, Field, StrictStr
+from pydantic import ConfigDict, BaseModel, Field, StrictStr
 
 class ValidateInvitationParam(BaseModel):
     """
@@ -29,11 +29,7 @@ class ValidateInvitationParam(BaseModel):
     email: Optional[StrictStr] = Field(None, description="Email address of the invited user")
     password: Optional[StrictStr] = Field(None, description="Password of the invited user")
     __properties = ["access_token", "email", "password"]
-
-    class Config:
-        """Pydantic configuration"""
-        allow_population_by_field_name = True
-        validate_assignment = True
+    model_config = ConfigDict(populate_by_name=True, validate_assignment=True)
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""

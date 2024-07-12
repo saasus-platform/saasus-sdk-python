@@ -19,7 +19,7 @@ import json
 
 
 
-from pydantic import BaseModel, Field, StrictBool, StrictInt
+from pydantic import ConfigDict, BaseModel, Field, StrictBool, StrictInt
 
 class PasswordPolicy(BaseModel):
     """
@@ -32,11 +32,7 @@ class PasswordPolicy(BaseModel):
     is_require_uppercase: StrictBool = Field(..., description="Contains one or more uppercase letters")
     temporary_password_validity_days: StrictInt = Field(..., description="Temporary password expiration date")
     __properties = ["minimum_length", "is_require_lowercase", "is_require_numbers", "is_require_symbols", "is_require_uppercase", "temporary_password_validity_days"]
-
-    class Config:
-        """Pydantic configuration"""
-        allow_population_by_field_name = True
-        validate_assignment = True
+    model_config = ConfigDict(populate_by_name=True, validate_assignment=True)
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""

@@ -52,6 +52,8 @@ do
     --package-name saasus_sdk_python.src.${module}
 done
 
+bump-pydantic saasus_sdk_python/generated
+
 for module in "${MODULES[@]}"
 do
     # プログラム

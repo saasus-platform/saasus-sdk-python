@@ -19,9 +19,9 @@ import warnings
 from pydantic import validate_arguments, ValidationError
 from typing_extensions import Annotated
 
-from pydantic import Field, StrictStr, conlist
+from pydantic import Field, StrictStr
 
-from typing import Optional
+from typing import List, Optional
 
 from saasus_sdk_python.src.awsmarketplace.models.catalog_entity_visibility import CatalogEntityVisibility
 from saasus_sdk_python.src.awsmarketplace.models.cloud_formation_launch_stack_link import CloudFormationLaunchStackLink
@@ -609,7 +609,7 @@ class AwsMarketplaceApi(object):
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def get_customers(self, tenant_ids : Annotated[Optional[conlist(StrictStr)], Field(description="指定したテナントIDの顧客を取得する(Get customers with the specified tenant ID)")] = None, **kwargs) -> Customers:  # noqa: E501
+    def get_customers(self, tenant_ids : Annotated[Optional[Annotated[List[StrictStr], Field()]], Field(description="指定したテナントIDの顧客を取得する(Get customers with the specified tenant ID)")] = None, **kwargs) -> Customers:  # noqa: E501
         """Get a list of customer information to be linked to AWS Marketplace  # noqa: E501
 
         Get a list of customer information to be linked to AWS Marketplace.   # noqa: E501
@@ -638,7 +638,7 @@ class AwsMarketplaceApi(object):
         return self.get_customers_with_http_info(tenant_ids, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def get_customers_with_http_info(self, tenant_ids : Annotated[Optional[conlist(StrictStr)], Field(description="指定したテナントIDの顧客を取得する(Get customers with the specified tenant ID)")] = None, **kwargs) -> ApiResponse:  # noqa: E501
+    def get_customers_with_http_info(self, tenant_ids : Annotated[Optional[Annotated[List[StrictStr], Field()]], Field(description="指定したテナントIDの顧客を取得する(Get customers with the specified tenant ID)")] = None, **kwargs) -> ApiResponse:  # noqa: E501
         """Get a list of customer information to be linked to AWS Marketplace  # noqa: E501
 
         Get a list of customer information to be linked to AWS Marketplace.   # noqa: E501

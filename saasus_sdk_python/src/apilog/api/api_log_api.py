@@ -21,7 +21,7 @@ from typing_extensions import Annotated
 
 from datetime import date, datetime
 
-from pydantic import Field, StrictStr, conint
+from pydantic import Field, StrictStr
 
 from typing import Optional
 
@@ -189,7 +189,7 @@ class ApiLogApi(object):
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def get_logs(self, created_date : Annotated[Optional[date], Field(description="The date, in format of YYYY-MM-DD, to retrieve the log.")] = None, created_at : Annotated[Optional[datetime], Field(description="The datetime, in ISO 8601 format, to retrieve the log.")] = None, limit : Annotated[Optional[conint(strict=True, ge=1)], Field(description="Maximum number of logs to retrieve.")] = None, cursor : Annotated[Optional[StrictStr], Field(description="Cursor for cursor pagination.")] = None, **kwargs) -> ApiLogs:  # noqa: E501
+    def get_logs(self, created_date : Annotated[Optional[date], Field(description="The date, in format of YYYY-MM-DD, to retrieve the log.")] = None, created_at : Annotated[Optional[datetime], Field(description="The datetime, in ISO 8601 format, to retrieve the log.")] = None, limit : Annotated[Optional[Annotated[int, Field(strict=True, ge=1)]], Field(description="Maximum number of logs to retrieve.")] = None, cursor : Annotated[Optional[StrictStr], Field(description="Cursor for cursor pagination.")] = None, **kwargs) -> ApiLogs:  # noqa: E501
         """Get API execution log list  # noqa: E501
 
         Retrieve the log of all API executions.  # noqa: E501
@@ -224,7 +224,7 @@ class ApiLogApi(object):
         return self.get_logs_with_http_info(created_date, created_at, limit, cursor, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def get_logs_with_http_info(self, created_date : Annotated[Optional[date], Field(description="The date, in format of YYYY-MM-DD, to retrieve the log.")] = None, created_at : Annotated[Optional[datetime], Field(description="The datetime, in ISO 8601 format, to retrieve the log.")] = None, limit : Annotated[Optional[conint(strict=True, ge=1)], Field(description="Maximum number of logs to retrieve.")] = None, cursor : Annotated[Optional[StrictStr], Field(description="Cursor for cursor pagination.")] = None, **kwargs) -> ApiResponse:  # noqa: E501
+    def get_logs_with_http_info(self, created_date : Annotated[Optional[date], Field(description="The date, in format of YYYY-MM-DD, to retrieve the log.")] = None, created_at : Annotated[Optional[datetime], Field(description="The datetime, in ISO 8601 format, to retrieve the log.")] = None, limit : Annotated[Optional[Annotated[int, Field(strict=True, ge=1)]], Field(description="Maximum number of logs to retrieve.")] = None, cursor : Annotated[Optional[StrictStr], Field(description="Cursor for cursor pagination.")] = None, **kwargs) -> ApiResponse:  # noqa: E501
         """Get API execution log list  # noqa: E501
 
         Retrieve the log of all API executions.  # noqa: E501

@@ -19,7 +19,7 @@ import json
 
 
 from typing import Optional
-from pydantic import BaseModel, Field, StrictBool, StrictStr
+from pydantic import ConfigDict, BaseModel, Field, StrictBool, StrictStr
 from saasus_sdk_python.src.pricing.models.aggregate_usage import AggregateUsage
 
 class MeteringUnit(BaseModel):
@@ -33,11 +33,7 @@ class MeteringUnit(BaseModel):
     id: StrictStr = Field(..., description="Universally Unique Identifier")
     used: StrictBool = Field(..., description="Metering unit used settings")
     __properties = ["unit_name", "aggregate_usage", "display_name", "description", "id", "used"]
-
-    class Config:
-        """Pydantic configuration"""
-        allow_population_by_field_name = True
-        validate_assignment = True
+    model_config = ConfigDict(populate_by_name=True, validate_assignment=True)
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""

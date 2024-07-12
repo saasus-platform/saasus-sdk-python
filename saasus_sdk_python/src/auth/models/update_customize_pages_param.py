@@ -19,7 +19,7 @@ import json
 
 
 from typing import Optional
-from pydantic import BaseModel
+from pydantic import ConfigDict, BaseModel
 from saasus_sdk_python.src.auth.models.customize_page_props import CustomizePageProps
 
 class UpdateCustomizePagesParam(BaseModel):
@@ -30,11 +30,7 @@ class UpdateCustomizePagesParam(BaseModel):
     sign_in_page: Optional[CustomizePageProps] = None
     password_reset_page: Optional[CustomizePageProps] = None
     __properties = ["sign_up_page", "sign_in_page", "password_reset_page"]
-
-    class Config:
-        """Pydantic configuration"""
-        allow_population_by_field_name = True
-        validate_assignment = True
+    model_config = ConfigDict(populate_by_name=True, validate_assignment=True)
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
