@@ -18,7 +18,7 @@ import re  # noqa: F401
 import json
 
 
-
+from typing import Any, Dict
 from pydantic import ConfigDict, BaseModel, Field, StrictStr
 
 class SaasUser(BaseModel):
@@ -27,7 +27,8 @@ class SaasUser(BaseModel):
     """
     id: StrictStr = Field(...)
     email: StrictStr = Field(..., description="E-mail")
-    __properties = ["id", "email"]
+    attributes: Dict[str, Any] = Field(..., description="Attribute information ")
+    __properties = ["id", "email", "attributes"]
     model_config = ConfigDict(populate_by_name=True, validate_assignment=True)
 
     def to_str(self) -> str:
@@ -62,7 +63,8 @@ class SaasUser(BaseModel):
 
         _obj = SaasUser.parse_obj({
             "id": obj.get("id"),
-            "email": obj.get("email")
+            "email": obj.get("email"),
+            "attributes": obj.get("attributes")
         })
         return _obj
 

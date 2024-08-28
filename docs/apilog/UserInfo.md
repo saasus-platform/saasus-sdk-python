@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **str** |  | 
 **email** | **str** | E-mail | 
+**user_attribute** | **Dict[str, object]** | user additional attributes | 
 **tenants** | [**List[UserAvailableTenant]**](UserAvailableTenant.md) | Tenant Info | 
 
 ## Example
