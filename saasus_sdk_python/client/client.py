@@ -25,6 +25,7 @@ class Client:
         if cls._instance is None:
             cls._instance = super().__new__(cls)
             cls._instance.referer = None
+            cls._instance.x_saasus_referer = None
             cls._instance.api_key = os.getenv("SAASUS_API_KEY", "")
             cls._instance.secret_key = os.getenv("SAASUS_SECRET_KEY", "")
             cls._instance.saas_id = os.getenv("SAASUS_SAAS_ID", "")
@@ -52,4 +53,6 @@ class Client:
     def set_referer_header(self, header_params: dict) -> dict:
         if self.referer:
             header_params["Referer"] = self.referer
+        if self.x_saasus_referer:
+            header_params["X-SaaSus-Referer"] = self.x_saasus_referer
         return header_params

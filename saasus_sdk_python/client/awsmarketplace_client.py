@@ -6,10 +6,12 @@ from saasus_sdk_python.src.awsmarketplace.api_client import ApiClient
 
 class SignedAwsmarketplaceApiClient(ApiClient):
 
-    def __init__(self, *args, **kwargs):
+    def __init__(self, referer=None, x_saasus_referer=None, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.client = Client()
         self.configuration.default_headers = {}
+        self.client.referer = referer
+        self.client.x_saasus_referer = x_saasus_referer
         self.base_url = os.getenv("SAASUS_BASE_URL", "https://api.saasus.io/v1")
 
     def call_api(self, resource_path, method,
@@ -37,6 +39,8 @@ class SignedAwsmarketplaceApiClient(ApiClient):
         if header_params is None:
             header_params = {}
         header_params.update(signature_headers)
+
+        header_params = self.client.set_referer_header(header_params)
 
         # APIクライアントのcall_apiメソッドを呼び出して、署名付きのリクエストを行う
         return super().call_api(
