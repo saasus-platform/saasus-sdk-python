@@ -19,7 +19,7 @@ import json
 
 
 
-from pydantic import BaseModel, Field, StrictStr
+from pydantic import ConfigDict, BaseModel, Field, StrictStr
 from saasus_sdk_python.src.auth.models.attribute_type import AttributeType
 
 class Attribute(BaseModel):
@@ -30,11 +30,7 @@ class Attribute(BaseModel):
     display_name: StrictStr = Field(..., description="Display Name")
     attribute_type: AttributeType = Field(...)
     __properties = ["attribute_name", "display_name", "attribute_type"]
-
-    class Config:
-        """Pydantic configuration"""
-        allow_population_by_field_name = True
-        validate_assignment = True
+    model_config = ConfigDict(populate_by_name=True, validate_assignment=True)
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""

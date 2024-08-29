@@ -19,10 +19,11 @@ import json
 
 
 from typing import Any, Dict, List, Optional
-from pydantic import BaseModel, Field, StrictBool, StrictInt, StrictStr, conlist
+from pydantic import ConfigDict, BaseModel, Field, StrictBool, StrictInt, StrictStr
 from saasus_sdk_python.src.auth.models.billing_info import BillingInfo
 from saasus_sdk_python.src.auth.models.plan_history import PlanHistory
 from saasus_sdk_python.src.auth.models.proration_behavior import ProrationBehavior
+from typing_extensions import Annotated
 
 class TenantDetail(BaseModel):
     """
@@ -39,15 +40,11 @@ class TenantDetail(BaseModel):
     next_plan_tax_rate_id: Optional[StrictStr] = None
     proration_behavior: Optional[ProrationBehavior] = None
     delete_usage: Optional[StrictBool] = Field(None, description="If you have a stripe linkage,  you can set whether to delete pay-as-you-go items when changing plans. When you change plan, you can remove all pay-as-you-go items included in your current subscription to stop being billed based on pay-as-you-go items. The recorded usage is cleared immediately. Since it cannot be restored, please note that plan change reservations with delete_usage set to true cannot be canceled. ")
-    plan_histories: conlist(PlanHistory) = Field(..., description="Plan History")
+    plan_histories: Annotated[List[PlanHistory], Field()] = Field(..., description="Plan History")
     current_plan_period_start: Optional[StrictInt] = Field(None, description="current plan period start")
     current_plan_period_end: Optional[StrictInt] = Field(None, description="current plan period end")
     __properties = ["id", "plan_id", "billing_info", "name", "attributes", "back_office_staff_email", "next_plan_id", "using_next_plan_from", "next_plan_tax_rate_id", "proration_behavior", "delete_usage", "plan_histories", "current_plan_period_start", "current_plan_period_end"]
-
-    class Config:
-        """Pydantic configuration"""
-        allow_population_by_field_name = True
-        validate_assignment = True
+    model_config = ConfigDict(populate_by_name=True, validate_assignment=True)
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""

@@ -19,7 +19,7 @@ import json
 
 
 
-from pydantic import BaseModel, Field, StrictStr, validator
+from pydantic import field_validator, ConfigDict, BaseModel, Field, StrictStr
 
 class DeviceConfiguration(BaseModel):
     """
@@ -28,17 +28,14 @@ class DeviceConfiguration(BaseModel):
     device_remembering: StrictStr = Field(..., description="always: always remember userOptIn: user opt-in no: don't save ")
     __properties = ["device_remembering"]
 
-    @validator('device_remembering')
+    @field_validator('device_remembering')
+    @classmethod
     def device_remembering_validate_enum(cls, value):
         """Validates the enum"""
         if value not in ('always', 'userOptIn', 'no'):
             raise ValueError("must be one of enum values ('always', 'userOptIn', 'no')")
         return value
-
-    class Config:
-        """Pydantic configuration"""
-        allow_population_by_field_name = True
-        validate_assignment = True
+    model_config = ConfigDict(populate_by_name=True, validate_assignment=True)
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""

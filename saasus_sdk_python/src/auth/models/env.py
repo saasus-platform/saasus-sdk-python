@@ -19,7 +19,7 @@ import json
 
 
 from typing import Optional
-from pydantic import BaseModel, Field, StrictInt, StrictStr
+from pydantic import ConfigDict, BaseModel, Field, StrictInt, StrictStr
 
 class Env(BaseModel):
     """
@@ -29,11 +29,7 @@ class Env(BaseModel):
     name: StrictStr = Field(..., description="env name")
     display_name: Optional[StrictStr] = Field(None, description="env display name")
     __properties = ["id", "name", "display_name"]
-
-    class Config:
-        """Pydantic configuration"""
-        allow_population_by_field_name = True
-        validate_assignment = True
+    model_config = ConfigDict(populate_by_name=True, validate_assignment=True)
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""

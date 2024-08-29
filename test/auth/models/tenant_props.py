@@ -19,7 +19,7 @@ import json
 
 
 from typing import Any, Dict
-from pydantic import BaseModel, Field, StrictStr
+from pydantic import ConfigDict, BaseModel, Field, StrictStr
 
 class TenantProps(BaseModel):
     """
@@ -29,11 +29,7 @@ class TenantProps(BaseModel):
     attributes: Dict[str, Any] = Field(..., description="attribute info")
     back_office_staff_email: StrictStr = Field(..., description="administrative staff email address")
     __properties = ["name", "attributes", "back_office_staff_email"]
-
-    class Config:
-        """Pydantic configuration"""
-        allow_population_by_field_name = True
-        validate_assignment = True
+    model_config = ConfigDict(populate_by_name=True, validate_assignment=True)
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""

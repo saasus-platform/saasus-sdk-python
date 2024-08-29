@@ -19,7 +19,7 @@ import json
 
 
 
-from pydantic import BaseModel, Field, StrictBool, StrictStr
+from pydantic import ConfigDict, BaseModel, Field, StrictBool, StrictStr
 
 class CustomizePageProps(BaseModel):
     """
@@ -29,11 +29,7 @@ class CustomizePageProps(BaseModel):
     is_terms_of_service: StrictBool = Field(..., description="display the terms of use agreement check box")
     is_privacy_policy: StrictBool = Field(..., description="show the privacy policy checkbox")
     __properties = ["html_contents", "is_terms_of_service", "is_privacy_policy"]
-
-    class Config:
-        """Pydantic configuration"""
-        allow_population_by_field_name = True
-        validate_assignment = True
+    model_config = ConfigDict(populate_by_name=True, validate_assignment=True)
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""

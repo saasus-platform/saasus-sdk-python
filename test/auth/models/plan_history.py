@@ -19,7 +19,7 @@ import json
 
 
 from typing import Optional
-from pydantic import BaseModel, Field, StrictBool, StrictInt, StrictStr
+from pydantic import ConfigDict, BaseModel, Field, StrictBool, StrictInt, StrictStr
 from saasus_sdk_python.src.auth.models.proration_behavior import ProrationBehavior
 
 class PlanHistory(BaseModel):
@@ -32,11 +32,7 @@ class PlanHistory(BaseModel):
     proration_behavior: Optional[ProrationBehavior] = None
     delete_usage: Optional[StrictBool] = Field(None, description="If you have a stripe linkage,  you can set whether to delete pay-as-you-go items when changing plans. When you change plan, you can remove all pay-as-you-go items included in your current subscription to stop being billed based on pay-as-you-go items. The recorded usage is cleared immediately. Since it cannot be restored, please note that plan change reservations with delete_usage set to true cannot be canceled. ")
     __properties = ["plan_id", "plan_applied_at", "tax_rate_id", "proration_behavior", "delete_usage"]
-
-    class Config:
-        """Pydantic configuration"""
-        allow_population_by_field_name = True
-        validate_assignment = True
+    model_config = ConfigDict(populate_by_name=True, validate_assignment=True)
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
