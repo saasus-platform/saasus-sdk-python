@@ -25,6 +25,7 @@ from saasus_sdk_python.src.auth.api.error_api import ErrorApi
 from saasus_sdk_python.src.auth.api.invitation_api import InvitationApi
 from saasus_sdk_python.src.auth.api.role_api import RoleApi
 from saasus_sdk_python.src.auth.api.saas_user_api import SaasUserApi
+from saasus_sdk_python.src.auth.api.single_tenant_api import SingleTenantApi
 from saasus_sdk_python.src.auth.api.tenant_api import TenantApi
 from saasus_sdk_python.src.auth.api.tenant_attribute_api import TenantAttributeApi
 from saasus_sdk_python.src.auth.api.tenant_user_api import TenantUserApi
@@ -53,6 +54,7 @@ from saasus_sdk_python.src.auth.models.basic_info import BasicInfo
 from saasus_sdk_python.src.auth.models.billing_address import BillingAddress
 from saasus_sdk_python.src.auth.models.billing_info import BillingInfo
 from saasus_sdk_python.src.auth.models.client_secret import ClientSecret
+from saasus_sdk_python.src.auth.models.cloud_formation_launch_stack_link import CloudFormationLaunchStackLink
 from saasus_sdk_python.src.auth.models.confirm_email_update_param import ConfirmEmailUpdateParam
 from saasus_sdk_python.src.auth.models.confirm_external_user_link_param import ConfirmExternalUserLinkParam
 from saasus_sdk_python.src.auth.models.confirm_sign_up_with_aws_marketplace_param import ConfirmSignUpWithAwsMarketplaceParam
@@ -106,6 +108,7 @@ from saasus_sdk_python.src.auth.models.self_regist import SelfRegist
 from saasus_sdk_python.src.auth.models.sign_in_settings import SignInSettings
 from saasus_sdk_python.src.auth.models.sign_up_param import SignUpParam
 from saasus_sdk_python.src.auth.models.sign_up_with_aws_marketplace_param import SignUpWithAwsMarketplaceParam
+from saasus_sdk_python.src.auth.models.single_tenant_settings import SingleTenantSettings
 from saasus_sdk_python.src.auth.models.software_token_secret_code import SoftwareTokenSecretCode
 from saasus_sdk_python.src.auth.models.tenant import Tenant
 from saasus_sdk_python.src.auth.models.tenant_attributes import TenantAttributes
@@ -121,9 +124,11 @@ from saasus_sdk_python.src.auth.models.update_customize_pages_param import Updat
 from saasus_sdk_python.src.auth.models.update_env_param import UpdateEnvParam
 from saasus_sdk_python.src.auth.models.update_identity_provider_param import UpdateIdentityProviderParam
 from saasus_sdk_python.src.auth.models.update_notification_messages_param import UpdateNotificationMessagesParam
+from saasus_sdk_python.src.auth.models.update_saas_user_attributes_param import UpdateSaasUserAttributesParam
 from saasus_sdk_python.src.auth.models.update_saas_user_email_param import UpdateSaasUserEmailParam
 from saasus_sdk_python.src.auth.models.update_saas_user_password_param import UpdateSaasUserPasswordParam
 from saasus_sdk_python.src.auth.models.update_sign_in_settings_param import UpdateSignInSettingsParam
+from saasus_sdk_python.src.auth.models.update_single_tenant_settings_param import UpdateSingleTenantSettingsParam
 from saasus_sdk_python.src.auth.models.update_software_token_param import UpdateSoftwareTokenParam
 from saasus_sdk_python.src.auth.models.update_tenant_identity_provider_param import UpdateTenantIdentityProviderParam
 from saasus_sdk_python.src.auth.models.update_tenant_user_param import UpdateTenantUserParam
