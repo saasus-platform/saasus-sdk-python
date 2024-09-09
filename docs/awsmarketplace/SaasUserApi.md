@@ -20,6 +20,7 @@ Method | HTTP request | Description
 [**sign_up**](SaasUserApi.md#sign_up) | **POST** /sign-up | Sign Up
 [**sign_up_with_aws_marketplace**](SaasUserApi.md#sign_up_with_aws_marketplace) | **POST** /aws-marketplace/sign-up | Sign Up with AWS Marketplace
 [**unlink_provider**](SaasUserApi.md#unlink_provider) | **DELETE** /users/{user_id}/providers/{provider_name} | Unlink external identity providers
+[**update_saas_user_attributes**](SaasUserApi.md#update_saas_user_attributes) | **PATCH** /users/{user_id}/attributes | Update SaaS User Attributes
 [**update_saas_user_email**](SaasUserApi.md#update_saas_user_email) | **PATCH** /users/{user_id}/email | Change Email
 [**update_saas_user_password**](SaasUserApi.md#update_saas_user_password) | **PATCH** /users/{user_id}/password | Change Password
 [**update_software_token**](SaasUserApi.md#update_software_token) | **PUT** /users/{user_id}/mfa/software-token | Register Authentication Application
@@ -1260,6 +1261,84 @@ void (empty response body)
 ### HTTP request headers
 
  - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**500** | Internal Server Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **update_saas_user_attributes**
+> update_saas_user_attributes(user_id, update_saas_user_attributes_param=update_saas_user_attributes_param)
+
+Update SaaS User Attributes
+
+Update the additional attributes of the SaaS user. 
+
+### Example
+
+* Bearer Authentication (Bearer):
+```python
+import time
+import os
+import saasus_sdk_python.src.auth
+from saasus_sdk_python.src.auth.models.update_saas_user_attributes_param import UpdateSaasUserAttributesParam
+from saasus_sdk_python.src.auth.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://api.saasus.io/v1/auth
+# See configuration.py for a list of all supported configuration parameters.
+configuration = saasus_sdk_python.src.auth.Configuration(
+    host = "https://api.saasus.io/v1/auth"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: Bearer
+configuration = saasus_sdk_python.src.auth.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with saasus_sdk_python.src.auth.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = saasus_sdk_python.src.auth.SaasUserApi(api_client)
+    user_id = 'f94bfffc-8be2-11ec-b41a-0242ac120004' # str | User ID
+    update_saas_user_attributes_param = saasus_sdk_python.src.auth.UpdateSaasUserAttributesParam() # UpdateSaasUserAttributesParam |  (optional)
+
+    try:
+        # Update SaaS User Attributes
+        api_instance.update_saas_user_attributes(user_id, update_saas_user_attributes_param=update_saas_user_attributes_param)
+    except Exception as e:
+        print("Exception when calling SaasUserApi->update_saas_user_attributes: %s\n" % e)
+```
+
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **user_id** | **str**| User ID | 
+ **update_saas_user_attributes_param** | [**UpdateSaasUserAttributesParam**](UpdateSaasUserAttributesParam.md)|  | [optional] 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[Bearer](../README.md#Bearer)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 ### HTTP response details
