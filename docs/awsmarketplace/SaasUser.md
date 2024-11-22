@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **str** |  | 
 **email** | **str** | E-mail | 
-**attributes** | **Dict[str, object]** | Attribute information  | [optional] 
+**attributes** | **Dict[str, object]** | Attribute information  | 
 
 ## Example
 

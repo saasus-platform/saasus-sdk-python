@@ -8,6 +8,7 @@ Method | HTTP request | Description
 [**create_tenant_and_pricing**](TenantApi.md#create_tenant_and_pricing) | **PATCH** /stripe/init | Stripe Initial Setting
 [**delete_stripe_tenant_and_pricing**](TenantApi.md#delete_stripe_tenant_and_pricing) | **DELETE** /stripe | Delete Customer and Product From Stripe
 [**delete_tenant**](TenantApi.md#delete_tenant) | **DELETE** /tenants/{tenant_id} | Delete Tenant
+[**get_stripe_customer**](TenantApi.md#get_stripe_customer) | **GET** /tenants/{tenant_id}/stripe-customer | Get Stripe Customer
 [**get_tenant**](TenantApi.md#get_tenant) | **GET** /tenants/{tenant_id} | Get Tenant Details
 [**get_tenant_identity_providers**](TenantApi.md#get_tenant_identity_providers) | **GET** /tenants/{tenant_id}/identity-providers | Get identity provider per tenant
 [**get_tenants**](TenantApi.md#get_tenants) | **GET** /tenants | Get Tenants
@@ -296,6 +297,84 @@ Name | Type | Description  | Notes
 ### Return type
 
 void (empty response body)
+
+### Authorization
+
+[Bearer](../README.md#Bearer)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**500** | Internal Server Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_stripe_customer**
+> StripeCustomer get_stripe_customer(tenant_id)
+
+Get Stripe Customer
+
+Get the Stripe Customer information associated with the tenant, including their subscriptions. 
+
+### Example
+
+* Bearer Authentication (Bearer):
+```python
+import time
+import os
+import saasus_sdk_python.src.auth
+from saasus_sdk_python.src.auth.models.stripe_customer import StripeCustomer
+from saasus_sdk_python.src.auth.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://api.saasus.io/v1/auth
+# See configuration.py for a list of all supported configuration parameters.
+configuration = saasus_sdk_python.src.auth.Configuration(
+    host = "https://api.saasus.io/v1/auth"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: Bearer
+configuration = saasus_sdk_python.src.auth.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with saasus_sdk_python.src.auth.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = saasus_sdk_python.src.auth.TenantApi(api_client)
+    tenant_id = 'tenant_id_example' # str | Tenant ID
+
+    try:
+        # Get Stripe Customer
+        api_response = api_instance.get_stripe_customer(tenant_id)
+        print("The response of TenantApi->get_stripe_customer:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling TenantApi->get_stripe_customer: %s\n" % e)
+```
+
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **tenant_id** | **str**| Tenant ID | 
+
+### Return type
+
+[**StripeCustomer**](StripeCustomer.md)
 
 ### Authorization
 

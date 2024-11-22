@@ -511,7 +511,7 @@ class SaasUserApi(object):
     def create_saas_user(self, create_saas_user_param : Optional[CreateSaasUserParam] = None, **kwargs) -> SaasUser:  # noqa: E501
         """Create SaaS User  # noqa: E501
 
-        Create SaaS User.   # noqa: E501
+        Create SaaS User. If attributes is empty, a temporary password will be sent to the registered email.   # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
@@ -540,7 +540,7 @@ class SaasUserApi(object):
     def create_saas_user_with_http_info(self, create_saas_user_param : Optional[CreateSaasUserParam] = None, **kwargs) -> ApiResponse:  # noqa: E501
         """Create SaaS User  # noqa: E501
 
-        Create SaaS User.   # noqa: E501
+        Create SaaS User. If attributes is empty, a temporary password will be sent to the registered email.   # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
