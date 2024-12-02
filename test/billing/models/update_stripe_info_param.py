@@ -19,7 +19,7 @@ import json
 
 
 
-from pydantic import BaseModel, Field, StrictStr
+from pydantic import ConfigDict, BaseModel, Field, StrictStr
 
 class UpdateStripeInfoParam(BaseModel):
     """
@@ -27,11 +27,7 @@ class UpdateStripeInfoParam(BaseModel):
     """
     secret_key: StrictStr = Field(..., description="secret key")
     __properties = ["secret_key"]
-
-    class Config:
-        """Pydantic configuration"""
-        allow_population_by_field_name = True
-        validate_assignment = True
+    model_config = ConfigDict(populate_by_name=True, validate_assignment=True)
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""

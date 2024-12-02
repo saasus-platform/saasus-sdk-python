@@ -19,7 +19,7 @@ import json
 
 
 
-from pydantic import BaseModel, Field, StrictInt, StrictStr
+from pydantic import ConfigDict, BaseModel, Field, StrictInt, StrictStr
 
 class MeteringUnitMonthCount(BaseModel):
     """
@@ -29,11 +29,7 @@ class MeteringUnitMonthCount(BaseModel):
     month: StrictStr = Field(..., description="Month")
     count: StrictInt = Field(..., description="Count")
     __properties = ["metering_unit_name", "month", "count"]
-
-    class Config:
-        """Pydantic configuration"""
-        allow_population_by_field_name = True
-        validate_assignment = True
+    model_config = ConfigDict(populate_by_name=True, validate_assignment=True)
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""

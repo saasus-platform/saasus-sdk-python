@@ -19,7 +19,7 @@ import json
 
 
 from typing import Optional
-from pydantic import BaseModel
+from pydantic import ConfigDict, BaseModel
 from saasus_sdk_python.src.auth.models.tenant_identity_providers_saml import TenantIdentityProvidersSaml
 
 class TenantIdentityProviders(BaseModel):
@@ -28,11 +28,7 @@ class TenantIdentityProviders(BaseModel):
     """
     saml: Optional[TenantIdentityProvidersSaml] = None
     __properties = ["saml"]
-
-    class Config:
-        """Pydantic configuration"""
-        allow_population_by_field_name = True
-        validate_assignment = True
+    model_config = ConfigDict(populate_by_name=True, validate_assignment=True)
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""

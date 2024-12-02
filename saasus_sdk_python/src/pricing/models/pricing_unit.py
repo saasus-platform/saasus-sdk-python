@@ -18,14 +18,14 @@ import json
 import pprint
 import re  # noqa: F401
 
-from typing import Any, List, Optional
-from pydantic import BaseModel, Field, StrictStr, ValidationError, validator
+from typing import Literal, Any, List, Optional
+from pydantic import field_validator, ConfigDict, BaseModel, StrictStr, ValidationError
 from saasus_sdk_python.src.pricing.models.pricing_fixed_unit import PricingFixedUnit
 from saasus_sdk_python.src.pricing.models.pricing_tiered_unit import PricingTieredUnit
 from saasus_sdk_python.src.pricing.models.pricing_tiered_usage_unit import PricingTieredUsageUnit
 from saasus_sdk_python.src.pricing.models.pricing_usage_unit import PricingUsageUnit
 from typing import Union, Any, List, TYPE_CHECKING
-from pydantic import StrictStr, Field
+from pydantic import StrictStr
 
 PRICINGUNIT_ONE_OF_SCHEMAS = ["PricingFixedUnit", "PricingTieredUnit", "PricingTieredUsageUnit", "PricingUsageUnit"]
 
@@ -44,11 +44,9 @@ class PricingUnit(BaseModel):
     if TYPE_CHECKING:
         actual_instance: Union[PricingFixedUnit, PricingTieredUnit, PricingTieredUsageUnit, PricingUsageUnit]
     else:
-        actual_instance: Any
-    one_of_schemas: List[str] = Field(PRICINGUNIT_ONE_OF_SCHEMAS, const=True)
-
-    class Config:
-        validate_assignment = True
+        actual_instance: Any = None
+    one_of_schemas: Literal[PRICINGUNIT_ONE_OF_SCHEMAS] = PRICINGUNIT_ONE_OF_SCHEMAS
+    model_config = ConfigDict(validate_assignment=True)
 
     discriminator_value_class_map = {
     }
@@ -63,7 +61,8 @@ class PricingUnit(BaseModel):
         else:
             super().__init__(**kwargs)
 
-    @validator('actual_instance')
+    @field_validator('actual_instance')
+    @classmethod
     def actual_instance_must_validate_oneof(cls, v):
         instance = PricingUnit.construct()
         error_messages = []

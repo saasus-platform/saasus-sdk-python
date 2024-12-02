@@ -19,7 +19,7 @@ import json
 
 
 from typing import Optional
-from pydantic import BaseModel
+from pydantic import ConfigDict, BaseModel
 from saasus_sdk_python.src.auth.models.message_template import MessageTemplate
 
 class UpdateNotificationMessagesParam(BaseModel):
@@ -36,11 +36,7 @@ class UpdateNotificationMessagesParam(BaseModel):
     invite_tenant_user: Optional[MessageTemplate] = None
     verify_external_user: Optional[MessageTemplate] = None
     __properties = ["sign_up", "create_user", "resend_code", "forgot_password", "update_user_attribute", "verify_user_attribute", "authentication_mfa", "invite_tenant_user", "verify_external_user"]
-
-    class Config:
-        """Pydantic configuration"""
-        allow_population_by_field_name = True
-        validate_assignment = True
+    model_config = ConfigDict(populate_by_name=True, validate_assignment=True)
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""

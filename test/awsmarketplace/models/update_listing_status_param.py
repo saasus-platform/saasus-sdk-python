@@ -19,7 +19,7 @@ import json
 
 
 
-from pydantic import BaseModel, Field
+from pydantic import ConfigDict, BaseModel, Field
 from saasus_sdk_python.src.awsmarketplace.models.listing_status import ListingStatus
 
 class UpdateListingStatusParam(BaseModel):
@@ -28,11 +28,7 @@ class UpdateListingStatusParam(BaseModel):
     """
     listing_status: ListingStatus = Field(...)
     __properties = ["listing_status"]
-
-    class Config:
-        """Pydantic configuration"""
-        allow_population_by_field_name = True
-        validate_assignment = True
+    model_config = ConfigDict(populate_by_name=True, validate_assignment=True)
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""

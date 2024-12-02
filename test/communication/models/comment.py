@@ -19,22 +19,17 @@ import json
 
 
 
-from pydantic import BaseModel, Field, StrictInt, StrictStr
+from pydantic import ConfigDict, BaseModel, Field, StrictInt, StrictStr
 
 class Comment(BaseModel):
     """
     Comment
     """
     id: StrictStr = Field(...)
-    user_id: StrictStr = Field(...)
     created_at: StrictInt = Field(...)
     body: StrictStr = Field(...)
-    __properties = ["id", "user_id", "created_at", "body"]
-
-    class Config:
-        """Pydantic configuration"""
-        allow_population_by_field_name = True
-        validate_assignment = True
+    __properties = ["id", "created_at", "body"]
+    model_config = ConfigDict(populate_by_name=True, validate_assignment=True)
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -68,7 +63,6 @@ class Comment(BaseModel):
 
         _obj = Comment.parse_obj({
             "id": obj.get("id"),
-            "user_id": obj.get("user_id"),
             "created_at": obj.get("created_at"),
             "body": obj.get("body")
         })

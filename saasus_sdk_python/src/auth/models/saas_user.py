@@ -18,8 +18,8 @@ import re  # noqa: F401
 import json
 
 
-
-from pydantic import BaseModel, Field, StrictStr
+from typing import Any, Dict, Optional
+from pydantic import ConfigDict, BaseModel, Field, StrictStr
 
 class SaasUser(BaseModel):
     """
@@ -27,12 +27,9 @@ class SaasUser(BaseModel):
     """
     id: StrictStr = Field(...)
     email: StrictStr = Field(..., description="E-mail")
-    __properties = ["id", "email"]
-
-    class Config:
-        """Pydantic configuration"""
-        allow_population_by_field_name = True
-        validate_assignment = True
+    attributes: Optional[Dict[str, Any]] = Field(None, description="Attribute information ")
+    __properties = ["id", "email", "attributes"]
+    model_config = ConfigDict(populate_by_name=True, validate_assignment=True)
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -66,7 +63,8 @@ class SaasUser(BaseModel):
 
         _obj = SaasUser.parse_obj({
             "id": obj.get("id"),
-            "email": obj.get("email")
+            "email": obj.get("email"),
+            "attributes": obj.get("attributes")
         })
         return _obj
 

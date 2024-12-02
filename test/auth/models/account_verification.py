@@ -19,7 +19,7 @@ import json
 
 
 
-from pydantic import BaseModel, Field, StrictStr, validator
+from pydantic import field_validator, ConfigDict, BaseModel, Field, StrictStr
 
 class AccountVerification(BaseModel):
     """
@@ -29,24 +29,22 @@ class AccountVerification(BaseModel):
     sending_to: StrictStr = Field(..., description="email: e-mail sms: SMS smsOrEmail: email if SMS is not possible ")
     __properties = ["verification_method", "sending_to"]
 
-    @validator('verification_method')
+    @field_validator('verification_method')
+    @classmethod
     def verification_method_validate_enum(cls, value):
         """Validates the enum"""
         if value not in ('code', 'link'):
             raise ValueError("must be one of enum values ('code', 'link')")
         return value
 
-    @validator('sending_to')
+    @field_validator('sending_to')
+    @classmethod
     def sending_to_validate_enum(cls, value):
         """Validates the enum"""
         if value not in ('email', 'sms', 'smsOrEmail'):
             raise ValueError("must be one of enum values ('email', 'sms', 'smsOrEmail')")
         return value
-
-    class Config:
-        """Pydantic configuration"""
-        allow_population_by_field_name = True
-        validate_assignment = True
+    model_config = ConfigDict(populate_by_name=True, validate_assignment=True)
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""

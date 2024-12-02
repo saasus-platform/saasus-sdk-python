@@ -19,7 +19,7 @@ import json
 
 
 
-from pydantic import BaseModel, Field, StrictStr
+from pydantic import ConfigDict, BaseModel, Field, StrictStr
 
 class Settings(BaseModel):
     """
@@ -35,11 +35,7 @@ class Settings(BaseModel):
     redirect_sign_up_page_function_url: StrictStr = Field(...)
     sqs_arn: StrictStr = Field(...)
     __properties = ["product_code", "role_arn", "role_external_id", "sns_topic_arn", "cas_bucket_name", "cas_sns_topic_arn", "seller_sns_topic_arn", "redirect_sign_up_page_function_url", "sqs_arn"]
-
-    class Config:
-        """Pydantic configuration"""
-        allow_population_by_field_name = True
-        validate_assignment = True
+    model_config = ConfigDict(populate_by_name=True, validate_assignment=True)
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""

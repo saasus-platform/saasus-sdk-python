@@ -19,12 +19,13 @@ import json
 
 
 from typing import List, Optional
-from pydantic import BaseModel, Field, StrictBool, StrictInt, StrictStr, conlist
+from pydantic import ConfigDict, BaseModel, Field, StrictBool, StrictInt, StrictStr
 from saasus_sdk_python.src.pricing.models.aggregate_usage import AggregateUsage
 from saasus_sdk_python.src.pricing.models.currency import Currency
 from saasus_sdk_python.src.pricing.models.pricing_tier import PricingTier
 from saasus_sdk_python.src.pricing.models.recurring_interval import RecurringInterval
 from saasus_sdk_python.src.pricing.models.unit_type import UnitType
+from typing_extensions import Annotated
 
 class PricingTieredUsageUnit(BaseModel):
     """
@@ -38,17 +39,13 @@ class PricingTieredUsageUnit(BaseModel):
     description: StrictStr = Field(..., description="Description")
     type: UnitType = Field(...)
     currency: Currency = Field(...)
-    tiers: conlist(PricingTier) = Field(...)
+    tiers: Annotated[List[PricingTier], Field()] = Field(...)
     id: StrictStr = Field(..., description="Universally Unique Identifier")
     metering_unit_id: StrictStr = Field(..., description="Universally Unique Identifier")
     recurring_interval: RecurringInterval = Field(...)
     used: StrictBool = Field(..., description="Indicates if the unit is used")
     __properties = ["upper_count", "metering_unit_name", "aggregate_usage", "name", "display_name", "description", "type", "currency", "tiers", "id", "metering_unit_id", "recurring_interval", "used"]
-
-    class Config:
-        """Pydantic configuration"""
-        allow_population_by_field_name = True
-        validate_assignment = True
+    model_config = ConfigDict(populate_by_name=True, validate_assignment=True)
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""

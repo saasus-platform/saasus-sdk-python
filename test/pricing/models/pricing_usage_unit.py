@@ -19,7 +19,7 @@ import json
 
 
 from typing import Optional
-from pydantic import BaseModel, Field, StrictBool, StrictInt, StrictStr
+from pydantic import ConfigDict, BaseModel, Field, StrictBool, StrictInt, StrictStr
 from saasus_sdk_python.src.pricing.models.aggregate_usage import AggregateUsage
 from saasus_sdk_python.src.pricing.models.currency import Currency
 from saasus_sdk_python.src.pricing.models.recurring_interval import RecurringInterval
@@ -43,11 +43,7 @@ class PricingUsageUnit(BaseModel):
     recurring_interval: RecurringInterval = Field(...)
     used: StrictBool = Field(...)
     __properties = ["upper_count", "unit_amount", "metering_unit_name", "aggregate_usage", "name", "display_name", "description", "type", "currency", "id", "metering_unit_id", "recurring_interval", "used"]
-
-    class Config:
-        """Pydantic configuration"""
-        allow_population_by_field_name = True
-        validate_assignment = True
+    model_config = ConfigDict(populate_by_name=True, validate_assignment=True)
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""

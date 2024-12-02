@@ -19,7 +19,7 @@ import json
 
 
 
-from pydantic import BaseModel, Field
+from pydantic import ConfigDict, BaseModel, Field
 from saasus_sdk_python.src.auth.models.account_verification import AccountVerification
 from saasus_sdk_python.src.auth.models.device_configuration import DeviceConfiguration
 from saasus_sdk_python.src.auth.models.identity_provider_configuration import IdentityProviderConfiguration
@@ -40,11 +40,7 @@ class SignInSettings(BaseModel):
     self_regist: SelfRegist = Field(...)
     identity_provider_configuration: IdentityProviderConfiguration = Field(...)
     __properties = ["password_policy", "device_configuration", "mfa_configuration", "recaptcha_props", "account_verification", "self_regist", "identity_provider_configuration"]
-
-    class Config:
-        """Pydantic configuration"""
-        allow_population_by_field_name = True
-        validate_assignment = True
+    model_config = ConfigDict(populate_by_name=True, validate_assignment=True)
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
