@@ -49,6 +49,7 @@ do
     -g python \
     -o /local/saasus_sdk_python/generated/ \
     --additional-properties useOneOfDiscriminatorLookup=true \
+    --template-dir /local/templates/openapi-generator/python-v7-0-0/ \
     --package-name saasus_sdk_python.src.${module}
 done
 
