@@ -48,7 +48,7 @@ class PricingUnitForSave(BaseModel):
     one_of_schemas: Literal[PRICINGUNITFORSAVE_ONE_OF_SCHEMAS] = PRICINGUNITFORSAVE_ONE_OF_SCHEMAS
     model_config = ConfigDict(validate_assignment=True)
 
-    discriminator_value_class_map = {
+    discriminator_value_class_map: Dict[str, str] = {
     }
 
     def __init__(self, *args, **kwargs):

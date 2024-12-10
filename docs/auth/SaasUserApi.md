@@ -266,7 +266,7 @@ Name | Type | Description  | Notes
 
 Create SaaS User
 
-Create SaaS User. 
+Create SaaS User. If attributes is empty, a temporary password will be sent to the registered email. 
 
 ### Example
 

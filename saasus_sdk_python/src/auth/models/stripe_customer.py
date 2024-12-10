@@ -18,16 +18,16 @@ import re  # noqa: F401
 import json
 
 
-from typing import Optional
+
 from pydantic import ConfigDict, BaseModel, Field, StrictStr
 
-class CreateSaasUserParam(BaseModel):
+class StripeCustomer(BaseModel):
     """
-    CreateSaasUserParam
+    StripeCustomer
     """
-    email: StrictStr = Field(..., description="E-mail")
-    password: Optional[StrictStr] = Field(None, description="Password")
-    __properties = ["email", "password"]
+    customer_id: StrictStr = Field(..., description="stripe Customer ID")
+    subscription_schedule_id: StrictStr = Field(..., description="stripe Subscription Schedule ID")
+    __properties = ["customer_id", "subscription_schedule_id"]
     model_config = ConfigDict(populate_by_name=True, validate_assignment=True)
 
     def to_str(self) -> str:
@@ -39,8 +39,8 @@ class CreateSaasUserParam(BaseModel):
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> CreateSaasUserParam:
-        """Create an instance of CreateSaasUserParam from a JSON string"""
+    def from_json(cls, json_str: str) -> StripeCustomer:
+        """Create an instance of StripeCustomer from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self):
@@ -52,17 +52,17 @@ class CreateSaasUserParam(BaseModel):
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: dict) -> CreateSaasUserParam:
-        """Create an instance of CreateSaasUserParam from a dict"""
+    def from_dict(cls, obj: dict) -> StripeCustomer:
+        """Create an instance of StripeCustomer from a dict"""
         if obj is None:
             return None
 
         if not isinstance(obj, dict):
-            return CreateSaasUserParam.parse_obj(obj)
+            return StripeCustomer.parse_obj(obj)
 
-        _obj = CreateSaasUserParam.parse_obj({
-            "email": obj.get("email"),
-            "password": obj.get("password")
+        _obj = StripeCustomer.parse_obj({
+            "customer_id": obj.get("customer_id"),
+            "subscription_schedule_id": obj.get("subscription_schedule_id")
         })
         return _obj
 
