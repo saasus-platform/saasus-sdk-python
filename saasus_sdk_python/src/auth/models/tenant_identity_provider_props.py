@@ -21,7 +21,7 @@ import re  # noqa: F401
 from typing import Literal, Any, List, Optional
 from pydantic import field_validator, ConfigDict, BaseModel, StrictStr, ValidationError
 from saasus_sdk_python.src.auth.models.identity_provider_saml import IdentityProviderSaml
-from typing import Union, Any, List, TYPE_CHECKING
+from typing import Union, Any, List, TYPE_CHECKING, Dict
 from pydantic import StrictStr
 
 TENANTIDENTITYPROVIDERPROPS_ONE_OF_SCHEMAS = ["IdentityProviderSaml"]

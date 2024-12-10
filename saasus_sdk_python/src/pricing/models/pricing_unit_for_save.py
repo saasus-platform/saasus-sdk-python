@@ -24,7 +24,7 @@ from saasus_sdk_python.src.pricing.models.pricing_fixed_unit_for_save import Pri
 from saasus_sdk_python.src.pricing.models.pricing_tiered_unit_for_save import PricingTieredUnitForSave
 from saasus_sdk_python.src.pricing.models.pricing_tiered_usage_unit_for_save import PricingTieredUsageUnitForSave
 from saasus_sdk_python.src.pricing.models.pricing_usage_unit_for_save import PricingUsageUnitForSave
-from typing import Union, Any, List, TYPE_CHECKING
+from typing import Union, Any, List, TYPE_CHECKING, Dict
 from pydantic import StrictStr
 
 PRICINGUNITFORSAVE_ONE_OF_SCHEMAS = ["PricingFixedUnitForSave", "PricingTieredUnitForSave", "PricingTieredUsageUnitForSave", "PricingUsageUnitForSave"]
