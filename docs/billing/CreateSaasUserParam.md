@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **email** | **str** | E-mail | 
-**password** | **str** | Password | 
+**password** | **str** | Password | [optional] 
 
 ## Example
 

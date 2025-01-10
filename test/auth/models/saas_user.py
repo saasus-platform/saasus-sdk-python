@@ -18,7 +18,7 @@ import re  # noqa: F401
 import json
 
 
-from typing import Any, Dict, Optional
+from typing import Any, Dict
 from pydantic import ConfigDict, BaseModel, Field, StrictStr
 
 class SaasUser(BaseModel):
@@ -27,7 +27,7 @@ class SaasUser(BaseModel):
     """
     id: StrictStr = Field(...)
     email: StrictStr = Field(..., description="E-mail")
-    attributes: Optional[Dict[str, Any]] = Field(None, description="Attribute information ")
+    attributes: Dict[str, Any] = Field(..., description="Attribute information ")
     __properties = ["id", "email", "attributes"]
     model_config = ConfigDict(populate_by_name=True, validate_assignment=True)
 

@@ -110,6 +110,7 @@ from saasus_sdk_python.src.auth.models.sign_up_param import SignUpParam
 from saasus_sdk_python.src.auth.models.sign_up_with_aws_marketplace_param import SignUpWithAwsMarketplaceParam
 from saasus_sdk_python.src.auth.models.single_tenant_settings import SingleTenantSettings
 from saasus_sdk_python.src.auth.models.software_token_secret_code import SoftwareTokenSecretCode
+from saasus_sdk_python.src.auth.models.stripe_customer import StripeCustomer
 from saasus_sdk_python.src.auth.models.tenant import Tenant
 from saasus_sdk_python.src.auth.models.tenant_attributes import TenantAttributes
 from saasus_sdk_python.src.auth.models.tenant_detail import TenantDetail

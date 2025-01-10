@@ -24,7 +24,7 @@ from saasus_sdk_python.src.pricing.models.pricing_fixed_unit import PricingFixed
 from saasus_sdk_python.src.pricing.models.pricing_tiered_unit import PricingTieredUnit
 from saasus_sdk_python.src.pricing.models.pricing_tiered_usage_unit import PricingTieredUsageUnit
 from saasus_sdk_python.src.pricing.models.pricing_usage_unit import PricingUsageUnit
-from typing import Union, Any, List, TYPE_CHECKING
+from typing import Union, Any, List, TYPE_CHECKING, Dict
 from pydantic import StrictStr
 
 PRICINGUNIT_ONE_OF_SCHEMAS = ["PricingFixedUnit", "PricingTieredUnit", "PricingTieredUsageUnit", "PricingUsageUnit"]
@@ -48,7 +48,7 @@ class PricingUnit(BaseModel):
     one_of_schemas: Literal[PRICINGUNIT_ONE_OF_SCHEMAS] = PRICINGUNIT_ONE_OF_SCHEMAS
     model_config = ConfigDict(validate_assignment=True)
 
-    discriminator_value_class_map = {
+    discriminator_value_class_map: Dict[str, str] = {
     }
 
     def __init__(self, *args, **kwargs):

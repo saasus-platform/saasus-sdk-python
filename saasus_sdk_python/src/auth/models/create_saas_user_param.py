@@ -18,7 +18,7 @@ import re  # noqa: F401
 import json
 
 
-
+from typing import Optional
 from pydantic import ConfigDict, BaseModel, Field, StrictStr
 
 class CreateSaasUserParam(BaseModel):
@@ -26,7 +26,7 @@ class CreateSaasUserParam(BaseModel):
     CreateSaasUserParam
     """
     email: StrictStr = Field(..., description="E-mail")
-    password: StrictStr = Field(..., description="Password")
+    password: Optional[StrictStr] = Field(None, description="Password")
     __properties = ["email", "password"]
     model_config = ConfigDict(populate_by_name=True, validate_assignment=True)
 
