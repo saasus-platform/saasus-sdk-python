@@ -34,7 +34,7 @@ class Callback:
                                                  headers={})
         api_client.configuration.default_headers = headers
         # 環境変数でAPIサーバーを切り替える
-        api_client.configuration.host = f"{self.api_base_url}/auth"
+        api_client.configuration.host = f"{self.base_url}/auth"
         credentials = CredentialApi(api_client=api_client).get_auth_credentials(
             _headers=api_client.configuration.default_headers, refresh_token=refresh_token, auth_flow=auth_type)
         return credentials
