@@ -10,7 +10,7 @@ keywords = ["OpenAPI", "OpenAPI-Generator", "SaaSus Auth API Schema"]
 include = ["saasus_sdk_python/py.typed"]
 
 [tool.poetry.dependencies]
-python = "^3.9"
+python = "^3.8"
 openapi-client = "^1.1.7"
 aenum = "^3.1.15"
 python-dotenv = "^1.0.0"
@@ -19,9 +19,9 @@ python-dotenv = "^1.0.0"
 starlette = "0.27.0"
 uvicorn = "^0.23.2"
 fastapi = "^0.101.0"
-flake8 = "^6.1.0"
-pydantic = "^1.10.12"
+flake8 = "^3.7.0"
 pydantic-core = "^2.4.0"
+bump-pydantic = "^0.8.0"
 
 [build-system]
 requires = ["poetry-core"]
