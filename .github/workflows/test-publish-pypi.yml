@@ -3,9 +3,6 @@ name: Test Publish SaaSus SDK to TestPyPI
 on:
   # 手動実行専用ワークフロー（本番と分離）
   workflow_dispatch:
-  push:
-      branches:
-        - feature/22
 
 jobs:
   test-publish:
