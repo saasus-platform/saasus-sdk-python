@@ -1,5 +1,15 @@
 #!/bin/bash
 
+# バージョン引数がある場合のみ pyproject.toml を更新
+if [ $# -ge 1 ]; then
+  RAW_VERSION=$1
+  CLEAN_VERSION=${RAW_VERSION#v}
+  echo "update pyproject.toml version to ${CLEAN_VERSION}"
+  poetry version "$CLEAN_VERSION"
+else
+  echo "skip pyproject.toml version update"
+fi
+
 # 生成するモジュール名の配列
 MODULES=("auth" "pricing" "billing" "awsmarketplace" "integration" "apilog" "communication" )
 
