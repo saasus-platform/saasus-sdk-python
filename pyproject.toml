@@ -2,12 +2,23 @@
 name = "saasus_sdk_python"
 version = "1.0.0"
 description = "SaaSus Auth API Schema"
-authors = ["Anti-Pattern <team@openapitools.org>"]
-license = "NoLicense"
+authors = ["Anti-Pattern Inc. <saasus@anti-pattern.co.jp>"]
+license = "Apache-2.0"
 readme = "README.md"
-repository = "https://github.com/Anti-Pattern-Inc/saasus-sdk-python"
+repository = "https://github.com/saasus-platform/saasus-sdk-python"
 keywords = ["OpenAPI", "OpenAPI-Generator", "SaaSus Auth API Schema"]
 include = ["saasus_sdk_python/py.typed"]
+
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: Apache Software License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12"
+]
 
 [tool.poetry.dependencies]
 python = "^3.8"
