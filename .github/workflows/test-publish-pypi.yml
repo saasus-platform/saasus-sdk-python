@@ -13,7 +13,6 @@ jobs:
         python-version: ["3.12"]
 
     steps:
-      # リポジトリのチェックアウト
       - name: Checkout Repository
         uses: actions/checkout@v4
 
@@ -23,13 +22,13 @@ jobs:
         with:
           python-version: ${{ matrix.python-version }}
 
-      # Poetry のインストール
+      # Poetry 1.8.3 のインストール（バージョン固定）
       - name: Install Poetry
         run: |
           python -m pip install --upgrade pip
           pip install poetry==1.8.3
 
-      # 本番環境を想定した依存インストール
+      # 依存関係を本番環境向けに最適化
       - name: Install Production Dependencies
         run: poetry install --no-dev
 
@@ -41,7 +40,7 @@ jobs:
           echo "Set version to $VERSION"
           poetry version "$VERSION"
 
-      # パッケージのビルド（dist/*.tar.gz, *.whl）
+      # パッケージのビルド
       - name: Build Package
         run: poetry build
 
