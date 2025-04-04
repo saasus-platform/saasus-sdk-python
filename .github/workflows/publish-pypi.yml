@@ -4,8 +4,6 @@ on:
   push:
     tags:
       - "v*"
-    branches:
-      - feature/22
 
 jobs:
   build:
@@ -34,14 +32,6 @@ jobs:
       # 依存関係を本番環境向けに最適化
       - name: Install Production Dependencies
         run: poetry install --no-dev
-
-      # pyproject.toml のバージョンに `.dev+timestamp` を追加（TestPyPI 用に毎回ユニークなバージョンを作成
-      - name: Bump version with timestamp
-        run: |
-          BASE_VERSION=$(poetry version -s)
-          VERSION="${BASE_VERSION}.dev$(date +'%Y%m%d%H%M%S')"
-          echo "Set version to $VERSION"
-          poetry version "$VERSION"
 
       # パッケージのビルド
       - name: Build Package
