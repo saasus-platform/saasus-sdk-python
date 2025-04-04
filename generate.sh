@@ -11,16 +11,16 @@ else
 fi
 
 # 生成するモジュール名の配列
-MODULES=("auth" "pricing" "billing" "awsmarketplace" "integration" "apilog" "communication" )
+MODULES="auth pricing billing awsmarketplace integration apilog communication"
 
 # sdkに含まれる生成したプログラムを削除
 SDK_SRC_DIR="saasus_sdk_python/src"
 SDK_TEST_DIR="test"
 
 # 削除対象ディレクトリ
-DELETE_DIRS=("generated")
+DELETE_DIRS="generated"
 
-for module in "${MODULES[@]}"
+for module in ${MODULES}
 do
     if [ -d ${SDK_SRC_DIR}/${module} ]; then
         rm -rf ${SDK_SRC_DIR}/${module}
@@ -36,7 +36,7 @@ done
 rm -rf ./docs/*
 echo "delete pythondoc success"
 
-for dir in "${DELETE_DIRS[@]}"
+for dir in ${DELETE_DIRS}
 do
     if [ -d ./${dir} ]; then
         rm -rf ./${dir}
@@ -44,7 +44,7 @@ do
 done
 
 #Pythonクラスを生成
-for module in "${MODULES[@]}"
+for module in ${MODULES}
 do
     if [ "${module}" = "integration" ]; then
         target="/local/${module}.yml"
@@ -66,7 +66,7 @@ done
 poetry install
 poetry run bump-pydantic saasus_sdk_python/generated
 
-for module in "${MODULES[@]}"
+for module in ${MODULES}
 do
     # プログラム
     cp -pr "saasus_sdk_python/generated/${SDK_SRC_DIR}/${module}" "${SDK_SRC_DIR}/${module}"
