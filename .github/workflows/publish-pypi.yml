@@ -1,0 +1,44 @@
+name: Publish SaaSus SDK to PyPI
+
+on:
+  push:
+    tags:
+      - "v*"
+
+jobs:
+  build:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest]
+        python-version: ["3.12"]
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      # Python 環境のセットアップ
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: ${{ matrix.python-version }}
+
+      # Poetry 1.8.3 のインストール（バージョン固定）
+      - name: Install Poetry
+        run: |
+          python -m pip install --upgrade pip
+          pip install poetry==1.8.3
+
+      # 依存関係を本番環境向けに最適化
+      - name: Install Production Dependencies
+        run: poetry install --no-dev
+
+      # パッケージのビルド
+      - name: Build Package
+        run: poetry build
+
+      # PyPI に公開
+      - name: Publish to PyPI
+        env:
+          PYPI_API_TOKEN: ${{ secrets.PYPI_API_TOKEN }}
+        run: poetry publish --username __token__ --password $PYPI_API_TOKEN
