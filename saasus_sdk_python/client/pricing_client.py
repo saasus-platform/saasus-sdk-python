@@ -22,16 +22,21 @@ class SignedPricingApiClient(ApiClient):
 
         if path_params:
             resource_path = resource_path.format(**path_params)
-        if query_params:
-            query_string = urlencode(query_params)
-            resource_path += f"?{query_string}"
 
         self.base_url = os.getenv("SAASUS_BASE_URL", "https://api.saasus.io/v1")
         self.configuration.host = f"{self.base_url}/pricing"
 
+        # 署名用にフル URL を組み立てる（パス + 正規化済みクエリ）
+        sanitized = self.sanitize_for_serialization(query_params or {})
+        query_str  = self.parameters_to_url_query(sanitized, collection_formats)
+
+        url_for_sig = self.configuration.host + resource_path
+        if query_str:
+            url_for_sig += "?" + query_str
+
         # 署名ヘッダを生成してリクエストヘッダに追加する
         signature_headers = self.client.generate_signature(
-            method, self.configuration.host + resource_path, body
+            method, url_for_sig, body
         )
 
         # header_paramsを署名つきのヘッダで更新する。
