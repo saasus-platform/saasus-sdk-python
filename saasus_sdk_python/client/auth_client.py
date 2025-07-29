@@ -28,7 +28,7 @@ class SignedAuthApiClient(ApiClient):
 
         # 署名用にフル URL を組み立てる（パス + 正規化済みクエリ）
         sanitized = self.sanitize_for_serialization(query_params or {})
-        query_str  = self.parameters_to_url_query(sanitized, collection_formats)
+        query_str = self.parameters_to_url_query(sanitized, collection_formats)
 
         url_for_sig = self.configuration.host + resource_path
         if query_str:
