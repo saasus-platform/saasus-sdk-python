@@ -4,10 +4,18 @@
 if [ $# -ge 1 ]; then
   RAW_VERSION=$1
   CLEAN_VERSION=${RAW_VERSION#v}
-  echo "update pyproject.toml version to ${CLEAN_VERSION}"
-  poetry version "$CLEAN_VERSION"
+  echo "Target SDK version: ${CLEAN_VERSION}"
+
+  # sh 互換のバージョン形式チェック（例: 1.2.3, 1.2.3rc1, 1.2.3-beta.1）
+  echo "$CLEAN_VERSION" | grep -Eq '^[0-9]+\.[0-9]+\.[0-9]+([a-zA-Z0-9.-]*)?$'
+  if [ $? -ne 0 ]; then
+    echo "Invalid version format: ${CLEAN_VERSION}. Skipping version update."
+  else
+    echo "update pyproject.toml version to ${CLEAN_VERSION}"
+    poetry version "$CLEAN_VERSION"
+  fi
 else
-  echo "skip pyproject.toml version update"
+  echo "No version argument provided, skipping version update"
 fi
 
 # 生成するモジュール名の配列
