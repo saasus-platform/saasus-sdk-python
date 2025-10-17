@@ -18,15 +18,16 @@ import re  # noqa: F401
 import json
 
 
-
-from pydantic import ConfigDict, BaseModel, Field, StrictStr
+from typing import Optional
+from pydantic import ConfigDict, BaseModel, Field, StrictBool, StrictStr
 
 class UpdateSaasUserPasswordParam(BaseModel):
     """
     UpdateSaasUserPasswordParam
     """
     password: StrictStr = Field(..., description="Password")
-    __properties = ["password"]
+    temporary: Optional[StrictBool] = Field(None, description="Set to true to mark the new password as a temporary password (user must change on next sign-in)")
+    __properties = ["password", "temporary"]
     model_config = ConfigDict(populate_by_name=True, validate_assignment=True)
 
     def to_str(self) -> str:
@@ -60,7 +61,8 @@ class UpdateSaasUserPasswordParam(BaseModel):
             return UpdateSaasUserPasswordParam.parse_obj(obj)
 
         _obj = UpdateSaasUserPasswordParam.parse_obj({
-            "password": obj.get("password")
+            "password": obj.get("password"),
+            "temporary": obj.get("temporary")
         })
         return _obj
 

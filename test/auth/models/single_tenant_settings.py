@@ -25,7 +25,7 @@ class SingleTenantSettings(BaseModel):
     """
     SingleTenantSettings
     """
-    enabled: StrictBool = Field(..., description="enable Single Tenant settings or not")
+    enabled: StrictBool = Field(..., description="enable SaaS Infrastructure Management settings or not")
     role_arn: StrictStr = Field(..., description="ARN of the role for SaaS Platform to AssumeRole")
     cloudformation_template_url: StrictStr = Field(..., description="S3 URL where the CloudFormationTemplate to be executed in the SaaS environment is stored")
     ddl_template_url: StrictStr = Field(..., description="S3 URL where the CloudFormationTemplate to be executed in the SaaS environment is stored")

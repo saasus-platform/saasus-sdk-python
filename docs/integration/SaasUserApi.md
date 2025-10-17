@@ -17,6 +17,8 @@ Method | HTTP request | Description
 [**request_email_update**](SaasUserApi.md#request_email_update) | **POST** /users/{user_id}/email/request | Request User Email Update
 [**request_external_user_link**](SaasUserApi.md#request_external_user_link) | **POST** /external-users/request | Request External User Account Link
 [**resend_sign_up_confirmation_email**](SaasUserApi.md#resend_sign_up_confirmation_email) | **POST** /sign-up/resend | Resend Sign Up Confirmation Email
+[**respond_to_sign_in_challenge**](SaasUserApi.md#respond_to_sign_in_challenge) | **POST** /sign-in/challenge | Respond to Sign In Challenge
+[**sign_in**](SaasUserApi.md#sign_in) | **POST** /sign-in | Sign In
 [**sign_up**](SaasUserApi.md#sign_up) | **POST** /sign-up | Sign Up
 [**sign_up_with_aws_marketplace**](SaasUserApi.md#sign_up_with_aws_marketplace) | **POST** /aws-marketplace/sign-up | Sign Up with AWS Marketplace
 [**unlink_provider**](SaasUserApi.md#unlink_provider) | **DELETE** /users/{user_id}/providers/{provider_name} | Unlink external identity providers
@@ -1032,6 +1034,166 @@ void (empty response body)
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
+**500** | Internal Server Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **respond_to_sign_in_challenge**
+> RespondToSignInChallengeResult respond_to_sign_in_challenge(respond_to_sign_in_challenge_param=respond_to_sign_in_challenge_param)
+
+Respond to Sign In Challenge
+
+Respond to a sign-in challenge. 
+
+### Example
+
+* Bearer Authentication (Bearer):
+```python
+import time
+import os
+import saasus_sdk_python.src.auth
+from saasus_sdk_python.src.auth.models.respond_to_sign_in_challenge_param import RespondToSignInChallengeParam
+from saasus_sdk_python.src.auth.models.respond_to_sign_in_challenge_result import RespondToSignInChallengeResult
+from saasus_sdk_python.src.auth.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://api.saasus.io/v1/auth
+# See configuration.py for a list of all supported configuration parameters.
+configuration = saasus_sdk_python.src.auth.Configuration(
+    host = "https://api.saasus.io/v1/auth"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: Bearer
+configuration = saasus_sdk_python.src.auth.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with saasus_sdk_python.src.auth.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = saasus_sdk_python.src.auth.SaasUserApi(api_client)
+    respond_to_sign_in_challenge_param = saasus_sdk_python.src.auth.RespondToSignInChallengeParam() # RespondToSignInChallengeParam |  (optional)
+
+    try:
+        # Respond to Sign In Challenge
+        api_response = api_instance.respond_to_sign_in_challenge(respond_to_sign_in_challenge_param=respond_to_sign_in_challenge_param)
+        print("The response of SaasUserApi->respond_to_sign_in_challenge:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling SaasUserApi->respond_to_sign_in_challenge: %s\n" % e)
+```
+
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **respond_to_sign_in_challenge_param** | [**RespondToSignInChallengeParam**](RespondToSignInChallengeParam.md)|  | [optional] 
+
+### Return type
+
+[**RespondToSignInChallengeResult**](RespondToSignInChallengeResult.md)
+
+### Authorization
+
+[Bearer](../README.md#Bearer)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**401** | Unauthorized |  -  |
+**500** | Internal Server Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **sign_in**
+> SignInResult sign_in(sign_in_param=sign_in_param)
+
+Sign In
+
+A user attempts to sign in. 
+
+### Example
+
+* Bearer Authentication (Bearer):
+```python
+import time
+import os
+import saasus_sdk_python.src.auth
+from saasus_sdk_python.src.auth.models.sign_in_param import SignInParam
+from saasus_sdk_python.src.auth.models.sign_in_result import SignInResult
+from saasus_sdk_python.src.auth.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://api.saasus.io/v1/auth
+# See configuration.py for a list of all supported configuration parameters.
+configuration = saasus_sdk_python.src.auth.Configuration(
+    host = "https://api.saasus.io/v1/auth"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: Bearer
+configuration = saasus_sdk_python.src.auth.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with saasus_sdk_python.src.auth.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = saasus_sdk_python.src.auth.SaasUserApi(api_client)
+    sign_in_param = saasus_sdk_python.src.auth.SignInParam() # SignInParam |  (optional)
+
+    try:
+        # Sign In
+        api_response = api_instance.sign_in(sign_in_param=sign_in_param)
+        print("The response of SaasUserApi->sign_in:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling SaasUserApi->sign_in: %s\n" % e)
+```
+
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **sign_in_param** | [**SignInParam**](SignInParam.md)|  | [optional] 
+
+### Return type
+
+[**SignInResult**](SignInResult.md)
+
+### Authorization
+
+[Bearer](../README.md#Bearer)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**401** | Unauthorized |  -  |
 **500** | Internal Server Error |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

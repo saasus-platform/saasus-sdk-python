@@ -23,6 +23,7 @@ from saasus_sdk_python.src.auth.models.authorization_temp_code import Authorizat
 from saasus_sdk_python.src.auth.models.basic_info import BasicInfo
 from saasus_sdk_python.src.auth.models.billing_address import BillingAddress
 from saasus_sdk_python.src.auth.models.billing_info import BillingInfo
+from saasus_sdk_python.src.auth.models.challenge_name import ChallengeName
 from saasus_sdk_python.src.auth.models.client_secret import ClientSecret
 from saasus_sdk_python.src.auth.models.cloud_formation_launch_stack_link import CloudFormationLaunchStackLink
 from saasus_sdk_python.src.auth.models.confirm_email_update_param import ConfirmEmailUpdateParam
@@ -69,12 +70,16 @@ from saasus_sdk_python.src.auth.models.recaptcha_props import RecaptchaProps
 from saasus_sdk_python.src.auth.models.request_email_update_param import RequestEmailUpdateParam
 from saasus_sdk_python.src.auth.models.request_external_user_link_param import RequestExternalUserLinkParam
 from saasus_sdk_python.src.auth.models.resend_sign_up_confirmation_email_param import ResendSignUpConfirmationEmailParam
+from saasus_sdk_python.src.auth.models.respond_to_sign_in_challenge_param import RespondToSignInChallengeParam
+from saasus_sdk_python.src.auth.models.respond_to_sign_in_challenge_result import RespondToSignInChallengeResult
 from saasus_sdk_python.src.auth.models.role import Role
 from saasus_sdk_python.src.auth.models.roles import Roles
 from saasus_sdk_python.src.auth.models.saas_id import SaasId
 from saasus_sdk_python.src.auth.models.saas_user import SaasUser
 from saasus_sdk_python.src.auth.models.saas_users import SaasUsers
 from saasus_sdk_python.src.auth.models.self_regist import SelfRegist
+from saasus_sdk_python.src.auth.models.sign_in_param import SignInParam
+from saasus_sdk_python.src.auth.models.sign_in_result import SignInResult
 from saasus_sdk_python.src.auth.models.sign_in_settings import SignInSettings
 from saasus_sdk_python.src.auth.models.sign_up_param import SignUpParam
 from saasus_sdk_python.src.auth.models.sign_up_with_aws_marketplace_param import SignUpWithAwsMarketplaceParam

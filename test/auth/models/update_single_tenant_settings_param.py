@@ -25,7 +25,7 @@ class UpdateSingleTenantSettingsParam(BaseModel):
     """
     UpdateSingleTenantSettingsParam
     """
-    enabled: Optional[StrictBool] = Field(None, description="enable Single Tenant settings or not")
+    enabled: Optional[StrictBool] = Field(None, description="enable SaaS Infrastructure Management settings or not")
     role_arn: Optional[StrictStr] = Field(None, description="ARN of the role for SaaS Platform to AssumeRole")
     cloudformation_template: Optional[StrictStr] = Field(None, description="CloudFormation template file")
     ddl_template: Optional[StrictStr] = Field(None, description="ddl file to run in SaaS environment")
