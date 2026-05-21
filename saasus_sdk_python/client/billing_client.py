@@ -6,12 +6,13 @@ from saasus_sdk_python.src.billing.api_client import ApiClient
 
 class SignedBillingApiClient(ApiClient):
 
-    def __init__(self, referer=None, x_saasus_referer=None, *args, **kwargs):
+    def __init__(self, referer=None, x_saasus_referer=None, x_saasus_trace_id=None, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.client = Client()
         self.configuration.default_headers = {}
         self.client.referer = referer
         self.client.x_saasus_referer = x_saasus_referer
+        self.client.x_saasus_trace_id = x_saasus_trace_id
         self.base_url = os.getenv("SAASUS_BASE_URL", "https://api.saasus.io/v1")
 
     def call_api(self, resource_path, method,
