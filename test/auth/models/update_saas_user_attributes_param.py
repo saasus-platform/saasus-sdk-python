@@ -19,7 +19,7 @@ import json
 
 
 from typing import Any, Dict
-from pydantic import ConfigDict, BaseModel, Field
+from pydantic import BaseModel, Field
 
 class UpdateSaasUserAttributesParam(BaseModel):
     """
@@ -27,7 +27,11 @@ class UpdateSaasUserAttributesParam(BaseModel):
     """
     attributes: Dict[str, Any] = Field(..., description="Attribute information ")
     __properties = ["attributes"]
-    model_config = ConfigDict(populate_by_name=True, validate_assignment=True)
+
+    class Config:
+        """Pydantic configuration"""
+        allow_population_by_field_name = True
+        validate_assignment = True
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""

@@ -19,8 +19,7 @@ import json
 
 
 from typing import Union
-from pydantic import field_validator, StringConstraints, ConfigDict, BaseModel, Field, StrictBool, StrictFloat, StrictInt, StrictStr
-from typing_extensions import Annotated
+from pydantic import BaseModel, Field, StrictBool, StrictFloat, StrictInt, StrictStr, constr, validator
 
 class TaxRateProps(BaseModel):
     """
@@ -30,18 +29,21 @@ class TaxRateProps(BaseModel):
     display_name: StrictStr = Field(..., description="Display name")
     percentage: Union[StrictFloat, StrictInt] = Field(..., description="Percentage")
     inclusive: StrictBool = Field(..., description="Inclusive or not")
-    country: Annotated[str, StringConstraints(strict=True)] = Field(..., description="Country code of ISO 3166-1 alpha-2")
+    country: constr(strict=True) = Field(..., description="Country code of ISO 3166-1 alpha-2")
     description: StrictStr = Field(..., description="Description")
     __properties = ["name", "display_name", "percentage", "inclusive", "country", "description"]
 
-    @field_validator('country')
-    @classmethod
+    @validator('country')
     def country_validate_regular_expression(cls, value):
         """Validates the regular expression"""
         if not re.match(r"^[A-Z]{2}$", value):
             raise ValueError(r"must validate the regular expression /^[A-Z]{2}$/")
         return value
-    model_config = ConfigDict(populate_by_name=True, validate_assignment=True)
+
+    class Config:
+        """Pydantic configuration"""
+        allow_population_by_field_name = True
+        validate_assignment = True
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""

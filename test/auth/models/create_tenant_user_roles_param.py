@@ -19,16 +19,19 @@ import json
 
 
 from typing import List
-from pydantic import ConfigDict, BaseModel, Field, StrictStr
-from typing_extensions import Annotated
+from pydantic import BaseModel, Field, StrictStr, conlist
 
 class CreateTenantUserRolesParam(BaseModel):
     """
     CreateTenantUserRolesParam
     """
-    role_names: Annotated[List[StrictStr], Field()] = Field(..., description="Role Info")
+    role_names: conlist(StrictStr) = Field(..., description="Role Info")
     __properties = ["role_names"]
-    model_config = ConfigDict(populate_by_name=True, validate_assignment=True)
+
+    class Config:
+        """Pydantic configuration"""
+        allow_population_by_field_name = True
+        validate_assignment = True
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""

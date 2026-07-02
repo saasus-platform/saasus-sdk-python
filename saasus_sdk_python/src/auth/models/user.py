@@ -19,9 +19,8 @@ import json
 
 
 from typing import Any, Dict, List
-from pydantic import ConfigDict, BaseModel, Field, StrictStr
+from pydantic import BaseModel, Field, StrictStr, conlist
 from saasus_sdk_python.src.auth.models.user_available_env import UserAvailableEnv
-from typing_extensions import Annotated
 
 class User(BaseModel):
     """
@@ -30,11 +29,16 @@ class User(BaseModel):
     id: StrictStr = Field(..., description="User ID")
     tenant_id: StrictStr = Field(...)
     tenant_name: StrictStr = Field(..., description="Tenant Name")
-    email: StrictStr = Field(..., description="E-mail")
+    email: StrictStr = Field(..., description="E-mail. For sign-in ID authentication users, this field is an empty string. ")
+    sign_in_id: StrictStr = Field(..., description="Sign-in ID. For email authentication users, this field is an empty string. ")
     attributes: Dict[str, Any] = Field(..., description="Attribute information (Get information set by defining user attributes in the SaaS development console) ")
-    envs: Annotated[List[UserAvailableEnv], Field()] = Field(...)
-    __properties = ["id", "tenant_id", "tenant_name", "email", "attributes", "envs"]
-    model_config = ConfigDict(populate_by_name=True, validate_assignment=True)
+    envs: conlist(UserAvailableEnv) = Field(...)
+    __properties = ["id", "tenant_id", "tenant_name", "email", "sign_in_id", "attributes", "envs"]
+
+    class Config:
+        """Pydantic configuration"""
+        allow_population_by_field_name = True
+        validate_assignment = True
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -78,6 +82,7 @@ class User(BaseModel):
             "tenant_id": obj.get("tenant_id"),
             "tenant_name": obj.get("tenant_name"),
             "email": obj.get("email"),
+            "sign_in_id": obj.get("sign_in_id"),
             "attributes": obj.get("attributes"),
             "envs": [UserAvailableEnv.from_dict(_item) for _item in obj.get("envs")] if obj.get("envs") is not None else None
         })

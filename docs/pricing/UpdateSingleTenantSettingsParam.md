@@ -4,7 +4,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**enabled** | **bool** | enable Single Tenant settings or not | [optional] 
+**enabled** | **bool** | enable SaaS Infrastructure Management settings or not | [optional] 
 **role_arn** | **str** | ARN of the role for SaaS Platform to AssumeRole | [optional] 
 **cloudformation_template** | **str** | CloudFormation template file | [optional] 
 **ddl_template** | **str** | ddl file to run in SaaS environment | [optional] 
