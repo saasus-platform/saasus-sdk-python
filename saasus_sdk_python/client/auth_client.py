@@ -6,7 +6,7 @@ from saasus_sdk_python.src.auth.api_client import ApiClient
 
 class SignedAuthApiClient(ApiClient):
 
-    def __init__(self, referer=None, x_saasus_referer=None, x_saasus_trace_id=None, *args, **kwargs):
+    def __init__(self, referer=None, x_saasus_referer=None, *args, x_saasus_trace_id=None, **kwargs):
         self.client = Client()
         self.client.referer = referer
         self.client.x_saasus_referer = x_saasus_referer

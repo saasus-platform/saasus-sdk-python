@@ -5,7 +5,7 @@ from saasus_sdk_python.src.pricing.api_client import ApiClient
 
 class SignedPricingApiClient(ApiClient):
 
-    def __init__(self, referer=None, x_saasus_referer=None, x_saasus_trace_id=None, *args, **kwargs):
+    def __init__(self, referer=None, x_saasus_referer=None, *args, x_saasus_trace_id=None, **kwargs):
         super().__init__(*args, **kwargs)
         self.client = Client()
         self.configuration.default_headers = {}
