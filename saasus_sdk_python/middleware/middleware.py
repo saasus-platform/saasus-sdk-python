@@ -26,12 +26,13 @@ class Authenticate:
         self.client = Client()
         self.base_url = os.getenv("SAASUS_BASE_URL", "https://api.saasus.io/v1")
 
-    def authenticate(self, id_token: str, referer: str | None = None, x_saasus_referer: str | None = None) -> tuple[None, AuthenticationError] | tuple[UserInfo, None] | tuple[None, ErrorResponse]:  # noqa: E501
+    def authenticate(self, id_token: str, referer: str | None = None, x_saasus_referer: str | None = None, x_saasus_trace_id: str | None = None) -> tuple[None, AuthenticationError] | tuple[UserInfo, None] | tuple[None, ErrorResponse]:  # noqa: E501
         if not id_token:
             return None, AuthenticationError("Invalid Authorization header")
 
         self.client.referer = referer
         self.client.x_saasus_referer = x_saasus_referer
+        self.client.x_saasus_trace_id = x_saasus_trace_id
         try:
             response = self.user_info(id_token)
             return response, None

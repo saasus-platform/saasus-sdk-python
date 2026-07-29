@@ -26,6 +26,7 @@ class Client:
             cls._instance = super().__new__(cls)
             cls._instance.referer = None
             cls._instance.x_saasus_referer = None
+            cls._instance.x_saasus_trace_id = None
             cls._instance.api_key = os.getenv("SAASUS_API_KEY", "")
             cls._instance.secret_key = os.getenv("SAASUS_SECRET_KEY", "")
             cls._instance.saas_id = os.getenv("SAASUS_SAAS_ID", "")
@@ -55,4 +56,6 @@ class Client:
             header_params["Referer"] = self.referer
         if self.x_saasus_referer:
             header_params["X-SaaSus-Referer"] = self.x_saasus_referer
+        if self.x_saasus_trace_id:
+            header_params["X-SaaSus-Trace-Id"] = self.x_saasus_trace_id
         return header_params
