@@ -19,17 +19,18 @@ import json
 
 
 from typing import Optional
-from pydantic import ConfigDict, BaseModel
+from pydantic import BaseModel
 from saasus_sdk_python.src.auth.models.account_verification import AccountVerification
 from saasus_sdk_python.src.auth.models.device_configuration import DeviceConfiguration
 from saasus_sdk_python.src.auth.models.mfa_configuration import MfaConfiguration
 from saasus_sdk_python.src.auth.models.password_policy import PasswordPolicy
 from saasus_sdk_python.src.auth.models.recaptcha_props import RecaptchaProps
+from saasus_sdk_python.src.auth.models.refresh_token_validity import RefreshTokenValidity
 from saasus_sdk_python.src.auth.models.self_regist import SelfRegist
 
 class UpdateSignInSettingsParam(BaseModel):
     """
-    UpdateSignInSettingsParam
+    Set both value and unit in refresh_token_validity when updating the refresh token validity period.
     """
     password_policy: Optional[PasswordPolicy] = None
     device_configuration: Optional[DeviceConfiguration] = None
@@ -37,8 +38,13 @@ class UpdateSignInSettingsParam(BaseModel):
     recaptcha_props: Optional[RecaptchaProps] = None
     account_verification: Optional[AccountVerification] = None
     self_regist: Optional[SelfRegist] = None
-    __properties = ["password_policy", "device_configuration", "mfa_configuration", "recaptcha_props", "account_verification", "self_regist"]
-    model_config = ConfigDict(populate_by_name=True, validate_assignment=True)
+    refresh_token_validity: Optional[RefreshTokenValidity] = None
+    __properties = ["password_policy", "device_configuration", "mfa_configuration", "recaptcha_props", "account_verification", "self_regist", "refresh_token_validity"]
+
+    class Config:
+        """Pydantic configuration"""
+        allow_population_by_field_name = True
+        validate_assignment = True
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -77,6 +83,9 @@ class UpdateSignInSettingsParam(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of self_regist
         if self.self_regist:
             _dict['self_regist'] = self.self_regist.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of refresh_token_validity
+        if self.refresh_token_validity:
+            _dict['refresh_token_validity'] = self.refresh_token_validity.to_dict()
         return _dict
 
     @classmethod
@@ -94,7 +103,8 @@ class UpdateSignInSettingsParam(BaseModel):
             "mfa_configuration": MfaConfiguration.from_dict(obj.get("mfa_configuration")) if obj.get("mfa_configuration") is not None else None,
             "recaptcha_props": RecaptchaProps.from_dict(obj.get("recaptcha_props")) if obj.get("recaptcha_props") is not None else None,
             "account_verification": AccountVerification.from_dict(obj.get("account_verification")) if obj.get("account_verification") is not None else None,
-            "self_regist": SelfRegist.from_dict(obj.get("self_regist")) if obj.get("self_regist") is not None else None
+            "self_regist": SelfRegist.from_dict(obj.get("self_regist")) if obj.get("self_regist") is not None else None,
+            "refresh_token_validity": RefreshTokenValidity.from_dict(obj.get("refresh_token_validity")) if obj.get("refresh_token_validity") is not None else None
         })
         return _obj
 

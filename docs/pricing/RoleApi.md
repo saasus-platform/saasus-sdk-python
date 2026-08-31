@@ -7,6 +7,7 @@ Method | HTTP request | Description
 [**create_role**](RoleApi.md#create_role) | **POST** /roles | Create Role
 [**delete_role**](RoleApi.md#delete_role) | **DELETE** /roles/{role_name} | Delete Role
 [**get_roles**](RoleApi.md#get_roles) | **GET** /roles | Get Roles
+[**update_role**](RoleApi.md#update_role) | **PATCH** /roles/{role_name} | Update Role
 
 
 # **create_role**
@@ -234,6 +235,86 @@ This endpoint does not need any parameter.
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
+**500** | Internal Server Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **update_role**
+> update_role(role_name, update_role_param=update_role_param)
+
+Update Role
+
+Update role display name. 
+
+### Example
+
+* Bearer Authentication (Bearer):
+```python
+import time
+import os
+import saasus_sdk_python.src.auth
+from saasus_sdk_python.src.auth.models.update_role_param import UpdateRoleParam
+from saasus_sdk_python.src.auth.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://api.saasus.io/v1/auth
+# See configuration.py for a list of all supported configuration parameters.
+configuration = saasus_sdk_python.src.auth.Configuration(
+    host = "https://api.saasus.io/v1/auth"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: Bearer
+configuration = saasus_sdk_python.src.auth.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with saasus_sdk_python.src.auth.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = saasus_sdk_python.src.auth.RoleApi(api_client)
+    role_name = 'admin' # str | Role name
+    update_role_param = saasus_sdk_python.src.auth.UpdateRoleParam() # UpdateRoleParam |  (optional)
+
+    try:
+        # Update Role
+        api_instance.update_role(role_name, update_role_param=update_role_param)
+    except Exception as e:
+        print("Exception when calling RoleApi->update_role: %s\n" % e)
+```
+
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **role_name** | **str**| Role name | 
+ **update_role_param** | [**UpdateRoleParam**](UpdateRoleParam.md)|  | [optional] 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[Bearer](../README.md#Bearer)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | Bad Request |  -  |
+**404** | Not Found |  -  |
 **500** | Internal Server Error |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

@@ -19,7 +19,7 @@ import json
 
 
 
-from pydantic import ConfigDict, BaseModel, Field, StrictStr
+from pydantic import BaseModel, Field, StrictStr
 
 class SignUpWithAwsMarketplaceParam(BaseModel):
     """
@@ -28,7 +28,11 @@ class SignUpWithAwsMarketplaceParam(BaseModel):
     email: StrictStr = Field(..., description="Email Address")
     registration_token: StrictStr = Field(..., description="Registration Token")
     __properties = ["email", "registration_token"]
-    model_config = ConfigDict(populate_by_name=True, validate_assignment=True)
+
+    class Config:
+        """Pydantic configuration"""
+        allow_population_by_field_name = True
+        validate_assignment = True
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""

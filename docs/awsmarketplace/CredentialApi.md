@@ -6,6 +6,7 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**create_auth_credentials**](CredentialApi.md#create_auth_credentials) | **POST** /credentials | Save Authentication/Authorization Information
 [**get_auth_credentials**](CredentialApi.md#get_auth_credentials) | **GET** /credentials | Get Authentication/Authorization Information
+[**revoke_token**](CredentialApi.md#revoke_token) | **POST** /token/revoke | Revoke Token
 
 
 # **create_auth_credentials**
@@ -168,6 +169,83 @@ Name | Type | Description  | Notes
 |-------------|-------------|------------------|
 **200** | OK |  -  |
 **404** | Not Found |  -  |
+**500** | Internal Server Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **revoke_token**
+> revoke_token(revoke_token_param)
+
+Revoke Token
+
+Revoke the specified refresh token. 
+
+### Example
+
+* Bearer Authentication (Bearer):
+```python
+import time
+import os
+import saasus_sdk_python.src.auth
+from saasus_sdk_python.src.auth.models.revoke_token_param import RevokeTokenParam
+from saasus_sdk_python.src.auth.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://api.saasus.io/v1/auth
+# See configuration.py for a list of all supported configuration parameters.
+configuration = saasus_sdk_python.src.auth.Configuration(
+    host = "https://api.saasus.io/v1/auth"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: Bearer
+configuration = saasus_sdk_python.src.auth.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with saasus_sdk_python.src.auth.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = saasus_sdk_python.src.auth.CredentialApi(api_client)
+    revoke_token_param = saasus_sdk_python.src.auth.RevokeTokenParam() # RevokeTokenParam | 
+
+    try:
+        # Revoke Token
+        api_instance.revoke_token(revoke_token_param)
+    except Exception as e:
+        print("Exception when calling CredentialApi->revoke_token: %s\n" % e)
+```
+
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **revoke_token_param** | [**RevokeTokenParam**](RevokeTokenParam.md)|  | 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[Bearer](../README.md#Bearer)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | Bad Request |  -  |
 **500** | Internal Server Error |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

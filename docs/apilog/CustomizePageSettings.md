@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **terms_of_service_url** | **str** | terms of service URL | 
 **privacy_policy_url** | **str** | privacy policy URL | 
 **google_tag_manager_container_id** | **str** | Google Tag Manager container ID | 
+**is_sign_in_id_enabled** | **bool** | display setting for sign-in ID on the sign-in screen | [optional] 
 **icon** | **str** | service icon | 
 **favicon** | **str** | favicon | 
 

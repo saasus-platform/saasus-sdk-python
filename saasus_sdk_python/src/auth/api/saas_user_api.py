@@ -19,30 +19,44 @@ import warnings
 from pydantic import validate_arguments, ValidationError
 from typing_extensions import Annotated
 
-from pydantic import Field, StrictStr
+from pydantic import Field, StrictStr, conint
 
 from typing import Optional
 
+from saasus_sdk_python.src.auth.models.confirm_device_param import ConfirmDeviceParam
+from saasus_sdk_python.src.auth.models.confirm_device_result import ConfirmDeviceResult
 from saasus_sdk_python.src.auth.models.confirm_email_update_param import ConfirmEmailUpdateParam
 from saasus_sdk_python.src.auth.models.confirm_external_user_link_param import ConfirmExternalUserLinkParam
 from saasus_sdk_python.src.auth.models.confirm_sign_up_with_aws_marketplace_param import ConfirmSignUpWithAwsMarketplaceParam
 from saasus_sdk_python.src.auth.models.create_saas_user_param import CreateSaasUserParam
 from saasus_sdk_python.src.auth.models.create_secret_code_param import CreateSecretCodeParam
+from saasus_sdk_python.src.auth.models.created_saas_user import CreatedSaasUser
 from saasus_sdk_python.src.auth.models.link_aws_marketplace_param import LinkAwsMarketplaceParam
 from saasus_sdk_python.src.auth.models.mfa_preference import MfaPreference
 from saasus_sdk_python.src.auth.models.request_email_update_param import RequestEmailUpdateParam
 from saasus_sdk_python.src.auth.models.request_external_user_link_param import RequestExternalUserLinkParam
 from saasus_sdk_python.src.auth.models.resend_sign_up_confirmation_email_param import ResendSignUpConfirmationEmailParam
+from saasus_sdk_python.src.auth.models.respond_to_sign_in_challenge_param import RespondToSignInChallengeParam
+from saasus_sdk_python.src.auth.models.respond_to_sign_in_challenge_result import RespondToSignInChallengeResult
 from saasus_sdk_python.src.auth.models.saas_user import SaasUser
+from saasus_sdk_python.src.auth.models.saas_user_reset_password_result import SaasUserResetPasswordResult
 from saasus_sdk_python.src.auth.models.saas_users import SaasUsers
+from saasus_sdk_python.src.auth.models.saas_users_count import SaasUsersCount
+from saasus_sdk_python.src.auth.models.save_saas_users_count_param import SaveSaasUsersCountParam
+from saasus_sdk_python.src.auth.models.search_saas_users_result import SearchSaasUsersResult
+from saasus_sdk_python.src.auth.models.sign_in_param import SignInParam
+from saasus_sdk_python.src.auth.models.sign_in_result import SignInResult
 from saasus_sdk_python.src.auth.models.sign_up_param import SignUpParam
 from saasus_sdk_python.src.auth.models.sign_up_with_aws_marketplace_param import SignUpWithAwsMarketplaceParam
 from saasus_sdk_python.src.auth.models.software_token_secret_code import SoftwareTokenSecretCode
 from saasus_sdk_python.src.auth.models.tenant import Tenant
+from saasus_sdk_python.src.auth.models.update_device_status_param import UpdateDeviceStatusParam
 from saasus_sdk_python.src.auth.models.update_saas_user_attributes_param import UpdateSaasUserAttributesParam
 from saasus_sdk_python.src.auth.models.update_saas_user_email_param import UpdateSaasUserEmailParam
 from saasus_sdk_python.src.auth.models.update_saas_user_password_param import UpdateSaasUserPasswordParam
+from saasus_sdk_python.src.auth.models.update_saas_user_sign_in_id_param import UpdateSaasUserSignInIdParam
 from saasus_sdk_python.src.auth.models.update_software_token_param import UpdateSoftwareTokenParam
+from saasus_sdk_python.src.auth.models.user_info import UserInfo
 
 from saasus_sdk_python.src.auth.api_client import ApiClient
 from saasus_sdk_python.src.auth.api_response import ApiResponse
@@ -63,6 +77,155 @@ class SaasUserApi(object):
         if api_client is None:
             api_client = ApiClient.get_default()
         self.api_client = api_client
+
+    @validate_arguments
+    def confirm_device(self, confirm_device_param : Optional[ConfirmDeviceParam] = None, **kwargs) -> ConfirmDeviceResult:  # noqa: E501
+        """Confirm Device  # noqa: E501
+
+        Confirms a device for remembering.   # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.confirm_device(confirm_device_param, async_req=True)
+        >>> result = thread.get()
+
+        :param confirm_device_param:
+        :type confirm_device_param: ConfirmDeviceParam
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :return: Returns the result object.
+                 If the method is called asynchronously,
+                 returns the request thread.
+        :rtype: ConfirmDeviceResult
+        """
+        kwargs['_return_http_data_only'] = True
+        if '_preload_content' in kwargs:
+            raise ValueError("Error! Please call the confirm_device_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data")
+        return self.confirm_device_with_http_info(confirm_device_param, **kwargs)  # noqa: E501
+
+    @validate_arguments
+    def confirm_device_with_http_info(self, confirm_device_param : Optional[ConfirmDeviceParam] = None, **kwargs) -> ApiResponse:  # noqa: E501
+        """Confirm Device  # noqa: E501
+
+        Confirms a device for remembering.   # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.confirm_device_with_http_info(confirm_device_param, async_req=True)
+        >>> result = thread.get()
+
+        :param confirm_device_param:
+        :type confirm_device_param: ConfirmDeviceParam
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
+        :param _preload_content: if False, the ApiResponse.data will
+                                 be set to none and raw_data will store the 
+                                 HTTP response body without reading/decoding.
+                                 Default is True.
+        :type _preload_content: bool, optional
+        :param _return_http_data_only: response data instead of ApiResponse
+                                       object with status code, headers, etc
+        :type _return_http_data_only: bool, optional
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the authentication
+                              in the spec for a single request.
+        :type _request_auth: dict, optional
+        :type _content_type: string, optional: force content-type for the request
+        :return: Returns the result object.
+                 If the method is called asynchronously,
+                 returns the request thread.
+        :rtype: tuple(ConfirmDeviceResult, status_code(int), headers(HTTPHeaderDict))
+        """
+
+        _params = locals()
+
+        _all_params = [
+            'confirm_device_param'
+        ]
+        _all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth',
+                '_content_type',
+                '_headers'
+            ]
+        )
+
+        # validate the arguments
+        for _key, _val in _params['kwargs'].items():
+            if _key not in _all_params:
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method confirm_device" % _key
+                )
+            _params[_key] = _val
+        del _params['kwargs']
+
+        _collection_formats = {}
+
+        # process the path parameters
+        _path_params = {}
+
+        # process the query parameters
+        _query_params = []
+        # process the header parameters
+        _header_params = dict(_params.get('_headers', {}))
+        # process the form parameters
+        _form_params = []
+        _files = {}
+        # process the body parameter
+        _body_params = None
+        if _params['confirm_device_param'] is not None:
+            _body_params = _params['confirm_device_param']
+
+        # set the HTTP header `Accept`
+        _header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # set the HTTP header `Content-Type`
+        _content_types_list = _params.get('_content_type',
+            self.api_client.select_header_content_type(
+                ['application/json']))
+        if _content_types_list:
+                _header_params['Content-Type'] = _content_types_list
+
+        # authentication setting
+        _auth_settings = ['Bearer']  # noqa: E501
+
+        _response_types_map = {
+            '200': "ConfirmDeviceResult",
+            '400': "Error",
+            '401': "Error",
+            '500': "Error",
+        }
+
+        return self.api_client.call_api(
+            '/device/confirm', 'POST',
+            _path_params,
+            _query_params,
+            _header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            response_types_map=_response_types_map,
+            auth_settings=_auth_settings,
+            async_req=_params.get('async_req'),
+            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
+            _preload_content=_params.get('_preload_content', True),
+            _request_timeout=_params.get('_request_timeout'),
+            collection_formats=_collection_formats,
+            _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
     def confirm_email_update(self, user_id : Annotated[StrictStr, Field(..., description="User ID")], confirm_email_update_param : Optional[ConfirmEmailUpdateParam] = None, **kwargs) -> None:  # noqa: E501
@@ -508,7 +671,7 @@ class SaasUserApi(object):
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def create_saas_user(self, create_saas_user_param : Optional[CreateSaasUserParam] = None, **kwargs) -> SaasUser:  # noqa: E501
+    def create_saas_user(self, create_saas_user_param : Optional[CreateSaasUserParam] = None, **kwargs) -> CreatedSaasUser:  # noqa: E501
         """Create SaaS User  # noqa: E501
 
         Create SaaS User. If attributes is empty, a temporary password will be sent to the registered email.   # noqa: E501
@@ -529,7 +692,7 @@ class SaasUserApi(object):
         :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
-        :rtype: SaasUser
+        :rtype: CreatedSaasUser
         """
         kwargs['_return_http_data_only'] = True
         if '_preload_content' in kwargs:
@@ -571,7 +734,7 @@ class SaasUserApi(object):
         :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
-        :rtype: tuple(SaasUser, status_code(int), headers(HTTPHeaderDict))
+        :rtype: tuple(CreatedSaasUser, status_code(int), headers(HTTPHeaderDict))
         """
 
         _params = locals()
@@ -633,7 +796,7 @@ class SaasUserApi(object):
         _auth_settings = ['Bearer']  # noqa: E501
 
         _response_types_map = {
-            '201': "SaasUser",
+            '201': "CreatedSaasUser",
             '400': "Error",
             '500': "Error",
         }
@@ -811,10 +974,10 @@ class SaasUserApi(object):
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def delete_saas_user(self, user_id : Annotated[StrictStr, Field(..., description="User ID")], **kwargs) -> None:  # noqa: E501
+    def delete_saas_user(self, user_id : Annotated[StrictStr, Field(..., description="User ID")], **kwargs) -> UserInfo:  # noqa: E501
         """Delete User  # noqa: E501
 
-        Delete all users with matching user ID from the tenant and SaaS.   # noqa: E501
+        Delete all users with matching user ID from the tenant and SaaS. Returns user information before deletion.   # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
@@ -832,7 +995,7 @@ class SaasUserApi(object):
         :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
-        :rtype: None
+        :rtype: UserInfo
         """
         kwargs['_return_http_data_only'] = True
         if '_preload_content' in kwargs:
@@ -843,7 +1006,7 @@ class SaasUserApi(object):
     def delete_saas_user_with_http_info(self, user_id : Annotated[StrictStr, Field(..., description="User ID")], **kwargs) -> ApiResponse:  # noqa: E501
         """Delete User  # noqa: E501
 
-        Delete all users with matching user ID from the tenant and SaaS.   # noqa: E501
+        Delete all users with matching user ID from the tenant and SaaS. Returns user information before deletion.   # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
@@ -874,7 +1037,7 @@ class SaasUserApi(object):
         :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
-        :rtype: None
+        :rtype: tuple(UserInfo, status_code(int), headers(HTTPHeaderDict))
         """
 
         _params = locals()
@@ -928,7 +1091,11 @@ class SaasUserApi(object):
         # authentication setting
         _auth_settings = ['Bearer']  # noqa: E501
 
-        _response_types_map = {}
+        _response_types_map = {
+            '200': "UserInfo",
+            '404': "Error",
+            '500': "Error",
+        }
 
         return self.api_client.call_api(
             '/users/{user_id}', 'DELETE',
@@ -1205,6 +1372,138 @@ class SaasUserApi(object):
 
         return self.api_client.call_api(
             '/users', 'GET',
+            _path_params,
+            _query_params,
+            _header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            response_types_map=_response_types_map,
+            auth_settings=_auth_settings,
+            async_req=_params.get('async_req'),
+            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
+            _preload_content=_params.get('_preload_content', True),
+            _request_timeout=_params.get('_request_timeout'),
+            collection_formats=_collection_formats,
+            _request_auth=_params.get('_request_auth'))
+
+    @validate_arguments
+    def get_saas_users_count(self, **kwargs) -> SaasUsersCount:  # noqa: E501
+        """Get SaaS Users Count  # noqa: E501
+
+        Get the count of SaaS users.   # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.get_saas_users_count(async_req=True)
+        >>> result = thread.get()
+
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :return: Returns the result object.
+                 If the method is called asynchronously,
+                 returns the request thread.
+        :rtype: SaasUsersCount
+        """
+        kwargs['_return_http_data_only'] = True
+        if '_preload_content' in kwargs:
+            raise ValueError("Error! Please call the get_saas_users_count_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data")
+        return self.get_saas_users_count_with_http_info(**kwargs)  # noqa: E501
+
+    @validate_arguments
+    def get_saas_users_count_with_http_info(self, **kwargs) -> ApiResponse:  # noqa: E501
+        """Get SaaS Users Count  # noqa: E501
+
+        Get the count of SaaS users.   # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.get_saas_users_count_with_http_info(async_req=True)
+        >>> result = thread.get()
+
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
+        :param _preload_content: if False, the ApiResponse.data will
+                                 be set to none and raw_data will store the 
+                                 HTTP response body without reading/decoding.
+                                 Default is True.
+        :type _preload_content: bool, optional
+        :param _return_http_data_only: response data instead of ApiResponse
+                                       object with status code, headers, etc
+        :type _return_http_data_only: bool, optional
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the authentication
+                              in the spec for a single request.
+        :type _request_auth: dict, optional
+        :type _content_type: string, optional: force content-type for the request
+        :return: Returns the result object.
+                 If the method is called asynchronously,
+                 returns the request thread.
+        :rtype: tuple(SaasUsersCount, status_code(int), headers(HTTPHeaderDict))
+        """
+
+        _params = locals()
+
+        _all_params = [
+        ]
+        _all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth',
+                '_content_type',
+                '_headers'
+            ]
+        )
+
+        # validate the arguments
+        for _key, _val in _params['kwargs'].items():
+            if _key not in _all_params:
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method get_saas_users_count" % _key
+                )
+            _params[_key] = _val
+        del _params['kwargs']
+
+        _collection_formats = {}
+
+        # process the path parameters
+        _path_params = {}
+
+        # process the query parameters
+        _query_params = []
+        # process the header parameters
+        _header_params = dict(_params.get('_headers', {}))
+        # process the form parameters
+        _form_params = []
+        _files = {}
+        # process the body parameter
+        _body_params = None
+        # set the HTTP header `Accept`
+        _header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # authentication setting
+        _auth_settings = ['Bearer']  # noqa: E501
+
+        _response_types_map = {
+            '200': "SaasUsersCount",
+            '500': "Error",
+        }
+
+        return self.api_client.call_api(
+            '/users/count', 'GET',
             _path_params,
             _query_params,
             _header_params,
@@ -1508,7 +1807,7 @@ class SaasUserApi(object):
     def request_email_update(self, user_id : Annotated[StrictStr, Field(..., description="User ID")], request_email_update_param : Optional[RequestEmailUpdateParam] = None, **kwargs) -> None:  # noqa: E501
         """Request User Email Update  # noqa: E501
 
-        Request to update the user's email address. Sends a verification code to the requested email address. Requires the user's access token. The verification code is valid for 24 hours.   # noqa: E501
+        Request to update the user's email address. Sends a verification code to the requested email address. Requires the user's access token. The verification code is valid for 24 hours. This API is only available for email-authenticated users. Sign-in ID authentication users cannot use this API.   # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
@@ -1539,7 +1838,7 @@ class SaasUserApi(object):
     def request_email_update_with_http_info(self, user_id : Annotated[StrictStr, Field(..., description="User ID")], request_email_update_param : Optional[RequestEmailUpdateParam] = None, **kwargs) -> ApiResponse:  # noqa: E501
         """Request User Email Update  # noqa: E501
 
-        Request to update the user's email address. Sends a verification code to the requested email address. Requires the user's access token. The verification code is valid for 24 hours.   # noqa: E501
+        Request to update the user's email address. Sends a verification code to the requested email address. Requires the user's access token. The verification code is valid for 24 hours. This API is only available for email-authenticated users. Sign-in ID authentication users cannot use this API.   # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
@@ -1929,6 +2228,760 @@ class SaasUserApi(object):
 
         return self.api_client.call_api(
             '/sign-up/resend', 'POST',
+            _path_params,
+            _query_params,
+            _header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            response_types_map=_response_types_map,
+            auth_settings=_auth_settings,
+            async_req=_params.get('async_req'),
+            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
+            _preload_content=_params.get('_preload_content', True),
+            _request_timeout=_params.get('_request_timeout'),
+            collection_formats=_collection_formats,
+            _request_auth=_params.get('_request_auth'))
+
+    @validate_arguments
+    def reset_saas_user_password(self, user_id : Annotated[StrictStr, Field(..., description="User ID")], **kwargs) -> SaasUserResetPasswordResult:  # noqa: E501
+        """Reset Password  # noqa: E501
+
+        Reset user's login password. The current password will be invalidated and a temporary password will be issued.   # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.reset_saas_user_password(user_id, async_req=True)
+        >>> result = thread.get()
+
+        :param user_id: User ID (required)
+        :type user_id: str
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :return: Returns the result object.
+                 If the method is called asynchronously,
+                 returns the request thread.
+        :rtype: SaasUserResetPasswordResult
+        """
+        kwargs['_return_http_data_only'] = True
+        if '_preload_content' in kwargs:
+            raise ValueError("Error! Please call the reset_saas_user_password_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data")
+        return self.reset_saas_user_password_with_http_info(user_id, **kwargs)  # noqa: E501
+
+    @validate_arguments
+    def reset_saas_user_password_with_http_info(self, user_id : Annotated[StrictStr, Field(..., description="User ID")], **kwargs) -> ApiResponse:  # noqa: E501
+        """Reset Password  # noqa: E501
+
+        Reset user's login password. The current password will be invalidated and a temporary password will be issued.   # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.reset_saas_user_password_with_http_info(user_id, async_req=True)
+        >>> result = thread.get()
+
+        :param user_id: User ID (required)
+        :type user_id: str
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
+        :param _preload_content: if False, the ApiResponse.data will
+                                 be set to none and raw_data will store the 
+                                 HTTP response body without reading/decoding.
+                                 Default is True.
+        :type _preload_content: bool, optional
+        :param _return_http_data_only: response data instead of ApiResponse
+                                       object with status code, headers, etc
+        :type _return_http_data_only: bool, optional
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the authentication
+                              in the spec for a single request.
+        :type _request_auth: dict, optional
+        :type _content_type: string, optional: force content-type for the request
+        :return: Returns the result object.
+                 If the method is called asynchronously,
+                 returns the request thread.
+        :rtype: tuple(SaasUserResetPasswordResult, status_code(int), headers(HTTPHeaderDict))
+        """
+
+        _params = locals()
+
+        _all_params = [
+            'user_id'
+        ]
+        _all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth',
+                '_content_type',
+                '_headers'
+            ]
+        )
+
+        # validate the arguments
+        for _key, _val in _params['kwargs'].items():
+            if _key not in _all_params:
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method reset_saas_user_password" % _key
+                )
+            _params[_key] = _val
+        del _params['kwargs']
+
+        _collection_formats = {}
+
+        # process the path parameters
+        _path_params = {}
+        if _params['user_id']:
+            _path_params['user_id'] = _params['user_id']
+
+
+        # process the query parameters
+        _query_params = []
+        # process the header parameters
+        _header_params = dict(_params.get('_headers', {}))
+        # process the form parameters
+        _form_params = []
+        _files = {}
+        # process the body parameter
+        _body_params = None
+        # set the HTTP header `Accept`
+        _header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # authentication setting
+        _auth_settings = ['Bearer']  # noqa: E501
+
+        _response_types_map = {
+            '200': "SaasUserResetPasswordResult",
+            '404': "Error",
+            '500': "Error",
+        }
+
+        return self.api_client.call_api(
+            '/users/{user_id}/password/reset', 'POST',
+            _path_params,
+            _query_params,
+            _header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            response_types_map=_response_types_map,
+            auth_settings=_auth_settings,
+            async_req=_params.get('async_req'),
+            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
+            _preload_content=_params.get('_preload_content', True),
+            _request_timeout=_params.get('_request_timeout'),
+            collection_formats=_collection_formats,
+            _request_auth=_params.get('_request_auth'))
+
+    @validate_arguments
+    def respond_to_sign_in_challenge(self, respond_to_sign_in_challenge_param : Optional[RespondToSignInChallengeParam] = None, **kwargs) -> RespondToSignInChallengeResult:  # noqa: E501
+        """Respond to Sign In Challenge  # noqa: E501
+
+        Respond to a sign-in challenge.   # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.respond_to_sign_in_challenge(respond_to_sign_in_challenge_param, async_req=True)
+        >>> result = thread.get()
+
+        :param respond_to_sign_in_challenge_param:
+        :type respond_to_sign_in_challenge_param: RespondToSignInChallengeParam
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :return: Returns the result object.
+                 If the method is called asynchronously,
+                 returns the request thread.
+        :rtype: RespondToSignInChallengeResult
+        """
+        kwargs['_return_http_data_only'] = True
+        if '_preload_content' in kwargs:
+            raise ValueError("Error! Please call the respond_to_sign_in_challenge_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data")
+        return self.respond_to_sign_in_challenge_with_http_info(respond_to_sign_in_challenge_param, **kwargs)  # noqa: E501
+
+    @validate_arguments
+    def respond_to_sign_in_challenge_with_http_info(self, respond_to_sign_in_challenge_param : Optional[RespondToSignInChallengeParam] = None, **kwargs) -> ApiResponse:  # noqa: E501
+        """Respond to Sign In Challenge  # noqa: E501
+
+        Respond to a sign-in challenge.   # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.respond_to_sign_in_challenge_with_http_info(respond_to_sign_in_challenge_param, async_req=True)
+        >>> result = thread.get()
+
+        :param respond_to_sign_in_challenge_param:
+        :type respond_to_sign_in_challenge_param: RespondToSignInChallengeParam
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
+        :param _preload_content: if False, the ApiResponse.data will
+                                 be set to none and raw_data will store the 
+                                 HTTP response body without reading/decoding.
+                                 Default is True.
+        :type _preload_content: bool, optional
+        :param _return_http_data_only: response data instead of ApiResponse
+                                       object with status code, headers, etc
+        :type _return_http_data_only: bool, optional
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the authentication
+                              in the spec for a single request.
+        :type _request_auth: dict, optional
+        :type _content_type: string, optional: force content-type for the request
+        :return: Returns the result object.
+                 If the method is called asynchronously,
+                 returns the request thread.
+        :rtype: tuple(RespondToSignInChallengeResult, status_code(int), headers(HTTPHeaderDict))
+        """
+
+        _params = locals()
+
+        _all_params = [
+            'respond_to_sign_in_challenge_param'
+        ]
+        _all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth',
+                '_content_type',
+                '_headers'
+            ]
+        )
+
+        # validate the arguments
+        for _key, _val in _params['kwargs'].items():
+            if _key not in _all_params:
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method respond_to_sign_in_challenge" % _key
+                )
+            _params[_key] = _val
+        del _params['kwargs']
+
+        _collection_formats = {}
+
+        # process the path parameters
+        _path_params = {}
+
+        # process the query parameters
+        _query_params = []
+        # process the header parameters
+        _header_params = dict(_params.get('_headers', {}))
+        # process the form parameters
+        _form_params = []
+        _files = {}
+        # process the body parameter
+        _body_params = None
+        if _params['respond_to_sign_in_challenge_param'] is not None:
+            _body_params = _params['respond_to_sign_in_challenge_param']
+
+        # set the HTTP header `Accept`
+        _header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # set the HTTP header `Content-Type`
+        _content_types_list = _params.get('_content_type',
+            self.api_client.select_header_content_type(
+                ['application/json']))
+        if _content_types_list:
+                _header_params['Content-Type'] = _content_types_list
+
+        # authentication setting
+        _auth_settings = ['Bearer']  # noqa: E501
+
+        _response_types_map = {
+            '200': "RespondToSignInChallengeResult",
+            '401': "Error",
+            '500': "Error",
+        }
+
+        return self.api_client.call_api(
+            '/sign-in/challenge', 'POST',
+            _path_params,
+            _query_params,
+            _header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            response_types_map=_response_types_map,
+            auth_settings=_auth_settings,
+            async_req=_params.get('async_req'),
+            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
+            _preload_content=_params.get('_preload_content', True),
+            _request_timeout=_params.get('_request_timeout'),
+            collection_formats=_collection_formats,
+            _request_auth=_params.get('_request_auth'))
+
+    @validate_arguments
+    def save_saas_users_count(self, save_saas_users_count_param : SaveSaasUsersCountParam, **kwargs) -> None:  # noqa: E501
+        """Save SaaS Users Count  # noqa: E501
+
+        Save the count of SaaS users.   # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.save_saas_users_count(save_saas_users_count_param, async_req=True)
+        >>> result = thread.get()
+
+        :param save_saas_users_count_param: (required)
+        :type save_saas_users_count_param: SaveSaasUsersCountParam
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :return: Returns the result object.
+                 If the method is called asynchronously,
+                 returns the request thread.
+        :rtype: None
+        """
+        kwargs['_return_http_data_only'] = True
+        if '_preload_content' in kwargs:
+            raise ValueError("Error! Please call the save_saas_users_count_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data")
+        return self.save_saas_users_count_with_http_info(save_saas_users_count_param, **kwargs)  # noqa: E501
+
+    @validate_arguments
+    def save_saas_users_count_with_http_info(self, save_saas_users_count_param : SaveSaasUsersCountParam, **kwargs) -> ApiResponse:  # noqa: E501
+        """Save SaaS Users Count  # noqa: E501
+
+        Save the count of SaaS users.   # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.save_saas_users_count_with_http_info(save_saas_users_count_param, async_req=True)
+        >>> result = thread.get()
+
+        :param save_saas_users_count_param: (required)
+        :type save_saas_users_count_param: SaveSaasUsersCountParam
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
+        :param _preload_content: if False, the ApiResponse.data will
+                                 be set to none and raw_data will store the 
+                                 HTTP response body without reading/decoding.
+                                 Default is True.
+        :type _preload_content: bool, optional
+        :param _return_http_data_only: response data instead of ApiResponse
+                                       object with status code, headers, etc
+        :type _return_http_data_only: bool, optional
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the authentication
+                              in the spec for a single request.
+        :type _request_auth: dict, optional
+        :type _content_type: string, optional: force content-type for the request
+        :return: Returns the result object.
+                 If the method is called asynchronously,
+                 returns the request thread.
+        :rtype: None
+        """
+
+        _params = locals()
+
+        _all_params = [
+            'save_saas_users_count_param'
+        ]
+        _all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth',
+                '_content_type',
+                '_headers'
+            ]
+        )
+
+        # validate the arguments
+        for _key, _val in _params['kwargs'].items():
+            if _key not in _all_params:
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method save_saas_users_count" % _key
+                )
+            _params[_key] = _val
+        del _params['kwargs']
+
+        _collection_formats = {}
+
+        # process the path parameters
+        _path_params = {}
+
+        # process the query parameters
+        _query_params = []
+        # process the header parameters
+        _header_params = dict(_params.get('_headers', {}))
+        # process the form parameters
+        _form_params = []
+        _files = {}
+        # process the body parameter
+        _body_params = None
+        if _params['save_saas_users_count_param'] is not None:
+            _body_params = _params['save_saas_users_count_param']
+
+        # set the HTTP header `Accept`
+        _header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # set the HTTP header `Content-Type`
+        _content_types_list = _params.get('_content_type',
+            self.api_client.select_header_content_type(
+                ['application/json']))
+        if _content_types_list:
+                _header_params['Content-Type'] = _content_types_list
+
+        # authentication setting
+        _auth_settings = ['Bearer']  # noqa: E501
+
+        _response_types_map = {}
+
+        return self.api_client.call_api(
+            '/users/count', 'POST',
+            _path_params,
+            _query_params,
+            _header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            response_types_map=_response_types_map,
+            auth_settings=_auth_settings,
+            async_req=_params.get('async_req'),
+            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
+            _preload_content=_params.get('_preload_content', True),
+            _request_timeout=_params.get('_request_timeout'),
+            collection_formats=_collection_formats,
+            _request_auth=_params.get('_request_auth'))
+
+    @validate_arguments
+    def search_saas_users(self, id : Annotated[Optional[StrictStr], Field(description="User ID")] = None, email : Annotated[Optional[StrictStr], Field(description="Email prefix")] = None, sign_in_id : Annotated[Optional[StrictStr], Field(description="Sign-in ID prefix")] = None, limit : Annotated[Optional[conint(strict=True, le=100, ge=1)], Field(description="Maximum number of items to retrieve")] = None, cursor : Annotated[Optional[StrictStr], Field(description="Cursor for cursor pagination")] = None, **kwargs) -> SearchSaasUsersResult:  # noqa: E501
+        """Search SaaS Users  # noqa: E501
+
+        Search SaaS users by user ID, email, or sign-in ID.   # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.search_saas_users(id, email, sign_in_id, limit, cursor, async_req=True)
+        >>> result = thread.get()
+
+        :param id: User ID
+        :type id: str
+        :param email: Email prefix
+        :type email: str
+        :param sign_in_id: Sign-in ID prefix
+        :type sign_in_id: str
+        :param limit: Maximum number of items to retrieve
+        :type limit: int
+        :param cursor: Cursor for cursor pagination
+        :type cursor: str
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :return: Returns the result object.
+                 If the method is called asynchronously,
+                 returns the request thread.
+        :rtype: SearchSaasUsersResult
+        """
+        kwargs['_return_http_data_only'] = True
+        if '_preload_content' in kwargs:
+            raise ValueError("Error! Please call the search_saas_users_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data")
+        return self.search_saas_users_with_http_info(id, email, sign_in_id, limit, cursor, **kwargs)  # noqa: E501
+
+    @validate_arguments
+    def search_saas_users_with_http_info(self, id : Annotated[Optional[StrictStr], Field(description="User ID")] = None, email : Annotated[Optional[StrictStr], Field(description="Email prefix")] = None, sign_in_id : Annotated[Optional[StrictStr], Field(description="Sign-in ID prefix")] = None, limit : Annotated[Optional[conint(strict=True, le=100, ge=1)], Field(description="Maximum number of items to retrieve")] = None, cursor : Annotated[Optional[StrictStr], Field(description="Cursor for cursor pagination")] = None, **kwargs) -> ApiResponse:  # noqa: E501
+        """Search SaaS Users  # noqa: E501
+
+        Search SaaS users by user ID, email, or sign-in ID.   # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.search_saas_users_with_http_info(id, email, sign_in_id, limit, cursor, async_req=True)
+        >>> result = thread.get()
+
+        :param id: User ID
+        :type id: str
+        :param email: Email prefix
+        :type email: str
+        :param sign_in_id: Sign-in ID prefix
+        :type sign_in_id: str
+        :param limit: Maximum number of items to retrieve
+        :type limit: int
+        :param cursor: Cursor for cursor pagination
+        :type cursor: str
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
+        :param _preload_content: if False, the ApiResponse.data will
+                                 be set to none and raw_data will store the 
+                                 HTTP response body without reading/decoding.
+                                 Default is True.
+        :type _preload_content: bool, optional
+        :param _return_http_data_only: response data instead of ApiResponse
+                                       object with status code, headers, etc
+        :type _return_http_data_only: bool, optional
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the authentication
+                              in the spec for a single request.
+        :type _request_auth: dict, optional
+        :type _content_type: string, optional: force content-type for the request
+        :return: Returns the result object.
+                 If the method is called asynchronously,
+                 returns the request thread.
+        :rtype: tuple(SearchSaasUsersResult, status_code(int), headers(HTTPHeaderDict))
+        """
+
+        _params = locals()
+
+        _all_params = [
+            'id',
+            'email',
+            'sign_in_id',
+            'limit',
+            'cursor'
+        ]
+        _all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth',
+                '_content_type',
+                '_headers'
+            ]
+        )
+
+        # validate the arguments
+        for _key, _val in _params['kwargs'].items():
+            if _key not in _all_params:
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method search_saas_users" % _key
+                )
+            _params[_key] = _val
+        del _params['kwargs']
+
+        _collection_formats = {}
+
+        # process the path parameters
+        _path_params = {}
+
+        # process the query parameters
+        _query_params = []
+        if _params.get('id') is not None:  # noqa: E501
+            _query_params.append(('id', _params['id']))
+
+        if _params.get('email') is not None:  # noqa: E501
+            _query_params.append(('email', _params['email']))
+
+        if _params.get('sign_in_id') is not None:  # noqa: E501
+            _query_params.append(('sign_in_id', _params['sign_in_id']))
+
+        if _params.get('limit') is not None:  # noqa: E501
+            _query_params.append(('limit', _params['limit']))
+
+        if _params.get('cursor') is not None:  # noqa: E501
+            _query_params.append(('cursor', _params['cursor']))
+
+        # process the header parameters
+        _header_params = dict(_params.get('_headers', {}))
+        # process the form parameters
+        _form_params = []
+        _files = {}
+        # process the body parameter
+        _body_params = None
+        # set the HTTP header `Accept`
+        _header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # authentication setting
+        _auth_settings = ['Bearer']  # noqa: E501
+
+        _response_types_map = {
+            '200': "SearchSaasUsersResult",
+            '400': "Error",
+            '500': "Error",
+        }
+
+        return self.api_client.call_api(
+            '/users/search', 'GET',
+            _path_params,
+            _query_params,
+            _header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            response_types_map=_response_types_map,
+            auth_settings=_auth_settings,
+            async_req=_params.get('async_req'),
+            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
+            _preload_content=_params.get('_preload_content', True),
+            _request_timeout=_params.get('_request_timeout'),
+            collection_formats=_collection_formats,
+            _request_auth=_params.get('_request_auth'))
+
+    @validate_arguments
+    def sign_in(self, sign_in_param : Optional[SignInParam] = None, **kwargs) -> SignInResult:  # noqa: E501
+        """Sign In  # noqa: E501
+
+        A user attempts to sign in.   # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.sign_in(sign_in_param, async_req=True)
+        >>> result = thread.get()
+
+        :param sign_in_param:
+        :type sign_in_param: SignInParam
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :return: Returns the result object.
+                 If the method is called asynchronously,
+                 returns the request thread.
+        :rtype: SignInResult
+        """
+        kwargs['_return_http_data_only'] = True
+        if '_preload_content' in kwargs:
+            raise ValueError("Error! Please call the sign_in_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data")
+        return self.sign_in_with_http_info(sign_in_param, **kwargs)  # noqa: E501
+
+    @validate_arguments
+    def sign_in_with_http_info(self, sign_in_param : Optional[SignInParam] = None, **kwargs) -> ApiResponse:  # noqa: E501
+        """Sign In  # noqa: E501
+
+        A user attempts to sign in.   # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.sign_in_with_http_info(sign_in_param, async_req=True)
+        >>> result = thread.get()
+
+        :param sign_in_param:
+        :type sign_in_param: SignInParam
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
+        :param _preload_content: if False, the ApiResponse.data will
+                                 be set to none and raw_data will store the 
+                                 HTTP response body without reading/decoding.
+                                 Default is True.
+        :type _preload_content: bool, optional
+        :param _return_http_data_only: response data instead of ApiResponse
+                                       object with status code, headers, etc
+        :type _return_http_data_only: bool, optional
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the authentication
+                              in the spec for a single request.
+        :type _request_auth: dict, optional
+        :type _content_type: string, optional: force content-type for the request
+        :return: Returns the result object.
+                 If the method is called asynchronously,
+                 returns the request thread.
+        :rtype: tuple(SignInResult, status_code(int), headers(HTTPHeaderDict))
+        """
+
+        _params = locals()
+
+        _all_params = [
+            'sign_in_param'
+        ]
+        _all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth',
+                '_content_type',
+                '_headers'
+            ]
+        )
+
+        # validate the arguments
+        for _key, _val in _params['kwargs'].items():
+            if _key not in _all_params:
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method sign_in" % _key
+                )
+            _params[_key] = _val
+        del _params['kwargs']
+
+        _collection_formats = {}
+
+        # process the path parameters
+        _path_params = {}
+
+        # process the query parameters
+        _query_params = []
+        # process the header parameters
+        _header_params = dict(_params.get('_headers', {}))
+        # process the form parameters
+        _form_params = []
+        _files = {}
+        # process the body parameter
+        _body_params = None
+        if _params['sign_in_param'] is not None:
+            _body_params = _params['sign_in_param']
+
+        # set the HTTP header `Accept`
+        _header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # set the HTTP header `Content-Type`
+        _content_types_list = _params.get('_content_type',
+            self.api_client.select_header_content_type(
+                ['application/json']))
+        if _content_types_list:
+                _header_params['Content-Type'] = _content_types_list
+
+        # authentication setting
+        _auth_settings = ['Bearer']  # noqa: E501
+
+        _response_types_map = {
+            '200': "SignInResult",
+            '401': "Error",
+            '500': "Error",
+        }
+
+        return self.api_client.call_api(
+            '/sign-in', 'POST',
             _path_params,
             _query_params,
             _header_params,
@@ -2384,6 +3437,150 @@ class SaasUserApi(object):
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
+    def update_device_status(self, update_device_status_param : Optional[UpdateDeviceStatusParam] = None, **kwargs) -> None:  # noqa: E501
+        """Update Device Status  # noqa: E501
+
+        Updates the device status.   # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.update_device_status(update_device_status_param, async_req=True)
+        >>> result = thread.get()
+
+        :param update_device_status_param:
+        :type update_device_status_param: UpdateDeviceStatusParam
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :return: Returns the result object.
+                 If the method is called asynchronously,
+                 returns the request thread.
+        :rtype: None
+        """
+        kwargs['_return_http_data_only'] = True
+        if '_preload_content' in kwargs:
+            raise ValueError("Error! Please call the update_device_status_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data")
+        return self.update_device_status_with_http_info(update_device_status_param, **kwargs)  # noqa: E501
+
+    @validate_arguments
+    def update_device_status_with_http_info(self, update_device_status_param : Optional[UpdateDeviceStatusParam] = None, **kwargs) -> ApiResponse:  # noqa: E501
+        """Update Device Status  # noqa: E501
+
+        Updates the device status.   # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.update_device_status_with_http_info(update_device_status_param, async_req=True)
+        >>> result = thread.get()
+
+        :param update_device_status_param:
+        :type update_device_status_param: UpdateDeviceStatusParam
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
+        :param _preload_content: if False, the ApiResponse.data will
+                                 be set to none and raw_data will store the 
+                                 HTTP response body without reading/decoding.
+                                 Default is True.
+        :type _preload_content: bool, optional
+        :param _return_http_data_only: response data instead of ApiResponse
+                                       object with status code, headers, etc
+        :type _return_http_data_only: bool, optional
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the authentication
+                              in the spec for a single request.
+        :type _request_auth: dict, optional
+        :type _content_type: string, optional: force content-type for the request
+        :return: Returns the result object.
+                 If the method is called asynchronously,
+                 returns the request thread.
+        :rtype: None
+        """
+
+        _params = locals()
+
+        _all_params = [
+            'update_device_status_param'
+        ]
+        _all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth',
+                '_content_type',
+                '_headers'
+            ]
+        )
+
+        # validate the arguments
+        for _key, _val in _params['kwargs'].items():
+            if _key not in _all_params:
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method update_device_status" % _key
+                )
+            _params[_key] = _val
+        del _params['kwargs']
+
+        _collection_formats = {}
+
+        # process the path parameters
+        _path_params = {}
+
+        # process the query parameters
+        _query_params = []
+        # process the header parameters
+        _header_params = dict(_params.get('_headers', {}))
+        # process the form parameters
+        _form_params = []
+        _files = {}
+        # process the body parameter
+        _body_params = None
+        if _params['update_device_status_param'] is not None:
+            _body_params = _params['update_device_status_param']
+
+        # set the HTTP header `Accept`
+        _header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # set the HTTP header `Content-Type`
+        _content_types_list = _params.get('_content_type',
+            self.api_client.select_header_content_type(
+                ['application/json']))
+        if _content_types_list:
+                _header_params['Content-Type'] = _content_types_list
+
+        # authentication setting
+        _auth_settings = ['Bearer']  # noqa: E501
+
+        _response_types_map = {}
+
+        return self.api_client.call_api(
+            '/device/status', 'POST',
+            _path_params,
+            _query_params,
+            _header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            response_types_map=_response_types_map,
+            auth_settings=_auth_settings,
+            async_req=_params.get('async_req'),
+            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
+            _preload_content=_params.get('_preload_content', True),
+            _request_timeout=_params.get('_request_timeout'),
+            collection_formats=_collection_formats,
+            _request_auth=_params.get('_request_auth'))
+
+    @validate_arguments
     def update_saas_user_attributes(self, user_id : Annotated[StrictStr, Field(..., description="User ID")], update_saas_user_attributes_param : Optional[UpdateSaasUserAttributesParam] = None, **kwargs) -> None:  # noqa: E501
         """Update SaaS User Attributes  # noqa: E501
 
@@ -2539,7 +3736,7 @@ class SaasUserApi(object):
     def update_saas_user_email(self, user_id : Annotated[StrictStr, Field(..., description="User ID")], update_saas_user_email_param : Optional[UpdateSaasUserEmailParam] = None, **kwargs) -> None:  # noqa: E501
         """Change Email  # noqa: E501
 
-        Change user's email.   # noqa: E501
+        Change user's email. The user must be an email authentication user. Sign-in ID authentication users cannot change their email.   # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
@@ -2570,7 +3767,7 @@ class SaasUserApi(object):
     def update_saas_user_email_with_http_info(self, user_id : Annotated[StrictStr, Field(..., description="User ID")], update_saas_user_email_param : Optional[UpdateSaasUserEmailParam] = None, **kwargs) -> ApiResponse:  # noqa: E501
         """Change Email  # noqa: E501
 
-        Change user's email.   # noqa: E501
+        Change user's email. The user must be an email authentication user. Sign-in ID authentication users cannot change their email.   # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
@@ -2824,6 +4021,158 @@ class SaasUserApi(object):
 
         return self.api_client.call_api(
             '/users/{user_id}/password', 'PATCH',
+            _path_params,
+            _query_params,
+            _header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            response_types_map=_response_types_map,
+            auth_settings=_auth_settings,
+            async_req=_params.get('async_req'),
+            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
+            _preload_content=_params.get('_preload_content', True),
+            _request_timeout=_params.get('_request_timeout'),
+            collection_formats=_collection_formats,
+            _request_auth=_params.get('_request_auth'))
+
+    @validate_arguments
+    def update_saas_user_sign_in_id(self, user_id : Annotated[StrictStr, Field(..., description="User ID")], update_saas_user_sign_in_id_param : Optional[UpdateSaasUserSignInIdParam] = None, **kwargs) -> None:  # noqa: E501
+        """Change Sign-in ID  # noqa: E501
+
+        Change user's sign-in ID.   # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.update_saas_user_sign_in_id(user_id, update_saas_user_sign_in_id_param, async_req=True)
+        >>> result = thread.get()
+
+        :param user_id: User ID (required)
+        :type user_id: str
+        :param update_saas_user_sign_in_id_param:
+        :type update_saas_user_sign_in_id_param: UpdateSaasUserSignInIdParam
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :return: Returns the result object.
+                 If the method is called asynchronously,
+                 returns the request thread.
+        :rtype: None
+        """
+        kwargs['_return_http_data_only'] = True
+        if '_preload_content' in kwargs:
+            raise ValueError("Error! Please call the update_saas_user_sign_in_id_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data")
+        return self.update_saas_user_sign_in_id_with_http_info(user_id, update_saas_user_sign_in_id_param, **kwargs)  # noqa: E501
+
+    @validate_arguments
+    def update_saas_user_sign_in_id_with_http_info(self, user_id : Annotated[StrictStr, Field(..., description="User ID")], update_saas_user_sign_in_id_param : Optional[UpdateSaasUserSignInIdParam] = None, **kwargs) -> ApiResponse:  # noqa: E501
+        """Change Sign-in ID  # noqa: E501
+
+        Change user's sign-in ID.   # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.update_saas_user_sign_in_id_with_http_info(user_id, update_saas_user_sign_in_id_param, async_req=True)
+        >>> result = thread.get()
+
+        :param user_id: User ID (required)
+        :type user_id: str
+        :param update_saas_user_sign_in_id_param:
+        :type update_saas_user_sign_in_id_param: UpdateSaasUserSignInIdParam
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
+        :param _preload_content: if False, the ApiResponse.data will
+                                 be set to none and raw_data will store the 
+                                 HTTP response body without reading/decoding.
+                                 Default is True.
+        :type _preload_content: bool, optional
+        :param _return_http_data_only: response data instead of ApiResponse
+                                       object with status code, headers, etc
+        :type _return_http_data_only: bool, optional
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the authentication
+                              in the spec for a single request.
+        :type _request_auth: dict, optional
+        :type _content_type: string, optional: force content-type for the request
+        :return: Returns the result object.
+                 If the method is called asynchronously,
+                 returns the request thread.
+        :rtype: None
+        """
+
+        _params = locals()
+
+        _all_params = [
+            'user_id',
+            'update_saas_user_sign_in_id_param'
+        ]
+        _all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth',
+                '_content_type',
+                '_headers'
+            ]
+        )
+
+        # validate the arguments
+        for _key, _val in _params['kwargs'].items():
+            if _key not in _all_params:
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method update_saas_user_sign_in_id" % _key
+                )
+            _params[_key] = _val
+        del _params['kwargs']
+
+        _collection_formats = {}
+
+        # process the path parameters
+        _path_params = {}
+        if _params['user_id']:
+            _path_params['user_id'] = _params['user_id']
+
+
+        # process the query parameters
+        _query_params = []
+        # process the header parameters
+        _header_params = dict(_params.get('_headers', {}))
+        # process the form parameters
+        _form_params = []
+        _files = {}
+        # process the body parameter
+        _body_params = None
+        if _params['update_saas_user_sign_in_id_param'] is not None:
+            _body_params = _params['update_saas_user_sign_in_id_param']
+
+        # set the HTTP header `Accept`
+        _header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # set the HTTP header `Content-Type`
+        _content_types_list = _params.get('_content_type',
+            self.api_client.select_header_content_type(
+                ['application/json']))
+        if _content_types_list:
+                _header_params['Content-Type'] = _content_types_list
+
+        # authentication setting
+        _auth_settings = ['Bearer']  # noqa: E501
+
+        _response_types_map = {}
+
+        return self.api_client.call_api(
+            '/users/{user_id}/sign-in-id', 'PATCH',
             _path_params,
             _query_params,
             _header_params,

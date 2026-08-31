@@ -19,9 +19,8 @@ import json
 
 
 from typing import Any, Dict, List, Optional
-from pydantic import ConfigDict, BaseModel, Field, StrictBool, StrictStr
+from pydantic import BaseModel, Field, StrictBool, StrictStr, conlist
 from saasus_sdk_python.src.auth.models.user_available_env import UserAvailableEnv
-from typing_extensions import Annotated
 
 class UserAvailableTenant(BaseModel):
     """
@@ -30,13 +29,17 @@ class UserAvailableTenant(BaseModel):
     id: StrictStr = Field(...)
     name: StrictStr = Field(..., description="Tenant Name")
     completed_sign_up: StrictBool = Field(...)
-    envs: Annotated[List[UserAvailableEnv], Field()] = Field(..., description="environmental info, role info")
+    envs: conlist(UserAvailableEnv) = Field(..., description="environmental info, role info")
     user_attribute: Dict[str, Any] = Field(..., description="user additional attributes")
     back_office_staff_email: StrictStr = Field(..., description="back office contact email")
     plan_id: Optional[StrictStr] = None
     is_paid: Optional[StrictBool] = Field(None, description="tenant payment status ※ Currently, it is returned only when stripe is linked. ")
     __properties = ["id", "name", "completed_sign_up", "envs", "user_attribute", "back_office_staff_email", "plan_id", "is_paid"]
-    model_config = ConfigDict(populate_by_name=True, validate_assignment=True)
+
+    class Config:
+        """Pydantic configuration"""
+        allow_population_by_field_name = True
+        validate_assignment = True
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""

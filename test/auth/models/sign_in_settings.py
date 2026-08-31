@@ -19,13 +19,14 @@ import json
 
 
 
-from pydantic import ConfigDict, BaseModel, Field
+from pydantic import BaseModel, Field
 from saasus_sdk_python.src.auth.models.account_verification import AccountVerification
 from saasus_sdk_python.src.auth.models.device_configuration import DeviceConfiguration
 from saasus_sdk_python.src.auth.models.identity_provider_configuration import IdentityProviderConfiguration
 from saasus_sdk_python.src.auth.models.mfa_configuration import MfaConfiguration
 from saasus_sdk_python.src.auth.models.password_policy import PasswordPolicy
 from saasus_sdk_python.src.auth.models.recaptcha_props import RecaptchaProps
+from saasus_sdk_python.src.auth.models.refresh_token_validity import RefreshTokenValidity
 from saasus_sdk_python.src.auth.models.self_regist import SelfRegist
 
 class SignInSettings(BaseModel):
@@ -39,8 +40,13 @@ class SignInSettings(BaseModel):
     account_verification: AccountVerification = Field(...)
     self_regist: SelfRegist = Field(...)
     identity_provider_configuration: IdentityProviderConfiguration = Field(...)
-    __properties = ["password_policy", "device_configuration", "mfa_configuration", "recaptcha_props", "account_verification", "self_regist", "identity_provider_configuration"]
-    model_config = ConfigDict(populate_by_name=True, validate_assignment=True)
+    refresh_token_validity: RefreshTokenValidity = Field(...)
+    __properties = ["password_policy", "device_configuration", "mfa_configuration", "recaptcha_props", "account_verification", "self_regist", "identity_provider_configuration", "refresh_token_validity"]
+
+    class Config:
+        """Pydantic configuration"""
+        allow_population_by_field_name = True
+        validate_assignment = True
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -82,6 +88,9 @@ class SignInSettings(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of identity_provider_configuration
         if self.identity_provider_configuration:
             _dict['identity_provider_configuration'] = self.identity_provider_configuration.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of refresh_token_validity
+        if self.refresh_token_validity:
+            _dict['refresh_token_validity'] = self.refresh_token_validity.to_dict()
         return _dict
 
     @classmethod
@@ -100,7 +109,8 @@ class SignInSettings(BaseModel):
             "recaptcha_props": RecaptchaProps.from_dict(obj.get("recaptcha_props")) if obj.get("recaptcha_props") is not None else None,
             "account_verification": AccountVerification.from_dict(obj.get("account_verification")) if obj.get("account_verification") is not None else None,
             "self_regist": SelfRegist.from_dict(obj.get("self_regist")) if obj.get("self_regist") is not None else None,
-            "identity_provider_configuration": IdentityProviderConfiguration.from_dict(obj.get("identity_provider_configuration")) if obj.get("identity_provider_configuration") is not None else None
+            "identity_provider_configuration": IdentityProviderConfiguration.from_dict(obj.get("identity_provider_configuration")) if obj.get("identity_provider_configuration") is not None else None,
+            "refresh_token_validity": RefreshTokenValidity.from_dict(obj.get("refresh_token_validity")) if obj.get("refresh_token_validity") is not None else None
         })
         return _obj
 

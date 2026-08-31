@@ -19,17 +19,20 @@ import json
 
 
 from typing import List
-from pydantic import ConfigDict, BaseModel, Field
+from pydantic import BaseModel, Field, conlist
 from saasus_sdk_python.src.pricing.models.pricing_plan import PricingPlan
-from typing_extensions import Annotated
 
 class PricingPlans(BaseModel):
     """
     PricingPlans
     """
-    pricing_plans: Annotated[List[PricingPlan], Field()] = Field(...)
+    pricing_plans: conlist(PricingPlan) = Field(...)
     __properties = ["pricing_plans"]
-    model_config = ConfigDict(populate_by_name=True, validate_assignment=True)
+
+    class Config:
+        """Pydantic configuration"""
+        allow_population_by_field_name = True
+        validate_assignment = True
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""

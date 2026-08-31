@@ -18,8 +18,8 @@ import re  # noqa: F401
 import json
 
 
-
-from pydantic import ConfigDict, BaseModel, Field, StrictStr
+from typing import Optional
+from pydantic import BaseModel, Field, StrictBool, StrictStr
 
 class UpdateCustomizePageSettingsParam(BaseModel):
     """
@@ -29,10 +29,15 @@ class UpdateCustomizePageSettingsParam(BaseModel):
     terms_of_service_url: StrictStr = Field(..., description="terms of service URL")
     privacy_policy_url: StrictStr = Field(..., description="privacy policy URL")
     google_tag_manager_container_id: StrictStr = Field(..., description="Google Tag Manager container ID")
+    is_sign_in_id_enabled: Optional[StrictBool] = Field(None, description="display setting for sign-in ID on the sign-in screen")
     icon: StrictStr = Field(..., description="service icon")
     favicon: StrictStr = Field(..., description="favicon")
-    __properties = ["title", "terms_of_service_url", "privacy_policy_url", "google_tag_manager_container_id", "icon", "favicon"]
-    model_config = ConfigDict(populate_by_name=True, validate_assignment=True)
+    __properties = ["title", "terms_of_service_url", "privacy_policy_url", "google_tag_manager_container_id", "is_sign_in_id_enabled", "icon", "favicon"]
+
+    class Config:
+        """Pydantic configuration"""
+        allow_population_by_field_name = True
+        validate_assignment = True
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -69,6 +74,7 @@ class UpdateCustomizePageSettingsParam(BaseModel):
             "terms_of_service_url": obj.get("terms_of_service_url"),
             "privacy_policy_url": obj.get("privacy_policy_url"),
             "google_tag_manager_container_id": obj.get("google_tag_manager_container_id"),
+            "is_sign_in_id_enabled": obj.get("is_sign_in_id_enabled"),
             "icon": obj.get("icon"),
             "favicon": obj.get("favicon")
         })

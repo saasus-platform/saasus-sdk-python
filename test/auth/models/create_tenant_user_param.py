@@ -18,17 +18,22 @@ import re  # noqa: F401
 import json
 
 
-from typing import Any, Dict
-from pydantic import ConfigDict, BaseModel, Field, StrictStr
+from typing import Any, Dict, Optional
+from pydantic import BaseModel, Field, StrictStr
 
 class CreateTenantUserParam(BaseModel):
     """
-    CreateTenantUserParam
+    Either email or sign_in_id must be specified, but not both. 
     """
-    email: StrictStr = Field(..., description="E-mail")
+    email: Optional[StrictStr] = Field(None, description="E-mail")
+    sign_in_id: Optional[StrictStr] = Field(None, description="Sign-in ID (alphanumeric and symbols -_ only, max 50 characters) ")
     attributes: Dict[str, Any] = Field(..., description="Attribute information (Get information set by defining user attributes in the SaaS development console) ")
-    __properties = ["email", "attributes"]
-    model_config = ConfigDict(populate_by_name=True, validate_assignment=True)
+    __properties = ["email", "sign_in_id", "attributes"]
+
+    class Config:
+        """Pydantic configuration"""
+        allow_population_by_field_name = True
+        validate_assignment = True
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -62,6 +67,7 @@ class CreateTenantUserParam(BaseModel):
 
         _obj = CreateTenantUserParam.parse_obj({
             "email": obj.get("email"),
+            "sign_in_id": obj.get("sign_in_id"),
             "attributes": obj.get("attributes")
         })
         return _obj
