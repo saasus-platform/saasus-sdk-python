@@ -11,6 +11,7 @@ Name | Type | Description | Notes
 **account_verification** | [**AccountVerification**](AccountVerification.md) |  | 
 **self_regist** | [**SelfRegist**](SelfRegist.md) |  | 
 **identity_provider_configuration** | [**IdentityProviderConfiguration**](IdentityProviderConfiguration.md) |  | 
+**refresh_token_validity** | [**RefreshTokenValidity**](RefreshTokenValidity.md) |  | 
 
 ## Example
 

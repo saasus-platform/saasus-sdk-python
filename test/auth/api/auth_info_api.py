@@ -313,9 +313,9 @@ class AuthInfoApi(object):
 
     @validate_arguments
     def get_sign_in_settings(self, **kwargs) -> SignInSettings:  # noqa: E501
-        """Get Password Requirements  # noqa: E501
+        """Get Sign-In Settings  # noqa: E501
 
-        Get user password requirements. Set a secure password that is difficult to decipher by increasing the number of digits by combining alphabets, numbers, and symbols.   # noqa: E501
+        Get sign-in settings, including user password requirements and refresh token validity period.   # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
@@ -340,9 +340,9 @@ class AuthInfoApi(object):
 
     @validate_arguments
     def get_sign_in_settings_with_http_info(self, **kwargs) -> ApiResponse:  # noqa: E501
-        """Get Password Requirements  # noqa: E501
+        """Get Sign-In Settings  # noqa: E501
 
-        Get user password requirements. Set a secure password that is difficult to decipher by increasing the number of digits by combining alphabets, numbers, and symbols.   # noqa: E501
+        Get sign-in settings, including user password requirements and refresh token validity period.   # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
@@ -733,9 +733,9 @@ class AuthInfoApi(object):
 
     @validate_arguments
     def update_sign_in_settings(self, update_sign_in_settings_param : Optional[UpdateSignInSettingsParam] = None, **kwargs) -> None:  # noqa: E501
-        """Update Password Requirements  # noqa: E501
+        """Update Sign-In Settings  # noqa: E501
 
-        Update user password requirements. Set a secure password that is difficult to decipher by increasing the number of digits by combining alphabets, numbers, and symbols.   # noqa: E501
+        Update sign-in settings, including user password requirements and refresh token validity period.   # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
@@ -762,9 +762,9 @@ class AuthInfoApi(object):
 
     @validate_arguments
     def update_sign_in_settings_with_http_info(self, update_sign_in_settings_param : Optional[UpdateSignInSettingsParam] = None, **kwargs) -> ApiResponse:  # noqa: E501
-        """Update Password Requirements  # noqa: E501
+        """Update Sign-In Settings  # noqa: E501
 
-        Update user password requirements. Set a secure password that is difficult to decipher by increasing the number of digits by combining alphabets, numbers, and symbols.   # noqa: E501
+        Update sign-in settings, including user password requirements and refresh token validity period.   # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 

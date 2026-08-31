@@ -87,7 +87,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_logs**
-> ApiLogs get_logs(created_date=created_date, created_at=created_at, limit=limit, cursor=cursor)
+> ApiLogs get_logs(created_date=created_date, created_at=created_at, limit=limit, start_at=start_at, end_at=end_at, cursor=cursor)
 
 Get API execution log list
 
@@ -125,13 +125,15 @@ with saasus_sdk_python.src.apilog.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = saasus_sdk_python.src.apilog.ApiLogApi(api_client)
     created_date = '2013-10-20' # date | The date, in format of YYYY-MM-DD, to retrieve the log. (optional)
-    created_at = '2013-10-20T19:20:30+01:00' # datetime | The datetime, in ISO 8601 format, to retrieve the log. (optional)
+    created_at = '2013-10-20T19:20:30+01:00' # datetime | The datetime, in ISO 8601 format, to retrieve the log. Cannot be specified together with start_at/end_at. (optional)
     limit = 56 # int | Maximum number of logs to retrieve. (optional)
+    start_at = 56 # int | The start of the search range as an epoch second timestamp. Used for range search. Cannot be specified together with created_at. When specified, created_date is ignored. (optional)
+    end_at = 56 # int | The end of the search range as an epoch second timestamp. Used for range search. Cannot be specified together with created_at. When specified, created_date is ignored. (optional)
     cursor = 'cursor_example' # str | Cursor for cursor pagination. (optional)
 
     try:
         # Get API execution log list
-        api_response = api_instance.get_logs(created_date=created_date, created_at=created_at, limit=limit, cursor=cursor)
+        api_response = api_instance.get_logs(created_date=created_date, created_at=created_at, limit=limit, start_at=start_at, end_at=end_at, cursor=cursor)
         print("The response of ApiLogApi->get_logs:\n")
         pprint(api_response)
     except Exception as e:
@@ -145,8 +147,10 @@ with saasus_sdk_python.src.apilog.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **created_date** | **date**| The date, in format of YYYY-MM-DD, to retrieve the log. | [optional] 
- **created_at** | **datetime**| The datetime, in ISO 8601 format, to retrieve the log. | [optional] 
+ **created_at** | **datetime**| The datetime, in ISO 8601 format, to retrieve the log. Cannot be specified together with start_at/end_at. | [optional] 
  **limit** | **int**| Maximum number of logs to retrieve. | [optional] 
+ **start_at** | **int**| The start of the search range as an epoch second timestamp. Used for range search. Cannot be specified together with created_at. When specified, created_date is ignored. | [optional] 
+ **end_at** | **int**| The end of the search range as an epoch second timestamp. Used for range search. Cannot be specified together with created_at. When specified, created_date is ignored. | [optional] 
  **cursor** | **str**| Cursor for cursor pagination. | [optional] 
 
 ### Return type

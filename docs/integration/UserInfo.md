@@ -5,7 +5,8 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **str** |  | 
-**email** | **str** | E-mail | 
+**email** | **str** | E-mail. For sign-in ID authentication users, this field is an empty string.  | 
+**sign_in_id** | **str** | Sign-in ID. For email authentication users, this field is an empty string.  | 
 **user_attribute** | **Dict[str, object]** | user additional attributes | 
 **tenants** | [**List[UserAvailableTenant]**](UserAvailableTenant.md) | Tenant Info | 
 

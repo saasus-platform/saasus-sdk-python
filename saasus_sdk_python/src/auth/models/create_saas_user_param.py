@@ -19,16 +19,21 @@ import json
 
 
 from typing import Optional
-from pydantic import ConfigDict, BaseModel, Field, StrictStr
+from pydantic import BaseModel, Field, StrictStr
 
 class CreateSaasUserParam(BaseModel):
     """
-    CreateSaasUserParam
+    Either email or sign_in_id must be specified, but not both. - If email is specified: Email authentication user will be created.   When password is not specified, a temporary password will be sent by email. - If sign_in_id is specified: Sign-in ID authentication user will be created.   When password is not specified, it will be auto-generated and returned in the response. 
     """
-    email: StrictStr = Field(..., description="E-mail")
-    password: Optional[StrictStr] = Field(None, description="Password")
-    __properties = ["email", "password"]
-    model_config = ConfigDict(populate_by_name=True, validate_assignment=True)
+    email: Optional[StrictStr] = Field(None, description="E-mail")
+    sign_in_id: Optional[StrictStr] = Field(None, description="Sign-in ID (alphanumeric and symbols -_ only, max 50 characters) ")
+    password: Optional[StrictStr] = Field(None, description="Password. For email authentication, if not specified, a temporary password will be sent by email. For sign-in ID authentication, if not specified, password will be auto-generated and returned. ")
+    __properties = ["email", "sign_in_id", "password"]
+
+    class Config:
+        """Pydantic configuration"""
+        allow_population_by_field_name = True
+        validate_assignment = True
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -62,6 +67,7 @@ class CreateSaasUserParam(BaseModel):
 
         _obj = CreateSaasUserParam.parse_obj({
             "email": obj.get("email"),
+            "sign_in_id": obj.get("sign_in_id"),
             "password": obj.get("password")
         })
         return _obj

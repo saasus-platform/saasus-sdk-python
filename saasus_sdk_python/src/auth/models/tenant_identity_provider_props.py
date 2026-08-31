@@ -18,11 +18,11 @@ import json
 import pprint
 import re  # noqa: F401
 
-from typing import Literal, Any, List, Optional
-from pydantic import field_validator, ConfigDict, BaseModel, StrictStr, ValidationError
+from typing import Any, List, Optional
+from pydantic import BaseModel, Field, StrictStr, ValidationError, validator
 from saasus_sdk_python.src.auth.models.identity_provider_saml import IdentityProviderSaml
 from typing import Union, Any, List, TYPE_CHECKING, Dict
-from pydantic import StrictStr
+from pydantic import StrictStr, Field
 
 TENANTIDENTITYPROVIDERPROPS_ONE_OF_SCHEMAS = ["IdentityProviderSaml"]
 
@@ -35,9 +35,11 @@ class TenantIdentityProviderProps(BaseModel):
     if TYPE_CHECKING:
         actual_instance: Union[IdentityProviderSaml]
     else:
-        actual_instance: Any = None
-    one_of_schemas: Literal[TENANTIDENTITYPROVIDERPROPS_ONE_OF_SCHEMAS] = TENANTIDENTITYPROVIDERPROPS_ONE_OF_SCHEMAS
-    model_config = ConfigDict(validate_assignment=True)
+        actual_instance: Any
+    one_of_schemas: List[str] = Field(TENANTIDENTITYPROVIDERPROPS_ONE_OF_SCHEMAS, const=True)
+
+    class Config:
+        validate_assignment = True
 
     def __init__(self, *args, **kwargs):
         if args:
@@ -49,8 +51,7 @@ class TenantIdentityProviderProps(BaseModel):
         else:
             super().__init__(**kwargs)
 
-    @field_validator('actual_instance')
-    @classmethod
+    @validator('actual_instance')
     def actual_instance_must_validate_oneof(cls, v):
         instance = TenantIdentityProviderProps.construct()
         error_messages = []

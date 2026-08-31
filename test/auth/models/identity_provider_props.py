@@ -19,7 +19,7 @@ import json
 
 
 from typing import Optional
-from pydantic import ConfigDict, BaseModel, Field, StrictBool, StrictStr
+from pydantic import BaseModel, Field, StrictBool, StrictStr
 
 class IdentityProviderProps(BaseModel):
     """
@@ -30,7 +30,11 @@ class IdentityProviderProps(BaseModel):
     approval_scope: StrictStr = Field(...)
     is_button_hidden: Optional[StrictBool] = None
     __properties = ["application_id", "application_secret", "approval_scope", "is_button_hidden"]
-    model_config = ConfigDict(populate_by_name=True, validate_assignment=True)
+
+    class Config:
+        """Pydantic configuration"""
+        allow_population_by_field_name = True
+        validate_assignment = True
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
