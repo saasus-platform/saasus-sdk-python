@@ -19,8 +19,7 @@ import json
 
 
 from typing import Optional
-from pydantic import field_validator, StringConstraints, ConfigDict, BaseModel, Field, StrictStr
-from typing_extensions import Annotated
+from pydantic import BaseModel, Field, StrictStr, constr, validator
 
 class BillingAddress(BaseModel):
     """
@@ -29,19 +28,22 @@ class BillingAddress(BaseModel):
     street: StrictStr = Field(..., description="Street address, apartment or suite number.")
     city: StrictStr = Field(..., description="City, district, suburb, town, or village.")
     state: StrictStr = Field(..., description="State name or abbreviation.")
-    country: Annotated[str, StringConstraints(strict=True)] = Field(..., description="Country of the address using ISO 3166-1 alpha-2 code.")
+    country: constr(strict=True) = Field(..., description="Country of the address using ISO 3166-1 alpha-2 code.")
     additional_address_info: Optional[StrictStr] = Field(None, description="Additional information about the address, such as a building name, floor, or department name.")
     postal_code: StrictStr = Field(..., description="ZIP or postal code.")
     __properties = ["street", "city", "state", "country", "additional_address_info", "postal_code"]
 
-    @field_validator('country')
-    @classmethod
+    @validator('country')
     def country_validate_regular_expression(cls, value):
         """Validates the regular expression"""
         if not re.match(r"^[A-Z]{2}$", value):
             raise ValueError(r"must validate the regular expression /^[A-Z]{2}$/")
         return value
-    model_config = ConfigDict(populate_by_name=True, validate_assignment=True)
+
+    class Config:
+        """Pydantic configuration"""
+        allow_population_by_field_name = True
+        validate_assignment = True
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
