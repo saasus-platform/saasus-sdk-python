@@ -19,19 +19,23 @@ import json
 
 
 from typing import Optional
-from pydantic import ConfigDict, BaseModel, Field, StrictBool, StrictStr
+from pydantic import BaseModel, Field, StrictBool, StrictStr
 
 class UpdateSingleTenantSettingsParam(BaseModel):
     """
     UpdateSingleTenantSettingsParam
     """
-    enabled: Optional[StrictBool] = Field(None, description="enable Single Tenant settings or not")
+    enabled: Optional[StrictBool] = Field(None, description="enable SaaS Infrastructure Management settings or not")
     role_arn: Optional[StrictStr] = Field(None, description="ARN of the role for SaaS Platform to AssumeRole")
     cloudformation_template: Optional[StrictStr] = Field(None, description="CloudFormation template file")
     ddl_template: Optional[StrictStr] = Field(None, description="ddl file to run in SaaS environment")
     role_external_id: Optional[StrictStr] = Field(None, description="External id used by SaaSus when AssumeRole to operate SaaS")
     __properties = ["enabled", "role_arn", "cloudformation_template", "ddl_template", "role_external_id"]
-    model_config = ConfigDict(populate_by_name=True, validate_assignment=True)
+
+    class Config:
+        """Pydantic configuration"""
+        allow_population_by_field_name = True
+        validate_assignment = True
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""

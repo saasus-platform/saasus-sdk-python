@@ -47,9 +47,9 @@ class SingleTenantApi(object):
 
     @validate_arguments
     def get_cloud_formation_launch_stack_link_for_single_tenant(self, **kwargs) -> CloudFormationLaunchStackLink:  # noqa: E501
-        """Get CloudFormation Stack Launch Link For Single Tenant  # noqa: E501
+        """Get CloudFormation Stack Launch Link For SaaS Infrastructure Management  # noqa: E501
 
-        Get the CloudFormation stack activation link for Single Tenant.   # noqa: E501
+        Get the CloudFormation stack activation link for SaaS Infrastructure Management.   # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
@@ -74,9 +74,9 @@ class SingleTenantApi(object):
 
     @validate_arguments
     def get_cloud_formation_launch_stack_link_for_single_tenant_with_http_info(self, **kwargs) -> ApiResponse:  # noqa: E501
-        """Get CloudFormation Stack Launch Link For Single Tenant  # noqa: E501
+        """Get CloudFormation Stack Launch Link For SaaS Infrastructure Management  # noqa: E501
 
-        Get the CloudFormation stack activation link for Single Tenant.   # noqa: E501
+        Get the CloudFormation stack activation link for SaaS Infrastructure Management.   # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
@@ -179,7 +179,7 @@ class SingleTenantApi(object):
 
     @validate_arguments
     def get_single_tenant_settings(self, **kwargs) -> SingleTenantSettings:  # noqa: E501
-        """Retrieve the settings of the single tenant.  # noqa: E501
+        """Retrieve the settings of the SaaS Infrastructure Management.  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
@@ -205,7 +205,7 @@ class SingleTenantApi(object):
 
     @validate_arguments
     def get_single_tenant_settings_with_http_info(self, **kwargs) -> ApiResponse:  # noqa: E501
-        """Retrieve the settings of the single tenant.  # noqa: E501
+        """Retrieve the settings of the SaaS Infrastructure Management.  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
@@ -309,9 +309,9 @@ class SingleTenantApi(object):
 
     @validate_arguments
     def update_single_tenant_settings(self, update_single_tenant_settings_param : Optional[UpdateSingleTenantSettingsParam] = None, **kwargs) -> None:  # noqa: E501
-        """Update configuration information for single-tenant functionality  # noqa: E501
+        """Update configuration information for SaaS Infrastructure Management  # noqa: E501
 
-        Updates configuration information for single-tenant functionality Returns error if single tenant feature cannot be enabled.   # noqa: E501
+        Updates configuration information for SaaS Infrastructure Management Returns error if SaaS Infrastructure Management feature cannot be enabled.   # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
@@ -338,9 +338,9 @@ class SingleTenantApi(object):
 
     @validate_arguments
     def update_single_tenant_settings_with_http_info(self, update_single_tenant_settings_param : Optional[UpdateSingleTenantSettingsParam] = None, **kwargs) -> ApiResponse:  # noqa: E501
-        """Update configuration information for single-tenant functionality  # noqa: E501
+        """Update configuration information for SaaS Infrastructure Management  # noqa: E501
 
-        Updates configuration information for single-tenant functionality Returns error if single tenant feature cannot be enabled.   # noqa: E501
+        Updates configuration information for SaaS Infrastructure Management Returns error if SaaS Infrastructure Management feature cannot be enabled.   # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 

@@ -1,10 +1,12 @@
 # CreateTenantUserParam
 
+Either email or sign_in_id must be specified, but not both. 
 
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**email** | **str** | E-mail | 
+**email** | **str** | E-mail | [optional] 
+**sign_in_id** | **str** | Sign-in ID (alphanumeric and symbols -_ only, max 50 characters)  | [optional] 
 **attributes** | **Dict[str, object]** | Attribute information (Get information set by defining user attributes in the SaaS development console)  | 
 
 ## Example

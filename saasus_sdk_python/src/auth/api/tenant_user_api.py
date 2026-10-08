@@ -19,12 +19,15 @@ import warnings
 from pydantic import validate_arguments, ValidationError
 from typing_extensions import Annotated
 
-from pydantic import Field, StrictInt, StrictStr
+from pydantic import Field, StrictInt, StrictStr, conint
 
 from typing import Optional
 
 from saasus_sdk_python.src.auth.models.create_tenant_user_param import CreateTenantUserParam
 from saasus_sdk_python.src.auth.models.create_tenant_user_roles_param import CreateTenantUserRolesParam
+from saasus_sdk_python.src.auth.models.save_tenant_users_counts_param import SaveTenantUsersCountsParam
+from saasus_sdk_python.src.auth.models.search_tenant_users_result import SearchTenantUsersResult
+from saasus_sdk_python.src.auth.models.tenant_users_counts import TenantUsersCounts
 from saasus_sdk_python.src.auth.models.update_tenant_user_param import UpdateTenantUserParam
 from saasus_sdk_python.src.auth.models.user import User
 from saasus_sdk_python.src.auth.models.users import Users
@@ -952,6 +955,138 @@ class TenantUserApi(object):
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
+    def get_all_tenant_users_count(self, **kwargs) -> TenantUsersCounts:  # noqa: E501
+        """Get Tenant Users Count  # noqa: E501
+
+        Get the count of tenant users for each tenant.   # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.get_all_tenant_users_count(async_req=True)
+        >>> result = thread.get()
+
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :return: Returns the result object.
+                 If the method is called asynchronously,
+                 returns the request thread.
+        :rtype: TenantUsersCounts
+        """
+        kwargs['_return_http_data_only'] = True
+        if '_preload_content' in kwargs:
+            raise ValueError("Error! Please call the get_all_tenant_users_count_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data")
+        return self.get_all_tenant_users_count_with_http_info(**kwargs)  # noqa: E501
+
+    @validate_arguments
+    def get_all_tenant_users_count_with_http_info(self, **kwargs) -> ApiResponse:  # noqa: E501
+        """Get Tenant Users Count  # noqa: E501
+
+        Get the count of tenant users for each tenant.   # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.get_all_tenant_users_count_with_http_info(async_req=True)
+        >>> result = thread.get()
+
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
+        :param _preload_content: if False, the ApiResponse.data will
+                                 be set to none and raw_data will store the 
+                                 HTTP response body without reading/decoding.
+                                 Default is True.
+        :type _preload_content: bool, optional
+        :param _return_http_data_only: response data instead of ApiResponse
+                                       object with status code, headers, etc
+        :type _return_http_data_only: bool, optional
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the authentication
+                              in the spec for a single request.
+        :type _request_auth: dict, optional
+        :type _content_type: string, optional: force content-type for the request
+        :return: Returns the result object.
+                 If the method is called asynchronously,
+                 returns the request thread.
+        :rtype: tuple(TenantUsersCounts, status_code(int), headers(HTTPHeaderDict))
+        """
+
+        _params = locals()
+
+        _all_params = [
+        ]
+        _all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth',
+                '_content_type',
+                '_headers'
+            ]
+        )
+
+        # validate the arguments
+        for _key, _val in _params['kwargs'].items():
+            if _key not in _all_params:
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method get_all_tenant_users_count" % _key
+                )
+            _params[_key] = _val
+        del _params['kwargs']
+
+        _collection_formats = {}
+
+        # process the path parameters
+        _path_params = {}
+
+        # process the query parameters
+        _query_params = []
+        # process the header parameters
+        _header_params = dict(_params.get('_headers', {}))
+        # process the form parameters
+        _form_params = []
+        _files = {}
+        # process the body parameter
+        _body_params = None
+        # set the HTTP header `Accept`
+        _header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # authentication setting
+        _auth_settings = ['Bearer']  # noqa: E501
+
+        _response_types_map = {
+            '200': "TenantUsersCounts",
+            '500': "Error",
+        }
+
+        return self.api_client.call_api(
+            '/tenants/all/users/count', 'GET',
+            _path_params,
+            _query_params,
+            _header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            response_types_map=_response_types_map,
+            auth_settings=_auth_settings,
+            async_req=_params.get('async_req'),
+            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
+            _preload_content=_params.get('_preload_content', True),
+            _request_timeout=_params.get('_request_timeout'),
+            collection_formats=_collection_formats,
+            _request_auth=_params.get('_request_auth'))
+
+    @validate_arguments
     def get_tenant_user(self, tenant_id : Annotated[StrictStr, Field(..., description="Tenant ID")], user_id : Annotated[StrictStr, Field(..., description="User ID")], **kwargs) -> User:  # noqa: E501
         """Get Tenant User  # noqa: E501
 
@@ -1225,6 +1360,347 @@ class TenantUserApi(object):
 
         return self.api_client.call_api(
             '/tenants/{tenant_id}/users', 'GET',
+            _path_params,
+            _query_params,
+            _header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            response_types_map=_response_types_map,
+            auth_settings=_auth_settings,
+            async_req=_params.get('async_req'),
+            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
+            _preload_content=_params.get('_preload_content', True),
+            _request_timeout=_params.get('_request_timeout'),
+            collection_formats=_collection_formats,
+            _request_auth=_params.get('_request_auth'))
+
+    @validate_arguments
+    def save_tenant_users_counts(self, save_tenant_users_counts_param : SaveTenantUsersCountsParam, **kwargs) -> None:  # noqa: E501
+        """Save Tenant Users Count  # noqa: E501
+
+        Save the count of tenant users for each tenant.   # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.save_tenant_users_counts(save_tenant_users_counts_param, async_req=True)
+        >>> result = thread.get()
+
+        :param save_tenant_users_counts_param: (required)
+        :type save_tenant_users_counts_param: SaveTenantUsersCountsParam
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :return: Returns the result object.
+                 If the method is called asynchronously,
+                 returns the request thread.
+        :rtype: None
+        """
+        kwargs['_return_http_data_only'] = True
+        if '_preload_content' in kwargs:
+            raise ValueError("Error! Please call the save_tenant_users_counts_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data")
+        return self.save_tenant_users_counts_with_http_info(save_tenant_users_counts_param, **kwargs)  # noqa: E501
+
+    @validate_arguments
+    def save_tenant_users_counts_with_http_info(self, save_tenant_users_counts_param : SaveTenantUsersCountsParam, **kwargs) -> ApiResponse:  # noqa: E501
+        """Save Tenant Users Count  # noqa: E501
+
+        Save the count of tenant users for each tenant.   # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.save_tenant_users_counts_with_http_info(save_tenant_users_counts_param, async_req=True)
+        >>> result = thread.get()
+
+        :param save_tenant_users_counts_param: (required)
+        :type save_tenant_users_counts_param: SaveTenantUsersCountsParam
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
+        :param _preload_content: if False, the ApiResponse.data will
+                                 be set to none and raw_data will store the 
+                                 HTTP response body without reading/decoding.
+                                 Default is True.
+        :type _preload_content: bool, optional
+        :param _return_http_data_only: response data instead of ApiResponse
+                                       object with status code, headers, etc
+        :type _return_http_data_only: bool, optional
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the authentication
+                              in the spec for a single request.
+        :type _request_auth: dict, optional
+        :type _content_type: string, optional: force content-type for the request
+        :return: Returns the result object.
+                 If the method is called asynchronously,
+                 returns the request thread.
+        :rtype: None
+        """
+
+        _params = locals()
+
+        _all_params = [
+            'save_tenant_users_counts_param'
+        ]
+        _all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth',
+                '_content_type',
+                '_headers'
+            ]
+        )
+
+        # validate the arguments
+        for _key, _val in _params['kwargs'].items():
+            if _key not in _all_params:
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method save_tenant_users_counts" % _key
+                )
+            _params[_key] = _val
+        del _params['kwargs']
+
+        _collection_formats = {}
+
+        # process the path parameters
+        _path_params = {}
+
+        # process the query parameters
+        _query_params = []
+        # process the header parameters
+        _header_params = dict(_params.get('_headers', {}))
+        # process the form parameters
+        _form_params = []
+        _files = {}
+        # process the body parameter
+        _body_params = None
+        if _params['save_tenant_users_counts_param'] is not None:
+            _body_params = _params['save_tenant_users_counts_param']
+
+        # set the HTTP header `Accept`
+        _header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # set the HTTP header `Content-Type`
+        _content_types_list = _params.get('_content_type',
+            self.api_client.select_header_content_type(
+                ['application/json']))
+        if _content_types_list:
+                _header_params['Content-Type'] = _content_types_list
+
+        # authentication setting
+        _auth_settings = ['Bearer']  # noqa: E501
+
+        _response_types_map = {}
+
+        return self.api_client.call_api(
+            '/tenants/all/users/count', 'POST',
+            _path_params,
+            _query_params,
+            _header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            response_types_map=_response_types_map,
+            auth_settings=_auth_settings,
+            async_req=_params.get('async_req'),
+            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
+            _preload_content=_params.get('_preload_content', True),
+            _request_timeout=_params.get('_request_timeout'),
+            collection_formats=_collection_formats,
+            _request_auth=_params.get('_request_auth'))
+
+    @validate_arguments
+    def search_tenant_users(self, tenant_id : Annotated[Optional[StrictStr], Field(description="Tenant ID")] = None, id : Annotated[Optional[StrictStr], Field(description="User ID")] = None, email : Annotated[Optional[StrictStr], Field(description="Email prefix")] = None, sign_in_id : Annotated[Optional[StrictStr], Field(description="Sign-in ID prefix")] = None, env_id : Annotated[Optional[conint(strict=True, ge=1)], Field(description="Environment ID")] = None, role_name : Annotated[Optional[StrictStr], Field(description="Role Name")] = None, limit : Annotated[Optional[conint(strict=True, le=100, ge=1)], Field(description="Maximum number of items to retrieve")] = None, cursor : Annotated[Optional[StrictStr], Field(description="Cursor for cursor pagination")] = None, **kwargs) -> SearchTenantUsersResult:  # noqa: E501
+        """Search Tenant Users  # noqa: E501
+
+        Search tenant users by user id, tenant id, email, sign-in ID, env, or role.   # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.search_tenant_users(tenant_id, id, email, sign_in_id, env_id, role_name, limit, cursor, async_req=True)
+        >>> result = thread.get()
+
+        :param tenant_id: Tenant ID
+        :type tenant_id: str
+        :param id: User ID
+        :type id: str
+        :param email: Email prefix
+        :type email: str
+        :param sign_in_id: Sign-in ID prefix
+        :type sign_in_id: str
+        :param env_id: Environment ID
+        :type env_id: int
+        :param role_name: Role Name
+        :type role_name: str
+        :param limit: Maximum number of items to retrieve
+        :type limit: int
+        :param cursor: Cursor for cursor pagination
+        :type cursor: str
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :return: Returns the result object.
+                 If the method is called asynchronously,
+                 returns the request thread.
+        :rtype: SearchTenantUsersResult
+        """
+        kwargs['_return_http_data_only'] = True
+        if '_preload_content' in kwargs:
+            raise ValueError("Error! Please call the search_tenant_users_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data")
+        return self.search_tenant_users_with_http_info(tenant_id, id, email, sign_in_id, env_id, role_name, limit, cursor, **kwargs)  # noqa: E501
+
+    @validate_arguments
+    def search_tenant_users_with_http_info(self, tenant_id : Annotated[Optional[StrictStr], Field(description="Tenant ID")] = None, id : Annotated[Optional[StrictStr], Field(description="User ID")] = None, email : Annotated[Optional[StrictStr], Field(description="Email prefix")] = None, sign_in_id : Annotated[Optional[StrictStr], Field(description="Sign-in ID prefix")] = None, env_id : Annotated[Optional[conint(strict=True, ge=1)], Field(description="Environment ID")] = None, role_name : Annotated[Optional[StrictStr], Field(description="Role Name")] = None, limit : Annotated[Optional[conint(strict=True, le=100, ge=1)], Field(description="Maximum number of items to retrieve")] = None, cursor : Annotated[Optional[StrictStr], Field(description="Cursor for cursor pagination")] = None, **kwargs) -> ApiResponse:  # noqa: E501
+        """Search Tenant Users  # noqa: E501
+
+        Search tenant users by user id, tenant id, email, sign-in ID, env, or role.   # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.search_tenant_users_with_http_info(tenant_id, id, email, sign_in_id, env_id, role_name, limit, cursor, async_req=True)
+        >>> result = thread.get()
+
+        :param tenant_id: Tenant ID
+        :type tenant_id: str
+        :param id: User ID
+        :type id: str
+        :param email: Email prefix
+        :type email: str
+        :param sign_in_id: Sign-in ID prefix
+        :type sign_in_id: str
+        :param env_id: Environment ID
+        :type env_id: int
+        :param role_name: Role Name
+        :type role_name: str
+        :param limit: Maximum number of items to retrieve
+        :type limit: int
+        :param cursor: Cursor for cursor pagination
+        :type cursor: str
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
+        :param _preload_content: if False, the ApiResponse.data will
+                                 be set to none and raw_data will store the 
+                                 HTTP response body without reading/decoding.
+                                 Default is True.
+        :type _preload_content: bool, optional
+        :param _return_http_data_only: response data instead of ApiResponse
+                                       object with status code, headers, etc
+        :type _return_http_data_only: bool, optional
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the authentication
+                              in the spec for a single request.
+        :type _request_auth: dict, optional
+        :type _content_type: string, optional: force content-type for the request
+        :return: Returns the result object.
+                 If the method is called asynchronously,
+                 returns the request thread.
+        :rtype: tuple(SearchTenantUsersResult, status_code(int), headers(HTTPHeaderDict))
+        """
+
+        _params = locals()
+
+        _all_params = [
+            'tenant_id',
+            'id',
+            'email',
+            'sign_in_id',
+            'env_id',
+            'role_name',
+            'limit',
+            'cursor'
+        ]
+        _all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth',
+                '_content_type',
+                '_headers'
+            ]
+        )
+
+        # validate the arguments
+        for _key, _val in _params['kwargs'].items():
+            if _key not in _all_params:
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method search_tenant_users" % _key
+                )
+            _params[_key] = _val
+        del _params['kwargs']
+
+        _collection_formats = {}
+
+        # process the path parameters
+        _path_params = {}
+
+        # process the query parameters
+        _query_params = []
+        if _params.get('tenant_id') is not None:  # noqa: E501
+            _query_params.append(('tenant_id', _params['tenant_id']))
+
+        if _params.get('id') is not None:  # noqa: E501
+            _query_params.append(('id', _params['id']))
+
+        if _params.get('email') is not None:  # noqa: E501
+            _query_params.append(('email', _params['email']))
+
+        if _params.get('sign_in_id') is not None:  # noqa: E501
+            _query_params.append(('sign_in_id', _params['sign_in_id']))
+
+        if _params.get('env_id') is not None:  # noqa: E501
+            _query_params.append(('env_id', _params['env_id']))
+
+        if _params.get('role_name') is not None:  # noqa: E501
+            _query_params.append(('role_name', _params['role_name']))
+
+        if _params.get('limit') is not None:  # noqa: E501
+            _query_params.append(('limit', _params['limit']))
+
+        if _params.get('cursor') is not None:  # noqa: E501
+            _query_params.append(('cursor', _params['cursor']))
+
+        # process the header parameters
+        _header_params = dict(_params.get('_headers', {}))
+        # process the form parameters
+        _form_params = []
+        _files = {}
+        # process the body parameter
+        _body_params = None
+        # set the HTTP header `Accept`
+        _header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # authentication setting
+        _auth_settings = ['Bearer']  # noqa: E501
+
+        _response_types_map = {
+            '200': "SearchTenantUsersResult",
+            '400': "Error",
+            '500': "Error",
+        }
+
+        return self.api_client.call_api(
+            '/tenants/all/users/search', 'GET',
             _path_params,
             _query_params,
             _header_params,
