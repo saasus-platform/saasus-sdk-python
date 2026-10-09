@@ -21,7 +21,7 @@ from typing_extensions import Annotated
 
 from datetime import date, datetime
 
-from pydantic import Field, StrictStr
+from pydantic import Field, StrictInt, StrictStr, conint
 
 from typing import Optional
 
@@ -189,22 +189,26 @@ class ApiLogApi(object):
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def get_logs(self, created_date : Annotated[Optional[date], Field(description="The date, in format of YYYY-MM-DD, to retrieve the log.")] = None, created_at : Annotated[Optional[datetime], Field(description="The datetime, in ISO 8601 format, to retrieve the log.")] = None, limit : Annotated[Optional[Annotated[int, Field(strict=True, ge=1)]], Field(description="Maximum number of logs to retrieve.")] = None, cursor : Annotated[Optional[StrictStr], Field(description="Cursor for cursor pagination.")] = None, **kwargs) -> ApiLogs:  # noqa: E501
+    def get_logs(self, created_date : Annotated[Optional[date], Field(description="The date, in format of YYYY-MM-DD, to retrieve the log.")] = None, created_at : Annotated[Optional[datetime], Field(description="The datetime, in ISO 8601 format, to retrieve the log. Cannot be specified together with start_at/end_at.")] = None, limit : Annotated[Optional[conint(strict=True, ge=1)], Field(description="Maximum number of logs to retrieve.")] = None, start_at : Annotated[Optional[StrictInt], Field(description="The start of the search range as an epoch second timestamp. Used for range search. Cannot be specified together with created_at. When specified, created_date is ignored.")] = None, end_at : Annotated[Optional[StrictInt], Field(description="The end of the search range as an epoch second timestamp. Used for range search. Cannot be specified together with created_at. When specified, created_date is ignored.")] = None, cursor : Annotated[Optional[StrictStr], Field(description="Cursor for cursor pagination.")] = None, **kwargs) -> ApiLogs:  # noqa: E501
         """Get API execution log list  # noqa: E501
 
         Retrieve the log of all API executions.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.get_logs(created_date, created_at, limit, cursor, async_req=True)
+        >>> thread = api.get_logs(created_date, created_at, limit, start_at, end_at, cursor, async_req=True)
         >>> result = thread.get()
 
         :param created_date: The date, in format of YYYY-MM-DD, to retrieve the log.
         :type created_date: date
-        :param created_at: The datetime, in ISO 8601 format, to retrieve the log.
+        :param created_at: The datetime, in ISO 8601 format, to retrieve the log. Cannot be specified together with start_at/end_at.
         :type created_at: datetime
         :param limit: Maximum number of logs to retrieve.
         :type limit: int
+        :param start_at: The start of the search range as an epoch second timestamp. Used for range search. Cannot be specified together with created_at. When specified, created_date is ignored.
+        :type start_at: int
+        :param end_at: The end of the search range as an epoch second timestamp. Used for range search. Cannot be specified together with created_at. When specified, created_date is ignored.
+        :type end_at: int
         :param cursor: Cursor for cursor pagination.
         :type cursor: str
         :param async_req: Whether to execute the request asynchronously.
@@ -221,25 +225,29 @@ class ApiLogApi(object):
         kwargs['_return_http_data_only'] = True
         if '_preload_content' in kwargs:
             raise ValueError("Error! Please call the get_logs_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data")
-        return self.get_logs_with_http_info(created_date, created_at, limit, cursor, **kwargs)  # noqa: E501
+        return self.get_logs_with_http_info(created_date, created_at, limit, start_at, end_at, cursor, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def get_logs_with_http_info(self, created_date : Annotated[Optional[date], Field(description="The date, in format of YYYY-MM-DD, to retrieve the log.")] = None, created_at : Annotated[Optional[datetime], Field(description="The datetime, in ISO 8601 format, to retrieve the log.")] = None, limit : Annotated[Optional[Annotated[int, Field(strict=True, ge=1)]], Field(description="Maximum number of logs to retrieve.")] = None, cursor : Annotated[Optional[StrictStr], Field(description="Cursor for cursor pagination.")] = None, **kwargs) -> ApiResponse:  # noqa: E501
+    def get_logs_with_http_info(self, created_date : Annotated[Optional[date], Field(description="The date, in format of YYYY-MM-DD, to retrieve the log.")] = None, created_at : Annotated[Optional[datetime], Field(description="The datetime, in ISO 8601 format, to retrieve the log. Cannot be specified together with start_at/end_at.")] = None, limit : Annotated[Optional[conint(strict=True, ge=1)], Field(description="Maximum number of logs to retrieve.")] = None, start_at : Annotated[Optional[StrictInt], Field(description="The start of the search range as an epoch second timestamp. Used for range search. Cannot be specified together with created_at. When specified, created_date is ignored.")] = None, end_at : Annotated[Optional[StrictInt], Field(description="The end of the search range as an epoch second timestamp. Used for range search. Cannot be specified together with created_at. When specified, created_date is ignored.")] = None, cursor : Annotated[Optional[StrictStr], Field(description="Cursor for cursor pagination.")] = None, **kwargs) -> ApiResponse:  # noqa: E501
         """Get API execution log list  # noqa: E501
 
         Retrieve the log of all API executions.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.get_logs_with_http_info(created_date, created_at, limit, cursor, async_req=True)
+        >>> thread = api.get_logs_with_http_info(created_date, created_at, limit, start_at, end_at, cursor, async_req=True)
         >>> result = thread.get()
 
         :param created_date: The date, in format of YYYY-MM-DD, to retrieve the log.
         :type created_date: date
-        :param created_at: The datetime, in ISO 8601 format, to retrieve the log.
+        :param created_at: The datetime, in ISO 8601 format, to retrieve the log. Cannot be specified together with start_at/end_at.
         :type created_at: datetime
         :param limit: Maximum number of logs to retrieve.
         :type limit: int
+        :param start_at: The start of the search range as an epoch second timestamp. Used for range search. Cannot be specified together with created_at. When specified, created_date is ignored.
+        :type start_at: int
+        :param end_at: The end of the search range as an epoch second timestamp. Used for range search. Cannot be specified together with created_at. When specified, created_date is ignored.
+        :type end_at: int
         :param cursor: Cursor for cursor pagination.
         :type cursor: str
         :param async_req: Whether to execute the request asynchronously.
@@ -273,6 +281,8 @@ class ApiLogApi(object):
             'created_date',
             'created_at',
             'limit',
+            'start_at',
+            'end_at',
             'cursor'
         ]
         _all_params.extend(
@@ -318,6 +328,12 @@ class ApiLogApi(object):
 
         if _params.get('limit') is not None:  # noqa: E501
             _query_params.append(('limit', _params['limit']))
+
+        if _params.get('start_at') is not None:  # noqa: E501
+            _query_params.append(('start_at', _params['start_at']))
+
+        if _params.get('end_at') is not None:  # noqa: E501
+            _query_params.append(('end_at', _params['end_at']))
 
         if _params.get('cursor') is not None:  # noqa: E501
             _query_params.append(('cursor', _params['cursor']))

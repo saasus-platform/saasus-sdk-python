@@ -19,7 +19,7 @@ import json
 
 
 
-from pydantic import ConfigDict, BaseModel, Field, StrictStr
+from pydantic import BaseModel, Field, StrictStr
 from saasus_sdk_python.src.integration.models.aws_region import AwsRegion
 
 class EventBridgeSettings(BaseModel):
@@ -29,7 +29,11 @@ class EventBridgeSettings(BaseModel):
     aws_account_id: StrictStr = Field(..., description="AWS Account ID")
     aws_region: AwsRegion = Field(...)
     __properties = ["aws_account_id", "aws_region"]
-    model_config = ConfigDict(populate_by_name=True, validate_assignment=True)
+
+    class Config:
+        """Pydantic configuration"""
+        allow_population_by_field_name = True
+        validate_assignment = True
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""

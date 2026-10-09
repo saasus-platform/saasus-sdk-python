@@ -10,8 +10,11 @@ Method | HTTP request | Description
 [**delete_tenant_user_role**](TenantUserApi.md#delete_tenant_user_role) | **DELETE** /tenants/{tenant_id}/users/{user_id}/envs/{env_id}/roles/{role_name} | Remove Role From Tenant User
 [**get_all_tenant_user**](TenantUserApi.md#get_all_tenant_user) | **GET** /tenants/all/users/{user_id} | Get User Info
 [**get_all_tenant_users**](TenantUserApi.md#get_all_tenant_users) | **GET** /tenants/all/users | Get Users
+[**get_all_tenant_users_count**](TenantUserApi.md#get_all_tenant_users_count) | **GET** /tenants/all/users/count | Get Tenant Users Count
 [**get_tenant_user**](TenantUserApi.md#get_tenant_user) | **GET** /tenants/{tenant_id}/users/{user_id} | Get Tenant User
 [**get_tenant_users**](TenantUserApi.md#get_tenant_users) | **GET** /tenants/{tenant_id}/users | Get Tenant Users
+[**save_tenant_users_counts**](TenantUserApi.md#save_tenant_users_counts) | **POST** /tenants/all/users/count | Save Tenant Users Count
+[**search_tenant_users**](TenantUserApi.md#search_tenant_users) | **GET** /tenants/all/users/search | Search Tenant Users
 [**update_tenant_user**](TenantUserApi.md#update_tenant_user) | **PATCH** /tenants/{tenant_id}/users/{user_id} | Update Tenant User Attribute
 
 
@@ -491,6 +494,80 @@ This endpoint does not need any parameter.
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **get_all_tenant_users_count**
+> TenantUsersCounts get_all_tenant_users_count()
+
+Get Tenant Users Count
+
+Get the count of tenant users for each tenant. 
+
+### Example
+
+* Bearer Authentication (Bearer):
+```python
+import time
+import os
+import saasus_sdk_python.src.auth
+from saasus_sdk_python.src.auth.models.tenant_users_counts import TenantUsersCounts
+from saasus_sdk_python.src.auth.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://api.saasus.io/v1/auth
+# See configuration.py for a list of all supported configuration parameters.
+configuration = saasus_sdk_python.src.auth.Configuration(
+    host = "https://api.saasus.io/v1/auth"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: Bearer
+configuration = saasus_sdk_python.src.auth.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with saasus_sdk_python.src.auth.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = saasus_sdk_python.src.auth.TenantUserApi(api_client)
+
+    try:
+        # Get Tenant Users Count
+        api_response = api_instance.get_all_tenant_users_count()
+        print("The response of TenantUserApi->get_all_tenant_users_count:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling TenantUserApi->get_all_tenant_users_count: %s\n" % e)
+```
+
+
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+[**TenantUsersCounts**](TenantUsersCounts.md)
+
+### Authorization
+
+[Bearer](../README.md#Bearer)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**500** | Internal Server Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **get_tenant_user**
 > User get_tenant_user(tenant_id, user_id)
 
@@ -646,6 +723,177 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
+**500** | Internal Server Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **save_tenant_users_counts**
+> save_tenant_users_counts(save_tenant_users_counts_param)
+
+Save Tenant Users Count
+
+Save the count of tenant users for each tenant. 
+
+### Example
+
+* Bearer Authentication (Bearer):
+```python
+import time
+import os
+import saasus_sdk_python.src.auth
+from saasus_sdk_python.src.auth.models.save_tenant_users_counts_param import SaveTenantUsersCountsParam
+from saasus_sdk_python.src.auth.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://api.saasus.io/v1/auth
+# See configuration.py for a list of all supported configuration parameters.
+configuration = saasus_sdk_python.src.auth.Configuration(
+    host = "https://api.saasus.io/v1/auth"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: Bearer
+configuration = saasus_sdk_python.src.auth.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with saasus_sdk_python.src.auth.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = saasus_sdk_python.src.auth.TenantUserApi(api_client)
+    save_tenant_users_counts_param = saasus_sdk_python.src.auth.SaveTenantUsersCountsParam() # SaveTenantUsersCountsParam | 
+
+    try:
+        # Save Tenant Users Count
+        api_instance.save_tenant_users_counts(save_tenant_users_counts_param)
+    except Exception as e:
+        print("Exception when calling TenantUserApi->save_tenant_users_counts: %s\n" % e)
+```
+
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **save_tenant_users_counts_param** | [**SaveTenantUsersCountsParam**](SaveTenantUsersCountsParam.md)|  | 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[Bearer](../README.md#Bearer)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | Bad Request |  -  |
+**500** | Internal Server Error |  -  |
+**501** | Not Implemented |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **search_tenant_users**
+> SearchTenantUsersResult search_tenant_users(tenant_id=tenant_id, id=id, email=email, sign_in_id=sign_in_id, env_id=env_id, role_name=role_name, limit=limit, cursor=cursor)
+
+Search Tenant Users
+
+Search tenant users by user id, tenant id, email, sign-in ID, env, or role. 
+
+### Example
+
+* Bearer Authentication (Bearer):
+```python
+import time
+import os
+import saasus_sdk_python.src.auth
+from saasus_sdk_python.src.auth.models.search_tenant_users_result import SearchTenantUsersResult
+from saasus_sdk_python.src.auth.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://api.saasus.io/v1/auth
+# See configuration.py for a list of all supported configuration parameters.
+configuration = saasus_sdk_python.src.auth.Configuration(
+    host = "https://api.saasus.io/v1/auth"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: Bearer
+configuration = saasus_sdk_python.src.auth.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with saasus_sdk_python.src.auth.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = saasus_sdk_python.src.auth.TenantUserApi(api_client)
+    tenant_id = 'tenant_id_example' # str | Tenant ID (optional)
+    id = 'id_example' # str | User ID (optional)
+    email = 'email_example' # str | Email prefix (optional)
+    sign_in_id = 'sign_in_id_example' # str | Sign-in ID prefix (optional)
+    env_id = 56 # int | Environment ID (optional)
+    role_name = 'role_name_example' # str | Role Name (optional)
+    limit = 56 # int | Maximum number of items to retrieve (optional)
+    cursor = 'cursor_example' # str | Cursor for cursor pagination (optional)
+
+    try:
+        # Search Tenant Users
+        api_response = api_instance.search_tenant_users(tenant_id=tenant_id, id=id, email=email, sign_in_id=sign_in_id, env_id=env_id, role_name=role_name, limit=limit, cursor=cursor)
+        print("The response of TenantUserApi->search_tenant_users:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling TenantUserApi->search_tenant_users: %s\n" % e)
+```
+
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **tenant_id** | **str**| Tenant ID | [optional] 
+ **id** | **str**| User ID | [optional] 
+ **email** | **str**| Email prefix | [optional] 
+ **sign_in_id** | **str**| Sign-in ID prefix | [optional] 
+ **env_id** | **int**| Environment ID | [optional] 
+ **role_name** | **str**| Role Name | [optional] 
+ **limit** | **int**| Maximum number of items to retrieve | [optional] 
+ **cursor** | **str**| Cursor for cursor pagination | [optional] 
+
+### Return type
+
+[**SearchTenantUsersResult**](SearchTenantUsersResult.md)
+
+### Authorization
+
+[Bearer](../README.md#Bearer)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | Bad Request |  -  |
 **500** | Internal Server Error |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
