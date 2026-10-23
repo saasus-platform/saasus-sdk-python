@@ -19,10 +19,9 @@ import json
 
 
 
-from pydantic import ConfigDict, BaseModel, Field, StrictInt, StrictStr
+from pydantic import BaseModel, Field, StrictInt, StrictStr, validator
 from saasus_sdk_python.src.pricing.models.currency import Currency
 from saasus_sdk_python.src.pricing.models.recurring_interval import RecurringInterval
-from saasus_sdk_python.src.pricing.models.unit_type import UnitType
 
 class PricingFixedUnitForSave(BaseModel):
     """
@@ -31,12 +30,23 @@ class PricingFixedUnitForSave(BaseModel):
     name: StrictStr = Field(..., description="Name")
     display_name: StrictStr = Field(..., description="Display Name")
     description: StrictStr = Field(..., description="Description")
-    type: UnitType = Field(...)
+    type: StrictStr = Field(...)
     currency: Currency = Field(...)
     unit_amount: StrictInt = Field(..., description="Price")
     recurring_interval: RecurringInterval = Field(...)
     __properties = ["name", "display_name", "description", "type", "currency", "unit_amount", "recurring_interval"]
-    model_config = ConfigDict(populate_by_name=True, validate_assignment=True)
+
+    @validator('type')
+    def type_validate_enum(cls, value):
+        """Validates the enum"""
+        if value not in ('fixed'):
+            raise ValueError("must be one of enum values ('fixed')")
+        return value
+
+    class Config:
+        """Pydantic configuration"""
+        allow_population_by_field_name = True
+        validate_assignment = True
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""

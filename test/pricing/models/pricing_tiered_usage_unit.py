@@ -19,33 +19,36 @@ import json
 
 
 from typing import List, Optional
-from pydantic import ConfigDict, BaseModel, Field, StrictBool, StrictInt, StrictStr
+from pydantic import BaseModel, Field, StrictBool, StrictInt, StrictStr, conlist
 from saasus_sdk_python.src.pricing.models.aggregate_usage import AggregateUsage
 from saasus_sdk_python.src.pricing.models.currency import Currency
 from saasus_sdk_python.src.pricing.models.pricing_tier import PricingTier
 from saasus_sdk_python.src.pricing.models.recurring_interval import RecurringInterval
 from saasus_sdk_python.src.pricing.models.unit_type import UnitType
-from typing_extensions import Annotated
 
 class PricingTieredUsageUnit(BaseModel):
     """
     PricingTieredUsageUnit
     """
+    type: UnitType = Field(...)
     upper_count: StrictInt = Field(..., description="Upper limit")
     metering_unit_name: StrictStr = Field(..., description="Metering unit name")
     aggregate_usage: Optional[AggregateUsage] = None
     name: StrictStr = Field(..., description="Name")
     display_name: StrictStr = Field(..., description="Display Name")
     description: StrictStr = Field(..., description="Description")
-    type: UnitType = Field(...)
     currency: Currency = Field(...)
-    tiers: Annotated[List[PricingTier], Field()] = Field(...)
+    tiers: conlist(PricingTier) = Field(...)
     id: StrictStr = Field(..., description="Universally Unique Identifier")
     metering_unit_id: StrictStr = Field(..., description="Universally Unique Identifier")
     recurring_interval: RecurringInterval = Field(...)
     used: StrictBool = Field(..., description="Indicates if the unit is used")
-    __properties = ["upper_count", "metering_unit_name", "aggregate_usage", "name", "display_name", "description", "type", "currency", "tiers", "id", "metering_unit_id", "recurring_interval", "used"]
-    model_config = ConfigDict(populate_by_name=True, validate_assignment=True)
+    __properties = ["type", "upper_count", "metering_unit_name", "aggregate_usage", "name", "display_name", "description", "currency", "tiers", "id", "metering_unit_id", "recurring_interval", "used"]
+
+    class Config:
+        """Pydantic configuration"""
+        allow_population_by_field_name = True
+        validate_assignment = True
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -85,13 +88,13 @@ class PricingTieredUsageUnit(BaseModel):
             return PricingTieredUsageUnit.parse_obj(obj)
 
         _obj = PricingTieredUsageUnit.parse_obj({
+            "type": obj.get("type"),
             "upper_count": obj.get("upper_count"),
             "metering_unit_name": obj.get("metering_unit_name"),
             "aggregate_usage": obj.get("aggregate_usage"),
             "name": obj.get("name"),
             "display_name": obj.get("display_name"),
             "description": obj.get("description"),
-            "type": obj.get("type"),
             "currency": obj.get("currency"),
             "tiers": [PricingTier.from_dict(_item) for _item in obj.get("tiers")] if obj.get("tiers") is not None else None,
             "id": obj.get("id"),

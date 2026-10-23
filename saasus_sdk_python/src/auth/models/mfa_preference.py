@@ -19,7 +19,7 @@ import json
 
 
 from typing import Optional
-from pydantic import field_validator, ConfigDict, BaseModel, Field, StrictBool, StrictStr
+from pydantic import BaseModel, Field, StrictBool, StrictStr, validator
 
 class MfaPreference(BaseModel):
     """
@@ -29,17 +29,20 @@ class MfaPreference(BaseModel):
     method: Optional[StrictStr] = Field(None, description="MFA method (required if enabled is true)")
     __properties = ["enabled", "method"]
 
-    @field_validator('method')
-    @classmethod
+    @validator('method')
     def method_validate_enum(cls, value):
         """Validates the enum"""
         if value is None:
             return value
 
-        if value not in ('softwareToken'):
-            raise ValueError("must be one of enum values ('softwareToken')")
+        if value not in ('softwareToken', 'email'):
+            raise ValueError("must be one of enum values ('softwareToken', 'email')")
         return value
-    model_config = ConfigDict(populate_by_name=True, validate_assignment=True)
+
+    class Config:
+        """Pydantic configuration"""
+        allow_population_by_field_name = True
+        validate_assignment = True
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""

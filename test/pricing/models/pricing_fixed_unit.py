@@ -19,7 +19,7 @@ import json
 
 
 
-from pydantic import ConfigDict, BaseModel, Field, StrictBool, StrictInt, StrictStr
+from pydantic import BaseModel, Field, StrictBool, StrictInt, StrictStr
 from saasus_sdk_python.src.pricing.models.currency import Currency
 from saasus_sdk_python.src.pricing.models.recurring_interval import RecurringInterval
 from saasus_sdk_python.src.pricing.models.unit_type import UnitType
@@ -28,17 +28,21 @@ class PricingFixedUnit(BaseModel):
     """
     PricingFixedUnit
     """
+    type: UnitType = Field(...)
     unit_amount: StrictInt = Field(..., description="Price")
     recurring_interval: RecurringInterval = Field(...)
     name: StrictStr = Field(..., description="Name")
     display_name: StrictStr = Field(..., description="Display Name")
     description: StrictStr = Field(..., description="Description")
-    type: UnitType = Field(...)
     currency: Currency = Field(...)
     id: StrictStr = Field(..., description="Universally Unique Identifier")
     used: StrictBool = Field(...)
-    __properties = ["unit_amount", "recurring_interval", "name", "display_name", "description", "type", "currency", "id", "used"]
-    model_config = ConfigDict(populate_by_name=True, validate_assignment=True)
+    __properties = ["type", "unit_amount", "recurring_interval", "name", "display_name", "description", "currency", "id", "used"]
+
+    class Config:
+        """Pydantic configuration"""
+        allow_population_by_field_name = True
+        validate_assignment = True
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -71,12 +75,12 @@ class PricingFixedUnit(BaseModel):
             return PricingFixedUnit.parse_obj(obj)
 
         _obj = PricingFixedUnit.parse_obj({
+            "type": obj.get("type"),
             "unit_amount": obj.get("unit_amount"),
             "recurring_interval": obj.get("recurring_interval"),
             "name": obj.get("name"),
             "display_name": obj.get("display_name"),
             "description": obj.get("description"),
-            "type": obj.get("type"),
             "currency": obj.get("currency"),
             "id": obj.get("id"),
             "used": obj.get("used")
