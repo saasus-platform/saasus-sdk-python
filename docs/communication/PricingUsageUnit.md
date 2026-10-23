@@ -4,6 +4,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**type** | [**UnitType**](UnitType.md) |  | 
 **upper_count** | **int** | Upper limit | 
 **unit_amount** | **int** | Amount per usage | 
 **metering_unit_name** | **str** | Metering unit name | 
@@ -11,7 +12,6 @@ Name | Type | Description | Notes
 **name** | **str** | Name | 
 **display_name** | **str** | Display Name | 
 **description** | **str** | Description | 
-**type** | [**UnitType**](UnitType.md) |  | 
 **currency** | [**Currency**](Currency.md) |  | 
 **id** | **str** | Universally Unique Identifier | 
 **metering_unit_id** | **str** | Universally Unique Identifier | 

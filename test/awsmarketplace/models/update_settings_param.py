@@ -19,7 +19,7 @@ import json
 
 
 from typing import Optional
-from pydantic import ConfigDict, BaseModel, StrictStr
+from pydantic import BaseModel, StrictStr
 
 class UpdateSettingsParam(BaseModel):
     """
@@ -34,7 +34,11 @@ class UpdateSettingsParam(BaseModel):
     seller_sns_topic_arn: Optional[StrictStr] = None
     sqs_arn: Optional[StrictStr] = None
     __properties = ["product_code", "role_arn", "role_external_id", "sns_topic_arn", "cas_bucket_name", "cas_sns_topic_arn", "seller_sns_topic_arn", "sqs_arn"]
-    model_config = ConfigDict(populate_by_name=True, validate_assignment=True)
+
+    class Config:
+        """Pydantic configuration"""
+        allow_population_by_field_name = True
+        validate_assignment = True
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
