@@ -20,7 +20,7 @@ bodies, tokens, PII and the spec body are never logged.
 
 | File | Role |
 |------|------|
-| `spec.py` | Parses the OpenAPI document and synthesizes request inputs from `example`/schema. Port of the Go harness so the synthesis rules match across SDKs. |
+| `spec.py` | Parses the OpenAPI document and synthesizes request inputs from `example`/schema. |
 | `engine.py` | Resolves each spec `operationId` to a generated method, binds arguments by name, performs the round trip, and judges the result. |
 | `test_contract.py` | Pytest entry point: one parametrized case per operation + watchdogs. |
 | `test_synthesis.py` | Unit tests for input synthesis and argument binding (no mock). |
@@ -70,6 +70,6 @@ repo-wide `pytest` run does not require Prism.
   request side the synthesized body is converted with the argument model's
   `from_dict`: a oneOf body is generated as a holder that only `from_dict`
   fills in, so the plain dict would never serialize.
-- **Result.** Only a 2xx is a pass, and a status declaring a JSON body must
-  deserialize into a non-null payload. An operation that declares no success
-  response passes when it surfaces one of its declared error statuses.
+- **Result.** Only a 2xx is a pass, and a method whose return type declares a
+  body must deserialize into a non-null payload. An operation that declares no
+  success response passes when it surfaces one of its declared error statuses.

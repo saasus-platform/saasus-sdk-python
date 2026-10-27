@@ -2,11 +2,6 @@
 
 Values come from the spec rather than being hardcoded, so they are acceptable
 by construction -- the Prism mock validates requests against the same document.
-It also keeps the approach language-independent: the only language-specific
-part (binding an operationId to a generated method) lives in ``engine.py``.
-
-This is a port of the Go harness' ``spec_test.go`` so the synthesis rules stay
-identical across the SDK implementations.
 """
 
 from __future__ import annotations
@@ -35,9 +30,6 @@ class Operation:
     params: List[Dict[str, Any]] = field(default_factory=list)
     body_schema: Optional[Dict[str, Any]] = None
     statuses: set = field(default_factory=set)
-    # 2xx statuses that declare an application/json body; the response for one
-    # of these must deserialize into a non-null payload.
-    json_statuses: set = field(default_factory=set)
     has_success: bool = False
 
 
@@ -119,7 +111,7 @@ class Spec:
         responses = raw_op.get("responses")
         if not isinstance(responses, dict):
             return
-        for key, raw_response in responses.items():
+        for key in responses:
             try:
                 code = int(key)
             except (TypeError, ValueError):
@@ -127,14 +119,6 @@ class Spec:
             op.statuses.add(code)
             if 200 <= code < 300:
                 op.has_success = True
-                if self._declares_json_body(raw_response):
-                    op.json_statuses.add(code)
-
-    def _declares_json_body(self, raw_response: Any) -> bool:
-        if not isinstance(raw_response, dict):
-            return False
-        content = self._resolve(raw_response).get("content")
-        return isinstance(content, dict) and "application/json" in content
 
     # --- $ref resolution ----------------------------------------------------
 
@@ -222,9 +206,9 @@ class Spec:
         return _synth_scalar(schema)
 
     def _synth_object(self, schema: Dict[str, Any]) -> Dict[str, Any]:
-        # Every declared property, not just the required ones: an optional
-        # property that is never sent leaves its own serialization, and the
-        # required fields nested below it, unverified.
+        # Every declared property, not just the required ones: an unsent
+        # optional property leaves its serialization, and the fields below it,
+        # unverified.
         out: Dict[str, Any] = {}
         properties = schema.get("properties")
         if isinstance(properties, dict):
@@ -268,9 +252,8 @@ def _synth_scalar(schema: Dict[str, Any]) -> Any:
         return "2024-01-01"
     if fmt == "date-time":
         return "2024-01-01T00:00:00Z"
-    # A string with no example still has to clear the declared length floor or
-    # the mock rejects it. Padding with an alphanumeric also satisfies the
-    # character patterns these specs declare.
+    # A string with no example must still clear the declared minLength or the
+    # mock rejects it; padding with an alphanumeric also satisfies the patterns.
     value = SYNTHETIC_VALUE
     min_len = _int_of(schema.get("minLength"))
     while len(value) < min_len:

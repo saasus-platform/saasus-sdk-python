@@ -1,19 +1,16 @@
 """Round-trips the generated SDK clients against a Prism mock of the spec.
 
-It checks that the requests the SDK builds are accepted by the mock and that
-the responses deserialize into the SDK types. Operations are enumerated from
-the spec at run time, so an SDK missing an operation simply has no case for it
--- which makes the same suite usable for a previously released SDK (forward
-compatibility, test (C)).
+Requests the SDK builds must be accepted by the mock and responses must
+deserialize into the SDK types. Operations are enumerated from the spec at run
+time, so an SDK missing one simply has no case -- which lets the same suite run
+against a previously released SDK (forward compatibility, test (C)).
 
-Only the ``<operation>_with_http_info`` form is exercised. The plain
-``<operation>`` form delegates to it and merely unwraps ``ApiResponse.data``,
-and ``async_req=True`` runs the very same synchronous ``call_api`` on a worker
-thread; neither adds deserialization logic. ``with_http_info`` is also the only
-form that surfaces the HTTP status alongside the deserialized payload.
+Only ``<operation>_with_http_info`` is exercised: the plain form just unwraps
+``ApiResponse.data`` and ``async_req`` reuses the same ``call_api``, so neither
+adds deserialization logic, and only this form exposes the HTTP status.
 
-Synthetic data only: a constant bearer token, request values from the spec, and
-no response body, token or PII logged.
+Synthetic data only: a constant bearer token and request values from the spec;
+no response body, token or PII is logged.
 """
 
 from __future__ import annotations
@@ -27,10 +24,9 @@ from typing import Any, Callable, Dict, List, Optional, get_args
 
 from spec import Operation, Spec
 
-# The specs declare a bearer scheme and the mock rejects requests without
-# credentials, but it does not validate the value. The hand-written signing
-# ApiClient wrapper is deliberately bypassed: this suite verifies the generated
-# client against the spec, not the authentication layer (out of scope, #3337).
+# The mock requires a bearer credential but does not validate its value, and
+# this suite verifies the generated client against the spec, not the
+# authentication layer, so a constant placeholder is enough.
 SYNTHETIC_TOKEN = "synthetic-bearer-token"
 
 _PACKAGE = "saasus_sdk_python.src"
@@ -107,12 +103,10 @@ def generated_modules() -> List[str]:
 def _load_module(name: str, directory: str, base_url: str) -> _Module:
     spec = Spec.load(directory, name)
     if name not in generated_modules():
-        # A previously released SDK legitimately lacks a module the current
-        # spec list carries. Keeping its spec with no method leaves it with no
-        # case, while unmapped_operations still reports every one of its
-        # operations -- so the latest SDK (B) fails instead of silently
-        # dropping the whole module. Any other import error is a real break
-        # and is left to propagate.
+        # A released SDK may lack a module the current spec carries: keep its
+        # spec with no method so it yields no case, while unmapped_operations
+        # still reports its operations and (B) fails rather than silently
+        # dropping the module. Any other import error propagates.
         return _Module(name=name, spec=spec, methods={}, api_exception=None)
     api_pkg = importlib.import_module(f"{_PACKAGE}.{name}.api")
     api_client_cls = importlib.import_module(f"{_PACKAGE}.{name}.api_client").ApiClient
@@ -124,8 +118,8 @@ def _load_module(name: str, directory: str, base_url: str) -> _Module:
     configuration.access_token = SYNTHETIC_TOKEN
     client = api_client_cls(configuration)
 
-    # Operations are spread across several *Api classes per module (grouped by
-    # tag). Collect the with_http_info method of every one of them.
+    # A module's operations are spread across several *Api classes; collect the
+    # with_http_info method from each.
     methods: Dict[str, Callable[..., Any]] = {}
     for attribute in vars(api_pkg).values():
         if not (inspect.isclass(attribute) and attribute.__name__.endswith("Api")):
@@ -202,36 +196,45 @@ def round_trip(case: Case) -> None:
         response = case.method(**kwargs)
     except case.api_exception as error:
         status = getattr(error, "status", None)
-        # An operation that declares no success response is expected to surface
-        # the error it does declare; anything else is a contract break.
+        # An operation with no declared success must surface one of its declared
+        # errors; anything else is a contract break.
         if case.op.has_success or status not in case.op.statuses:
             raise ContractFailure(f"{case.id}: unexpected status {status}") from None
         return
     except Exception as error:  # noqa: BLE001
-        # Deserialization (including a oneOf discriminator the SDK does not
-        # know) and request-side validation land here. The generated models put
-        # the response body in the exception message, so the failure is
-        # reconstructed from the type name only -- never the body.
+        # Deserialization and request-side validation failures land here. The
+        # generated models put the response body in the message, so report only
+        # the exception type, never the body.
         raise ContractFailure(f"{case.id}: round trip failed ({type(error).__name__})") from None
 
     status = getattr(response, "status_code", None)
-    if status in case.op.json_statuses and getattr(response, "data", None) is None:
+    if _returns_body(case.method) and getattr(response, "data", None) is None:
         raise ContractFailure(f"{case.id}: status {status}: response was not deserialized into the SDK type")
+
+
+def _returns_body(with_http_info: Callable[..., Any]) -> bool:
+    """Whether the SDK method is contracted to deserialize a response body.
+
+    Keyed on the SDK's own return type, not the latest spec: a body the current
+    spec adds to an operation a released SDK still ignores (its plain method
+    returns ``None``) is a backward-compatible addition, not a forward-compat
+    break (C). The plain ``<operation>`` method that ``_with_http_info`` unwraps
+    carries that return type.
+    """
+    plain = getattr(with_http_info.__self__, with_http_info.__name__[: -len(_WITH_HTTP_INFO)])
+    return inspect.signature(plain).return_annotation is not None
 
 
 def build_kwargs(method: Callable[..., Any], spec: Spec, op: Operation, variant_index: int) -> Dict[str, Any]:
     """Bind the generated method's arguments by name.
 
-    The generated path/query/header arguments carry the spec parameter name
-    flattened to snake_case (``created_date`` -> ``created_date``,
-    ``X-Saasus-Referer`` -> ``x_saasus_referer``), except a name colliding with
-    a Python builtin/keyword, which the generator prefixes with ``var_``
-    (``date`` -> ``var_date``). Binding by normalized name --
-    rather than position -- keeps the value in the right argument even for an
-    SDK generated from a different spec revision (a parameter inserted in the
-    middle, the forward-compatibility case). An argument the spec cannot explain
-    fails explicitly: position binding would send a plausible-looking request
-    with the wrong value.
+    Generated path/query/header arguments carry the spec parameter name in
+    snake_case (``X-Saasus-Referer`` -> ``x_saasus_referer``), except a name
+    colliding with a Python builtin/keyword, which the generator prefixes with
+    ``var_`` (``date`` -> ``var_date``). Binding by normalized name rather than
+    position keeps each value on the right argument even for an SDK generated
+    from a different spec revision. An argument the spec cannot explain fails
+    explicitly, since position binding would send the wrong value.
     """
     named = [
         parameter
@@ -251,14 +254,12 @@ def build_kwargs(method: Callable[..., Any], spec: Spec, op: Operation, variant_
     for parameter in named:
         key = _normalize(parameter.name)
         if key not in values_by_name and parameter.name.startswith("var_"):
-            # openapi-generator escapes a spec name that collides with a Python
-            # builtin/keyword by prefixing ``var_`` (``date`` -> ``var_date``);
-            # recover the spec name that argument stands for.
+            # Recover the spec name behind a ``var_``-prefixed argument (the
+            # generator's escape for a Python builtin/keyword).
             key = _normalize(parameter.name[len("var_") :])
         if key in values_by_name:
-            # A spec value with no matching argument is left in the map: an SDK
-            # generated before the spec added that parameter simply never
-            # receives it (a backward-compatible change), rather than failing.
+            # A spec value with no matching argument stays in the map: an SDK
+            # predating that parameter simply never receives it.
             kwargs[parameter.name] = values_by_name.pop(key)
         else:
             unexplained.append(parameter)
@@ -270,8 +271,8 @@ def build_kwargs(method: Callable[..., Any], spec: Spec, op: Operation, variant_
             try:
                 kwargs[body.name] = _body_argument(body.annotation, value)
             except Exception as error:  # noqa: BLE001
-                # The generated conversion puts the body in its message, so the
-                # failure is reported from the type name only.
+                # The conversion puts the body in its message; report the type
+                # name only.
                 raise ContractFailure(
                     f"{op.id}: the spec request body does not fit the SDK model ({type(error).__name__})"
                 ) from None
@@ -286,13 +287,11 @@ def build_kwargs(method: Callable[..., Any], spec: Spec, op: Operation, variant_
 def _body_argument(annotation: Any, value: Any) -> Any:
     """Convert a spec-derived request body into the model the argument declares.
 
-    The generated models are not plain containers: a oneOf body is a holder
-    whose ``actual_instance`` only ``from_dict`` sets, so handing over the
-    synthesized dict leaves it unset and the body serializes to ``null`` -- or
-    fails -- before the request is sent. ``from_dict`` is the SDK's own
-    conversion, reused here rather than reimplemented. An argument the SDK does
-    not model as such a class (an array or a free-form object) is passed
-    through for the generated method's own validation to convert.
+    A oneOf body is a holder whose ``actual_instance`` only ``from_dict`` sets,
+    so passing the synthesized dict straight through serializes to ``null`` or
+    fails. ``from_dict`` is the SDK's own conversion, reused here. An argument
+    not modelled as such a class (an array or free-form object) is passed
+    through for the generated method to convert.
     """
     if isinstance(value, dict):
         for candidate in (annotation, *get_args(annotation)):

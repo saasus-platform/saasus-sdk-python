@@ -43,11 +43,9 @@ def test_module_list_is_provided():
 
 
 def test_every_generated_module_is_under_test():
-    # A module generated into the SDK but absent from CONTRACT_MODULES would
-    # contribute no case, so all of its operations would go unverified. This is
-    # a completeness concern, enforced only for the latest SDK (B): a previously
-    # released SDK (C) legitimately has fewer modules, and a local run may test
-    # a single module on purpose.
+    # A module generated into the SDK but absent from CONTRACT_MODULES yields no
+    # case, leaving its operations unverified. Enforced only for the latest SDK
+    # (B); a released SDK (C) or a local run legitimately covers fewer modules.
     if not engine.require_complete():
         pytest.skip("CONTRACT_REQUIRE_COMPLETE is not set: module coverage is only enforced for the latest SDK (B)")
     configured = set(engine.configured_modules())
@@ -59,9 +57,8 @@ def test_every_generated_module_is_under_test():
 
 
 def test_all_operations_enumerated():
-    # The latest SDK (B) must cover every operation the spec declares. A
-    # previously released SDK (C) legitimately lacks operations added later, so
-    # this is enforced only when the caller asks for it.
+    # The latest SDK (B) must cover every spec operation; a released SDK (C)
+    # legitimately lacks operations added later, so this is opt-in.
     if not engine.require_complete():
         pytest.skip("CONTRACT_REQUIRE_COMPLETE is not set: completeness is only enforced for the latest SDK (B)")
     missing = engine.unmapped_operations()

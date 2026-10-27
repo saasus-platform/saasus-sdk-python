@@ -1,9 +1,9 @@
 """Input synthesis and argument binding on their own, without a mock.
 
-The production specs declare neither header parameters nor anyOf request
-bodies, so the round-trip suite would not exercise either path; the
-forward-compatibility binding shapes only occur against a released SDK. These
-tests cover them directly. They run unconditionally (no Prism, no env).
+The production specs declare neither header parameters nor anyOf bodies, and
+the forward-compatibility binding shapes only occur against a released SDK, so
+the round-trip suite exercises none of them. These tests cover them directly,
+unconditionally (no Prism, no env).
 """
 
 import textwrap
@@ -123,9 +123,8 @@ def _write_spec(tmp_path, document):
 
 
 def test_params_values_include_headers(tmp_path):
-    # The generated method takes each query and header parameter as its own
-    # argument; dropping the headers would leave an operation whose only
-    # parameters are headers with no argument at all.
+    # Each query and header parameter is its own argument; dropping headers
+    # would leave a header-only operation with no arguments at all.
     spec = _write_spec(tmp_path, _PARAM_SPEC)
     assert spec.params_values(spec.ops["GetUsers"]) == {"limit": 10, "X-Saasus-Referer": "referer-1"}
     assert spec.params_values(spec.ops["Ping"]) == {"X-Request-Id": "req-1"}
@@ -135,9 +134,8 @@ def test_params_values_include_headers(tmp_path):
 
 @pytest.mark.parametrize("keyword", ["oneOf", "anyOf"])
 def test_body_variants_cover_oneof_and_anyof(tmp_path, keyword):
-    # Every member of a composite request body is sent, for anyOf as well as
-    # oneOf; otherwise a member reachable only through anyOf would be
-    # synthesized as an empty object.
+    # Every member of a composite body is sent, for anyOf as well as oneOf;
+    # otherwise an anyOf-only member would synthesize as an empty object.
     spec = _write_spec(tmp_path, _BODY_SPEC.replace("KEYWORD", keyword))
     op = spec.ops["SaveUnit"]
     assert spec.body_variant_labels(op) == ["fixed", "usage"]
@@ -174,9 +172,8 @@ def test_binds_path_query_and_header_parameters_by_name(tmp_path):
 
 
 def test_binds_reserved_word_parameter_renamed_by_generator(tmp_path):
-    # openapi-generator renames a spec parameter colliding with a Python
-    # builtin/keyword (``date`` -> ``var_date``); the value must still bind to
-    # that argument rather than being reported as unexplained.
+    # A parameter renamed for a Python builtin/keyword collision
+    # (``date`` -> ``var_date``) must still bind, not be reported unexplained.
     spec = _write_spec(tmp_path, _RESERVED_WORD_SPEC)
     op = spec.ops["GetDateCount"]
     assert build_kwargs(_reserved_word_signature, spec, op, 0) == {
@@ -186,8 +183,8 @@ def test_binds_reserved_word_parameter_renamed_by_generator(tmp_path):
 
 
 def test_tolerates_parameter_missing_from_older_sdk(tmp_path):
-    # An SDK generated before the spec added ``limit`` has no such argument;
-    # that backward-compatible change must not fail. The value is simply dropped.
+    # An SDK predating the spec's ``limit`` has no such argument; that
+    # backward-compatible change must not fail -- the value is dropped.
     spec = _write_spec(tmp_path, _PARAM_SPEC)
     op = spec.ops["GetUsers"]
     assert build_kwargs(_older_signature, spec, op, 0) == {
@@ -197,8 +194,8 @@ def test_tolerates_parameter_missing_from_older_sdk(tmp_path):
 
 
 def test_fails_on_argument_the_spec_does_not_explain(tmp_path):
-    # Binding by position would send a plausible-looking request with the wrong
-    # value, so an unexplained argument fails explicitly instead.
+    # Position binding would send the wrong value, so an unexplained argument
+    # fails explicitly instead.
     spec = _write_spec(tmp_path, _PARAM_SPEC)
     op = spec.ops["GetUsers"]
     with pytest.raises(ContractFailure):
@@ -221,10 +218,8 @@ def _body_signature(body: Optional[_BodyModel] = None):
 
 
 def test_body_is_converted_into_the_generated_model(tmp_path):
-    # The generated models are not plain containers: a oneOf body is a holder
-    # that only from_dict fills in, so passing the synthesized dict straight
-    # through would serialize an empty body -- or fail before the request is
-    # sent. The conversion must also see through the Optional[...] annotation.
+    # A oneOf body is a holder only from_dict fills in, so the raw dict would
+    # serialize empty or fail; the conversion must also see through Optional.
     spec = _write_spec(tmp_path, _BODY_SPEC.replace("KEYWORD", "oneOf"))
     op = spec.ops["SaveUnit"]
     body = build_kwargs(_body_signature, spec, op, 1)["body"]
@@ -233,9 +228,8 @@ def test_body_is_converted_into_the_generated_model(tmp_path):
 
 
 def test_module_absent_from_the_sdk_keeps_its_operations_in_the_completeness_check(tmp_path, monkeypatch):
-    # A module the spec list carries but the SDK does not must not drop out of
-    # the completeness check: otherwise all of its operations would go
-    # unverified while the suite still passed.
+    # A module in the spec list but not the SDK must stay in the completeness
+    # check, or its operations go unverified while the suite still passes.
     _write_spec(tmp_path, _PARAM_SPEC)
     monkeypatch.setenv("CONTRACT_SPEC_DIR", str(tmp_path))
     monkeypatch.setenv("CONTRACT_MODULES", "test")
