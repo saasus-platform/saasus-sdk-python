@@ -66,3 +66,8 @@ target/
 .ipynb_checkpoints
 .env
 *.yml
+# Workflows are *.yml but must be tracked; re-include them past the rule above.
+!.github/workflows/*.yml
+
+# Git worktrees created for feature branches.
+.worktrees/

@@ -34,6 +34,11 @@ flake8 = "^3.7.0"
 pydantic-core = "^2.4.0"
 bump-pydantic = "^0.8.0"
 
+[tool.poetry.group.test.dependencies]
+pytest = "^7.4.0"
+# Contract suite (tests/contract): parses the OpenAPI spec YAML.
+pyyaml = "^6.0"
+
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
