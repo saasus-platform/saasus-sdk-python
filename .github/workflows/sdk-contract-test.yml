@@ -98,7 +98,7 @@ jobs:
           CONTRACT_MODULES: ${{ steps.spec.outputs.modules }}
           # The candidate SDK must cover every spec operation.
           CONTRACT_REQUIRE_COMPLETE: "true"
-        run: poetry run pytest tests/contract -v
+        run: poetry run pytest tests/contract -v --tb=line
 
       - name: Resolve latest release tag
         id: release-tag
@@ -126,4 +126,4 @@ jobs:
         run: |
           set -euo pipefail
           poetry install --no-interaction
-          poetry run pytest tests/contract -v
+          poetry run pytest tests/contract -v --tb=line

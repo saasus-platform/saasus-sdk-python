@@ -55,6 +55,28 @@ _PARAM_SPEC = """
               description: ok
 """
 
+_RESERVED_WORD_SPEC = """
+    openapi: 3.0.0
+    paths:
+      /tenants/{tenant_id}/counts/{date}:
+        get:
+          operationId: GetDateCount
+          parameters:
+            - name: tenant_id
+              in: path
+              schema:
+                type: string
+              example: tenant-1
+            - name: date
+              in: path
+              schema:
+                type: string
+              example: "2024-01-01"
+          responses:
+            200:
+              description: ok
+"""
+
 _BODY_SPEC = """
     openapi: 3.0.0
     paths:
@@ -136,6 +158,11 @@ def _unexplained_signature(tenant_id, limit=None, x_saasus_referer=None, surpris
     pass
 
 
+# openapi-generator renames ``date`` (a reserved word) to ``var_date``.
+def _reserved_word_signature(tenant_id, var_date):
+    pass
+
+
 def test_binds_path_query_and_header_parameters_by_name(tmp_path):
     spec = _write_spec(tmp_path, _PARAM_SPEC)
     op = spec.ops["GetUsers"]
@@ -143,6 +170,18 @@ def test_binds_path_query_and_header_parameters_by_name(tmp_path):
         "tenant_id": "tenant-1",
         "limit": 10,
         "x_saasus_referer": "referer-1",
+    }
+
+
+def test_binds_reserved_word_parameter_renamed_by_generator(tmp_path):
+    # openapi-generator renames a spec parameter colliding with a Python
+    # builtin/keyword (``date`` -> ``var_date``); the value must still bind to
+    # that argument rather than being reported as unexplained.
+    spec = _write_spec(tmp_path, _RESERVED_WORD_SPEC)
+    op = spec.ops["GetDateCount"]
+    assert build_kwargs(_reserved_word_signature, spec, op, 0) == {
+        "tenant_id": "tenant-1",
+        "var_date": "2024-01-01",
     }
 
 

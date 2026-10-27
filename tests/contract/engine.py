@@ -224,7 +224,9 @@ def build_kwargs(method: Callable[..., Any], spec: Spec, op: Operation, variant_
 
     The generated path/query/header arguments carry the spec parameter name
     flattened to snake_case (``created_date`` -> ``created_date``,
-    ``X-Saasus-Referer`` -> ``x_saasus_referer``). Binding by normalized name --
+    ``X-Saasus-Referer`` -> ``x_saasus_referer``), except a name colliding with
+    a Python builtin/keyword, which the generator prefixes with ``var_``
+    (``date`` -> ``var_date``). Binding by normalized name --
     rather than position -- keeps the value in the right argument even for an
     SDK generated from a different spec revision (a parameter inserted in the
     middle, the forward-compatibility case). An argument the spec cannot explain
@@ -248,6 +250,11 @@ def build_kwargs(method: Callable[..., Any], spec: Spec, op: Operation, variant_
     unexplained: List[inspect.Parameter] = []
     for parameter in named:
         key = _normalize(parameter.name)
+        if key not in values_by_name and parameter.name.startswith("var_"):
+            # openapi-generator escapes a spec name that collides with a Python
+            # builtin/keyword by prefixing ``var_`` (``date`` -> ``var_date``);
+            # recover the spec name that argument stands for.
+            key = _normalize(parameter.name[len("var_") :])
         if key in values_by_name:
             # A spec value with no matching argument is left in the map: an SDK
             # generated before the spec added that parameter simply never
