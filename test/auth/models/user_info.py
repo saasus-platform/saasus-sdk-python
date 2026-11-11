@@ -28,10 +28,11 @@ class UserInfo(BaseModel):
     UserInfo
     """
     id: StrictStr = Field(...)
-    email: StrictStr = Field(..., description="E-mail")
+    email: StrictStr = Field(..., description="E-mail. For sign-in ID authentication users, this field is an empty string. ")
+    sign_in_id: StrictStr = Field(..., description="Sign-in ID. For email authentication users, this field is an empty string. ")
     user_attribute: Dict[str, Any] = Field(..., description="user additional attributes")
     tenants: Annotated[List[UserAvailableTenant], Field()] = Field(..., description="Tenant Info")
-    __properties = ["id", "email", "user_attribute", "tenants"]
+    __properties = ["id", "email", "sign_in_id", "user_attribute", "tenants"]
     model_config = ConfigDict(populate_by_name=True, validate_assignment=True)
 
     def to_str(self) -> str:
@@ -74,6 +75,7 @@ class UserInfo(BaseModel):
         _obj = UserInfo.parse_obj({
             "id": obj.get("id"),
             "email": obj.get("email"),
+            "sign_in_id": obj.get("sign_in_id"),
             "user_attribute": obj.get("user_attribute"),
             "tenants": [UserAvailableTenant.from_dict(_item) for _item in obj.get("tenants")] if obj.get("tenants") is not None else None
         })

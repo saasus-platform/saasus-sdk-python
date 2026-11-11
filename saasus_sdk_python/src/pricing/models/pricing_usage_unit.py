@@ -29,6 +29,7 @@ class PricingUsageUnit(BaseModel):
     """
     PricingUsageUnit
     """
+    type: UnitType = Field(...)
     upper_count: StrictInt = Field(..., description="Upper limit")
     unit_amount: StrictInt = Field(..., description="Amount per usage")
     metering_unit_name: StrictStr = Field(..., description="Metering unit name")
@@ -36,13 +37,12 @@ class PricingUsageUnit(BaseModel):
     name: StrictStr = Field(..., description="Name")
     display_name: StrictStr = Field(..., description="Display Name")
     description: StrictStr = Field(..., description="Description")
-    type: UnitType = Field(...)
     currency: Currency = Field(...)
     id: StrictStr = Field(..., description="Universally Unique Identifier")
     metering_unit_id: StrictStr = Field(..., description="Universally Unique Identifier")
     recurring_interval: RecurringInterval = Field(...)
     used: StrictBool = Field(...)
-    __properties = ["upper_count", "unit_amount", "metering_unit_name", "aggregate_usage", "name", "display_name", "description", "type", "currency", "id", "metering_unit_id", "recurring_interval", "used"]
+    __properties = ["type", "upper_count", "unit_amount", "metering_unit_name", "aggregate_usage", "name", "display_name", "description", "currency", "id", "metering_unit_id", "recurring_interval", "used"]
     model_config = ConfigDict(populate_by_name=True, validate_assignment=True)
 
     def to_str(self) -> str:
@@ -76,6 +76,7 @@ class PricingUsageUnit(BaseModel):
             return PricingUsageUnit.parse_obj(obj)
 
         _obj = PricingUsageUnit.parse_obj({
+            "type": obj.get("type"),
             "upper_count": obj.get("upper_count"),
             "unit_amount": obj.get("unit_amount"),
             "metering_unit_name": obj.get("metering_unit_name"),
@@ -83,7 +84,6 @@ class PricingUsageUnit(BaseModel):
             "name": obj.get("name"),
             "display_name": obj.get("display_name"),
             "description": obj.get("description"),
-            "type": obj.get("type"),
             "currency": obj.get("currency"),
             "id": obj.get("id"),
             "metering_unit_id": obj.get("metering_unit_id"),

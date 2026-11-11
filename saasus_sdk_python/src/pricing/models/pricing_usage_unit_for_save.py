@@ -19,10 +19,9 @@ import json
 
 
 from typing import Optional
-from pydantic import ConfigDict, BaseModel, Field, StrictInt, StrictStr
+from pydantic import field_validator, ConfigDict, BaseModel, Field, StrictInt, StrictStr
 from saasus_sdk_python.src.pricing.models.aggregate_usage import AggregateUsage
 from saasus_sdk_python.src.pricing.models.currency import Currency
-from saasus_sdk_python.src.pricing.models.unit_type import UnitType
 
 class PricingUsageUnitForSave(BaseModel):
     """
@@ -31,13 +30,21 @@ class PricingUsageUnitForSave(BaseModel):
     name: StrictStr = Field(..., description="Name")
     display_name: StrictStr = Field(..., description="Display Name")
     description: StrictStr = Field(..., description="Description")
-    type: UnitType = Field(...)
+    type: StrictStr = Field(...)
     currency: Currency = Field(...)
     upper_count: StrictInt = Field(..., description="Upper limit")
     unit_amount: StrictInt = Field(..., description="Amount per usage")
     metering_unit_name: StrictStr = Field(..., description="Metering unit name")
     aggregate_usage: Optional[AggregateUsage] = None
     __properties = ["name", "display_name", "description", "type", "currency", "upper_count", "unit_amount", "metering_unit_name", "aggregate_usage"]
+
+    @field_validator('type')
+    @classmethod
+    def type_validate_enum(cls, value):
+        """Validates the enum"""
+        if value not in ('usage'):
+            raise ValueError("must be one of enum values ('usage')")
+        return value
     model_config = ConfigDict(populate_by_name=True, validate_assignment=True)
 
     def to_str(self) -> str:

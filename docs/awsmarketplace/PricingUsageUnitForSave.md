@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **name** | **str** | Name | 
 **display_name** | **str** | Display Name | 
 **description** | **str** | Description | 
-**type** | [**UnitType**](UnitType.md) |  | 
+**type** | **str** |  | 
 **currency** | [**Currency**](Currency.md) |  | 
 **upper_count** | **int** | Upper limit | 
 **unit_amount** | **int** | Amount per usage | 

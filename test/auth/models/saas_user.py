@@ -18,17 +18,19 @@ import re  # noqa: F401
 import json
 
 
-from typing import Any, Dict
-from pydantic import ConfigDict, BaseModel, Field, StrictStr
+from typing import Any, Dict, Optional
+from pydantic import ConfigDict, BaseModel, Field, StrictInt, StrictStr
 
 class SaasUser(BaseModel):
     """
     SaasUser
     """
     id: StrictStr = Field(...)
-    email: StrictStr = Field(..., description="E-mail")
+    email: StrictStr = Field(..., description="E-mail. For sign-in ID authentication users, this field is an empty string. ")
+    sign_in_id: StrictStr = Field(..., description="Sign-in ID. For email authentication users, this field is an empty string. ")
     attributes: Dict[str, Any] = Field(..., description="Attribute information ")
-    __properties = ["id", "email", "attributes"]
+    last_login_at: Optional[StrictInt] = Field(None, description="Last login date and time (unix timestamp). Null if the user has never logged in. ")
+    __properties = ["id", "email", "sign_in_id", "attributes", "last_login_at"]
     model_config = ConfigDict(populate_by_name=True, validate_assignment=True)
 
     def to_str(self) -> str:
@@ -50,6 +52,11 @@ class SaasUser(BaseModel):
                           exclude={
                           },
                           exclude_none=True)
+        # set to None if last_login_at (nullable) is None
+        # and __fields_set__ contains the field
+        if self.last_login_at is None and "last_login_at" in self.__fields_set__:
+            _dict['last_login_at'] = None
+
         return _dict
 
     @classmethod
@@ -64,7 +71,9 @@ class SaasUser(BaseModel):
         _obj = SaasUser.parse_obj({
             "id": obj.get("id"),
             "email": obj.get("email"),
-            "attributes": obj.get("attributes")
+            "sign_in_id": obj.get("sign_in_id"),
+            "attributes": obj.get("attributes"),
+            "last_login_at": obj.get("last_login_at")
         })
         return _obj
 

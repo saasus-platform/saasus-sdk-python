@@ -4,7 +4,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**enabled** | **bool** | enable Single Tenant settings or not | 
+**enabled** | **bool** | enable SaaS Infrastructure Management settings or not | 
 **role_arn** | **str** | ARN of the role for SaaS Platform to AssumeRole | 
 **cloudformation_template_url** | **str** | S3 URL where the CloudFormationTemplate to be executed in the SaaS environment is stored | 
 **ddl_template_url** | **str** | S3 URL where the CloudFormationTemplate to be executed in the SaaS environment is stored | 

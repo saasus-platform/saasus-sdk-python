@@ -316,6 +316,7 @@ class AwsMarketplaceApi(object):
 
         _response_types_map = {
             '200': "CatalogEntityVisibility",
+            '404': "Error",
             '500': "Error",
         }
 

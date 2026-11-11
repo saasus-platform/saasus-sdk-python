@@ -5,15 +5,17 @@ All URIs are relative to *https://api.saasus.io/v1/auth*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**create_auth_credentials**](CredentialApi.md#create_auth_credentials) | **POST** /credentials | Save Authentication/Authorization Information
+[**exchange_auth_credentials**](CredentialApi.md#exchange_auth_credentials) | **POST** /credentials/exchange | Exchange a Temporary Code for Authentication/Authorization Information
 [**get_auth_credentials**](CredentialApi.md#get_auth_credentials) | **GET** /credentials | Get Authentication/Authorization Information
+[**revoke_token**](CredentialApi.md#revoke_token) | **POST** /token/revoke | Revoke Token
 
 
 # **create_auth_credentials**
-> AuthorizationTempCode create_auth_credentials(body=body)
+> AuthorizationTempCode create_auth_credentials(create_auth_credentials_param=create_auth_credentials_param)
 
 Save Authentication/Authorization Information
 
-Temporarily save the parameter for the ID token, access token, and refresh token and return a temporary code for obtaining. Temporary codes are valid for 10 seconds from issuance. 
+Temporarily save the parameter for the ID token, access token, and refresh token and return a temporary code for obtaining. Temporary codes are valid for 10 seconds from issuance. When code_challenge is specified, the temporary code can only be exchanged via POST /credentials/exchange and cannot be retrieved via GET /credentials. 
 
 ### Example
 
@@ -23,7 +25,7 @@ import time
 import os
 import saasus_sdk_python.src.auth
 from saasus_sdk_python.src.auth.models.authorization_temp_code import AuthorizationTempCode
-from saasus_sdk_python.src.auth.models.credentials import Credentials
+from saasus_sdk_python.src.auth.models.create_auth_credentials_param import CreateAuthCredentialsParam
 from saasus_sdk_python.src.auth.rest import ApiException
 from pprint import pprint
 
@@ -47,11 +49,11 @@ configuration = saasus_sdk_python.src.auth.Configuration(
 with saasus_sdk_python.src.auth.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = saasus_sdk_python.src.auth.CredentialApi(api_client)
-    body = saasus_sdk_python.src.auth.Credentials() # Credentials |  (optional)
+    create_auth_credentials_param = saasus_sdk_python.src.auth.CreateAuthCredentialsParam() # CreateAuthCredentialsParam |  (optional)
 
     try:
         # Save Authentication/Authorization Information
-        api_response = api_instance.create_auth_credentials(body=body)
+        api_response = api_instance.create_auth_credentials(create_auth_credentials_param=create_auth_credentials_param)
         print("The response of CredentialApi->create_auth_credentials:\n")
         pprint(api_response)
     except Exception as e:
@@ -64,7 +66,7 @@ with saasus_sdk_python.src.auth.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | **Credentials**|  | [optional] 
+ **create_auth_credentials_param** | [**CreateAuthCredentialsParam**](CreateAuthCredentialsParam.md)|  | [optional] 
 
 ### Return type
 
@@ -85,6 +87,88 @@ Name | Type | Description  | Notes
 **201** | Created |  -  |
 **400** | Bad Request |  -  |
 **401** | Unauthorized |  -  |
+**500** | Internal Server Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **exchange_auth_credentials**
+> Credentials exchange_auth_credentials(exchange_auth_credentials_param)
+
+Exchange a Temporary Code for Authentication/Authorization Information
+
+Exchange a temporary code for ID token, access token, and refresh token by verifying the PKCE code verifier. Only temporary codes created with code_challenge can be exchanged. Temporary codes created without code_challenge must be retrieved via GET /credentials. 
+
+### Example
+
+* Bearer Authentication (Bearer):
+```python
+import time
+import os
+import saasus_sdk_python.src.auth
+from saasus_sdk_python.src.auth.models.credentials import Credentials
+from saasus_sdk_python.src.auth.models.exchange_auth_credentials_param import ExchangeAuthCredentialsParam
+from saasus_sdk_python.src.auth.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://api.saasus.io/v1/auth
+# See configuration.py for a list of all supported configuration parameters.
+configuration = saasus_sdk_python.src.auth.Configuration(
+    host = "https://api.saasus.io/v1/auth"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: Bearer
+configuration = saasus_sdk_python.src.auth.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with saasus_sdk_python.src.auth.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = saasus_sdk_python.src.auth.CredentialApi(api_client)
+    exchange_auth_credentials_param = saasus_sdk_python.src.auth.ExchangeAuthCredentialsParam() # ExchangeAuthCredentialsParam | 
+
+    try:
+        # Exchange a Temporary Code for Authentication/Authorization Information
+        api_response = api_instance.exchange_auth_credentials(exchange_auth_credentials_param)
+        print("The response of CredentialApi->exchange_auth_credentials:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling CredentialApi->exchange_auth_credentials: %s\n" % e)
+```
+
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **exchange_auth_credentials_param** | [**ExchangeAuthCredentialsParam**](ExchangeAuthCredentialsParam.md)|  | 
+
+### Return type
+
+[**Credentials**](Credentials.md)
+
+### Authorization
+
+[Bearer](../README.md#Bearer)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | Bad Request |  -  |
+**401** | Unauthorized |  -  |
+**404** | Not Found |  -  |
 **500** | Internal Server Error |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -168,6 +252,83 @@ Name | Type | Description  | Notes
 |-------------|-------------|------------------|
 **200** | OK |  -  |
 **404** | Not Found |  -  |
+**500** | Internal Server Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **revoke_token**
+> revoke_token(revoke_token_param)
+
+Revoke Token
+
+Revoke the specified refresh token. 
+
+### Example
+
+* Bearer Authentication (Bearer):
+```python
+import time
+import os
+import saasus_sdk_python.src.auth
+from saasus_sdk_python.src.auth.models.revoke_token_param import RevokeTokenParam
+from saasus_sdk_python.src.auth.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://api.saasus.io/v1/auth
+# See configuration.py for a list of all supported configuration parameters.
+configuration = saasus_sdk_python.src.auth.Configuration(
+    host = "https://api.saasus.io/v1/auth"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: Bearer
+configuration = saasus_sdk_python.src.auth.Configuration(
+    access_token = os.environ["BEARER_TOKEN"]
+)
+
+# Enter a context with an instance of the API client
+with saasus_sdk_python.src.auth.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = saasus_sdk_python.src.auth.CredentialApi(api_client)
+    revoke_token_param = saasus_sdk_python.src.auth.RevokeTokenParam() # RevokeTokenParam | 
+
+    try:
+        # Revoke Token
+        api_instance.revoke_token(revoke_token_param)
+    except Exception as e:
+        print("Exception when calling CredentialApi->revoke_token: %s\n" % e)
+```
+
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **revoke_token_param** | [**RevokeTokenParam**](RevokeTokenParam.md)|  | 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[Bearer](../README.md#Bearer)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | Bad Request |  -  |
 **500** | Internal Server Error |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

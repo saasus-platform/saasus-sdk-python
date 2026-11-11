@@ -6,10 +6,10 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**get_auth_info**](AuthInfoApi.md#get_auth_info) | **GET** /auth-info | Get Authentication Info
 [**get_identity_providers**](AuthInfoApi.md#get_identity_providers) | **GET** /identity-providers | Get Sign-In Information Via External Provider
-[**get_sign_in_settings**](AuthInfoApi.md#get_sign_in_settings) | **GET** /sign-in-settings | Get Password Requirements
+[**get_sign_in_settings**](AuthInfoApi.md#get_sign_in_settings) | **GET** /sign-in-settings | Get Sign-In Settings
 [**update_auth_info**](AuthInfoApi.md#update_auth_info) | **PUT** /auth-info | Update Authentication Info
 [**update_identity_provider**](AuthInfoApi.md#update_identity_provider) | **PUT** /identity-providers | Update Sign-In Information
-[**update_sign_in_settings**](AuthInfoApi.md#update_sign_in_settings) | **PUT** /sign-in-settings | Update Password Requirements
+[**update_sign_in_settings**](AuthInfoApi.md#update_sign_in_settings) | **PUT** /sign-in-settings | Update Sign-In Settings
 
 
 # **get_auth_info**
@@ -163,9 +163,9 @@ This endpoint does not need any parameter.
 # **get_sign_in_settings**
 > SignInSettings get_sign_in_settings()
 
-Get Password Requirements
+Get Sign-In Settings
 
-Get user password requirements. Set a secure password that is difficult to decipher by increasing the number of digits by combining alphabets, numbers, and symbols. 
+Get sign-in settings, including user password requirements and refresh token validity period. 
 
 ### Example
 
@@ -200,7 +200,7 @@ with saasus_sdk_python.src.auth.ApiClient(configuration) as api_client:
     api_instance = saasus_sdk_python.src.auth.AuthInfoApi(api_client)
 
     try:
-        # Get Password Requirements
+        # Get Sign-In Settings
         api_response = api_instance.get_sign_in_settings()
         print("The response of AuthInfoApi->get_sign_in_settings:\n")
         pprint(api_response)
@@ -382,6 +382,7 @@ void (empty response body)
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
+**400** | Bad Request |  -  |
 **500** | Internal Server Error |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -389,9 +390,9 @@ void (empty response body)
 # **update_sign_in_settings**
 > update_sign_in_settings(update_sign_in_settings_param=update_sign_in_settings_param)
 
-Update Password Requirements
+Update Sign-In Settings
 
-Update user password requirements. Set a secure password that is difficult to decipher by increasing the number of digits by combining alphabets, numbers, and symbols. 
+Update sign-in settings, including user password requirements and refresh token validity period. 
 
 ### Example
 
@@ -427,7 +428,7 @@ with saasus_sdk_python.src.auth.ApiClient(configuration) as api_client:
     update_sign_in_settings_param = saasus_sdk_python.src.auth.UpdateSignInSettingsParam() # UpdateSignInSettingsParam |  (optional)
 
     try:
-        # Update Password Requirements
+        # Update Sign-In Settings
         api_instance.update_sign_in_settings(update_sign_in_settings_param=update_sign_in_settings_param)
     except Exception as e:
         print("Exception when calling AuthInfoApi->update_sign_in_settings: %s\n" % e)
@@ -458,6 +459,7 @@ void (empty response body)
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
+**400** | Invalid Parameter |  -  |
 **500** | Internal Server Error |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

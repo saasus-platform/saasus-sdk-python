@@ -36,8 +36,8 @@ class MfaPreference(BaseModel):
         if value is None:
             return value
 
-        if value not in ('softwareToken'):
-            raise ValueError("must be one of enum values ('softwareToken')")
+        if value not in ('softwareToken', 'email'):
+            raise ValueError("must be one of enum values ('softwareToken', 'email')")
         return value
     model_config = ConfigDict(populate_by_name=True, validate_assignment=True)
 
