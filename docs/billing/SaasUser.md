@@ -5,8 +5,10 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **str** |  | 
-**email** | **str** | E-mail | 
+**email** | **str** | E-mail. For sign-in ID authentication users, this field is an empty string.  | 
+**sign_in_id** | **str** | Sign-in ID. For email authentication users, this field is an empty string.  | 
 **attributes** | **Dict[str, object]** | Attribute information  | 
+**last_login_at** | **int** | Last login date and time (unix timestamp). Null if the user has never logged in.  | [optional] 
 
 ## Example
 

@@ -28,16 +28,16 @@ class PricingFixedUnit(BaseModel):
     """
     PricingFixedUnit
     """
+    type: UnitType = Field(...)
     unit_amount: StrictInt = Field(..., description="Price")
     recurring_interval: RecurringInterval = Field(...)
     name: StrictStr = Field(..., description="Name")
     display_name: StrictStr = Field(..., description="Display Name")
     description: StrictStr = Field(..., description="Description")
-    type: UnitType = Field(...)
     currency: Currency = Field(...)
     id: StrictStr = Field(..., description="Universally Unique Identifier")
     used: StrictBool = Field(...)
-    __properties = ["unit_amount", "recurring_interval", "name", "display_name", "description", "type", "currency", "id", "used"]
+    __properties = ["type", "unit_amount", "recurring_interval", "name", "display_name", "description", "currency", "id", "used"]
     model_config = ConfigDict(populate_by_name=True, validate_assignment=True)
 
     def to_str(self) -> str:
@@ -71,12 +71,12 @@ class PricingFixedUnit(BaseModel):
             return PricingFixedUnit.parse_obj(obj)
 
         _obj = PricingFixedUnit.parse_obj({
+            "type": obj.get("type"),
             "unit_amount": obj.get("unit_amount"),
             "recurring_interval": obj.get("recurring_interval"),
             "name": obj.get("name"),
             "display_name": obj.get("display_name"),
             "description": obj.get("description"),
-            "type": obj.get("type"),
             "currency": obj.get("currency"),
             "id": obj.get("id"),
             "used": obj.get("used")

@@ -8,13 +8,13 @@ Name | Type | Description | Notes
 **metering_unit_id** | **str** | Universally Unique Identifier | 
 **recurring_interval** | [**RecurringInterval**](RecurringInterval.md) |  | 
 **used** | **bool** |  | 
+**type** | [**UnitType**](UnitType.md) |  | 
 **upper_count** | **int** | Upper limit | 
 **metering_unit_name** | **str** | Metering unit name | 
 **aggregate_usage** | [**AggregateUsage**](AggregateUsage.md) |  | [optional] 
 **name** | **str** | Name | 
 **display_name** | **str** | Display Name | 
 **description** | **str** | Description | 
-**type** | [**UnitType**](UnitType.md) |  | 
 **currency** | [**Currency**](Currency.md) |  | 
 **tiers** | [**List[PricingTier]**](PricingTier.md) |  | 
 **unit_amount** | **int** | Price | 

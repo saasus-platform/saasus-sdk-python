@@ -4,17 +4,17 @@ All URIs are relative to *https://api.saasus.io/v1/auth*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**get_cloud_formation_launch_stack_link_for_single_tenant**](SingleTenantApi.md#get_cloud_formation_launch_stack_link_for_single_tenant) | **GET** /single-tenant/cloudformation-launch-stack-link | Get CloudFormation Stack Launch Link For Single Tenant
-[**get_single_tenant_settings**](SingleTenantApi.md#get_single_tenant_settings) | **GET** /single-tenant/settings | Retrieve the settings of the single tenant.
-[**update_single_tenant_settings**](SingleTenantApi.md#update_single_tenant_settings) | **PATCH** /single-tenant/settings | Update configuration information for single-tenant functionality
+[**get_cloud_formation_launch_stack_link_for_single_tenant**](SingleTenantApi.md#get_cloud_formation_launch_stack_link_for_single_tenant) | **GET** /single-tenant/cloudformation-launch-stack-link | Get CloudFormation Stack Launch Link For SaaS Infrastructure Management
+[**get_single_tenant_settings**](SingleTenantApi.md#get_single_tenant_settings) | **GET** /single-tenant/settings | Retrieve the settings of the SaaS Infrastructure Management.
+[**update_single_tenant_settings**](SingleTenantApi.md#update_single_tenant_settings) | **PATCH** /single-tenant/settings | Update configuration information for SaaS Infrastructure Management
 
 
 # **get_cloud_formation_launch_stack_link_for_single_tenant**
 > CloudFormationLaunchStackLink get_cloud_formation_launch_stack_link_for_single_tenant()
 
-Get CloudFormation Stack Launch Link For Single Tenant
+Get CloudFormation Stack Launch Link For SaaS Infrastructure Management
 
-Get the CloudFormation stack activation link for Single Tenant. 
+Get the CloudFormation stack activation link for SaaS Infrastructure Management. 
 
 ### Example
 
@@ -49,7 +49,7 @@ with saasus_sdk_python.src.auth.ApiClient(configuration) as api_client:
     api_instance = saasus_sdk_python.src.auth.SingleTenantApi(api_client)
 
     try:
-        # Get CloudFormation Stack Launch Link For Single Tenant
+        # Get CloudFormation Stack Launch Link For SaaS Infrastructure Management
         api_response = api_instance.get_cloud_formation_launch_stack_link_for_single_tenant()
         print("The response of SingleTenantApi->get_cloud_formation_launch_stack_link_for_single_tenant:\n")
         pprint(api_response)
@@ -86,7 +86,7 @@ This endpoint does not need any parameter.
 # **get_single_tenant_settings**
 > SingleTenantSettings get_single_tenant_settings()
 
-Retrieve the settings of the single tenant.
+Retrieve the settings of the SaaS Infrastructure Management.
 
 ### Example
 
@@ -121,7 +121,7 @@ with saasus_sdk_python.src.auth.ApiClient(configuration) as api_client:
     api_instance = saasus_sdk_python.src.auth.SingleTenantApi(api_client)
 
     try:
-        # Retrieve the settings of the single tenant.
+        # Retrieve the settings of the SaaS Infrastructure Management.
         api_response = api_instance.get_single_tenant_settings()
         print("The response of SingleTenantApi->get_single_tenant_settings:\n")
         pprint(api_response)
@@ -158,9 +158,9 @@ This endpoint does not need any parameter.
 # **update_single_tenant_settings**
 > update_single_tenant_settings(update_single_tenant_settings_param=update_single_tenant_settings_param)
 
-Update configuration information for single-tenant functionality
+Update configuration information for SaaS Infrastructure Management
 
-Updates configuration information for single-tenant functionality Returns error if single tenant feature cannot be enabled. 
+Updates configuration information for SaaS Infrastructure Management Returns error if SaaS Infrastructure Management feature cannot be enabled. 
 
 ### Example
 
@@ -196,7 +196,7 @@ with saasus_sdk_python.src.auth.ApiClient(configuration) as api_client:
     update_single_tenant_settings_param = saasus_sdk_python.src.auth.UpdateSingleTenantSettingsParam() # UpdateSingleTenantSettingsParam |  (optional)
 
     try:
-        # Update configuration information for single-tenant functionality
+        # Update configuration information for SaaS Infrastructure Management
         api_instance.update_single_tenant_settings(update_single_tenant_settings_param=update_single_tenant_settings_param)
     except Exception as e:
         print("Exception when calling SingleTenantApi->update_single_tenant_settings: %s\n" % e)

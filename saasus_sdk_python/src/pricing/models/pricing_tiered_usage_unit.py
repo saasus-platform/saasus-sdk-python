@@ -31,20 +31,20 @@ class PricingTieredUsageUnit(BaseModel):
     """
     PricingTieredUsageUnit
     """
+    type: UnitType = Field(...)
     upper_count: StrictInt = Field(..., description="Upper limit")
     metering_unit_name: StrictStr = Field(..., description="Metering unit name")
     aggregate_usage: Optional[AggregateUsage] = None
     name: StrictStr = Field(..., description="Name")
     display_name: StrictStr = Field(..., description="Display Name")
     description: StrictStr = Field(..., description="Description")
-    type: UnitType = Field(...)
     currency: Currency = Field(...)
     tiers: Annotated[List[PricingTier], Field()] = Field(...)
     id: StrictStr = Field(..., description="Universally Unique Identifier")
     metering_unit_id: StrictStr = Field(..., description="Universally Unique Identifier")
     recurring_interval: RecurringInterval = Field(...)
     used: StrictBool = Field(..., description="Indicates if the unit is used")
-    __properties = ["upper_count", "metering_unit_name", "aggregate_usage", "name", "display_name", "description", "type", "currency", "tiers", "id", "metering_unit_id", "recurring_interval", "used"]
+    __properties = ["type", "upper_count", "metering_unit_name", "aggregate_usage", "name", "display_name", "description", "currency", "tiers", "id", "metering_unit_id", "recurring_interval", "used"]
     model_config = ConfigDict(populate_by_name=True, validate_assignment=True)
 
     def to_str(self) -> str:
@@ -85,13 +85,13 @@ class PricingTieredUsageUnit(BaseModel):
             return PricingTieredUsageUnit.parse_obj(obj)
 
         _obj = PricingTieredUsageUnit.parse_obj({
+            "type": obj.get("type"),
             "upper_count": obj.get("upper_count"),
             "metering_unit_name": obj.get("metering_unit_name"),
             "aggregate_usage": obj.get("aggregate_usage"),
             "name": obj.get("name"),
             "display_name": obj.get("display_name"),
             "description": obj.get("description"),
-            "type": obj.get("type"),
             "currency": obj.get("currency"),
             "tiers": [PricingTier.from_dict(_item) for _item in obj.get("tiers")] if obj.get("tiers") is not None else None,
             "id": obj.get("id"),

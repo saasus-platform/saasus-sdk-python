@@ -24,7 +24,10 @@ from pydantic import Field, StrictStr
 from typing import Optional
 
 from saasus_sdk_python.src.auth.models.authorization_temp_code import AuthorizationTempCode
+from saasus_sdk_python.src.auth.models.create_auth_credentials_param import CreateAuthCredentialsParam
 from saasus_sdk_python.src.auth.models.credentials import Credentials
+from saasus_sdk_python.src.auth.models.exchange_auth_credentials_param import ExchangeAuthCredentialsParam
+from saasus_sdk_python.src.auth.models.revoke_token_param import RevokeTokenParam
 
 from saasus_sdk_python.src.auth.api_client import ApiClient
 from saasus_sdk_python.src.auth.api_response import ApiResponse
@@ -47,18 +50,18 @@ class CredentialApi(object):
         self.api_client = api_client
 
     @validate_arguments
-    def create_auth_credentials(self, body : Optional[Credentials] = None, **kwargs) -> AuthorizationTempCode:  # noqa: E501
+    def create_auth_credentials(self, create_auth_credentials_param : Optional[CreateAuthCredentialsParam] = None, **kwargs) -> AuthorizationTempCode:  # noqa: E501
         """Save Authentication/Authorization Information  # noqa: E501
 
-        Temporarily save the parameter for the ID token, access token, and refresh token and return a temporary code for obtaining. Temporary codes are valid for 10 seconds from issuance.   # noqa: E501
+        Temporarily save the parameter for the ID token, access token, and refresh token and return a temporary code for obtaining. Temporary codes are valid for 10 seconds from issuance. When code_challenge is specified, the temporary code can only be exchanged via POST /credentials/exchange and cannot be retrieved via GET /credentials.   # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.create_auth_credentials(body, async_req=True)
+        >>> thread = api.create_auth_credentials(create_auth_credentials_param, async_req=True)
         >>> result = thread.get()
 
-        :param body:
-        :type body: Credentials
+        :param create_auth_credentials_param:
+        :type create_auth_credentials_param: CreateAuthCredentialsParam
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
         :param _request_timeout: timeout setting for this request. If one
@@ -73,21 +76,21 @@ class CredentialApi(object):
         kwargs['_return_http_data_only'] = True
         if '_preload_content' in kwargs:
             raise ValueError("Error! Please call the create_auth_credentials_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data")
-        return self.create_auth_credentials_with_http_info(body, **kwargs)  # noqa: E501
+        return self.create_auth_credentials_with_http_info(create_auth_credentials_param, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def create_auth_credentials_with_http_info(self, body : Optional[Credentials] = None, **kwargs) -> ApiResponse:  # noqa: E501
+    def create_auth_credentials_with_http_info(self, create_auth_credentials_param : Optional[CreateAuthCredentialsParam] = None, **kwargs) -> ApiResponse:  # noqa: E501
         """Save Authentication/Authorization Information  # noqa: E501
 
-        Temporarily save the parameter for the ID token, access token, and refresh token and return a temporary code for obtaining. Temporary codes are valid for 10 seconds from issuance.   # noqa: E501
+        Temporarily save the parameter for the ID token, access token, and refresh token and return a temporary code for obtaining. Temporary codes are valid for 10 seconds from issuance. When code_challenge is specified, the temporary code can only be exchanged via POST /credentials/exchange and cannot be retrieved via GET /credentials.   # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.create_auth_credentials_with_http_info(body, async_req=True)
+        >>> thread = api.create_auth_credentials_with_http_info(create_auth_credentials_param, async_req=True)
         >>> result = thread.get()
 
-        :param body:
-        :type body: Credentials
+        :param create_auth_credentials_param:
+        :type create_auth_credentials_param: CreateAuthCredentialsParam
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
         :param _preload_content: if False, the ApiResponse.data will
@@ -116,7 +119,7 @@ class CredentialApi(object):
         _params = locals()
 
         _all_params = [
-            'body'
+            'create_auth_credentials_param'
         ]
         _all_params.extend(
             [
@@ -154,8 +157,8 @@ class CredentialApi(object):
         _files = {}
         # process the body parameter
         _body_params = None
-        if _params['body'] is not None:
-            _body_params = _params['body']
+        if _params['create_auth_credentials_param'] is not None:
+            _body_params = _params['create_auth_credentials_param']
 
         # set the HTTP header `Accept`
         _header_params['Accept'] = self.api_client.select_header_accept(
@@ -180,6 +183,156 @@ class CredentialApi(object):
 
         return self.api_client.call_api(
             '/credentials', 'POST',
+            _path_params,
+            _query_params,
+            _header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            response_types_map=_response_types_map,
+            auth_settings=_auth_settings,
+            async_req=_params.get('async_req'),
+            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
+            _preload_content=_params.get('_preload_content', True),
+            _request_timeout=_params.get('_request_timeout'),
+            collection_formats=_collection_formats,
+            _request_auth=_params.get('_request_auth'))
+
+    @validate_arguments
+    def exchange_auth_credentials(self, exchange_auth_credentials_param : ExchangeAuthCredentialsParam, **kwargs) -> Credentials:  # noqa: E501
+        """Exchange a Temporary Code for Authentication/Authorization Information  # noqa: E501
+
+        Exchange a temporary code for ID token, access token, and refresh token by verifying the PKCE code verifier. Only temporary codes created with code_challenge can be exchanged. Temporary codes created without code_challenge must be retrieved via GET /credentials.   # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.exchange_auth_credentials(exchange_auth_credentials_param, async_req=True)
+        >>> result = thread.get()
+
+        :param exchange_auth_credentials_param: (required)
+        :type exchange_auth_credentials_param: ExchangeAuthCredentialsParam
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :return: Returns the result object.
+                 If the method is called asynchronously,
+                 returns the request thread.
+        :rtype: Credentials
+        """
+        kwargs['_return_http_data_only'] = True
+        if '_preload_content' in kwargs:
+            raise ValueError("Error! Please call the exchange_auth_credentials_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data")
+        return self.exchange_auth_credentials_with_http_info(exchange_auth_credentials_param, **kwargs)  # noqa: E501
+
+    @validate_arguments
+    def exchange_auth_credentials_with_http_info(self, exchange_auth_credentials_param : ExchangeAuthCredentialsParam, **kwargs) -> ApiResponse:  # noqa: E501
+        """Exchange a Temporary Code for Authentication/Authorization Information  # noqa: E501
+
+        Exchange a temporary code for ID token, access token, and refresh token by verifying the PKCE code verifier. Only temporary codes created with code_challenge can be exchanged. Temporary codes created without code_challenge must be retrieved via GET /credentials.   # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.exchange_auth_credentials_with_http_info(exchange_auth_credentials_param, async_req=True)
+        >>> result = thread.get()
+
+        :param exchange_auth_credentials_param: (required)
+        :type exchange_auth_credentials_param: ExchangeAuthCredentialsParam
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
+        :param _preload_content: if False, the ApiResponse.data will
+                                 be set to none and raw_data will store the 
+                                 HTTP response body without reading/decoding.
+                                 Default is True.
+        :type _preload_content: bool, optional
+        :param _return_http_data_only: response data instead of ApiResponse
+                                       object with status code, headers, etc
+        :type _return_http_data_only: bool, optional
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the authentication
+                              in the spec for a single request.
+        :type _request_auth: dict, optional
+        :type _content_type: string, optional: force content-type for the request
+        :return: Returns the result object.
+                 If the method is called asynchronously,
+                 returns the request thread.
+        :rtype: tuple(Credentials, status_code(int), headers(HTTPHeaderDict))
+        """
+
+        _params = locals()
+
+        _all_params = [
+            'exchange_auth_credentials_param'
+        ]
+        _all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth',
+                '_content_type',
+                '_headers'
+            ]
+        )
+
+        # validate the arguments
+        for _key, _val in _params['kwargs'].items():
+            if _key not in _all_params:
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method exchange_auth_credentials" % _key
+                )
+            _params[_key] = _val
+        del _params['kwargs']
+
+        _collection_formats = {}
+
+        # process the path parameters
+        _path_params = {}
+
+        # process the query parameters
+        _query_params = []
+        # process the header parameters
+        _header_params = dict(_params.get('_headers', {}))
+        # process the form parameters
+        _form_params = []
+        _files = {}
+        # process the body parameter
+        _body_params = None
+        if _params['exchange_auth_credentials_param'] is not None:
+            _body_params = _params['exchange_auth_credentials_param']
+
+        # set the HTTP header `Accept`
+        _header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # set the HTTP header `Content-Type`
+        _content_types_list = _params.get('_content_type',
+            self.api_client.select_header_content_type(
+                ['application/json']))
+        if _content_types_list:
+                _header_params['Content-Type'] = _content_types_list
+
+        # authentication setting
+        _auth_settings = ['Bearer']  # noqa: E501
+
+        _response_types_map = {
+            '200': "Credentials",
+            '400': "Error",
+            '401': "Error",
+            '404': "Error",
+            '500': "Error",
+        }
+
+        return self.api_client.call_api(
+            '/credentials/exchange', 'POST',
             _path_params,
             _query_params,
             _header_params,
@@ -337,6 +490,150 @@ class CredentialApi(object):
 
         return self.api_client.call_api(
             '/credentials', 'GET',
+            _path_params,
+            _query_params,
+            _header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            response_types_map=_response_types_map,
+            auth_settings=_auth_settings,
+            async_req=_params.get('async_req'),
+            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
+            _preload_content=_params.get('_preload_content', True),
+            _request_timeout=_params.get('_request_timeout'),
+            collection_formats=_collection_formats,
+            _request_auth=_params.get('_request_auth'))
+
+    @validate_arguments
+    def revoke_token(self, revoke_token_param : RevokeTokenParam, **kwargs) -> None:  # noqa: E501
+        """Revoke Token  # noqa: E501
+
+        Revoke the specified refresh token.   # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.revoke_token(revoke_token_param, async_req=True)
+        >>> result = thread.get()
+
+        :param revoke_token_param: (required)
+        :type revoke_token_param: RevokeTokenParam
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :return: Returns the result object.
+                 If the method is called asynchronously,
+                 returns the request thread.
+        :rtype: None
+        """
+        kwargs['_return_http_data_only'] = True
+        if '_preload_content' in kwargs:
+            raise ValueError("Error! Please call the revoke_token_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data")
+        return self.revoke_token_with_http_info(revoke_token_param, **kwargs)  # noqa: E501
+
+    @validate_arguments
+    def revoke_token_with_http_info(self, revoke_token_param : RevokeTokenParam, **kwargs) -> ApiResponse:  # noqa: E501
+        """Revoke Token  # noqa: E501
+
+        Revoke the specified refresh token.   # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.revoke_token_with_http_info(revoke_token_param, async_req=True)
+        >>> result = thread.get()
+
+        :param revoke_token_param: (required)
+        :type revoke_token_param: RevokeTokenParam
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
+        :param _preload_content: if False, the ApiResponse.data will
+                                 be set to none and raw_data will store the 
+                                 HTTP response body without reading/decoding.
+                                 Default is True.
+        :type _preload_content: bool, optional
+        :param _return_http_data_only: response data instead of ApiResponse
+                                       object with status code, headers, etc
+        :type _return_http_data_only: bool, optional
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the authentication
+                              in the spec for a single request.
+        :type _request_auth: dict, optional
+        :type _content_type: string, optional: force content-type for the request
+        :return: Returns the result object.
+                 If the method is called asynchronously,
+                 returns the request thread.
+        :rtype: None
+        """
+
+        _params = locals()
+
+        _all_params = [
+            'revoke_token_param'
+        ]
+        _all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth',
+                '_content_type',
+                '_headers'
+            ]
+        )
+
+        # validate the arguments
+        for _key, _val in _params['kwargs'].items():
+            if _key not in _all_params:
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method revoke_token" % _key
+                )
+            _params[_key] = _val
+        del _params['kwargs']
+
+        _collection_formats = {}
+
+        # process the path parameters
+        _path_params = {}
+
+        # process the query parameters
+        _query_params = []
+        # process the header parameters
+        _header_params = dict(_params.get('_headers', {}))
+        # process the form parameters
+        _form_params = []
+        _files = {}
+        # process the body parameter
+        _body_params = None
+        if _params['revoke_token_param'] is not None:
+            _body_params = _params['revoke_token_param']
+
+        # set the HTTP header `Accept`
+        _header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # set the HTTP header `Content-Type`
+        _content_types_list = _params.get('_content_type',
+            self.api_client.select_header_content_type(
+                ['application/json']))
+        if _content_types_list:
+                _header_params['Content-Type'] = _content_types_list
+
+        # authentication setting
+        _auth_settings = ['Bearer']  # noqa: E501
+
+        _response_types_map = {}
+
+        return self.api_client.call_api(
+            '/token/revoke', 'POST',
             _path_params,
             _query_params,
             _header_params,

@@ -4,12 +4,12 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**type** | [**UnitType**](UnitType.md) |  | 
 **unit_amount** | **int** | Price | 
 **recurring_interval** | [**RecurringInterval**](RecurringInterval.md) |  | 
 **name** | **str** | Name | 
 **display_name** | **str** | Display Name | 
 **description** | **str** | Description | 
-**type** | [**UnitType**](UnitType.md) |  | 
 **currency** | [**Currency**](Currency.md) |  | 
 **id** | **str** | Universally Unique Identifier | 
 **used** | **bool** |  | 

@@ -1,5 +1,6 @@
 # UpdateSignInSettingsParam
 
+Set both value and unit in refresh_token_validity when updating the refresh token validity period.
 
 ## Properties
 Name | Type | Description | Notes
@@ -10,6 +11,7 @@ Name | Type | Description | Notes
 **recaptcha_props** | [**RecaptchaProps**](RecaptchaProps.md) |  | [optional] 
 **account_verification** | [**AccountVerification**](AccountVerification.md) |  | [optional] 
 **self_regist** | [**SelfRegist**](SelfRegist.md) |  | [optional] 
+**refresh_token_validity** | [**RefreshTokenValidity**](RefreshTokenValidity.md) |  | [optional] 
 
 ## Example
 
