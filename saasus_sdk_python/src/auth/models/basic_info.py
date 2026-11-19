@@ -18,8 +18,8 @@ import re  # noqa: F401
 import json
 
 
-from typing import List
-from pydantic import ConfigDict, BaseModel, Field, StrictBool, StrictStr
+from typing import List, Optional
+from pydantic import field_validator, ConfigDict, BaseModel, Field, StrictBool, StrictStr
 from saasus_sdk_python.src.auth.models.dns_record import DnsRecord
 from typing_extensions import Annotated
 
@@ -29,6 +29,8 @@ class BasicInfo(BaseModel):
     """
     domain_name: StrictStr = Field(..., description="Domain Name")
     is_dns_validated: StrictBool = Field(..., description="DNS Record Verification Results")
+    domain_setup_status: Optional[StrictStr] = Field(None, description="Domain setup status. Pending means validation or configuration is in progress; action_required means user action is needed; completed means configuration has been accepted.")
+    domain_setup_reason_code: Optional[StrictStr] = Field(None, description="Reason domain setup is incomplete. Omitted when no known reason is available. DNS validation may still be pending while records propagate. Failed or timed-out certificate requests require resubmitting the domain settings after correcting DNS.")
     certificate_dns_record: DnsRecord = Field(...)
     cloud_front_dns_record: DnsRecord = Field(...)
     dkim_dns_records: Annotated[List[DnsRecord], Field()] = Field(..., description="DKIM DNS Records")
@@ -36,7 +38,29 @@ class BasicInfo(BaseModel):
     from_email_address: StrictStr = Field(..., description="Sender Email for Authentication Email")
     reply_email_address: StrictStr = Field(..., description="Reply-from email address of authentication email")
     is_ses_sandbox_granted: StrictBool = Field(..., description="SES sandbox release and Cognito SES configuration results")
-    __properties = ["domain_name", "is_dns_validated", "certificate_dns_record", "cloud_front_dns_record", "dkim_dns_records", "default_domain_name", "from_email_address", "reply_email_address", "is_ses_sandbox_granted"]
+    __properties = ["domain_name", "is_dns_validated", "domain_setup_status", "domain_setup_reason_code", "certificate_dns_record", "cloud_front_dns_record", "dkim_dns_records", "default_domain_name", "from_email_address", "reply_email_address", "is_ses_sandbox_granted"]
+
+    @field_validator('domain_setup_status')
+    @classmethod
+    def domain_setup_status_validate_enum(cls, value):
+        """Validates the enum"""
+        if value is None:
+            return value
+
+        if value not in ('pending', 'action_required', 'completed'):
+            raise ValueError("must be one of enum values ('pending', 'action_required', 'completed')")
+        return value
+
+    @field_validator('domain_setup_reason_code')
+    @classmethod
+    def domain_setup_reason_code_validate_enum(cls, value):
+        """Validates the enum"""
+        if value is None:
+            return value
+
+        if value not in ('CNAME_ALREADY_EXISTS', 'CERTIFICATE_VALIDATION_TIMED_OUT', 'CERTIFICATE_CAA_ERROR', 'CERTIFICATE_PENDING_VALIDATION', 'CLOUDFRONT_DNS_NOT_CONFIGURED'):
+            raise ValueError("must be one of enum values ('CNAME_ALREADY_EXISTS', 'CERTIFICATE_VALIDATION_TIMED_OUT', 'CERTIFICATE_CAA_ERROR', 'CERTIFICATE_PENDING_VALIDATION', 'CLOUDFRONT_DNS_NOT_CONFIGURED')")
+        return value
     model_config = ConfigDict(populate_by_name=True, validate_assignment=True)
 
     def to_str(self) -> str:
@@ -85,6 +109,8 @@ class BasicInfo(BaseModel):
         _obj = BasicInfo.parse_obj({
             "domain_name": obj.get("domain_name"),
             "is_dns_validated": obj.get("is_dns_validated"),
+            "domain_setup_status": obj.get("domain_setup_status"),
+            "domain_setup_reason_code": obj.get("domain_setup_reason_code"),
             "certificate_dns_record": DnsRecord.from_dict(obj.get("certificate_dns_record")) if obj.get("certificate_dns_record") is not None else None,
             "cloud_front_dns_record": DnsRecord.from_dict(obj.get("cloud_front_dns_record")) if obj.get("cloud_front_dns_record") is not None else None,
             "dkim_dns_records": [DnsRecord.from_dict(_item) for _item in obj.get("dkim_dns_records")] if obj.get("dkim_dns_records") is not None else None,

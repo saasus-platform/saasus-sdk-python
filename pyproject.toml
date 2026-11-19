@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "saasus_sdk_python"
-version = "1.13.18"
+version = "1.13.19"
 description = "SaaSus Auth API Schema"
 authors = ["Anti-Pattern Inc. <saasus@anti-pattern.co.jp>"]
 license = "Apache-2.0"
