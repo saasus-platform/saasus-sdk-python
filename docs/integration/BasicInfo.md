@@ -6,6 +6,8 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **domain_name** | **str** | Domain Name | 
 **is_dns_validated** | **bool** | DNS Record Verification Results | 
+**domain_setup_status** | **str** | Domain setup status. Pending means validation or configuration is in progress; action_required means user action is needed; completed means configuration has been accepted. | [optional] 
+**domain_setup_reason_code** | **str** | Reason domain setup is incomplete. Omitted when no known reason is available. DNS validation may still be pending while records propagate. Failed or timed-out certificate requests require resubmitting the domain settings after correcting DNS. | [optional] 
 **certificate_dns_record** | [**DnsRecord**](DnsRecord.md) |  | 
 **cloud_front_dns_record** | [**DnsRecord**](DnsRecord.md) |  | 
 **dkim_dns_records** | [**List[DnsRecord]**](DnsRecord.md) | DKIM DNS Records | 
