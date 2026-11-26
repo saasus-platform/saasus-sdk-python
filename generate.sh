@@ -1,22 +1,9 @@
 #!/bin/bash
 
-# バージョン引数がある場合のみ pyproject.toml を更新
-if [ $# -ge 1 ]; then
-  RAW_VERSION=$1
-  CLEAN_VERSION=${RAW_VERSION#v}
-  echo "Target SDK version: ${CLEAN_VERSION}"
-
-  # sh 互換のバージョン形式チェック（例: 1.2.3, 1.2.3rc1, 1.2.3-beta.1）
-  echo "$CLEAN_VERSION" | grep -Eq '^[0-9]+\.[0-9]+\.[0-9]+([a-zA-Z0-9.-]*)?$'
-  if [ $? -ne 0 ]; then
-    echo "Invalid version format: ${CLEAN_VERSION}. Skipping version update."
-  else
-    echo "update pyproject.toml version to ${CLEAN_VERSION}"
-    poetry version "$CLEAN_VERSION"
-  fi
-else
-  echo "No version argument provided, skipping version update"
+if [ "$#" -ge 1 ]; then
+  sh ./update-version.sh "$1" || exit 1
 fi
+sdk_version=$(cat VERSION) || exit 1
 
 # 生成するモジュール名の配列
 MODULES="auth pricing billing awsmarketplace integration apilog communication"
@@ -66,7 +53,7 @@ do
     -i ${target} \
     -g python \
     -o /local/saasus_sdk_python/generated/ \
-    --additional-properties useOneOfDiscriminatorLookup=true \
+    --additional-properties "useOneOfDiscriminatorLookup=true,httpUserAgent=SaaSus-SDK-python/${sdk_version}" \
     --template-dir /local/templates/openapi-generator/python-v7-0-0/ \
     --package-name saasus_sdk_python.src.${module}
 done

@@ -1,10 +1,11 @@
 import os
+from saasus_sdk_python._user_agent import UserAgentMixin
 from saasus_sdk_python.client.client import Client
 from urllib.parse import urlencode
 from saasus_sdk_python.src.auth.api_client import ApiClient
 
 
-class SignedAuthApiClient(ApiClient):
+class SignedAuthApiClient(UserAgentMixin, ApiClient):
 
     def __init__(self, referer=None, x_saasus_referer=None, *args, x_saasus_trace_id=None, **kwargs):
         self.client = Client()

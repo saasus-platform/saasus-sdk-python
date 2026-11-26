@@ -35,10 +35,11 @@ jobs:
       # pyproject.toml のバージョンに `.dev+timestamp` を追加（TestPyPI 用に毎回ユニークなバージョンを作成
       - name: Bump version with timestamp
         run: |
-          BASE_VERSION=$(poetry version -s)
+          sh update-version.sh --check
+          BASE_VERSION=$(cat VERSION)
           VERSION="${BASE_VERSION}.dev$(date +'%Y%m%d%H%M%S')"
           echo "Set version to $VERSION"
-          poetry version "$VERSION"
+          sh update-version.sh "$VERSION"
 
       # パッケージのビルド
       - name: Build Package

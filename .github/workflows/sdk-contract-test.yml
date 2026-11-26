@@ -51,6 +51,9 @@ jobs:
       - name: Install Poetry
         run: pipx install poetry
 
+      - name: Verify SDK version
+        run: sh update-version.sh --check
+
       # Short-lived installation token (contents:read on the private api repo only).
       - name: Mint api read token
         id: api-token

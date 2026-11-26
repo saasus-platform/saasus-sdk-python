@@ -1,10 +1,11 @@
 import os
+from saasus_sdk_python._user_agent import UserAgentMixin
 from saasus_sdk_python.client.client import Client
 from urllib.parse import urlencode
 from saasus_sdk_python.src.billing.api_client import ApiClient
 
 
-class SignedBillingApiClient(ApiClient):
+class SignedBillingApiClient(UserAgentMixin, ApiClient):
 
     def __init__(self, referer=None, x_saasus_referer=None, *args, x_saasus_trace_id=None, **kwargs):
         super().__init__(*args, **kwargs)
